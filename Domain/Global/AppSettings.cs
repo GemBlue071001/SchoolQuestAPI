@@ -1,10 +1,11 @@
-﻿namespace HighSchoolQuestAPI
+﻿namespace Domain.Global
 {
     public class AppSettings
     {
         public ConnectionStrings ConnectionStrings { get; set; }
         public Logging Logging { get; set; }
         public string AllowedHosts { get; set; }
+        public SecretToken SecretToken { get; set; }
     }
     public class ConnectionStrings
     {
@@ -20,5 +21,10 @@
     {
         public string Default { get; set; }
         public string MicrosoftAspNetCore { get; set; }
+    }
+
+    public class SecretToken
+    {
+        public string Value { get; set; }
     }
 }

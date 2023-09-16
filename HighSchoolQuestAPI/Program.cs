@@ -2,6 +2,7 @@ using ApplicationContext;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Service;
 using DataAccessLayer.UnitOfWork;
+using Domain.Global;
 using HighSchoolQuestAPI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+
+
+var configuration = builder.Configuration.Get<AppSettings>();
+builder.Services.AddDbContext<HighSchoolQuestContext>(options =>
+options.UseSqlServer(configuration!.ConnectionStrings.DefaultConnection));
 builder.Services.AddSwaggerGen
     (
     opt =>
@@ -38,18 +45,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         opt.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration!.SecretToken.Value)),
             ValidateIssuer = false,
             ValidateAudience = false,
         };
     });
 
-
-var configuration = builder.Configuration.Get<AppSettings>();
-builder.Services.AddDbContext<HighSchoolQuestContext>(options =>
-options.UseSqlServer(configuration!.ConnectionStrings.DefaultConnection));
-
-builder.Services.AddSingleton<AppSettings>();
+builder.Services.AddSingleton(configuration);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserService, UserService>();
 

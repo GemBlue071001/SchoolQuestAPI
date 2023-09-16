@@ -2,6 +2,7 @@
 using BusinessLogicLayer.RequestModel;
 using DataAccessLayer.UnitOfWork;
 using Domain.Enums;
+using Domain.Global;
 using Domain.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -15,12 +16,14 @@ namespace BusinessLogicLayer.Service
 {
     public class UserService : IUserService
     {
-        private IConfiguration _configuration;
+        //private IConfiguration _configuration;
         private IUnitOfWork _unitOfWork;
-        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork)
+        private AppSettings _appSettings;
+        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings)
         {
-            _configuration = configuration;
+            //_configuration = configuration;
             _unitOfWork = unitOfWork;
+            _appSettings = appSettings;
         }
 
         private PasswordDTO CreatePasswordHash(string password)
@@ -84,7 +87,7 @@ namespace BusinessLogicLayer.Service
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-                _configuration.GetSection("AppSettings:Token").Value));
+                _appSettings!.SecretToken.Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
