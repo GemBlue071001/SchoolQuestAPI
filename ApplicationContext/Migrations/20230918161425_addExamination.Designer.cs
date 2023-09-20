@@ -4,6 +4,7 @@ using ApplicationContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationContext.Migrations
 {
     [DbContext(typeof(HighSchoolQuestContext))]
-    partial class HighSchoolQuestContextModelSnapshot : ModelSnapshot
+    [Migration("20230918161425_addExamination")]
+    partial class addExamination
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,49 +24,6 @@ namespace ApplicationContext.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Domain.Models.Attempt", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Attempts");
-                });
-
-            modelBuilder.Entity("Domain.Models.AttemptDetail", b =>
-                {
-                    b.Property<Guid>("AttemptId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ExaminationQuestionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("AttemptId", "UserId", "ExaminationQuestionId");
-
-                    b.HasIndex("ExaminationQuestionId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AttemptDetails");
-                });
 
             modelBuilder.Entity("Domain.Models.Examination", b =>
                 {
@@ -96,7 +56,7 @@ namespace ApplicationContext.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Examinations");
+                    b.ToTable("Examination");
                 });
 
             modelBuilder.Entity("Domain.Models.ExaminationQuestion", b =>
@@ -129,7 +89,7 @@ namespace ApplicationContext.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("ExaminationQuestions");
+                    b.ToTable("ExaminationQuestion");
                 });
 
             modelBuilder.Entity("Domain.Models.Group", b =>
@@ -160,53 +120,6 @@ namespace ApplicationContext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Groups");
-                });
-
-            modelBuilder.Entity("Domain.Models.GroupDepartment", b =>
-                {
-                    b.Property<Guid>("UniversityDepartmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("GroupId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("UniversityDepartmentId", "GroupId");
-
-                    b.HasIndex("GroupId");
-
-                    b.ToTable("GroupDepartments");
-                });
-
-            modelBuilder.Entity("Domain.Models.Major", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MajorName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UniversityDepartmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UniversityDepartmentId");
-
-                    b.ToTable("Major");
                 });
 
             modelBuilder.Entity("Domain.Models.Question", b =>
@@ -325,61 +238,6 @@ namespace ApplicationContext.Migrations
                     b.ToTable("Topics");
                 });
 
-            modelBuilder.Entity("Domain.Models.University", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("University");
-                });
-
-            modelBuilder.Entity("Domain.Models.UniversityDepartment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("UniversityId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UniversityId");
-
-                    b.ToTable("UniversityDepartments");
-                });
-
             modelBuilder.Entity("Domain.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -430,33 +288,6 @@ namespace ApplicationContext.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Domain.Models.AttemptDetail", b =>
-                {
-                    b.HasOne("Domain.Models.Attempt", "Attempt")
-                        .WithMany("AttemptDetails")
-                        .HasForeignKey("AttemptId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Models.ExaminationQuestion", "ExaminationQuestion")
-                        .WithMany("AttemptDetails")
-                        .HasForeignKey("ExaminationQuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Models.User", "User")
-                        .WithMany("AttemptDetails")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Attempt");
-
-                    b.Navigation("ExaminationQuestion");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Domain.Models.ExaminationQuestion", b =>
                 {
                     b.HasOne("Domain.Models.Examination", "Examination")
@@ -474,36 +305,6 @@ namespace ApplicationContext.Migrations
                     b.Navigation("Examination");
 
                     b.Navigation("Question");
-                });
-
-            modelBuilder.Entity("Domain.Models.GroupDepartment", b =>
-                {
-                    b.HasOne("Domain.Models.Group", "Group")
-                        .WithMany("GroupDepartments")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Models.UniversityDepartment", "UniversityDepartment")
-                        .WithMany("GroupDepartments")
-                        .HasForeignKey("UniversityDepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Group");
-
-                    b.Navigation("UniversityDepartment");
-                });
-
-            modelBuilder.Entity("Domain.Models.Major", b =>
-                {
-                    b.HasOne("Domain.Models.UniversityDepartment", "UniversityDepartment")
-                        .WithMany("Majors")
-                        .HasForeignKey("UniversityDepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("UniversityDepartment");
                 });
 
             modelBuilder.Entity("Domain.Models.Question", b =>
@@ -547,36 +348,13 @@ namespace ApplicationContext.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("Domain.Models.UniversityDepartment", b =>
-                {
-                    b.HasOne("Domain.Models.University", "University")
-                        .WithMany("UniversityDepartments")
-                        .HasForeignKey("UniversityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("University");
-                });
-
-            modelBuilder.Entity("Domain.Models.Attempt", b =>
-                {
-                    b.Navigation("AttemptDetails");
-                });
-
             modelBuilder.Entity("Domain.Models.Examination", b =>
                 {
                     b.Navigation("ExaminationQuestions");
                 });
 
-            modelBuilder.Entity("Domain.Models.ExaminationQuestion", b =>
-                {
-                    b.Navigation("AttemptDetails");
-                });
-
             modelBuilder.Entity("Domain.Models.Group", b =>
                 {
-                    b.Navigation("GroupDepartments");
-
                     b.Navigation("SubjectGroups");
                 });
 
@@ -595,23 +373,6 @@ namespace ApplicationContext.Migrations
             modelBuilder.Entity("Domain.Models.Topic", b =>
                 {
                     b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("Domain.Models.University", b =>
-                {
-                    b.Navigation("UniversityDepartments");
-                });
-
-            modelBuilder.Entity("Domain.Models.UniversityDepartment", b =>
-                {
-                    b.Navigation("GroupDepartments");
-
-                    b.Navigation("Majors");
-                });
-
-            modelBuilder.Entity("Domain.Models.User", b =>
-                {
-                    b.Navigation("AttemptDetails");
                 });
 #pragma warning restore 612, 618
         }

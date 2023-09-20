@@ -20,10 +20,23 @@ namespace ApplicationContext
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<SubjectGroup> SubjectGroup { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<Examination> Examinations { get; set; }
+        public DbSet<ExaminationQuestion> ExaminationQuestions { get; set; }
+        public DbSet<Attempt> Attempts { get; set; }
+        public DbSet<AttemptDetail> AttemptDetails { get; set; }
+        public DbSet<UniversityDepartment> UniversityDepartments { get; set; }
+        public DbSet<GroupDepartment> GroupDepartments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new SubjectGroupConfiguration());
+            modelBuilder.ApplyConfiguration(new TopicConfiguration());
+            modelBuilder.ApplyConfiguration(new ExaminationQuestionConfiguration());
+            modelBuilder.ApplyConfiguration(new AttemptDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new GroupDepartmentConfiguration());
+            modelBuilder.ApplyConfiguration(new UniversityDepartmentConfiguration());
         }
 
     }

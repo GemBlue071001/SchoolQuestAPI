@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public  class Group : Base
+    public class UniversityDepartment : Base
     {
-        public string Code { get; set; } = string.Empty;
-        public string? Description { get; set; }
 
-        // Navigation Prop 
-        public List<SubjectGroup> SubjectGroups { get; set; }
         //
         public List<GroupDepartment> GroupDepartments { get; set; }
+        public List<Major> Majors { get; set; }
+        public University University { get; set; }
+        public Guid UniversityId { get; set; }
     }
 }
