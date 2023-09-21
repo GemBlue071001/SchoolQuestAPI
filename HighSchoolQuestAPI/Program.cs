@@ -1,5 +1,6 @@
 using ApplicationContext;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.Mapper;
 using BusinessLogicLayer.Service;
 using DataAccessLayer.UnitOfWork;
 using Domain.Global;
@@ -51,9 +52,12 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAutoMapper(typeof(MapperConfigurationsProfile).Assembly);
+
 builder.Services.AddSingleton(configuration);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISubjectService, SubjectService>();
 
 
 

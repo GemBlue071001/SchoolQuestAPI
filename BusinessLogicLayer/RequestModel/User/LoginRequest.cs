@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogicLayer.RequestModel
+namespace BusinessLogicLayer.RequestModel.User
 {
     public class LoginRequest
     {

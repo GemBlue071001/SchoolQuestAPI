@@ -1,4 +1,4 @@
-﻿using BusinessLogicLayer.RequestModel;
+﻿using BusinessLogicLayer.RequestModel.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;

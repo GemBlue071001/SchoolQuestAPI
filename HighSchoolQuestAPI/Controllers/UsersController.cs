@@ -1,5 +1,5 @@
 ﻿using BusinessLogicLayer.IService;
-using BusinessLogicLayer.RequestModel;
+using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

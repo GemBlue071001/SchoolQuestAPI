@@ -11,8 +11,8 @@ namespace Domain.Models
         public string Content { get; set; }
 
         //Navigation Property
-        public Guid TopicId { get; set; }
-        public Topic Topic { get; set; }
+        public Guid? TopicId { get; set; }
+        public Topic? Topic { get; set; }
         public List<ExaminationQuestion> ExaminationQuestions { get; set; }
     }
 }

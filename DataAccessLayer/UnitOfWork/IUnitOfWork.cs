@@ -11,6 +11,7 @@ namespace DataAccessLayer.UnitOfWork
     public interface IUnitOfWork
     {
         public IUserRepository Users { get; }
+        public ISubjectRepository Subjects { get; }
         public Task SaveChangeAsync();
     }
 }

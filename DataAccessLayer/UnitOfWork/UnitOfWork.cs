@@ -13,11 +13,13 @@ namespace DataAccessLayer.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         public IUserRepository Users { get; }
+        public ISubjectRepository Subjects { get; }
         private HighSchoolQuestContext _context;
         public UnitOfWork(HighSchoolQuestContext context)
         {
             _context = context;
             Users = new UserRepository(context);
+            Subjects = new SubjectRepository(context);
         }
         public async Task SaveChangeAsync()
         {
