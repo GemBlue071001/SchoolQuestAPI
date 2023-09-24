@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.Topic;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
+using BusinessLogicLayer.ResponseModel.Subject;
+using BusinessLogicLayer.ResponseModel.Topic;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
 using System;
@@ -44,6 +47,18 @@ namespace BusinessLogicLayer.Service
 
             response.SetOk();
             return response;
+        }
+
+        public async Task<ApiResponse> GetTopicPagingAsync(int pageIndex, int pageSize, string search)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            var listOfTopic = await _unitOfWork.Topics.PagingAsync(pageIndex, pageSize, search);
+            var listOfTopicResponse = _mapper.Map<List<TopicResponse>>(listOfTopic);
+            var totalOfTopic = await _unitOfWork.Topics.CountPagingAsync(pageIndex, pageSize, search);
+            Pagination<TopicResponse> response = new Pagination<TopicResponse>(listOfTopicResponse, totalOfTopic, pageIndex, pageSize);
+
+            apiResponse.SetOk(response);
+            return apiResponse;
         }
     }
 }

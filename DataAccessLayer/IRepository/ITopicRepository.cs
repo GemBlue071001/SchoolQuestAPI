@@ -9,5 +9,7 @@ namespace DataAccessLayer.IRepository
 {
     public interface ITopicRepository : IGenericRepository<Topic>
     {
+        Task<int> CountPagingAsync(int pageIndex, int pageSize, string search);
+        Task<List<Topic>> PagingAsync(int pageIndex, int pageSize, string search);
     }
 }

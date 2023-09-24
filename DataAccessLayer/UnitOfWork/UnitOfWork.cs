@@ -17,6 +17,7 @@ namespace DataAccessLayer.UnitOfWork
         public ISubjectRepository Subjects { get; }
         public ITopicRepository Topics { get; }
         public IUniversityRepository Universities { get; }
+        public IQuestionRepository Questions { get; }
         public UnitOfWork(HighSchoolQuestContext context)
         {
             _context = context;
@@ -24,6 +25,7 @@ namespace DataAccessLayer.UnitOfWork
             Subjects = new SubjectRepository(context);
             Topics = new TopicRepository(context);
             Universities = new UniversityRepository(context);
+            Questions = new QuestionRepository(context);
         }
         public async Task SaveChangeAsync()
         {

@@ -22,5 +22,14 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.AddTopicAsync(request);
             return result.IsSuccess? Ok(result) : BadRequest(result);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTopicPagingAsync([FromQuery] int pageIndex = 1,
+                                                             [FromQuery] int pageSize = 5,
+                                                             [FromQuery] string search = null)
+        {
+            var result = await _service.GetTopicPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

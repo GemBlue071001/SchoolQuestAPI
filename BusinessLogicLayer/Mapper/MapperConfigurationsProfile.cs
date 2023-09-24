@@ -2,6 +2,7 @@
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.RequestModel.Topic;
 using BusinessLogicLayer.RequestModel.University;
+using BusinessLogicLayer.ResponseModel;
 using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.Topic;
 using BusinessLogicLayer.ResponseModel.User;
@@ -28,6 +29,7 @@ namespace BusinessLogicLayer.Mapper
 
             CreateMap<User, UserResponse>().ReverseMap();
 
+            CreateMap<Question, QuestionResponse>().ReverseMap();
         }
     }
 }

@@ -11,5 +11,6 @@ namespace BusinessLogicLayer.IService
     public interface ITopicService
     {
         Task<ApiResponse> AddTopicAsync(NewTopicRequest newTopic);
+        Task<ApiResponse> GetTopicPagingAsync(int pageIndex, int pageSize, string search);
     }
 }
