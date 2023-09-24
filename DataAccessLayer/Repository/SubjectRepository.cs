@@ -23,11 +23,13 @@ namespace DataAccessLayer.Repository
                 query = query.Where(b => b.Name.Contains(search));
 
             return await query
-          .Where(b => !b.IsDeleted)
-          .Skip((pageIndex - 1) * pageSize)
-          .Take(pageSize).ToListAsync();
+                    .Where(b => !b.IsDeleted)
+                    .Skip((pageIndex - 1) * pageSize)
+                    .Include(x => x.Topics)
+                    .Take(pageSize).ToListAsync();
 
         }
+
         public async Task<int> CountPagingAsync(int pageIndex, int pageSize, string search)
         {
             IQueryable<Subject> query = _db;
@@ -37,7 +39,6 @@ namespace DataAccessLayer.Repository
             return await query
           .Where(b => !b.IsDeleted)
           .CountAsync();
-
         }
     }
 }

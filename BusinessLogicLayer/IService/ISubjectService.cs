@@ -11,6 +11,6 @@ namespace BusinessLogicLayer.IService
     public interface ISubjectService
     {
         Task<ApiResponse> AddSubjectAsync(NewSubjectRequest newSubjet);
-        Task<ApiResponse> GetSubjectAsync(int pageIndex, int pageSize, string search);
+        Task<ApiResponse> GetSubjectPagingAsync(int pageIndex, int pageSize, string search);
     }
 }

@@ -21,12 +21,10 @@ namespace DataAccessLayer.Repository
             _db = _context.Set<T>();
         }
 
-
         public async Task AddAsync(T entity)
         {
             await _db.AddAsync(entity);
         }
-
         public async Task<int> CountAsync() => await _db.CountAsync();
 
         public async Task<T> GetAsync(System.Linq.Expressions.Expression<Func<T, bool>> filter)

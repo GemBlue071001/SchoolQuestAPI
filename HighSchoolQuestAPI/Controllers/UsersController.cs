@@ -2,6 +2,7 @@
 using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.Service;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HighSchoolQuestAPI.Controllers
@@ -20,17 +21,23 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> Register(UserRegisterRequest user)
         {
             var result = await UserService.RegisterAsync(user);
-            
-            return Ok(result);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequest user)
         {
-            var token = await UserService.LoginAsync(user);
-            return Ok(token);
+            var result = await UserService.LoginAsync(user);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-
+        [HttpGet]
+        public async Task<IActionResult> GetUserPagingAsync([FromQuery] int pageIndex = 1,
+                                                            [FromQuery] int pageSize = 5,
+                                                            [FromQuery] string search = null)
+        {
+            var result = await UserService.GetUserPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

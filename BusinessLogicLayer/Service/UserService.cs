@@ -1,6 +1,12 @@
-﻿using BusinessLogicLayer.DTO;
+﻿using AutoMapper;
+using Azure;
+using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.User;
+using BusinessLogicLayer.ResponseModel.ApiResponse;
+using BusinessLogicLayer.ResponseModel.Subject;
+using BusinessLogicLayer.ResponseModel.User;
 using DataAccessLayer.UnitOfWork;
 using Domain.Enums;
 using Domain.Global;
@@ -20,11 +26,14 @@ namespace BusinessLogicLayer.Service
         //private IConfiguration _configuration;
         private IUnitOfWork _unitOfWork;
         private AppSettings _appSettings;
-        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings)
+        private IMapper _mapper;
+
+        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings, IMapper mapper)
         {
             //_configuration = configuration;
             _unitOfWork = unitOfWork;
             _appSettings = appSettings;
+            _mapper = mapper;
         }
 
         private PasswordDTO CreatePasswordHash(string password)
@@ -44,10 +53,16 @@ namespace BusinessLogicLayer.Service
             return (user.Password.Equals(user.ConfirmPassword));
         }
 
-        public async Task<bool> RegisterAsync(UserRegisterRequest user)
+        public async Task<ApiResponse> RegisterAsync(UserRegisterRequest user)
         {
+            ApiResponse response = new ApiResponse();
+
             var checkPassword = CheckUserPassword(user);
-            if (!checkPassword) return false;
+            if (!checkPassword)
+            {
+                response.SetBadRequest(message: Resources.ConfirmPasswordWrong);
+                return response;
+            }
             var pass = CreatePasswordHash(user.Password);
             User _user = new User()
             {
@@ -58,15 +73,23 @@ namespace BusinessLogicLayer.Service
             };
             await _unitOfWork.Users.AddAsync(_user);
             await _unitOfWork.SaveChangeAsync();
-            return true;
+
+            response.SetOk(Resources.ResgisterComplete);
+            return response;
         }
 
-        public async Task<string> LoginAsync(LoginRequest account)
+        public async Task<ApiResponse> LoginAsync(LoginRequest account)
         {
+            ApiResponse response = new ApiResponse();
             var _account = await _unitOfWork.Users.GetAsync(u => u.UserName == account.UserName);
-            if (_account == null && !VerifyPasswordHash(account.Password, _account.PasswordHash, _account.PasswordSalt))
-                return null;
-            return CreateToken(_account);
+            if (_account == null || !VerifyPasswordHash(account.Password, _account.PasswordHash, _account.PasswordSalt))
+            {
+                response.SetBadRequest(message: Resources.LoginFail);
+                return response;
+            }
+
+            response.SetOk(CreateToken(_account));
+            return response;
         }
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
@@ -100,6 +123,18 @@ namespace BusinessLogicLayer.Service
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
             return jwt;
+        }
+
+        public async Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search);
+            var listOfUserResponse = _mapper.Map<List<UserResponse>>(listOfUser);
+            var totalOfUser = await _unitOfWork.Subjects.CountPagingAsync(pageIndex, pageSize, search);
+            Pagination<UserResponse> response = new Pagination<UserResponse>(listOfUserResponse, totalOfUser, pageIndex, pageSize);
+
+            apiResponse.SetOk(response);
+            return apiResponse;
         }
 
     }

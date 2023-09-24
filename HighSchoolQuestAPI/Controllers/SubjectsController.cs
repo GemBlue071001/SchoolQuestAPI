@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.Subject;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,20 +16,22 @@ namespace HighSchoolQuestAPI.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNewSubjectAsync(NewSubjectRequest request)
         {
             var result = await _service.AddSubjectAsync(request);
-            return Ok(result);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetSubjectAsync([FromQuery]int pageIndex = 1,
                                                          [FromQuery] int pageSize = 5,
                                                          [FromQuery] string search = null)
         {
-            var result = await _service.GetSubjectAsync(pageIndex, pageSize, search);
-            return Ok(result);
+            var result = await _service.GetSubjectPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }
 }

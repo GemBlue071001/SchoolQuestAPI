@@ -31,12 +31,13 @@ namespace BusinessLogicLayer.Service
             return apiResponse;
         }
 
-        public async Task<ApiResponse> GetSubjectAsync(int pageIndex,int pageSize,string search)
+        public async Task<ApiResponse> GetSubjectPagingAsync(int pageIndex,int pageSize,string search)
         {
             ApiResponse apiResponse = new ApiResponse();
             var listOfSubject = await _unitOfWork.Subjects.PagingAsync(pageIndex, pageSize, search);
+            var listOfSubjectResponse = _mapper.Map<List<SubjectResponse>>(listOfSubject);
             var totalOfSubject = await _unitOfWork.Subjects.CountPagingAsync(pageIndex, pageSize, search);
-            Pagination<Subject> response = new Pagination<Subject> (listOfSubject, totalOfSubject, pageIndex, pageSize);
+            Pagination<SubjectResponse> response = new Pagination<SubjectResponse> (listOfSubjectResponse, totalOfSubject, pageIndex, pageSize);
 
             apiResponse.SetOk(response);
             return apiResponse;

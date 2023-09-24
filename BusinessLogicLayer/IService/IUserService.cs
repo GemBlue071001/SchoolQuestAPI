@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.RequestModel.User;
+using BusinessLogicLayer.ResponseModel.ApiResponse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace BusinessLogicLayer.IService
 {
     public interface IUserService
     {
-        public Task<string> LoginAsync(LoginRequest account);
-        Task<bool> RegisterAsync(UserRegisterRequest user);
+        public Task<ApiResponse> LoginAsync(LoginRequest account);
+        Task<ApiResponse> RegisterAsync(UserRegisterRequest user);
+        Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search);
     }
 }

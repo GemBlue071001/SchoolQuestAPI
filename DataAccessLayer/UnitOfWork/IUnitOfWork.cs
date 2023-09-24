@@ -12,6 +12,8 @@ namespace DataAccessLayer.UnitOfWork
     {
         public IUserRepository Users { get; }
         public ISubjectRepository Subjects { get; }
+        public ITopicRepository Topics { get; }
+        public IUniversityRepository Universities { get; }
         public Task SaveChangeAsync();
     }
 }
