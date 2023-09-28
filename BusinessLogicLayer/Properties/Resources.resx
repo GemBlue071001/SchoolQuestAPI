@@ -120,8 +120,14 @@
   <data name="ConfirmPasswordWrong" xml:space="preserve">
     <value>Confirm Password Wrong</value>
   </data>
+  <data name="ExamNotFound" xml:space="preserve">
+    <value>Exam Not Found</value>
+  </data>
   <data name="LoginFail" xml:space="preserve">
     <value>Login Fail</value>
+  </data>
+  <data name="QuestionNotFound" xml:space="preserve">
+    <value>Question Not Found</value>
   </data>
   <data name="ResgisterComplete" xml:space="preserve">
     <value>ResgisterComplete</value>

@@ -15,6 +15,8 @@ namespace DataAccessLayer.UnitOfWork
         public ITopicRepository Topics { get; }
         public IUniversityRepository Universities { get; }
         public IQuestionRepository Questions { get; }
+        public IExaminationRepository Examinations { get; }
+        public IExaminationQuestionRepository ExaminationQuestions { get; }
         public Task SaveChangeAsync();
     }
 }

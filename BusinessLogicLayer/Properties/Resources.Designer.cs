@@ -70,11 +70,29 @@ namespace BusinessLogicLayer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exam Not Found.
+        /// </summary>
+        internal static string ExamNotFound {
+            get {
+                return ResourceManager.GetString("ExamNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login Fail.
         /// </summary>
         internal static string LoginFail {
             get {
                 return ResourceManager.GetString("LoginFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question Not Found.
+        /// </summary>
+        internal static string QuestionNotFound {
+            get {
+                return ResourceManager.GetString("QuestionNotFound", resourceCulture);
             }
         }
         
