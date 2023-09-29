@@ -40,14 +40,19 @@ namespace BusinessLogicLayer.Mapper
             CreateMap<User, UserResponse>().ReverseMap();
             #endregion
 
+            #region Question
             CreateMap<Question, QuestionResponse>().ReverseMap();
+            #endregion
 
+            #region Examination
             CreateMap<Examination, NewExaminationRequest>().ReverseMap();
-
-            CreateMap<ExaminationQuestion, NewExaminationQuestionRequest>().ReverseMap();
-
-            CreateMap<ExaminationQuestion, ExamQuestionResponse>().ReverseMap();
             CreateMap<Examination, ExamDetailResponse>().ReverseMap();
+            #endregion
+
+            #region ExaminationQuestion
+            CreateMap<ExaminationQuestion, NewExaminationQuestionRequest>().ReverseMap();
+            CreateMap<ExaminationQuestion, ExamQuestionResponse>().ReverseMap();
+            #endregion
 
         }
     }
