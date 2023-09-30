@@ -1,6 +1,7 @@
 ﻿using ApplicationContext;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.Repository;
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,15 @@ namespace DataAccessLayer.UnitOfWork
         public IExaminationRepository Examinations { get; }
         public IExaminationQuestionRepository ExaminationQuestions { get; }
 
+        public IMajorRepository Major { get; }
+        public IUniversityDepartmentRepository UniversityDepartments { get; }
+        public IGroupDepartmentRepository GroupDepartments { get; }
+        public IGroupRepository Groups { get; }
+        public ISubjectGroupRepository SubjectGroups { get; }
+        public IAttemptDetailRepository AttemptDetails { get; }
+        public IAttemptRepository Attempts { get; }
+        
+
         public UnitOfWork(HighSchoolQuestContext context)
         {
             _context = context;
@@ -31,6 +41,13 @@ namespace DataAccessLayer.UnitOfWork
             Questions = new QuestionRepository(context);
             Examinations = new ExaminationRepository(context);
             ExaminationQuestions = new ExaminationQuestionRepository(context);
+            Major = new MajorRepository(context);
+            UniversityDepartments = new UniversityDepartmentRepository(context);
+            GroupDepartments = new GroupDepartmentRepository(context);
+            Groups = new GroupRepository(context);
+            SubjectGroups = new SubjectGroupRepository(context);
+            AttemptDetails = new AttemptDetailRepository(context);
+            Attempts = new AttemptRepository(context);
         }
         public async Task SaveChangeAsync()
         {

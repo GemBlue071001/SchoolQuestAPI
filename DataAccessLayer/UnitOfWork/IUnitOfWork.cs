@@ -17,6 +17,12 @@ namespace DataAccessLayer.UnitOfWork
         public IQuestionRepository Questions { get; }
         public IExaminationRepository Examinations { get; }
         public IExaminationQuestionRepository ExaminationQuestions { get; }
+        public IMajorRepository Major { get; }
+        public IUniversityDepartmentRepository UniversityDepartments { get; }
+        public IGroupDepartmentRepository GroupDepartments { get; }
+        public IGroupRepository Groups { get; }
+        public ISubjectGroupRepository SubjectGroups { get; }
+        public IAttemptDetailRepository AttemptDetails { get; }
         public Task SaveChangeAsync();
     }
 }
