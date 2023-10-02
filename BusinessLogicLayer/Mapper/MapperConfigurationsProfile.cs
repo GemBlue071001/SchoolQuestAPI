@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using BusinessLogicLayer.RequestModel.Attemp;
+using BusinessLogicLayer.RequestModel.AttempDetail;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
 using BusinessLogicLayer.RequestModel.Subject;
@@ -10,7 +12,7 @@ using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.Topic;
 using BusinessLogicLayer.ResponseModel.User;
 using Domain.Models;
-  
+
 namespace BusinessLogicLayer.Mapper
 {
     public class MapperConfigurationsProfile : Profile
@@ -47,6 +49,14 @@ namespace BusinessLogicLayer.Mapper
             #region ExaminationQuestion
             CreateMap<ExaminationQuestion, NewExaminationQuestionRequest>().ReverseMap();
             CreateMap<ExaminationQuestion, ExamQuestionResponse>().ReverseMap();
+            #endregion
+
+            #region Attemp
+            CreateMap<Attempt, NewAttemptRequest>().ReverseMap();
+            #endregion
+
+            #region AttempDetail
+            CreateMap<AttemptDetail, AttemptDetailRequest>().ReverseMap();
             #endregion
 
         }

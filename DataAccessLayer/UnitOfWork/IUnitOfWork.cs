@@ -23,6 +23,7 @@ namespace DataAccessLayer.UnitOfWork
         public IGroupRepository Groups { get; }
         public ISubjectGroupRepository SubjectGroups { get; }
         public IAttemptDetailRepository AttemptDetails { get; }
+        public IAttemptRepository Attempts { get; }
         public Task SaveChangeAsync();
     }
 }

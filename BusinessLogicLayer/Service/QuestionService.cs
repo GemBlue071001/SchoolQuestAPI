@@ -25,21 +25,21 @@ namespace BusinessLogicLayer.Service
         public async Task<ApiResponse> AddQuestionAsync(NewQuestionRequest newQuestion)
         {
             ApiResponse apiResponse = new ApiResponse();
+
             var question = new Question
             {
                 Id = Guid.NewGuid(),
                 Content = JsonSerializer.Serialize(newQuestion.Content),
-                TopicId = newQuestion.TopicId
+                TopicId = newQuestion.TopicId != default ? newQuestion.TopicId : null
             };
 
             await _unitOfWork.Questions.AddAsync(question);
             await _unitOfWork.SaveChangeAsync();
-            apiResponse.SetOk();
-
-            return apiResponse;
+            
+            return apiResponse.SetOk();
         }
 
-        public async Task<ApiResponse> GetQuestionPagingAsync (int pageIndex, int pageSize, string search)
+        public async Task<ApiResponse> GetQuestionPagingAsync(int pageIndex, int pageSize, string search)
         {
             ApiResponse apiResponse = new ApiResponse();
             var listOfQuestions = await _unitOfWork.Questions.PagingAsync(pageIndex, pageSize, search);

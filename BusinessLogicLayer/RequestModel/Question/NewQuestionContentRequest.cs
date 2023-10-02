@@ -10,6 +10,6 @@ namespace BusinessLogicLayer.RequestModel.Question
     {
         public string QuestionContent { get; set; }
         public string[] Answers { get; set; }
-        public string CorrectAnswer { get; set; }
+        public string? CorrectAnswer { get; set; }
     }
 }

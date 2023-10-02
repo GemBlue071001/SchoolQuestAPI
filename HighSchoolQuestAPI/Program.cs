@@ -63,6 +63,8 @@ builder.Services.AddScoped<IUniversityService, UniversityService>();
 builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddScoped<IExaminationService, ExaminationService>();
 builder.Services.AddScoped<IExaminationQuestionService, ExaminationQuestionService>();
+builder.Services.AddScoped<IAttemptService, AttemptService>();
+builder.Services.AddScoped<IAttemptDetailService, AttemptDetailService>();
 
 
 
@@ -74,6 +76,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(p => p.AllowAnyHeader().AllowAnyHeader().AllowAnyOrigin());
 
 app.UseHttpsRedirection();
 

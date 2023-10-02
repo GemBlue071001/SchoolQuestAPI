@@ -17,6 +17,5 @@ namespace Domain.Models
         public Attempt Attempt { get; set; }
         public User User { get; set; }
         public ExaminationQuestion ExaminationQuestion { get; set; }
-
     }
 }
