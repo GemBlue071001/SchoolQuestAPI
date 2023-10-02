@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.IService
 {
-    internal interface ISubjectGroupService
+    public interface ISubjectGroupService
     {
     }
 }
