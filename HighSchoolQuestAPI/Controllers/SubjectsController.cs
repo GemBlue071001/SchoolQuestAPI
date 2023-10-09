@@ -24,13 +24,21 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> GetSubjectAsync([FromQuery]int pageIndex = 1,
                                                          [FromQuery] int pageSize = 5,
                                                          [FromQuery] string search = null)
         {
             var result = await _service.GetSubjectPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        //[Authorize]
+        [HttpPut]
+        public async Task<IActionResult> UpdateSubjectAsync([FromQuery] Guid subjectId, NewSubjectRequest request)
+        {
+            var result = await _service.UpdateSubjectAsync(subjectId, request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

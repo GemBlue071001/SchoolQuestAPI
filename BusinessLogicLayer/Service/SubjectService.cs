@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Azure;
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.Subject;
@@ -27,21 +29,35 @@ namespace BusinessLogicLayer.Service
             await _unitOfWork.Subjects.AddAsync(subject);
             await _unitOfWork.SaveChangeAsync();
             apiResponse.SetOk();
-            
+
             return apiResponse;
         }
 
-        public async Task<ApiResponse> GetSubjectPagingAsync(int pageIndex,int pageSize,string search)
+        public async Task<ApiResponse> GetSubjectPagingAsync(int pageIndex, int pageSize, string search)
         {
             ApiResponse apiResponse = new ApiResponse();
             var listOfSubject = await _unitOfWork.Subjects.PagingAsync(pageIndex, pageSize, search);
             var listOfSubjectResponse = _mapper.Map<List<SubjectResponse>>(listOfSubject);
             var totalOfSubject = await _unitOfWork.Subjects.CountPagingAsync(pageIndex, pageSize, search);
-            Pagination<SubjectResponse> response = new Pagination<SubjectResponse> (listOfSubjectResponse, totalOfSubject, pageIndex, pageSize);
+            Pagination<SubjectResponse> response = new Pagination<SubjectResponse>(listOfSubjectResponse, totalOfSubject, pageIndex, pageSize);
 
-            apiResponse.SetOk(response);
-            return apiResponse;
+            return apiResponse.SetOk(response);
         }
 
+        public async Task<ApiResponse> UpdateSubjectAsync(Guid subjectId, NewSubjectRequest newSubject)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var subject = await _unitOfWork.Subjects.GetAsync(x => x.Id == subjectId);
+            if (subject == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            _mapper.Map(newSubject, subject);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
     }
 }

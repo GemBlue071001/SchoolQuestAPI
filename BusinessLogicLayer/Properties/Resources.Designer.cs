@@ -70,6 +70,15 @@ namespace BusinessLogicLayer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Success.
+        /// </summary>
+        internal static string CreateSuccess {
+            get {
+                return ResourceManager.GetString("CreateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exam Not Found.
         /// </summary>
         internal static string ExamNotFound {
@@ -84,6 +93,15 @@ namespace BusinessLogicLayer.Properties {
         internal static string LoginFail {
             get {
                 return ResourceManager.GetString("LoginFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The object you are looking for is not existing anymore !.
+        /// </summary>
+        internal static string NullObject {
+            get {
+                return ResourceManager.GetString("NullObject", resourceCulture);
             }
         }
         
@@ -120,6 +138,15 @@ namespace BusinessLogicLayer.Properties {
         internal static string TopicNotFound {
             get {
                 return ResourceManager.GetString("TopicNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Success.
+        /// </summary>
+        internal static string UpdateSuccess {
+            get {
+                return ResourceManager.GetString("UpdateSuccess", resourceCulture);
             }
         }
     }

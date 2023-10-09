@@ -1,11 +1,6 @@
 ﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationContext.Configurations
 {
@@ -22,7 +17,6 @@ namespace ApplicationContext.Configurations
                 .HasForeignKey(o => o.GroupId);
 
             builder.HasKey(sc => new { sc.SubjectId, sc.GroupId });
-
         }
     }
 }

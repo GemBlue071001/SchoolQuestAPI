@@ -120,11 +120,17 @@
   <data name="ConfirmPasswordWrong" xml:space="preserve">
     <value>Confirm Password Wrong</value>
   </data>
+  <data name="CreateSuccess" xml:space="preserve">
+    <value>Create Success</value>
+  </data>
   <data name="ExamNotFound" xml:space="preserve">
     <value>Exam Not Found</value>
   </data>
   <data name="LoginFail" xml:space="preserve">
     <value>Login Fail</value>
+  </data>
+  <data name="NullObject" xml:space="preserve">
+    <value>The object you are looking for is not existing anymore !</value>
   </data>
   <data name="QuestionNotFound" xml:space="preserve">
     <value>Question Not Found</value>
@@ -137,5 +143,8 @@
   </data>
   <data name="TopicNotFound" xml:space="preserve">
     <value>Topic Not Found</value>
+  </data>
+  <data name="UpdateSuccess" xml:space="preserve">
+    <value>Update Success</value>
   </data>
 </root>

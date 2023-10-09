@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.IService
 {
     public interface IUserService
     {
-        public Task<ApiResponse> LoginAsync(LoginRequest account);
+        Task<ApiResponse> LoginAsync(LoginRequest account);
         Task<ApiResponse> RegisterAsync(UserRegisterRequest user);
         Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search);
     }
