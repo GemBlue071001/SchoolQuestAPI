@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.IService;
+using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.RequestModel.Topic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -29,6 +30,20 @@ namespace HighSchoolQuestAPI.Controllers
                                                              [FromQuery] string search = null)
         {
             var result = await _service.GetTopicPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateTopicAsync([FromQuery] Guid subjectId, NewTopicRequest request)
+        {
+            var result = await _service.UpdateTopicAsync(subjectId, request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTopicDetailAsync(Guid id)
+        {
+            var result = await _service.GetTopicDetailAsync(id);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

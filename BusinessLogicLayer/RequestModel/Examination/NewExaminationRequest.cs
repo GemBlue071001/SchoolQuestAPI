@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogicLayer.RequestModel.Question;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace BusinessLogicLayer.RequestModel.Examination
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int TotalNumberOfQuestion { get; set; }
+        public List<NewQuestionContentRequest> newListOfQuestion { get; set; }
     }
 }

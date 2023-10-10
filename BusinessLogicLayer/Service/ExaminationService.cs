@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Service
@@ -27,6 +28,18 @@ namespace BusinessLogicLayer.Service
         public async Task<ApiResponse> AddExaminationAsync(NewExaminationRequest newExamination)
         {
             var examination = _mapper.Map<Examination>(newExamination);
+
+            var listExamQuestion = new List<ExaminationQuestion>();
+            foreach (var newQuestion in newExamination.newListOfQuestion)
+            {
+                var examQuestion = new ExaminationQuestion();
+                examQuestion.Question = new Question();
+                examQuestion.Question.Content = JsonSerializer.Serialize(newQuestion);
+                listExamQuestion.Add(examQuestion);
+            }
+            examination.ExaminationQuestions = listExamQuestion;
+            examination.TotalNumberOfQuestion = newExamination.newListOfQuestion.Count();
+
             await _unitOfWork.Examinations.AddAsync(examination);
             await _unitOfWork.SaveChangeAsync();
 

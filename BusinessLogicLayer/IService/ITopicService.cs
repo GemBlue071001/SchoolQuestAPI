@@ -12,5 +12,7 @@ namespace BusinessLogicLayer.IService
     {
         Task<ApiResponse> AddTopicAsync(NewTopicRequest newTopic);
         Task<ApiResponse> GetTopicPagingAsync(int pageIndex, int pageSize, string search);
+        Task<ApiResponse> UpdateTopicAsync(Guid topicId, NewTopicRequest newTopic);
+        Task<ApiResponse> GetTopicDetailAsync(Guid topicId);
     }
 }

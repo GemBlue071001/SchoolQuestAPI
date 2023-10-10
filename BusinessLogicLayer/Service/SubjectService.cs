@@ -5,6 +5,7 @@ using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
+using BusinessLogicLayer.ResponseModel.Question;
 using BusinessLogicLayer.ResponseModel.Subject;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
@@ -58,6 +59,21 @@ namespace BusinessLogicLayer.Service
             await _unitOfWork.SaveChangeAsync();
 
             return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+        public async Task<ApiResponse> GetSubjectDetailAsync(Guid subjectId)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var subject = await _unitOfWork.Subjects.GetAsync(x => x.Id == subjectId);
+            if (subject == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            var subjectResponse = _mapper.Map<SubjectResponse>(subject);
+
+            return apiResponse.SetOk(subjectResponse);
         }
     }
 }

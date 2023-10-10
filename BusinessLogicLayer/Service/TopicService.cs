@@ -35,7 +35,7 @@ namespace BusinessLogicLayer.Service
 
             if (subject == null)
             {
-                response.SetBadRequest(message:Resources.SubjectNotFound);
+                response.SetBadRequest(message: Resources.SubjectNotFound);
                 return response;
             }
 
@@ -59,6 +59,37 @@ namespace BusinessLogicLayer.Service
 
             apiResponse.SetOk(response);
             return apiResponse;
+        }
+
+        public async Task<ApiResponse> UpdateTopicAsync(Guid topicId, NewTopicRequest newTopic)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var topic = await _unitOfWork.Topics.GetAsync(x => x.Id == topicId);
+            if (topic == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            _mapper.Map(newTopic, topic);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+        public async Task<ApiResponse> GetTopicDetailAsync(Guid topicId)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var topic = await _unitOfWork.Topics.GetAsync(x => x.Id == topicId);
+            if (topic == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            var topicResponse = _mapper.Map<TopicResponse>(topic);
+
+            return apiResponse.SetOk(topicResponse);
         }
     }
 }

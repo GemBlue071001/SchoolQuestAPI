@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.Question;
+using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.Question;
 using BusinessLogicLayer.ResponseModel.Subject;
@@ -35,7 +37,27 @@ namespace BusinessLogicLayer.Service
 
             await _unitOfWork.Questions.AddAsync(question);
             await _unitOfWork.SaveChangeAsync();
-            
+
+            return apiResponse.SetOk();
+        }
+
+        public async Task<ApiResponse> AddListOfQuestionsAsync(List<NewQuestionContentRequest> newListOfQuestion)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            List<Question> listquestions = new List<Question>();
+
+            foreach (var newQuestion in newListOfQuestion)
+            {
+                listquestions.Add(new Question()
+                {
+                    Id = Guid.NewGuid(),
+                    Content= JsonSerializer.Serialize(newQuestion),
+                });
+            }
+
+            await _unitOfWork.Questions.AddRangeAsync(listquestions);
+            await _unitOfWork.SaveChangeAsync();
+
             return apiResponse.SetOk();
         }
 
@@ -49,6 +71,37 @@ namespace BusinessLogicLayer.Service
 
             apiResponse.SetOk(response);
             return apiResponse;
+        }
+
+        public async Task<ApiResponse> UpdateQuestionAsync(Guid questionId, NewQuestionContentRequest newQuestion)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var question = await _unitOfWork.Questions.GetAsync(x => x.Id == questionId);
+            if (question == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            question.Content = JsonSerializer.Serialize(newQuestion);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+        public async Task<ApiResponse> GetQuestionDetailAsync(Guid questionId)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var question = await _unitOfWork.Questions.GetAsync(x => x.Id == questionId);
+            if (question == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            var questionResponse = _mapper.Map<QuestionResponse>(question);
+
+            return apiResponse.SetOk(questionResponse);
         }
     }
 }

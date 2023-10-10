@@ -8,8 +8,14 @@ namespace BusinessLogicLayer.RequestModel.Question
 {
     public class NewQuestionContentRequest
     {
-        public string QuestionContent { get; set; }
-        public string[] Answers { get; set; }
-        public string? CorrectAnswer { get; set; }
+        public string Question { get; set; }
+        public List<Answer> ListAnswer { get; set; }
+    }
+
+
+    public class Answer
+    {
+        public string Value { get; set; }
+        public bool IsAnswer { get; set; }
     }
 }

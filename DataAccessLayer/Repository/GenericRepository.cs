@@ -45,5 +45,11 @@ namespace DataAccessLayer.Repository
                 _db.Remove(existing);
             }
         }
+
+        public async Task AddRangeAsync(List<T> entities)
+        {
+            await _db.AddRangeAsync(entities);
+        }
+
     }
 }

@@ -26,7 +26,7 @@ namespace HighSchoolQuestAPI.Controllers
 
         //[Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetSubjectAsync([FromQuery]int pageIndex = 1,
+        public async Task<IActionResult> GetSubjectAsync([FromQuery] int pageIndex = 1,
                                                          [FromQuery] int pageSize = 5,
                                                          [FromQuery] string search = null)
         {
@@ -39,6 +39,13 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> UpdateSubjectAsync([FromQuery] Guid subjectId, NewSubjectRequest request)
         {
             var result = await _service.UpdateSubjectAsync(subjectId, request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetSubjectDetailAsync(Guid id)
+        {
+            var result = await _service.GetSubjectDetailAsync(id);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

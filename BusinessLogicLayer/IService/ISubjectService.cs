@@ -13,5 +13,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> AddSubjectAsync(NewSubjectRequest newSubjet);
         Task<ApiResponse> GetSubjectPagingAsync(int pageIndex, int pageSize, string search);
         Task<ApiResponse> UpdateSubjectAsync(Guid subjectId, NewSubjectRequest newSubject);
+        Task<ApiResponse> GetSubjectDetailAsync(Guid subjectId);
     }
 }
