@@ -11,6 +11,7 @@ namespace BusinessLogicLayer.IService
     public interface IExaminationService
     {
         Task<ApiResponse> AddExaminationAsync(NewExaminationRequest newExamination);
+        Task<ApiResponse> AddExaminationAsync(ExaminationRequest newExamination);
         Task<ApiResponse> GetExamDetailAsync(Guid id);
     }
 }

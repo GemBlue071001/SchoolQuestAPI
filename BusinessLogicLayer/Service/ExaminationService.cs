@@ -6,12 +6,7 @@ using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.Examination;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Service
 {
@@ -29,16 +24,19 @@ namespace BusinessLogicLayer.Service
         {
             var examination = _mapper.Map<Examination>(newExamination);
 
-            var listExamQuestion = new List<ExaminationQuestion>();
-            foreach (var newQuestion in newExamination.newListOfQuestion)
+            if (newExamination.newListOfQuestion != null)
             {
-                var examQuestion = new ExaminationQuestion();
-                examQuestion.Question = new Question();
-                examQuestion.Question.Content = JsonSerializer.Serialize(newQuestion);
-                listExamQuestion.Add(examQuestion);
+                var listExamQuestion = new List<ExaminationQuestion>();
+                foreach (var newQuestion in newExamination.newListOfQuestion)
+                {
+                    var examQuestion = new ExaminationQuestion();
+                    examQuestion.Question = new Question();
+                    examQuestion.Question.Content = JsonSerializer.Serialize(newQuestion);
+                    listExamQuestion.Add(examQuestion);
+                }
+                examination.ExaminationQuestions = listExamQuestion;
+                examination.TotalNumberOfQuestion = newExamination.newListOfQuestion.Count();
             }
-            examination.ExaminationQuestions = listExamQuestion;
-            examination.TotalNumberOfQuestion = newExamination.newListOfQuestion.Count();
 
             await _unitOfWork.Examinations.AddAsync(examination);
             await _unitOfWork.SaveChangeAsync();
@@ -48,6 +46,37 @@ namespace BusinessLogicLayer.Service
 
             return response;
         }
+
+        public async Task<ApiResponse> AddExaminationAsync(ExaminationRequest newExamination)
+        {
+            var response = new ApiResponse();
+            if (newExamination.Questions != null)
+            {
+                var examination = _mapper.Map<Examination>(newExamination);
+
+                if (newExamination.Questions != null)
+                {
+                    var listExamQuestion = new List<ExaminationQuestion>();
+                    foreach (var newQuestionId in newExamination.Questions)
+                    {
+                        listExamQuestion.Add(new ExaminationQuestion()
+                        {
+                            QuestionId = newQuestionId,
+                        });
+                    }
+                    examination.ExaminationQuestions = listExamQuestion;
+                    examination.TotalNumberOfQuestion = newExamination.Questions.Count();
+                }
+
+                await _unitOfWork.Examinations.AddAsync(examination);
+                await _unitOfWork.SaveChangeAsync();
+
+                return response.SetOk(); ;
+            }
+
+            return response.SetBadRequest();
+        }
+
 
         public async Task<ApiResponse> GetExamDetailAsync(Guid id)
         {

@@ -29,6 +29,12 @@ namespace BusinessLogicLayer.Service
             var response = new ApiResponse();
             var attemp = _mapper.Map<Attempt>(newAttempt);
 
+            foreach (var userChoice in newAttempt.AttemptDetails)
+            {
+                userChoice.IsCorrect = true;
+                attemp.Score += 1;
+            }
+
             await _unitOfWork.Attempts.AddAsync(attemp);
             await _unitOfWork.SaveChangeAsync();
 

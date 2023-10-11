@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.RequestModel.Examination
 {
-    public class NewExaminationRequest
+    public class ExaminationRequest
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<NewQuestionContentRequest>? newListOfQuestion { get; set; }
+        public List<Guid>? Questions { get; set; }
     }
 }

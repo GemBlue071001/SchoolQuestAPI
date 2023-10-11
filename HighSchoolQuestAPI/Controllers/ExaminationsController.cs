@@ -22,6 +22,13 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [HttpPost("Questions")]
+        public async Task<IActionResult> AddExaminationAsync(ExaminationRequest request)
+        {
+            var result = await _service.AddExaminationAsync(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> AddExaminationAsync(Guid id)
         {

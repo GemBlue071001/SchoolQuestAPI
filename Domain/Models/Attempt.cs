@@ -10,7 +10,8 @@ namespace Domain.Models
     {
         public DateTime ExamDate { get; set; }
         public AttempType AttempType { get; set; }
-        
+        public int Score { get; set; }
+
         //Navigation Property
         public List<AttemptDetail> AttemptDetails { get; set; }
     }
