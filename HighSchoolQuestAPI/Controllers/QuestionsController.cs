@@ -32,12 +32,21 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+
+        [HttpPost("Topic")]
+        public async Task<IActionResult> AddQuestionTopicAsync(QuestionTopicRequest request)
+        {
+            var result = await _service.AddListOfQuestionsWithTopicAsync(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
         [HttpPost("list")]
         public async Task<IActionResult> AddListQuestionAsync(List<NewQuestionContentRequest> request)
         {
             var result = await _service.AddListOfQuestionsAsync(request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
 
         [HttpPut("{questionId}")]
         public async Task<IActionResult> UpdateQuestionAsync(Guid questionId , NewQuestionContentRequest request)

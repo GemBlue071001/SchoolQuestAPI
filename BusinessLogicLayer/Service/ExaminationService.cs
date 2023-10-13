@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.Examination;
+using BusinessLogicLayer.ResponseModel.Subject;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
 using System.Text.Json;
@@ -77,6 +79,16 @@ namespace BusinessLogicLayer.Service
             return response.SetBadRequest();
         }
 
+        public async Task<ApiResponse> GetExamPagingAsync(int pageIndex, int pageSize, string search)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            var listOfExam = await _unitOfWork.Examinations.PagingAsync(pageIndex, pageSize, search);
+            var listOfExamResponse = _mapper.Map<List<ExamResponse>>(listOfExam);
+            var totalOfExam = await _unitOfWork.Examinations.CountPagingAsync(search);
+            Pagination<ExamResponse> response = new Pagination<ExamResponse>(listOfExamResponse, totalOfExam, pageIndex, pageSize);
+
+            return apiResponse.SetOk(response);
+        }
 
         public async Task<ApiResponse> GetExamDetailAsync(Guid id)
         {

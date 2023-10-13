@@ -45,6 +45,7 @@ namespace BusinessLogicLayer.Mapper
             CreateMap<Examination, NewExaminationRequest>().ReverseMap();
             CreateMap<Examination, ExaminationRequest>().ReverseMap();
             CreateMap<Examination, ExamDetailResponse>().ReverseMap();
+            CreateMap<Examination, ExamResponse>().ReverseMap();
             #endregion
 
             #region ExaminationQuestion

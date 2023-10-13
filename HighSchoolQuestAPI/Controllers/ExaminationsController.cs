@@ -16,7 +16,7 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddExaminationAsync (NewExaminationRequest request)
+        public async Task<IActionResult> AddExaminationAsync(NewExaminationRequest request)
         {
             var result = await _service.AddExaminationAsync(request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
@@ -30,9 +30,18 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> AddExaminationAsync(Guid id)
+        public async Task<IActionResult> GetExaminationDetailAsync(Guid id)
         {
             var result = await _service.GetExamDetailAsync(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetExaminationAsync([FromQuery] int pageIndex = 1,
+                                                         [FromQuery] int pageSize = 5,
+                                                         [FromQuery] string search = null)
+        {
+            var result = await _service.GetExamPagingAsync(pageIndex, pageSize, search);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

@@ -13,5 +13,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> AddExaminationAsync(NewExaminationRequest newExamination);
         Task<ApiResponse> AddExaminationAsync(ExaminationRequest newExamination);
         Task<ApiResponse> GetExamDetailAsync(Guid id);
+        Task<ApiResponse> GetExamPagingAsync(int pageIndex, int pageSize, string search);
     }
 }

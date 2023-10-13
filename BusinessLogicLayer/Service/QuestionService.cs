@@ -61,6 +61,27 @@ namespace BusinessLogicLayer.Service
             return apiResponse.SetOk();
         }
 
+        public async Task<ApiResponse> AddListOfQuestionsWithTopicAsync(QuestionTopicRequest questionTopic)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            List<Question> listquestions = new List<Question>();
+
+            foreach (var newQuestion in questionTopic.listOfQuestion)
+            {
+                listquestions.Add(new Question()
+                {
+                    Id = Guid.NewGuid(),
+                    Content = JsonSerializer.Serialize(newQuestion),
+                    TopicId = questionTopic.topicId
+                });
+            }
+
+            await _unitOfWork.Questions.AddRangeAsync(listquestions);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk();
+        }
+
         public async Task<ApiResponse> GetQuestionPagingAsync(int pageIndex, int pageSize, string search)
         {
             ApiResponse apiResponse = new ApiResponse();
