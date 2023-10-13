@@ -23,6 +23,7 @@ namespace DataAccessLayer.Repository
 
             return await query
                     .Where(b => !b.IsDeleted)
+                    .Include(x=>x.Questions)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }

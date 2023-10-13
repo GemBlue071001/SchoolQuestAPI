@@ -26,7 +26,10 @@ namespace BusinessLogicLayer.Mapper
 
             #region Topic
             CreateMap<Topic, NewTopicRequest>().ReverseMap();
-            CreateMap<Topic, TopicResponse>().ReverseMap();
+            CreateMap<Topic, TopicResponse>().ForMember(
+                            dest => dest.NumberOfQuestion,
+                            opt => opt.MapFrom(src => src.Questions.Count()))
+                        .ReverseMap();
             #endregion
 
             #region University
