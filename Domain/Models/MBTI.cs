@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class University : Base
+    public class MBTI
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
-        
-        //Property Navigation
-        public List<UniversityDepartment> UniversityDepartments { get; set; }
+
+        //Navigation Property
+
+        public List<MBTI_Department> MBTI_Departments { get; set; }
     }
 }

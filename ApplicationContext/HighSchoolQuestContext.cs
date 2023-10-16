@@ -37,6 +37,8 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new AttemptDetailConfiguration());
             modelBuilder.ApplyConfiguration(new GroupDepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new UniversityDepartmentConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTIConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTI_DepartmentConfiguration());
         }
 
     }
