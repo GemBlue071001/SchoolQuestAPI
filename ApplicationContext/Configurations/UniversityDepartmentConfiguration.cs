@@ -17,9 +17,11 @@ namespace ApplicationContext.Configurations
                 .WithMany(o => o.UniversityDepartments)
                 .HasForeignKey(o => o.UniversityId);
 
-            builder.HasMany(o => o.Majors)
-                .WithOne(o => o.UniversityDepartment)
-                .HasForeignKey(o => o.UniversityDepartmentId);
+            builder.HasOne(o => o.Department)
+                .WithMany(o => o.UniversityDepartments)
+                .HasForeignKey(o => o.DepartmentId);
+
+            builder.HasKey(sc => new { sc.UniversityId, sc.DepartmentId });
         }
     }
 }

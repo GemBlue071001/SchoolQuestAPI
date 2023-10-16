@@ -9,9 +9,11 @@ namespace Domain.Models
     public class Major : Base
     {
         public string MajorName { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
 
-        //Nav
-        public UniversityDepartment UniversityDepartment { get; set;}
-        public Guid UniversityDepartmentId { get; set;}
+        //Navigation Property
+        public Department Department { get; set;}
+        public Guid DepartmentId { get; set;}
     }
 }

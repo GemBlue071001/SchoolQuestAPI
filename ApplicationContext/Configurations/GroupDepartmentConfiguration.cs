@@ -17,11 +17,11 @@ namespace ApplicationContext.Configurations
                .WithMany(o => o.GroupDepartments)
                .HasForeignKey(o => o.GroupId);
 
-            builder.HasOne(o => o.UniversityDepartment)
+            builder.HasOne(o => o.Department)
                 .WithMany(o => o.GroupDepartments)
-                .HasForeignKey(o => o.UniversityDepartmentId);
+                .HasForeignKey(o => o.DepartmentId);
 
-            builder.HasKey(sc => new { sc.UniversityDepartmentId, sc.GroupId });
+            builder.HasKey(sc => new { sc.DepartmentId, sc.GroupId });
         }
     }
 }

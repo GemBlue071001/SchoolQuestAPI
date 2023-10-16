@@ -13,6 +13,6 @@ namespace Domain.Models
 
         //Navigation Property
         public MBTI MBTI { get; set; }
-        public UniversityDepartment Department { get; set; }
+        public Department Department { get; set; }
     }
 }
