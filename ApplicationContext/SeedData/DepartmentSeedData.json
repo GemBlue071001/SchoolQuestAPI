@@ -1,0 +1,16 @@
+[
+  {
+    "Id":"9a4900f-bd4f-488b-a37b-9f6c6e804b9a",
+    "Code": "SE",
+    "Name": "Cong Nghe Thong Tin",
+    "Description": "lam ve may tinh",
+    "RequiredScore": 22
+  },
+  {
+    "Id":"7b413cd5-3a13-483f-9773-7a489b5a8773",
+    "Code": "UI",
+    "Name": "Do Hoa",
+    "Description": "thiet ke giao dien web, mobile, game, content",
+    "RequiredScore": 20
+  }
+]

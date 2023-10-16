@@ -13,7 +13,7 @@ namespace Domain.Models
         public string Description { get; set; }
 
         //Navigation Property
-        public Department Department { get; set;}
+        public Department? Department { get; set;}
         public Guid DepartmentId { get; set;}
     }
 }

@@ -15,7 +15,7 @@
     "Id": 3,
     "Code": "ENTJ",
     "Name": "The Commander",
-    "Description": "Bold, imaginative and strong-willed leaders, always finding a way – or making one."
+    "Description": "Bold, imaginative and strong-willed leaders, always finding a way ï¿½ or making one."
   },
   {
     "Id": 4,
@@ -63,7 +63,7 @@
     "Id": 11,
     "Code": "ESTJ",
     "Name": "The Executive",
-    "Description": "Excellent administrators, unsurpassed at managing things – or people."
+    "Description": "Excellent administrators, unsurpassed at managing things ï¿½ or people."
   },
   {
     "Id": 12,
@@ -93,6 +93,6 @@
     "Id": 16,
     "Code": "ESFP",
     "Name": "The Entertainer",
-    "Description": "Spontaneous, energetic and enthusiastic people – life is never boring around them."
+    "Description": "Spontaneous, energetic and enthusiastic people ï¿½ life is never boring around them."
   }
 ]

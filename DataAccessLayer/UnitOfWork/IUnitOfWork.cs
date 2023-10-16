@@ -24,6 +24,8 @@ namespace DataAccessLayer.UnitOfWork
         public ISubjectGroupRepository SubjectGroups { get; }
         public IAttemptDetailRepository AttemptDetails { get; }
         public IAttemptRepository Attempts { get; }
+        public IMBTI_DepartmentRepository MBTI_Departments { get; }
+        public IMBITRepository MBITs { get; }
         public Task SaveChangeAsync();
     }
 }

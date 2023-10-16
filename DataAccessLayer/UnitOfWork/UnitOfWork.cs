@@ -29,7 +29,8 @@ namespace DataAccessLayer.UnitOfWork
         public ISubjectGroupRepository SubjectGroups { get; }
         public IAttemptDetailRepository AttemptDetails { get; }
         public IAttemptRepository Attempts { get; }
-        
+        public IMBTI_DepartmentRepository MBTI_Departments { get; }
+        public IMBITRepository MBITs { get; }
 
         public UnitOfWork(HighSchoolQuestContext context)
         {
@@ -48,6 +49,8 @@ namespace DataAccessLayer.UnitOfWork
             SubjectGroups = new SubjectGroupRepository(context);
             AttemptDetails = new AttemptDetailRepository(context);
             Attempts = new AttemptRepository(context);
+            MBTI_Departments = new MBTI_DepartmentRepository(context);
+            MBITs = new MBITRepository(context);
         }
         public async Task SaveChangeAsync()
         {
