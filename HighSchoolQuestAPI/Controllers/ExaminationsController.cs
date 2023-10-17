@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.Examination;
+using DataAccessLayer.UnitOfWork;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace HighSchoolQuestAPI.Controllers
     public class ExaminationsController : ControllerBase
     {
         public IExaminationService _service;
+        public IUnitOfWork _unitOfWork;
         public ExaminationsController(IExaminationService examinationService)
         {
             _service = examinationService;
@@ -19,6 +21,13 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> AddExaminationAsync(NewExaminationRequest request)
         {
             var result = await _service.AddExaminationAsync(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpPost("random")]
+        public async Task<IActionResult> RandomExaminationAsync(Guid subjectId)
+        {
+            var result = await _service.RandomExaminationAsync(subjectId);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 

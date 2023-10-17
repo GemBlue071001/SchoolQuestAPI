@@ -23,7 +23,7 @@ namespace DataAccessLayer.Repository
 
             return await query
                     .Where(b => !b.IsDeleted)
-                    .Include(x=>x.Questions)
+                    .Include(x => x.Questions)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }
@@ -37,6 +37,16 @@ namespace DataAccessLayer.Repository
             return await query
           .Where(b => !b.IsDeleted)
           .CountAsync();
+        }
+
+
+        public async Task<List<Topic>> GetTopicBySubjectAsync(Guid subjectId)
+        {
+            IQueryable<Topic> query = _db;
+            return await query
+                    .Where(b => b.SubjectId == subjectId)
+                    .Include(x => x.Questions)
+                    .ToListAsync();
         }
     }
 }

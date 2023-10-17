@@ -49,6 +49,44 @@ namespace BusinessLogicLayer.Service
             return response;
         }
 
+        public async Task<ApiResponse> RandomExaminationAsync(Guid subjectId)
+        {
+            var response = new ApiResponse();
+
+            var listOfTopic = await _unitOfWork.Topics.GetTopicBySubjectAsync(subjectId);
+
+            if (listOfTopic != null)
+            {
+                var listOfQuestion = new List<Question>();
+                foreach (var topic in listOfTopic)
+                {
+                    listOfQuestion.AddRange(topic.Questions);
+                }
+
+                listOfQuestion = listOfQuestion.OrderBy(r => Guid.NewGuid()).Take(40).ToList();
+
+                var examination = new Examination();
+
+                var listExamQuestion = new List<ExaminationQuestion>();
+                foreach (var question in listOfQuestion)
+                {
+                    listExamQuestion.Add(new ExaminationQuestion()
+                    {
+                        QuestionId = question.Id,
+                    });
+                }
+
+                examination.ExaminationQuestions = listExamQuestion;
+                examination.TotalNumberOfQuestion = listOfQuestion.Count();
+
+                await _unitOfWork.Examinations.AddAsync(examination);
+                await _unitOfWork.SaveChangeAsync();
+                return response.SetOk();
+            }
+
+            return response.SetBadRequest("missing data");
+        }
+
         public async Task<ApiResponse> AddExaminationAsync(ExaminationRequest newExamination)
         {
             var response = new ApiResponse();
