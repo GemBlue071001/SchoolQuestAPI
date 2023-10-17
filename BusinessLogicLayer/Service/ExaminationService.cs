@@ -49,11 +49,11 @@ namespace BusinessLogicLayer.Service
             return response;
         }
 
-        public async Task<ApiResponse> RandomExaminationAsync(Guid subjectId)
+        public async Task<ApiResponse> RandomExaminationAsync(RandomExamRequest request)
         {
             var response = new ApiResponse();
 
-            var listOfTopic = await _unitOfWork.Topics.GetTopicBySubjectAsync(subjectId);
+            var listOfTopic = await _unitOfWork.Topics.GetTopicBySubjectAsync(request.SubjectId);
 
             if (listOfTopic != null)
             {
@@ -78,6 +78,8 @@ namespace BusinessLogicLayer.Service
 
                 examination.ExaminationQuestions = listExamQuestion;
                 examination.TotalNumberOfQuestion = listOfQuestion.Count();
+                examination.Description= request.Description;
+                examination.Name= request.Name;
 
                 await _unitOfWork.Examinations.AddAsync(examination);
                 await _unitOfWork.SaveChangeAsync();
