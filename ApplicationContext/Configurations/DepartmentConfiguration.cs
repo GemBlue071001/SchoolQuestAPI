@@ -39,7 +39,23 @@ namespace ApplicationContext.Configurations
                     Name = "Y học",
                     Description = "Các ngành y dược",
                     RequiredScore = 27
-                } 
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("e35d862c-1f43-456b-a60b-1b2c7e44ab78"),
+                    Code = "SP",
+                    Name = "Sư phạm",
+                    Description = "Các ngành sư phạm",
+                    RequiredScore = 25
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f"),
+                    Code = "TK",
+                    Name = "Thiết kế",
+                    Description = "Các ngành thiết kế/nghệ thuật",
+                    RequiredScore = 22
+                }              
                 );
         }
 

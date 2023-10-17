@@ -126,6 +126,71 @@ namespace ApplicationContext.Configurations
                     Code = "YHCT",
                     Description = "Ngành học về phương pháp chữa bệnh bằng y học cổ truyền",
                     DepartmentId = Guid.Parse("4c7c3b5f-2a54-42ee-8a7f-0961273cd329")
+                },
+                new Major()
+                {
+                    Id = Guid.Parse("a52a3b15-3a21-44cd-8d74-b4c6751e2963"),
+                    MajorName = "Sư phạm toán học",
+                    Code = "SPTH",
+                    Description = "Đào tạo giáo viên toán học",
+                    DepartmentId = Guid.Parse("e35d862c-1f43-456b-a60b-1b2c7e44ab78")
+                },
+                new Major()
+                {
+                    Id = Guid.Parse("1dcd3794-f8d5-4d4e-9788-74a3b9426421"),
+                    MajorName = "Sư phạm ngữ văn",
+                    Code = "SPNV",
+                    Description = "Đào tạo giáo viên ngữ văn",
+                    DepartmentId = Guid.Parse("e35d862c-1f43-456b-a60b-1b2c7e44ab78")
+                },
+
+                new Major()
+                {
+                    Id = Guid.Parse("cf3913ca-fa92-4f90-a55b-93725cae4b32"),
+                    MajorName = "Sư phạm tiếng Anh",
+                    Code = "SPTA",
+                    Description = "Đào tạo giáo viên tiếng Anh",
+                    DepartmentId = Guid.Parse("e35d862c-1f43-456b-a60b-1b2c7e44ab78")
+                },            
+                new Major()
+                {
+                    Id = Guid.Parse("7ea9448b-e686-49e2-a0df-c425bd44f3ea"),
+                    MajorName = "Quản lý giáo dục",
+                    Code = "QLGD",
+                    Description = "Đào tạo quản lý ngành giáo dục",
+                    DepartmentId = Guid.Parse("e35d862c-1f43-456b-a60b-1b2c7e44ab78")
+                },
+                new Major()
+                {
+                    Id = Guid.Parse("387c472b-1f7d-4655-838c-80982b8f9e24"),
+                    MajorName = "Thiết kế đồ họa",
+                    Code = "TDĐH",
+                    Description = "Thiết kế các sản phẩm truyền thông đồ họa",
+                    DepartmentId = Guid.Parse("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f")
+                },
+                new Major()
+                {
+                    Id = Guid.Parse("b629fa64-5dea-4129-9d59-f48c265bca62"),
+                    MajorName = "Thiết kế thời trang",
+                    Code = "TDTT",
+                    Description = "Thiết kế các sản phẩm thời trang",
+                    DepartmentId = Guid.Parse("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f")
+                },
+                new Major()
+                {
+                    Id = Guid.Parse("44929c3d-dd91-4405-9d4e-f4be315b7fbb"),
+                    MajorName = "Thiết kế nội thất",
+                    Code = "TDNT",
+                    Description = "Thiết kế các sản phẩm nội thất",
+                    DepartmentId = Guid.Parse("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f")
+                },
+                new Major()
+                {
+                    Id = Guid.Parse("17d5462c-3a8a-4e93-b5e6-69d36186577e"),
+                    MajorName = "Điêu khắc",
+                    Code = "DK",
+                    Description = "Đào tạo nghệ thuật điêu khắc",
+                    DepartmentId = Guid.Parse("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f")
                 }
                 );
         }

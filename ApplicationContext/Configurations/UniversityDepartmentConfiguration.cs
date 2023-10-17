@@ -22,6 +22,12 @@ namespace ApplicationContext.Configurations
                 .HasForeignKey(o => o.DepartmentId);
 
             builder.HasKey(sc => new { sc.UniversityId, sc.DepartmentId });
+            builder.HasData(
+                new UniversityDepartment()
+                {
+                    
+                }
+                );
         }
     }
 }
