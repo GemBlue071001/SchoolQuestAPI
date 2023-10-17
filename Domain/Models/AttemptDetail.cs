@@ -14,8 +14,8 @@ namespace Domain.Models
         public bool IsCorrect { get; set; }
         public string UserAnswered { get; set; }
 
-        public Attempt Attempt { get; set; }
+        public Attempt? Attempt { get; set; }
         public User User { get; set; }
-        public ExaminationQuestion ExaminationQuestion { get; set; }
+        public ExaminationQuestion? ExaminationQuestion { get; set; }
     }
 }

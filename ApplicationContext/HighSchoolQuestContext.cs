@@ -31,15 +31,16 @@ namespace ApplicationContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectGroupConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
             modelBuilder.ApplyConfiguration(new ExaminationQuestionConfiguration());
             modelBuilder.ApplyConfiguration(new AttemptDetailConfiguration());
             modelBuilder.ApplyConfiguration(new GroupDepartmentConfiguration());
-            modelBuilder.ApplyConfiguration(new UniversityDepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new MBTIConfiguration());
             modelBuilder.ApplyConfiguration(new MBTI_DepartmentConfiguration());
-            modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
+            modelBuilder.ApplyConfiguration(new UniversityConfiguration());
+            modelBuilder.ApplyConfiguration(new UniversityDepartmentConfiguration());
         }
 
     }
