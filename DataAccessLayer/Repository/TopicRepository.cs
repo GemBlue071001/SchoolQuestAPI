@@ -48,5 +48,15 @@ namespace DataAccessLayer.Repository
                     .Include(x => x.Questions)
                     .ToListAsync();
         }
+
+        public async Task<Topic?> GetTopicDetailAsync(Guid id)
+        {
+            IQueryable<Topic> query = _db;
+            return await query
+                        .Where(b => b.Id == id)
+                        .Include(x => x.Questions)
+                        .FirstOrDefaultAsync();
+        }
+
     }
 }

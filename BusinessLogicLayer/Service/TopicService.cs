@@ -81,7 +81,7 @@ namespace BusinessLogicLayer.Service
         {
             ApiResponse apiResponse = new ApiResponse();
 
-            var topic = await _unitOfWork.Topics.GetAsync(x => x.Id == topicId);
+            var topic = await _unitOfWork.Topics.GetTopicDetailAsync(topicId);
             if (topic == null)
             {
                 return apiResponse.SetNotFound(Resources.NullObject);
