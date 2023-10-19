@@ -30,6 +30,15 @@ namespace DataAccessLayer.Repository
 
         }
 
+        public async Task<Subject?> GetSubjectDetailAsync(Guid id)
+        {
+            IQueryable<Subject> query = _db;
+            return await query
+                    .Where(b => b.Id == id)
+                    .Include(x => x.Topics)
+                    .FirstOrDefaultAsync();
+        }
+
         public async Task<int> CountPagingAsync(int pageIndex, int pageSize, string search)
         {
             IQueryable<Subject> query = _db;

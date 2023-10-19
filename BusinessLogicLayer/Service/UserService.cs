@@ -130,7 +130,7 @@ namespace BusinessLogicLayer.Service
             ApiResponse apiResponse = new ApiResponse();
             var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search);
             var listOfUserResponse = _mapper.Map<List<UserResponse>>(listOfUser);
-            var totalOfUser = await _unitOfWork.Subjects.CountPagingAsync(pageIndex, pageSize, search);
+            var totalOfUser = await _unitOfWork.Users.CountPagingAsync(pageIndex, pageSize, search);
             Pagination<UserResponse> response = new Pagination<UserResponse>(listOfUserResponse, totalOfUser, pageIndex, pageSize);
 
             apiResponse.SetOk(response);
