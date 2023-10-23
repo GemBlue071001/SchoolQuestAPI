@@ -17,15 +17,16 @@ namespace ApplicationContext.Configurations
                 .WithMany(o => o.AttemptDetails)
                 .HasForeignKey(o => o.AttemptId);
 
-            builder.HasOne(o => o.User)
-                .WithMany(o => o.AttemptDetails)
-                .HasForeignKey(o => o.UserId);
+            //builder.HasOne(o => o.User)
+            //    .WithMany(o => o.AttemptDetails)
+            //    .HasForeignKey(o => o.UserId);
+
 
             builder.HasOne(o => o.ExaminationQuestion)
                 .WithMany(o => o.AttemptDetails)
                 .HasForeignKey(o => o.ExaminationQuestionId);
 
-            builder.HasKey(sc => new { sc.AttemptId, sc.UserId, sc.ExaminationQuestionId });
+            builder.HasKey(sc => new { sc.AttemptId, sc.ExaminationQuestionId });
         }
     }
 }

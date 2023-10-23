@@ -13,6 +13,6 @@ namespace Domain.Models
         public UserRole Role { get; set; }
 
         //Property Navigation
-        public List<AttemptDetail> AttemptDetails { get; set; }
+        public List<Attempt> Attempts { get; set; }
     }
 }

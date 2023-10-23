@@ -55,10 +55,12 @@ namespace ApplicationContext.Migrations
                     b.Property<int?>("Score")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Attempts");
                 });
@@ -66,9 +68,6 @@ namespace ApplicationContext.Migrations
             modelBuilder.Entity("Domain.Models.AttemptDetail", b =>
                 {
                     b.Property<Guid>("AttemptId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ExaminationQuestionId")
@@ -81,11 +80,9 @@ namespace ApplicationContext.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AttemptId", "UserId", "ExaminationQuestionId");
+                    b.HasKey("AttemptId", "ExaminationQuestionId");
 
                     b.HasIndex("ExaminationQuestionId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("AttemptDetails");
                 });
@@ -801,6 +798,17 @@ namespace ApplicationContext.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Domain.Models.Attempt", b =>
+                {
+                    b.HasOne("Domain.Models.User", "User")
+                        .WithMany("Attempts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Domain.Models.AttemptDetail", b =>
                 {
                     b.HasOne("Domain.Models.Attempt", "Attempt")
@@ -815,17 +823,9 @@ namespace ApplicationContext.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.User", "User")
-                        .WithMany("AttemptDetails")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Attempt");
 
                     b.Navigation("ExaminationQuestion");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Models.ExaminationQuestion", b =>
@@ -1016,7 +1016,7 @@ namespace ApplicationContext.Migrations
 
             modelBuilder.Entity("Domain.Models.User", b =>
                 {
-                    b.Navigation("AttemptDetails");
+                    b.Navigation("Attempts");
                 });
 #pragma warning restore 612, 618
         }
