@@ -20,7 +20,7 @@ namespace DataAccessLayer.Repository
         {
             IQueryable<MBTI> query = _db;
             return await query
-                   .Where(x => x.Name.Equals(mbti))
+                   .Where(x => x.Name.Equals(mbti) || x.Code.Equals(mbti))
                    .Include(x => x.MBTI_Departments).ThenInclude(x => x.Department)
                    .ToListAsync();
         }

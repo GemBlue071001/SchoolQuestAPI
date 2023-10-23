@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogicLayer.ResponseModel.Question;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace BusinessLogicLayer.ResponseModel.Topic
         public string Description { get; set; }
         public int Index { get; set; }
         public int NumberOfQuestion { get; set; }
+        public List<QuestionResponse> Questions { get; set; }
     }
 }

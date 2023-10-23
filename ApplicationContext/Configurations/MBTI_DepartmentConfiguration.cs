@@ -22,6 +22,25 @@ namespace ApplicationContext.Configurations
                 .HasForeignKey(o => o.MBTI_Id);
 
             builder.HasKey(sc => new { sc.MBTI_Id, sc.DepartmentId });
+
+            builder.HasData
+                (
+                new MBTI_Department()
+                {
+                    DepartmentId = Guid.Parse("de305d54-75b4-431b-adb2-eb6b9e546013"),
+                    MBTI_Id = 2
+                },
+                new MBTI_Department()
+                {
+                    DepartmentId = Guid.Parse("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f"),
+                    MBTI_Id = 2
+                },
+                new MBTI_Department()
+                {
+                    DepartmentId = Guid.Parse("4c7c3b5f-2a54-42ee-8a7f-0961273cd329"),
+                    MBTI_Id = 9
+                }
+                );
         }
     }
 }

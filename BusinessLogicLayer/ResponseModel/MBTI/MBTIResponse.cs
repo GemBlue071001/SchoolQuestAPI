@@ -12,6 +12,7 @@ namespace BusinessLogicLayer.ResponseModel.MBTI
         public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
+        public int NumberOfSuitableDepartment { get; set; }
 
         public List<MBTI_DepartmentResponse> MBTI_Departments { get; set; }  
     }

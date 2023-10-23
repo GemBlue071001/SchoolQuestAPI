@@ -71,7 +71,9 @@ namespace BusinessLogicLayer.Mapper
             #endregion
 
             #region MBTI
-            CreateMap<MBTI, MBTIResponse>().ReverseMap();
+            CreateMap<MBTI, MBTIResponse>().ForMember(
+                            dest => dest.NumberOfSuitableDepartment,
+                            opt => opt.MapFrom(src => src.MBTI_Departments.Count())).ReverseMap();
             #endregion
 
             #region MBTI_Department

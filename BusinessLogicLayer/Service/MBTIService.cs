@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessLogicLayer.IService;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.MBTI;
 using DataAccessLayer.UnitOfWork;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Service
 {
-    public class MBTIService
+    public class MBTIService : IMBTIService
     {
         public IUnitOfWork _unitOfWork;
         public IMapper _mapper;

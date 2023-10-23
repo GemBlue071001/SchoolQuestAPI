@@ -12,9 +12,6 @@ namespace ApplicationContext.Configurations
             builder.HasMany(x => x.Majors)
                    .WithOne(x => x.Department)
                    .HasForeignKey(x => x.DepartmentId);
-
-            //var jsonString = File.ReadAllText("../ApplicationContext/SeedData/DepartmentSeedData.json");
-            //var entities = JsonSerializer.Deserialize<List<Department>>(jsonString);
             builder.HasData(
                 new Department()
                 {
@@ -55,7 +52,7 @@ namespace ApplicationContext.Configurations
                     Name = "Thiết kế",
                     Description = "Các ngành thiết kế/nghệ thuật",
                     RequiredScore = 22
-                }              
+                }
                 );
         }
 
