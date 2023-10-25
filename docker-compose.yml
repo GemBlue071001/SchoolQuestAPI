@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     environment:
-      ConnectionStrings__DefaultConnection: "Server=db;Database=HighSchoolQuestDb;User=sa;Password=HighSchoolQuestDb123@"
+      ConnectionStrings__DefaultConnection: "DataSource=localhost;Server=db;Database=HighSchoolQuestDb;User Id=sa;Password=HighSchoolQuestDb123@;Trusted_Connection=True;TrustServerCertificate=True"
       ASPNETCORE_ENVIRONMENT: "Development" # Corrected the environment variable here
       ASPNETCORE_URLS: "http://+:80"
       #ASPNETCORE_Kestrel__Certificates__Default__Password: "password"
@@ -24,4 +24,4 @@ services:
       SA_PASSWORD: "HighSchoolQuestDb123@" # Enclose the password in quotes
       ACCEPT_EULA: "Y" # Enclose the value in quotes
     ports:
-      - "1439:1433" # Corrected the port mapping
+      - "1435:1433" # Corrected the port mapping
