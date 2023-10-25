@@ -87,7 +87,7 @@ namespace BusinessLogicLayer.Service
             ApiResponse apiResponse = new ApiResponse();
             var listOfQuestions = await _unitOfWork.Questions.PagingAsync(pageIndex, pageSize, search);
             var listOfQuestionResponse = _mapper.Map<List<QuestionResponse>>(listOfQuestions);
-            var totalOfQuestion = await _unitOfWork.Subjects.CountPagingAsync(pageIndex, pageSize, search);
+            var totalOfQuestion = await _unitOfWork.Questions.CountPagingAsync(pageIndex, pageSize, search);
             Pagination<QuestionResponse> response = new Pagination<QuestionResponse>(listOfQuestionResponse, totalOfQuestion, pageIndex, pageSize);
 
             apiResponse.SetOk(response);
