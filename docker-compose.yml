@@ -16,7 +16,7 @@ services:
       ASPNETCORE_URLS: "http://+:80"
       #ASPNETCORE_Kestrel__Certificates__Default__Password: "password"
       #ASPNETCORE_Kestrel__Certificates__Default__Path : "/https/aspnetapp.pfx"
-    
+
   db:
     image: mcr.microsoft.com/mssql/server
     environment:
@@ -24,3 +24,30 @@ services:
       ACCEPT_EULA: "Y" # Enclose the value in quotes
     ports:
       - "1435:1433" # Corrected the port mapping
+
+
+  postgres:
+    image: postgres:latest
+    container_name: my_postgres
+    environment:
+      POSTGRES_DB: my_database
+      POSTGRES_USER: my_user
+      POSTGRES_PASSWORD: my_password
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5431:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: my_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: my@email.com
+      PGADMIN_DEFAULT_PASSWORD: my_password
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+volumes:
+  pg_data:

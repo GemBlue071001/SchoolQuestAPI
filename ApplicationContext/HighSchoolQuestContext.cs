@@ -1,6 +1,7 @@
 ﻿using ApplicationContext.Configurations;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace ApplicationContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.ApplyConfiguration(new BaseConfiguration());
             modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectGroupConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
@@ -41,6 +43,10 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new MBTI_DepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new UniversityConfiguration());
             modelBuilder.ApplyConfiguration(new UniversityDepartmentConfiguration());
+            modelBuilder.ApplyConfiguration(new QuestionConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+
         }
 
     }
