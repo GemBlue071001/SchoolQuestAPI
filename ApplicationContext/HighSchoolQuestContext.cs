@@ -34,6 +34,7 @@ namespace ApplicationContext
         {
             //modelBuilder.ApplyConfiguration(new BaseConfiguration());
             modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
+            modelBuilder.ApplyConfiguration(new SubjectConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectGroupConfiguration());
             modelBuilder.ApplyConfiguration(new TopicConfiguration());
             modelBuilder.ApplyConfiguration(new ExaminationQuestionConfiguration());
@@ -45,6 +46,8 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new UniversityDepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new ExamConfiguration());
+            
 
 
         }

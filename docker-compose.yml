@@ -1,29 +1,29 @@
 version: '3.9'
 
 services:
-  api:
-    image: high-school-quest-api
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "5000:80"
-      #- "5001:443"
-    depends_on:
-      - db
-    environment:
-      ASPNETCORE_ENVIRONMENT: "Development" # Corrected the environment variable here
-      ASPNETCORE_URLS: "http://+:80"
+  # api:
+  #   image: high-school-quest-api
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "5000:80"
+  #     #- "5001:443"
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     ASPNETCORE_ENVIRONMENT: "Development" # Corrected the environment variable here
+  #     ASPNETCORE_URLS: "http://+:80"
       #ASPNETCORE_Kestrel__Certificates__Default__Password: "password"
       #ASPNETCORE_Kestrel__Certificates__Default__Path : "/https/aspnetapp.pfx"
 
-  db:
-    image: mcr.microsoft.com/mssql/server
-    environment:
-      SA_PASSWORD: "HighSchoolQuestDb123@" # Enclose the password in quotes
-      ACCEPT_EULA: "Y" # Enclose the value in quotes
-    ports:
-      - "1435:1433" # Corrected the port mapping
+  # db:
+  #   image: mcr.microsoft.com/mssql/server
+  #   environment:
+  #     SA_PASSWORD: "HighSchoolQuestDb123@" # Enclose the password in quotes
+  #     ACCEPT_EULA: "Y" # Enclose the value in quotes
+  #   ports:
+  #     - "1435:1433" # Corrected the port mapping
 
 
   postgres:

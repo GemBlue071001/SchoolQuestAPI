@@ -23,7 +23,8 @@ namespace DataAccessLayer.Repository
                 query = query.Where(b => b.Name.Contains(search));
 
             return await query
-                    .Where(b => !b.IsDeleted)
+                    .Where(b => !b.IsDeleted).Include(x => x.ExaminationQuestions)
+                                .ThenInclude(x => x.Question)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }

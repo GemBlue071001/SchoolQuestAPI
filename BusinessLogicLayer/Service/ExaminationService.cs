@@ -123,9 +123,9 @@ namespace BusinessLogicLayer.Service
         {
             ApiResponse apiResponse = new ApiResponse();
             var listOfExam = await _unitOfWork.Examinations.PagingAsync(pageIndex, pageSize, search);
-            var listOfExamResponse = _mapper.Map<List<ExamResponse>>(listOfExam);
+            var listOfExamResponse = _mapper.Map<List<ExamDetailResponse>>(listOfExam);
             var totalOfExam = await _unitOfWork.Examinations.CountPagingAsync(search);
-            Pagination<ExamResponse> response = new Pagination<ExamResponse>(listOfExamResponse, totalOfExam, pageIndex, pageSize);
+            Pagination<ExamDetailResponse> response = new Pagination<ExamDetailResponse>(listOfExamResponse, totalOfExam, pageIndex, pageSize);
 
             return apiResponse.SetOk(response);
         }

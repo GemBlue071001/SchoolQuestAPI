@@ -3,17 +3,17 @@ using System;
 using ApplicationContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace ApplicationContext.Migrations
 {
     [DbContext(typeof(HighSchoolQuestContext))]
-    [Migration("20231021141329_addMBTIDepData")]
-    partial class addMBTIDepData
+    [Migration("20231028183013_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,47 +21,49 @@ namespace ApplicationContext.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.11")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Domain.Models.Attempt", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<int>("AttempType")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("ExamDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Result")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int?>("Score")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Attempts");
                 });
@@ -69,26 +71,21 @@ namespace ApplicationContext.Migrations
             modelBuilder.Entity("Domain.Models.AttemptDetail", b =>
                 {
                     b.Property<Guid>("AttemptId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("ExaminationQuestionId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<bool>("IsCorrect")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("UserAnswered")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
-                    b.HasKey("AttemptId", "UserId", "ExaminationQuestionId");
+                    b.HasKey("AttemptId", "ExaminationQuestionId");
 
                     b.HasIndex("ExaminationQuestionId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("AttemptDetails");
                 });
@@ -97,31 +94,33 @@ namespace ApplicationContext.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<float?>("RequiredScore")
                         .HasColumnType("real");
@@ -182,65 +181,79 @@ namespace ApplicationContext.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("TotalNumberOfQuestion")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.ToTable("Examinations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ad0080ef-ac58-450b-b086-bc7f856c1fec"),
+                            Description = "de thi toan",
+                            IsDeleted = false,
+                            Name = "de toan",
+                            TotalNumberOfQuestion = 4
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.ExaminationQuestion", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<Guid>("ExaminationId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("QuestionId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -249,35 +262,65 @@ namespace ApplicationContext.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("ExaminationQuestions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ad0080ef-ac58-450b-b086-bc7f856c1fec"),
+                            ExaminationId = new Guid("ad0080ef-ac58-450b-b086-bc7f856c1fec"),
+                            IsDeleted = false,
+                            QuestionId = new Guid("238f27e2-fe56-4ce8-88f8-d3aa7b56f976")
+                        },
+                        new
+                        {
+                            Id = new Guid("046b0f97-130a-48c7-b1ad-40033ae41fff"),
+                            ExaminationId = new Guid("ad0080ef-ac58-450b-b086-bc7f856c1fec"),
+                            IsDeleted = false,
+                            QuestionId = new Guid("85e5d51b-16c7-4d0d-8f40-766a6a902698")
+                        },
+                        new
+                        {
+                            Id = new Guid("2339983b-33db-4333-9b1b-a5514faa280a"),
+                            ExaminationId = new Guid("ad0080ef-ac58-450b-b086-bc7f856c1fec"),
+                            IsDeleted = false,
+                            QuestionId = new Guid("3e28911a-1220-4c7f-a1c6-bcce0b74ccfe")
+                        },
+                        new
+                        {
+                            Id = new Guid("139c3a57-af40-4c80-96fc-508957db3780"),
+                            ExaminationId = new Guid("ad0080ef-ac58-450b-b086-bc7f856c1fec"),
+                            IsDeleted = false,
+                            QuestionId = new Guid("21eb2451-53ac-44f6-9a6c-751d394a8936")
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Group", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -287,10 +330,10 @@ namespace ApplicationContext.Migrations
             modelBuilder.Entity("Domain.Models.GroupDepartment", b =>
                 {
                     b.Property<Guid>("DepartmentId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("GroupId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("DepartmentId", "GroupId");
 
@@ -303,208 +346,77 @@ namespace ApplicationContext.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("MBTI");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Code = "INTJ",
-                            Description = "Imaginative and strategic thinkers, with a plan for everything.",
-                            Name = "The Architect"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Code = "INTP",
-                            Description = "Innovative inventors with an unquenchable thirst for knowledge.",
-                            Name = "The Logician"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Code = "ENTJ",
-                            Description = "Bold, imaginative and strong-willed leaders, always finding a way � or making one.",
-                            Name = "The Commander"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Code = "ENTP",
-                            Description = "Smart and curious thinkers who cannot resist an intellectual challenge.",
-                            Name = "The Debater"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Code = "INFJ",
-                            Description = "Quiet and mystical, yet very inspiring and tireless idealists.",
-                            Name = "The Advocate"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Code = "INFP",
-                            Description = "Poetic, kind and altruistic people, always eager to help a good cause.",
-                            Name = "The Mediator"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Code = "ENFJ",
-                            Description = "Charismatic and inspiring leaders, able to mesmerize their listeners.",
-                            Name = "The Protagonist"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Code = "ENFP",
-                            Description = "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile.",
-                            Name = "The Campaigner"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Code = "ISTJ",
-                            Description = "Practical and fact-minded individuals, whose reliability cannot be doubted.",
-                            Name = "The Logistician"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Code = "ISFJ",
-                            Description = "Very dedicated and warm protectors, always ready to defend their loved ones.",
-                            Name = "The Defender"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Code = "ESTJ",
-                            Description = "Excellent administrators, unsurpassed at managing things � or people.",
-                            Name = "The Executive"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Code = "ESFJ",
-                            Description = "Extraordinarily caring, social and popular people, always eager to help.",
-                            Name = "The Consul"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Code = "ISTP",
-                            Description = "Bold and practical experimenters, masters of all kinds of tools.",
-                            Name = "The Virtuoso"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Code = "ISFP",
-                            Description = "Flexible and charming artists, always ready to explore and experience something new.",
-                            Name = "The Adventurer"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Code = "ESTP",
-                            Description = "Smart, energetic and very perceptive people, who truly enjoy living on the edge.",
-                            Name = "The Entrepreneur"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Code = "ESFP",
-                            Description = "Spontaneous, energetic and enthusiastic people � life is never boring around them.",
-                            Name = "The Entertainer"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_Department", b =>
                 {
                     b.Property<int>("MBTI_Id")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("DepartmentId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("MBTI_Id", "DepartmentId");
 
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("MBTI_Department");
-
-                    b.HasData(
-                        new
-                        {
-                            MBTI_Id = 2,
-                            DepartmentId = new Guid("de305d54-75b4-431b-adb2-eb6b9e546013")
-                        },
-                        new
-                        {
-                            MBTI_Id = 2,
-                            DepartmentId = new Guid("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f")
-                        },
-                        new
-                        {
-                            MBTI_Id = 9,
-                            DepartmentId = new Guid("4c7c3b5f-2a54-42ee-8a7f-0961273cd329")
-                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Major", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("DepartmentId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("MajorName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -517,77 +429,119 @@ namespace ApplicationContext.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid?>("TopicId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TopicId");
 
                     b.ToTable("Questions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("238f27e2-fe56-4ce8-88f8-d3aa7b56f976"),
+                            Content = "{\"Question\":\"What is the capital of France?\",\"ListAnswer\":[{\"Value\":\"Paris\",\"IsAnswer\":true},{\"Value\":\"London\",\"IsAnswer\":false},{\"Value\":\"Berlin\",\"IsAnswer\":false}]}",
+                            IsDeleted = false,
+                            TopicId = new Guid("f722c143-412c-4721-bf5c-5b32a01d90da")
+                        },
+                        new
+                        {
+                            Id = new Guid("85e5d51b-16c7-4d0d-8f40-766a6a902698"),
+                            Content = "{\"Question\":\"How many continents are there?\",\"ListAnswer\":[{\"Value\":\"7\",\"IsAnswer\":true},{\"Value\":\"5\",\"IsAnswer\":false},{\"Value\":\"6\",\"IsAnswer\":false}]}",
+                            IsDeleted = false,
+                            TopicId = new Guid("f722c143-412c-4721-bf5c-5b32a01d90da")
+                        },
+                        new
+                        {
+                            Id = new Guid("3e28911a-1220-4c7f-a1c6-bcce0b74ccfe"),
+                            Content = "{\"Question\":\"When was the Declaration of Independence signed?\",\"ListAnswer\":[{\"Value\":\"1776-07-04\",\"IsAnswer\":true},{\"Value\":\"1789-09-25\",\"IsAnswer\":false},{\"Value\":\"1800-03-12\",\"IsAnswer\":false}]}",
+                            IsDeleted = false,
+                            TopicId = new Guid("f722c143-412c-4721-bf5c-5b32a01d90da")
+                        },
+                        new
+                        {
+                            Id = new Guid("21eb2451-53ac-44f6-9a6c-751d394a8936"),
+                            Content = "{\"Question\":\"Which cities are in the United Kingdom?\",\"ListAnswer\":[{\"Value\":\"London\",\"IsAnswer\":true},{\"Value\":\"Manchester\",\"IsAnswer\":false},{\"Value\":\"Edinburgh\",\"IsAnswer\":true}]}",
+                            IsDeleted = false,
+                            TopicId = new Guid("f722c143-412c-4721-bf5c-5b32a01d90da")
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Subject", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("Subjects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6a8c8d5f-2a54-42ee-8a7f-0961273cd625"),
+                            IsDeleted = false,
+                            Name = "Toan"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.SubjectGroup", b =>
                 {
                     b.Property<Guid>("SubjectId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("GroupId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("SubjectId", "GroupId");
 
@@ -600,76 +554,98 @@ namespace ApplicationContext.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Index")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid>("SubjectId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SubjectId");
 
                     b.ToTable("Topics");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f722c143-412c-4721-bf5c-5b32a01d90da"),
+                            Description = "toan dai cuong",
+                            Index = 1,
+                            IsDeleted = false,
+                            Name = "toan dai cuong",
+                            SubjectId = new Guid("6a8c8d5f-2a54-42ee-8a7f-0961273cd625")
+                        },
+                        new
+                        {
+                            Id = new Guid("25b3ba1e-240a-4a3c-96b6-c0816b0a3975"),
+                            Description = "Toan hinh",
+                            Index = 2,
+                            IsDeleted = false,
+                            Name = "toan hinh",
+                            SubjectId = new Guid("6a8c8d5f-2a54-42ee-8a7f-0961273cd625")
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.University", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -721,28 +697,28 @@ namespace ApplicationContext.Migrations
             modelBuilder.Entity("Domain.Models.UniversityDepartment", b =>
                 {
                     b.Property<Guid>("UniversityId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid>("DepartmentId")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("UniversityId", "DepartmentId");
 
@@ -755,53 +731,66 @@ namespace ApplicationContext.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<Guid?>("ModifiedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("bytea");
 
                     b.Property<byte[]>("PasswordSalt")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("bytea");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Role")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Domain.Models.Attempt", b =>
+                {
+                    b.HasOne("Domain.Models.User", "User")
+                        .WithMany("Attempts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Models.AttemptDetail", b =>
@@ -818,17 +807,9 @@ namespace ApplicationContext.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.User", "User")
-                        .WithMany("AttemptDetails")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Attempt");
 
                     b.Navigation("ExaminationQuestion");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Models.ExaminationQuestion", b =>
@@ -1019,7 +1000,7 @@ namespace ApplicationContext.Migrations
 
             modelBuilder.Entity("Domain.Models.User", b =>
                 {
-                    b.Navigation("AttemptDetails");
+                    b.Navigation("Attempts");
                 });
 #pragma warning restore 612, 618
         }

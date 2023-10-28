@@ -9,6 +9,10 @@ namespace ApplicationContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {
+            builder
+        .Property(b => b.CreatedDate)
+        .HasDefaultValueSql("NOW()")
+        .ValueGeneratedOnAdd();
             builder.HasMany(x => x.Majors)
                    .WithOne(x => x.Department)
                    .HasForeignKey(x => x.DepartmentId);
