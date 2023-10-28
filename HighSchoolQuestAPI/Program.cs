@@ -23,7 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 var configuration = builder.Configuration.Get<AppSettings>();
 builder.Services.AddDbContext<HighSchoolQuestContext>(options =>
-options.UseSqlServer(configuration!.ConnectionStrings.DefaultConnection));
+options.UseSqlServer(configuration!.ConnectionStrings.DockerConnection));
 builder.Services.AddSwaggerGen
     (
     opt =>

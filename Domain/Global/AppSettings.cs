@@ -10,6 +10,7 @@
     public class ConnectionStrings
     {
         public string DefaultConnection { get; set; }
+        public string DockerConnection { get; set; }
     }
 
     public class Logging

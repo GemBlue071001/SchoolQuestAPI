@@ -12,7 +12,6 @@ services:
     depends_on:
       - db
     environment:
-      ConnectionStrings__DefaultConnection: "DataSource=localhost;Server=db;Database=HighSchoolQuestDb;User Id=sa;Password=HighSchoolQuestDb123@;Trusted_Connection=True;TrustServerCertificate=True"
       ASPNETCORE_ENVIRONMENT: "Development" # Corrected the environment variable here
       ASPNETCORE_URLS: "http://+:80"
       #ASPNETCORE_Kestrel__Certificates__Default__Password: "password"
