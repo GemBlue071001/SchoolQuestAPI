@@ -14,9 +14,9 @@ namespace ApplicationContext.Configurations
     {
         public void Configure(EntityTypeBuilder<MBTI> builder)
         {
-            var jsonString = File.ReadAllText("../ApplicationContext/SeedData/MBTISeedData.json");
-            var entities = JsonSerializer.Deserialize<List<MBTI>>(jsonString);
-            builder.HasData(entities);
+            //var jsonString = File.ReadAllText("../ApplicationContext/SeedData/MBTISeedData.json");
+            //var entities = JsonSerializer.Deserialize<List<MBTI>>(jsonString);
+            //builder.HasData(entities);
         }
     }
 }

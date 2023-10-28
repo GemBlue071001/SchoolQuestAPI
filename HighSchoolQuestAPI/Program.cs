@@ -66,6 +66,7 @@ builder.Services.AddScoped<IExaminationQuestionService, ExaminationQuestionServi
 builder.Services.AddScoped<IAttemptService, AttemptService>();
 builder.Services.AddScoped<IAttemptDetailService, AttemptDetailService>();
 builder.Services.AddScoped<IMBTIService, MBTIService>();
+builder.Services.AddHttpContextAccessor();
 
 
 
