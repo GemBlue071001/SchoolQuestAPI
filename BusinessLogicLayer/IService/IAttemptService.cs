@@ -11,5 +11,6 @@ namespace BusinessLogicLayer.IService
     public interface IAttemptService 
     {
         Task<ApiResponse> AddAttemptAsync(NewAttemptRequest newAttempt);
+        Task<ApiResponse> GetAttemptPagingAsync(int pageIndex, int pageSize, string search);
     }
 }

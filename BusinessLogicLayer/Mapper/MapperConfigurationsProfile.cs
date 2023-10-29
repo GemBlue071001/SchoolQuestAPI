@@ -6,6 +6,7 @@ using BusinessLogicLayer.RequestModel.ExaminationQuestion;
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.RequestModel.Topic;
 using BusinessLogicLayer.RequestModel.University;
+using BusinessLogicLayer.ResponseModel.Attempt;
 using BusinessLogicLayer.ResponseModel.Department;
 using BusinessLogicLayer.ResponseModel.Examination;
 using BusinessLogicLayer.ResponseModel.MBTI;
@@ -64,6 +65,9 @@ namespace BusinessLogicLayer.Mapper
 
             #region Attemp
             CreateMap<Attempt, NewAttemptRequest>().ReverseMap();
+            CreateMap<Attempt, AttemptResponse>().ReverseMap();
+            CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
+            CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             #endregion
 
             #region AttempDetail

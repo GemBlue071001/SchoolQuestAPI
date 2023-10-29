@@ -19,6 +19,7 @@ namespace BusinessLogicLayer.ResponseModel.Examination
 
     public class ExamQuestionResponse
     {
+        public Guid Id { get; set; }
         public QuestionResponse Question { get; set; }
     }
 }
