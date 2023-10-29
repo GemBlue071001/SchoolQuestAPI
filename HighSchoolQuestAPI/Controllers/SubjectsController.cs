@@ -24,7 +24,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetSubjectAsync([FromQuery] int pageIndex = 1,
                                                          [FromQuery] int pageSize = 5,
@@ -34,7 +34,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> UpdateSubjectAsync([FromQuery] Guid subjectId, NewSubjectRequest request)
         {
@@ -42,6 +42,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSubjectDetailAsync(Guid id)
         {

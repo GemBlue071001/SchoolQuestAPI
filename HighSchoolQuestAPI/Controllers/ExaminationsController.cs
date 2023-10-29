@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.Examination;
 using DataAccessLayer.UnitOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace HighSchoolQuestAPI.Controllers
             _service = examinationService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddExaminationAsync(NewExaminationRequest request)
         {
@@ -24,6 +26,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpPost("random")]
         public async Task<IActionResult> RandomExaminationAsync(RandomExamRequest request)
         {
@@ -31,6 +34,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpPost("Questions")]
         public async Task<IActionResult> AddExaminationAsync(ExaminationRequest request)
         {
@@ -38,6 +42,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetExaminationDetailAsync(Guid id)
         {
@@ -45,6 +50,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetExaminationAsync([FromQuery] int pageIndex = 1,
                                                          [FromQuery] int pageSize = 5,
