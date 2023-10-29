@@ -87,4 +87,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Create DB on startup
+using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+{
+    serviceScope.ServiceProvider.GetService<HighSchoolQuestContext>().Database.Migrate();
+}
+
 app.Run();
