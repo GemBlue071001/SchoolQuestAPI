@@ -59,5 +59,13 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetExamPagingAsync(pageIndex, pageSize, search);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
+        [Authorize]
+        [HttpGet("total")]
+        public async Task<IActionResult> GetTotalExaminationAsync()
+        {
+            var result = await _service.GetNumberOfTotalExam();
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Azure.Core;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.Question;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -59,6 +60,14 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> GetQuestionDetailAsync(Guid id)
         {
             var result = await _service.GetQuestionDetailAsync(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [Authorize]
+        [HttpGet("total")]
+        public async Task<IActionResult> GetTotalQuestionAsync()
+        {
+            var result = await _service.GetTotalOfQuestion();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

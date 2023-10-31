@@ -16,5 +16,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> AddListOfQuestionsAsync(List<NewQuestionContentRequest> newListOfQuestion);
         Task<ApiResponse> UpdateQuestionAsync(Guid questionId, NewQuestionContentRequest newQuestion);
         Task<ApiResponse> GetQuestionDetailAsync(Guid questionId);
+        Task<ApiResponse> GetTotalOfQuestion();
     }
 }

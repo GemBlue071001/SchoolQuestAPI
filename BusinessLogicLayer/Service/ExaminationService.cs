@@ -143,5 +143,13 @@ namespace BusinessLogicLayer.Service
 
             return response.SetOk(examResponse);
         }
+
+        public async Task <ApiResponse> GetNumberOfTotalExam()
+        {
+            var response = new ApiResponse();
+            var totalNumOfExam = await _unitOfWork.Examinations.CountAsync();
+
+            return response.SetOk(totalNumOfExam);
+        }
     }
 }

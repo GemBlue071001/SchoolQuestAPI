@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -11,23 +12,23 @@ namespace HighSchoolQuestAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        public IUserService UserService { get; set; }
+        public IUserService _service { get; set; }
         public UsersController(IUserService userService)
         {
-            UserService = userService;
+            _service = userService;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterRequest user)
         {
-            var result = await UserService.RegisterAsync(user);
+            var result = await _service.RegisterAsync(user);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequest user)
         {
-            var result = await UserService.LoginAsync(user);
+            var result = await _service.LoginAsync(user);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
@@ -36,7 +37,15 @@ namespace HighSchoolQuestAPI.Controllers
                                                             [FromQuery] int pageSize = 5,
                                                             [FromQuery] string search = null)
         {
-            var result = await UserService.GetUserPagingAsync(pageIndex, pageSize, search);
+            var result = await _service.GetUserPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [Authorize]
+        [HttpGet("total")]
+        public async Task<IActionResult> GetTotalUserAsync()
+        {
+            var result = await _service.GetTotalOfUser();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }
