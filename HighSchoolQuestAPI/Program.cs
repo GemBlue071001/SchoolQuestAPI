@@ -87,4 +87,9 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+{
+    serviceScope.ServiceProvider.GetService<HighSchoolQuestContext>().Database.Migrate();
+}
+
 app.Run();

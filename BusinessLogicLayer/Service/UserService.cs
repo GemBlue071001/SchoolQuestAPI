@@ -69,7 +69,10 @@ namespace BusinessLogicLayer.Service
                 UserName = user.UserName,
                 PasswordHash = pass.PasswordHash,
                 PasswordSalt = pass.PasswordSalt,
-                Role = UserRole.Student
+                Role = UserRole.Student,
+                Email = user.Email,
+                FirstName = user.FistName,
+                LastName = user.LastName,
             };
             await _unitOfWork.Users.AddAsync(_user);
             await _unitOfWork.SaveChangeAsync();

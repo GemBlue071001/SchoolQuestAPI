@@ -49,5 +49,13 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetSubjectDetailAsync(id);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
+        [Authorize]
+        [HttpGet("total")]
+        public async Task<IActionResult> GetTotalSubject()
+        {
+            var result = await _service.GetTotalOfSubject();
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

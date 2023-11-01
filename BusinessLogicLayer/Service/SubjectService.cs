@@ -65,7 +65,7 @@ namespace BusinessLogicLayer.Service
         {
             ApiResponse apiResponse = new ApiResponse();
 
-            var subject = await _unitOfWork.Subjects.GetSubjectDetailAsync( subjectId);
+            var subject = await _unitOfWork.Subjects.GetSubjectDetailAsync(subjectId);
             if (subject == null)
             {
                 return apiResponse.SetNotFound(Resources.NullObject);
@@ -74,6 +74,14 @@ namespace BusinessLogicLayer.Service
             var subjectResponse = _mapper.Map<SubjectResponse>(subject);
 
             return apiResponse.SetOk(subjectResponse);
+        }
+
+        public async Task<ApiResponse> GetTotalOfSubject()
+        {
+            var apiResponse = new ApiResponse();
+            var totalSubject = await _unitOfWork.Subjects.CountAsync();
+
+            return apiResponse.SetOk(totalSubject);
         }
     }
 }
