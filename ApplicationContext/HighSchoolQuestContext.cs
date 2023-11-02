@@ -47,7 +47,7 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ExamConfiguration());
-            
+            modelBuilder.ApplyConfiguration(new GroupConfiguration());
 
 
         }
