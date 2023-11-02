@@ -28,7 +28,7 @@ namespace HighSchoolQuestAPI.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddMBTI_Exam(string mbti)
+        public async Task<IActionResult> AddMBTI_Exam([FromBody]string mbti)
         {
             return Ok(mbti);
         }
