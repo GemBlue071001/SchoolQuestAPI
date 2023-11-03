@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.RequestModel;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -28,9 +29,18 @@ namespace HighSchoolQuestAPI.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddMBTI_Exam([FromBody]string mbti)
+        public async Task<IActionResult> AddMBTI_Exam([FromBody] string mbti)
         {
             return Ok(mbti);
         }
+        [Authorize]
+        [HttpPost("userAns")]
+        public async Task<IActionResult> AddMBTI_ExamAns([FromBody] List<MBTIRequestAns> list)
+        {
+            return Ok(list);
+        }
     }
+
+    
+
 }
