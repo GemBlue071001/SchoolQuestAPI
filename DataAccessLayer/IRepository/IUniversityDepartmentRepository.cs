@@ -9,5 +9,6 @@ namespace DataAccessLayer.IRepository
 {
     public interface IUniversityDepartmentRepository : IGenericRepository<UniversityDepartment>
     {
+        Task<List<UniversityDepartment>> GetUniversitíeByDepartment(Guid departmentId);
     }
 }

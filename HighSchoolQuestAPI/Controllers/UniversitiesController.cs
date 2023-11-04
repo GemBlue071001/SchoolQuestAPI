@@ -1,5 +1,7 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.University;
+using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +17,19 @@ namespace HighSchoolQuestAPI.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNewUniversity(NewUniversityRequest request)
         {
             var result = await _service.AddUniversity(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetUniversitiesByDepartment(Guid departmentId)
+        {
+            var result = await _service.GetUniversitíeByDepartment(departmentId);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

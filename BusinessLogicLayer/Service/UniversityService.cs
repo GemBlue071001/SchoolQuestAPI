@@ -2,6 +2,7 @@
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.University;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
+using BusinessLogicLayer.ResponseModel.UniversityDepartment;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
 
@@ -28,6 +29,16 @@ namespace BusinessLogicLayer.Service
 
             response.SetOk();
             return response;
+        }
+
+        public async Task<ApiResponse> GetUniversitíeByDepartment(Guid departmentId)
+        {
+            var response = new ApiResponse();
+
+            var universities = await _unitOfWork.UniversityDepartments.GetUniversitíeByDepartment(departmentId);
+
+            var universityList = _mapper.Map<List<UniversityDepartmentResponse>>(universities);
+            return response.SetOk(universityList);
         }
 
     }
