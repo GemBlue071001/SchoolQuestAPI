@@ -32,6 +32,7 @@ namespace ApplicationContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             //modelBuilder.ApplyConfiguration(new BaseConfiguration());
             modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
@@ -47,7 +48,7 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ExamConfiguration());
-            
+            modelBuilder.ApplyConfiguration(new AttemptConfiguration());
 
 
         }

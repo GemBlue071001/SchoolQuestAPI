@@ -12,5 +12,6 @@ namespace BusinessLogicLayer.ResponseModel.User
         public string? Email { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public UserRole Role { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }
