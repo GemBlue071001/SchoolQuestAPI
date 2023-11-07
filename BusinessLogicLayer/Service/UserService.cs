@@ -7,6 +7,7 @@ using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.User;
+using BusinessLogicLayer.Util;
 using DataAccessLayer.UnitOfWork;
 using Domain.Enums;
 using Domain.Global;
@@ -26,14 +27,16 @@ namespace BusinessLogicLayer.Service
         //private IConfiguration _configuration;
         private IUnitOfWork _unitOfWork;
         private AppSettings _appSettings;
+        private IClaimsService _claimService;
         private IMapper _mapper;
 
-        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings, IMapper mapper)
+        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings, IMapper mapper, IClaimsService claimService)
         {
             //_configuration = configuration;
             _unitOfWork = unitOfWork;
             _appSettings = appSettings;
             _mapper = mapper;
+            _claimService = claimService;
         }
 
         private PasswordDTO CreatePasswordHash(string password)
@@ -147,5 +150,19 @@ namespace BusinessLogicLayer.Service
 
             return response.SetOk(totalNumOfExam);
         }
+
+        public async Task<ApiResponse> UpdateProfileAsync(UpdateProfileRequest userProfile)
+        {
+            var apiResponse = new ApiResponse();
+            var userId = _claimService.GetUserIdInRequest();
+            var user = await _unitOfWork.Users.GetAsync(x => x.Id == userId);
+
+            _mapper.Map(userProfile, user);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+
     }
 }

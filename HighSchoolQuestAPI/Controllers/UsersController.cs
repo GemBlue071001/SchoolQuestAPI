@@ -48,5 +48,13 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetTotalOfUser();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
+        [Authorize]
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfileAsync(UpdateProfileRequest request)
+        {
+            var result = await _service.UpdateProfileAsync(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

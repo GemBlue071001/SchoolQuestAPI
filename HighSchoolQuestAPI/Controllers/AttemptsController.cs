@@ -30,7 +30,17 @@ namespace HighSchoolQuestAPI.Controllers
                                                              [FromQuery] int pageSize = 5,
                                                              [FromQuery] string search = null)
         {
-            var result = await _service.GetAttemptPagingAsync(pageIndex, pageSize, search);
+            var result = await _service.GetStudentAttemptPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [Authorize]
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllAttemptPagingAsync([FromQuery] int pageIndex = 1,
+                                                             [FromQuery] int pageSize = 5,
+                                                             [FromQuery] string search = null)
+        {
+            var result = await _service.GetAllAttemptPagingAsync(pageIndex, pageSize, search);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

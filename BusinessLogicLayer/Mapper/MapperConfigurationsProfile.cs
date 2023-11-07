@@ -6,6 +6,7 @@ using BusinessLogicLayer.RequestModel.ExaminationQuestion;
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.RequestModel.Topic;
 using BusinessLogicLayer.RequestModel.University;
+using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.Attempt;
 using BusinessLogicLayer.ResponseModel.Department;
 using BusinessLogicLayer.ResponseModel.Examination;
@@ -47,6 +48,7 @@ namespace BusinessLogicLayer.Mapper
 
             #region User
             CreateMap<User, UserResponse>().ReverseMap();
+            CreateMap<User, UpdateProfileRequest>().ReverseMap();
             #endregion
 
             #region Question

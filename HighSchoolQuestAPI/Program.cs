@@ -2,9 +2,11 @@ using ApplicationContext;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Mapper;
 using BusinessLogicLayer.Service;
+using BusinessLogicLayer.Util;
 using DataAccessLayer.UnitOfWork;
 using Domain.Global;
 using HighSchoolQuestAPI;
+using HighSchoolQuestAPI.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -66,6 +68,7 @@ builder.Services.AddScoped<IExaminationQuestionService, ExaminationQuestionServi
 builder.Services.AddScoped<IAttemptService, AttemptService>();
 builder.Services.AddScoped<IAttemptDetailService, AttemptDetailService>();
 builder.Services.AddScoped<IMBTIService, MBTIService>();
+builder.Services.AddScoped<IClaimsService, ClaimsService>();
 builder.Services.AddHttpContextAccessor();
 
 
@@ -81,6 +84,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(p => p.AllowAnyHeader().AllowAnyHeader().AllowAnyOrigin());
 app.UseMiddleware<PostgresExceptionMiddleware>();
+//app.UseMiddleware<GlobalMiddleware>();
 
 app.UseHttpsRedirection();
 

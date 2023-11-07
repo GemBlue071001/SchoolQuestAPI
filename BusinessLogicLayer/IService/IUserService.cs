@@ -14,5 +14,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> RegisterAsync(UserRegisterRequest user);
         Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search);
         Task<ApiResponse> GetTotalOfUser();
+        Task<ApiResponse> UpdateProfileAsync(UpdateProfileRequest userProfile);
     }
 }
