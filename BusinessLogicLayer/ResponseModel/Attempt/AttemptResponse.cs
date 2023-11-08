@@ -11,6 +11,8 @@ namespace BusinessLogicLayer.ResponseModel.Attempt
 {
     public class AttemptResponse
     {
+        public Guid Id { get; set; }
+        public string? Name { get; set; }
         public DateTime ExamDate { get; set; }
         public AttempType AttempType { get; set; }
         public int? Score { get; set; }

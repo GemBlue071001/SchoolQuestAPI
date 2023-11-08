@@ -34,6 +34,8 @@ namespace ApplicationContext.Configurations
                 Role = Domain.Enums.UserRole.Student,
                 UserName = "student1",
                 PhoneNumber = "1234567890",
+                HighestScore = 10,
+                Address = "Tran quoc toan"
             },
             new User
             {
@@ -46,6 +48,8 @@ namespace ApplicationContext.Configurations
                 Role = Domain.Enums.UserRole.Admin,
                 UserName = "admin",
                 PhoneNumber = "1234567890",
+                Address = "tran quoc toan",
+                HighestScore = 10
             }
             );
         }

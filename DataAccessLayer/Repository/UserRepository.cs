@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DataAccessLayer.Repository
 {
@@ -16,7 +17,7 @@ namespace DataAccessLayer.Repository
         {
         }
 
-        public async Task<List<User>> PagingAsync(int pageIndex, int pageSize, string search)
+        public async Task<List<User>> PagingAsync(int pageIndex, int pageSize, string search, bool isStudent)
         {
             IQueryable<User> query = _db;
             if (!string.IsNullOrEmpty(search))
@@ -25,14 +26,16 @@ namespace DataAccessLayer.Repository
                     b.FirstName!.Contains(search) ||
                     b.UserName!.Contains(search) ||
                     b.LastName!.Contains(search));
+            if (isStudent)
+                query = query.Where(b => b.Role != Domain.Enums.UserRole.Admin);
 
             return await query
-                    .Where(b => !b.IsDeleted && b.Role != Domain.Enums.UserRole.Admin)
+                    .Where(b => !b.IsDeleted)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }
 
-        public async Task<int> CountPagingAsync(int pageIndex, int pageSize, string search)
+        public async Task<int> CountPagingAsync(int pageIndex, int pageSize, string search, bool isStudent)
         {
             IQueryable<User> query = _db;
             if (!string.IsNullOrEmpty(search))
@@ -41,6 +44,9 @@ namespace DataAccessLayer.Repository
                     b.FirstName!.Contains(search) ||
                     b.UserName!.Contains(search) ||
                     b.LastName!.Contains(search));
+
+            if (isStudent)
+                query = query.Where(b => b.Role != Domain.Enums.UserRole.Admin);
 
             return await query
           .Where(b => !b.IsDeleted)
