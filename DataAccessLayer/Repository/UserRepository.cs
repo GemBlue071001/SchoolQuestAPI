@@ -27,7 +27,7 @@ namespace DataAccessLayer.Repository
                     b.LastName!.Contains(search));
 
             return await query
-                    .Where(b => !b.IsDeleted)
+                    .Where(b => !b.IsDeleted && b.Role != Domain.Enums.UserRole.Admin)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }
