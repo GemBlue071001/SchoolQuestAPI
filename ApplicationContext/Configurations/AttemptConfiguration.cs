@@ -25,6 +25,7 @@ namespace ApplicationContext.Configurations
                 Score = 10,
                 ExamDate = DateTime.UtcNow.AddDays(1),
                 UserId = Guid.Parse("f0b84747-fbed-43e1-9cd1-ecf2e1bd3cc0"),
+                Name ="bai kiem tra kien thuc xa hoi"
             });
         }
     }

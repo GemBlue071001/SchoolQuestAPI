@@ -8,12 +8,11 @@ namespace Domain.Models
 {
     public class Attempt : Base
     {
+        public string? Name { get; set; }
         public DateTime ExamDate { get; set; }
         public AttempType AttempType { get; set; }
         public int? Score { get; set; }
         public string? Result { get; set; }
-
-
 
         //Navigation Property
         public Guid UserId { get; set; }
