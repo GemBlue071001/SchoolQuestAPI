@@ -16,5 +16,7 @@ namespace Domain.Models
 
         //Property Navigation
         public List<Attempt> Attempts { get; set; }
+        public List<MBTI_UserRecord> MBTI_UserRecords { get; set; }
+
     }
 }
