@@ -1,12 +1,7 @@
 ﻿using ApplicationContext;
 using DataAccessLayer.IRepository;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DataAccessLayer.Repository
 {
@@ -26,6 +21,7 @@ namespace DataAccessLayer.Repository
             await _db.AddAsync(entity);
         }
         public async Task<int> CountAsync() => await _db.CountAsync();
+        public async Task<List<T>> GetAllAsync() => await _db.ToListAsync();
 
         public async Task<T> GetAsync(System.Linq.Expressions.Expression<Func<T, bool>> filter)
         {

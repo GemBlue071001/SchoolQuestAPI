@@ -1,13 +1,13 @@
 using ApplicationContext;
+using BlueShopAPI.Middlewares;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Mapper;
 using BusinessLogicLayer.Service;
 using BusinessLogicLayer.Util;
 using DataAccessLayer.UnitOfWork;
 using Domain.Global;
-using HighSchoolQuestAPI;
-using HighSchoolQuestAPI.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -58,6 +58,7 @@ builder.Services.AddAutoMapper(typeof(MapperConfigurationsProfile).Assembly);
 
 builder.Services.AddSingleton(configuration);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+//builder.Services.AddTransient<GlobalMiddleware>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISubjectService, SubjectService>();
 builder.Services.AddScoped<ITopicService, TopicService>();
@@ -69,6 +70,7 @@ builder.Services.AddScoped<IAttemptService, AttemptService>();
 builder.Services.AddScoped<IAttemptDetailService, AttemptDetailService>();
 builder.Services.AddScoped<IMBTIService, MBTIService>();
 builder.Services.AddScoped<IClaimsService, ClaimsService>();
+builder.Services.AddScoped<IMBTI_QuestionService, MBTI_QuestionService>();
 builder.Services.AddHttpContextAccessor();
 
 
