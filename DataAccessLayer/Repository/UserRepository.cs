@@ -31,6 +31,11 @@ namespace DataAccessLayer.Repository
 
             return await query
                     .Where(b => !b.IsDeleted)
+                    .Include(b => b.Attempts.OrderBy(x => x.Score))
+                        .ThenInclude(x => x.AttemptDetails)
+                            .ThenInclude(x => x.ExaminationQuestion)
+                                .ThenInclude(x => x.Question)
+                    .OrderBy(x => x.HighestScore)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }
