@@ -82,7 +82,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(p => p.AllowAnyHeader().AllowAnyHeader().AllowAnyOrigin());
+app.UseCors(p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseMiddleware<PostgresExceptionMiddleware>();
 //app.UseMiddleware<GlobalMiddleware>();
 
