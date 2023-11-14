@@ -23,7 +23,6 @@ namespace ApplicationContext.Configurations
                 FirstAnswerType = Domain.Enums.MBTI_Letter.E,
                 SecondAnswerType = Domain.Enums.MBTI_Letter.I,
                 CreatedBy = Guid.Parse("a6be20e2-5927-4cce-bed4-258f919f82e6"),
-                
             });
         }
     }

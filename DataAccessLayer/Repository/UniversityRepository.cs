@@ -16,24 +16,13 @@ namespace DataAccessLayer.Repository
         {
         }
 
-        public async Task<List<University>> GetUniversitíeByCriteria(string department, string name)
+        public async Task<List<University>> GetUniversities()
         {
             IQueryable<University> query = _db;
-
             query = query.Include(x => x.UniversityDepartments);
-
-            //if (!string.IsNullOrEmpty(name))
-            //    query = query.Where(b => b.UniversityDepartments);
-
-            //if (!string.IsNullOrEmpty(department))
-            //    query = query.Where(b => b.Name.Contains(department));
-
             return await query
-                    .Where(b => !b.IsDeleted).Include(x => x.UniversityDepartments)
-                    //.Skip((pageIndex - 1) * pageSize)
-                    //.Take(pageSize)
+                    .Where(b => !b.IsDeleted)
                     .ToListAsync();
-
         }
     }
 }
