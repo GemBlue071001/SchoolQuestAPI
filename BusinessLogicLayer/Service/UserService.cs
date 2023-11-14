@@ -113,6 +113,7 @@ namespace BusinessLogicLayer.Service
             {
                 new Claim( "name" , user.UserName),
                 new Claim("Role", user.Role.ToString()),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
                 new Claim("UserId", user.Id.ToString()),
             };
 

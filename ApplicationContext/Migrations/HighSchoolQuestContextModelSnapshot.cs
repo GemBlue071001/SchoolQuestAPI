@@ -609,7 +609,7 @@ namespace ApplicationContext.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MBTI_Exam");
+                    b.ToTable("MBTI_Exams");
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_ExamDetail", b =>
@@ -632,7 +632,7 @@ namespace ApplicationContext.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("MBTI_ExamDetail");
+                    b.ToTable("MBTI_ExamDetails");
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_Question", b =>
@@ -669,7 +669,7 @@ namespace ApplicationContext.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MBTI_Question");
+                    b.ToTable("MBTI_Questions");
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_UserRecord", b =>
@@ -687,7 +687,7 @@ namespace ApplicationContext.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("MBTI_UserRecord");
+                    b.ToTable("MBTI_UserRecords");
                 });
 
             modelBuilder.Entity("Domain.Models.Major", b =>
@@ -824,7 +824,7 @@ namespace ApplicationContext.Migrations
 
                     b.HasIndex("UserRecordId");
 
-                    b.ToTable("RecordDetail");
+                    b.ToTable("RecordDetails");
                 });
 
             modelBuilder.Entity("Domain.Models.Subject", b =>

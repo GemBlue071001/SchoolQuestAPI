@@ -3,6 +3,7 @@ using BusinessLogicLayer.RequestModel.Attemp;
 using BusinessLogicLayer.RequestModel.AttempDetail;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
+using BusinessLogicLayer.RequestModel.MBTI_Question;
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.RequestModel.Topic;
 using BusinessLogicLayer.RequestModel.University;
@@ -12,6 +13,7 @@ using BusinessLogicLayer.ResponseModel.Department;
 using BusinessLogicLayer.ResponseModel.Examination;
 using BusinessLogicLayer.ResponseModel.MBTI;
 using BusinessLogicLayer.ResponseModel.MBTI_Department;
+using BusinessLogicLayer.ResponseModel.MBTI_Question;
 using BusinessLogicLayer.ResponseModel.Question;
 using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.Topic;
@@ -69,7 +71,9 @@ namespace BusinessLogicLayer.Mapper
 
             #region Attemp
             CreateMap<Attempt, NewAttemptRequest>().ReverseMap();
-            CreateMap<Attempt, AttemptResponse>().ReverseMap();
+            CreateMap<Attempt, AttemptResponse>().ForMember(
+                            dest => dest.DoneBy,
+                            opt => opt.MapFrom(src => src.User.UserName + "/"+ src.User.FirstName+ " "+ src.User.LastName)).ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             #endregion
@@ -95,6 +99,12 @@ namespace BusinessLogicLayer.Mapper
             #region University
             CreateMap<University, UniversityResponse>().ReverseMap();
             CreateMap<UniversityDepartment, UniversityDepartmentResponse>().ReverseMap();
+            #endregion
+
+            #region MBTI_Question
+            CreateMap<MBTI_Question, MBTI_QuestionRequest>().ReverseMap();
+            CreateMap<MBTI_Question, MBTI_QuestionResponse>().ReverseMap();
+            CreateMap<MBTI_QuestionResponse, MBTI_Question>().ReverseMap();
             #endregion
         }
     }

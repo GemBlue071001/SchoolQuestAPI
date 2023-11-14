@@ -29,6 +29,12 @@ namespace ApplicationContext
         public DbSet<AttemptDetail> AttemptDetails { get; set; }
         public DbSet<UniversityDepartment> UniversityDepartments { get; set; }
         public DbSet<GroupDepartment> GroupDepartments { get; set; }
+        public DbSet<MBTI_Question> MBTI_Questions { get; set; }
+        public DbSet<MBTI_Exam> MBTI_Exams { get; set; }
+        public DbSet<MBTI_ExamDetail> MBTI_ExamDetails { get; set; }
+        public DbSet<MBTI_UserRecord> MBTI_UserRecords { get; set; }
+        public DbSet<RecordDetail> RecordDetails { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
