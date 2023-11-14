@@ -49,8 +49,9 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ExamConfiguration());
             modelBuilder.ApplyConfiguration(new AttemptConfiguration());
-
-
+            modelBuilder.ApplyConfiguration(new MBTI_ExamDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTI_UserRecordConfiguration());
+            modelBuilder.ApplyConfiguration(new RecordDetailConfiguration());
         }
 
     }
