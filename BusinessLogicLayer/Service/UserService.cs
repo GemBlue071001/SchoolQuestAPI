@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using Azure;
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
-using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.User;
-using BusinessLogicLayer.Util;
 using DataAccessLayer.UnitOfWork;
 using Domain.Enums;
 using Domain.Global;
@@ -17,7 +14,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Text;
 
 
 namespace BusinessLogicLayer.Service

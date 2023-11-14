@@ -14,6 +14,7 @@ using BusinessLogicLayer.ResponseModel.Examination;
 using BusinessLogicLayer.ResponseModel.MBTI;
 using BusinessLogicLayer.ResponseModel.MBTI_Department;
 using BusinessLogicLayer.ResponseModel.MBTI_Question;
+using BusinessLogicLayer.ResponseModel.MBTIExamResponse;
 using BusinessLogicLayer.ResponseModel.Question;
 using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.Topic;
@@ -105,6 +106,11 @@ namespace BusinessLogicLayer.Mapper
             CreateMap<MBTI_Question, MBTI_QuestionRequest>().ReverseMap();
             CreateMap<MBTI_Question, MBTI_QuestionResponse>().ReverseMap();
             CreateMap<MBTI_QuestionResponse, MBTI_Question>().ReverseMap();
+            #endregion
+
+            #region MBTI_Exam
+            CreateMap<MBTI_Exam, MBTIExamResponse>().ReverseMap();
+            CreateMap<MBTI_ExamDetail, MBTI_ExamDetailResponse>().ReverseMap();
             #endregion
         }
     }

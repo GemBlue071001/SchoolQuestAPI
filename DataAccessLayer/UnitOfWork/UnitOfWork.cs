@@ -31,7 +31,9 @@ namespace DataAccessLayer.UnitOfWork
         public IAttemptRepository Attempts { get; }
         public IMBTI_DepartmentRepository MBTI_Departments { get; }
         public IMBITRepository MBITs { get; }
-        public IMBTI_QuestionRepository MBIT_Questions { get; }
+        public IMBTI_QuestionRepository MBTI_Questions { get; }
+        public IMBTI_ExamRepository MBTI_Exams { get; }
+        public IMBTI_ExamDetailRepository MBTI_ExamDetails { get; }
 
         public UnitOfWork(HighSchoolQuestContext context)
         {
@@ -52,7 +54,9 @@ namespace DataAccessLayer.UnitOfWork
             Attempts = new AttemptRepository(context);
             MBTI_Departments = new MBTI_DepartmentRepository(context);
             MBITs = new MBITRepository(context);
-            MBIT_Questions = new MBTI_QuestionRepository(context);
+            MBTI_Questions = new MBTI_QuestionRepository(context);
+            MBTI_Exams = new MBTI_ExamRepository(context);
+            MBTI_ExamDetails = new MBTI_ExamDetailRepository(context);
         }
         public async Task SaveChangeAsync()
         {

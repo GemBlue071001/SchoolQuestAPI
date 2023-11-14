@@ -28,7 +28,7 @@ namespace BusinessLogicLayer.Service
         {
             var response = new ApiResponse();
             var mbtiQuestion = _mapper.Map<MBTI_Question>(newQuestion);
-            await _unitOfWork.MBIT_Questions.AddAsync(mbtiQuestion);
+            await _unitOfWork.MBTI_Questions.AddAsync(mbtiQuestion);
             await _unitOfWork.SaveChangeAsync();
 
             return response.SetOk();
@@ -37,7 +37,7 @@ namespace BusinessLogicLayer.Service
         public async Task<ApiResponse> GetQuestion()
         {
             var response = new ApiResponse();
-            var questions = await _unitOfWork.MBIT_Questions.GetAllAsync();
+            var questions = await _unitOfWork.MBTI_Questions.GetAllAsync();
 
             var questionList = _mapper.Map<List<MBTI_QuestionResponse>>(questions);
 

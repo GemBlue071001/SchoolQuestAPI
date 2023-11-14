@@ -8,10 +8,10 @@ namespace HighSchoolQuestAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MBTI_QuestionController : ControllerBase
+    public class MBTIQuestionController : ControllerBase
     {
         public IMBTI_QuestionService _service;
-        public MBTI_QuestionController(IMBTI_QuestionService service)
+        public MBTIQuestionController(IMBTI_QuestionService service)
         {
             _service = service;
         }
