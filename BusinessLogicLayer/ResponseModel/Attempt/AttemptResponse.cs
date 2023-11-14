@@ -17,6 +17,8 @@ namespace BusinessLogicLayer.ResponseModel.Attempt
         public AttempType AttempType { get; set; }
         public int? Score { get; set; }
         public string? Result { get; set; }
+        public string DoneBy { get; set; }
+        public Guid UserId { get; set; }
 
         public List<AttemptDetailResponse> AttemptDetails { get; set; }
     }

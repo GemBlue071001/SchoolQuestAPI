@@ -28,6 +28,7 @@ namespace DataAccessLayer.Repository
                     .Include(x => x.AttemptDetails)
                         .ThenInclude(x => x.ExaminationQuestion)
                             .ThenInclude(x => x.Question)
+                     .Include(x=>x.User)   
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }
@@ -45,6 +46,7 @@ namespace DataAccessLayer.Repository
                     .Include(x => x.AttemptDetails)
                         .ThenInclude(x => x.ExaminationQuestion)
                             .ThenInclude(x => x.Question)
+                    .Include(x=>x.User)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }

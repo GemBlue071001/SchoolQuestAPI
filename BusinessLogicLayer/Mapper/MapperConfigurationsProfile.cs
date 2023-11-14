@@ -69,7 +69,9 @@ namespace BusinessLogicLayer.Mapper
 
             #region Attemp
             CreateMap<Attempt, NewAttemptRequest>().ReverseMap();
-            CreateMap<Attempt, AttemptResponse>().ReverseMap();
+            CreateMap<Attempt, AttemptResponse>().ForMember(
+                            dest => dest.DoneBy,
+                            opt => opt.MapFrom(src => src.User.UserName + "/"+ src.User.FirstName+ " "+ src.User.LastName)).ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             #endregion
