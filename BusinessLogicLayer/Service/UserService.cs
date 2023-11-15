@@ -128,10 +128,10 @@ namespace BusinessLogicLayer.Service
             return jwt;
         }
 
-        public async Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search, bool isStudent)
+        public async Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search, bool isStudent, bool isSorted)
         {
             ApiResponse apiResponse = new ApiResponse();
-            var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search , isStudent);
+            var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search , isStudent, isSorted);
             var listOfUserResponse = _mapper.Map<List<UserResponse>>(listOfUser);
             var totalOfUser = await _unitOfWork.Users.CountPagingAsync(pageIndex, pageSize, search, isStudent);
             Pagination<UserResponse> response = new Pagination<UserResponse>(listOfUserResponse, totalOfUser, pageIndex, pageSize);

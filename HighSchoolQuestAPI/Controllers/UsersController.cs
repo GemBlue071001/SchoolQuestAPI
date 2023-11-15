@@ -34,12 +34,13 @@ namespace HighSchoolQuestAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetUserPagingAsync([FromQuery] bool isStudent,
+                                                            [FromQuery] bool isSorted,
                                                             [FromQuery] int pageIndex = 1,
                                                             [FromQuery] int pageSize = 5,
                                                             [FromQuery] string search = null
                                                             )
         {
-            var result = await _service.GetUserPagingAsync(pageIndex, pageSize, search, isStudent);
+            var result = await _service.GetUserPagingAsync(pageIndex, pageSize, search, isStudent, isSorted);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 

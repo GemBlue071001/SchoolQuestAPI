@@ -17,7 +17,7 @@ namespace DataAccessLayer.Repository
         {
         }
 
-        public async Task<List<User>> PagingAsync(int pageIndex, int pageSize, string search, bool isStudent)
+        public async Task<List<User>> PagingAsync(int pageIndex, int pageSize, string search, bool isStudent, bool isSorted)
         {
             IQueryable<User> query = _db;
             if (!string.IsNullOrEmpty(search))
@@ -29,13 +29,16 @@ namespace DataAccessLayer.Repository
             if (isStudent)
                 query = query.Where(b => b.Role != Domain.Enums.UserRole.Admin);
 
+            if (isSorted)
+                query = query.OrderByDescending(x => x.HighestScore);
+
             return await query
                     .Where(b => !b.IsDeleted)
                     .Include(b => b.Attempts.OrderBy(x => x.Score))
                         .ThenInclude(x => x.AttemptDetails)
                             .ThenInclude(x => x.ExaminationQuestion)
                                 .ThenInclude(x => x.Question)
-                    .OrderBy(x => x.HighestScore)
+                    //.OrderBy(x => x.HighestScore)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }

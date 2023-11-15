@@ -26,5 +26,7 @@ namespace BusinessLogicLayer.ResponseModel.Attempt
     public class AttemptDetailResponse
     {
         public ExamQuestionResponse ExaminationQuestion { get; set; }
+        public bool IsCorrect { get; set; }
+        public string UserAnswered { get; set; }
     }
 }
