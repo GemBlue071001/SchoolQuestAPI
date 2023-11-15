@@ -19,7 +19,6 @@ using BusinessLogicLayer.ResponseModel.Question;
 using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.Topic;
 using BusinessLogicLayer.ResponseModel.University;
-using BusinessLogicLayer.ResponseModel.UniversityDepartment;
 using BusinessLogicLayer.ResponseModel.User;
 using Domain.Models;
 

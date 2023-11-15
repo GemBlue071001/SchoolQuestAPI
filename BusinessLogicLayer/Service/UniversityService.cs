@@ -3,7 +3,7 @@ using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.University;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.University;
-using BusinessLogicLayer.ResponseModel.UniversityDepartment;
+
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BusinessLogicLayer.ResponseModel.Department;
 
 namespace BusinessLogicLayer.ResponseModel.University
 {
@@ -11,5 +7,12 @@ namespace BusinessLogicLayer.ResponseModel.University
         public string Name { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+
+        public List<UniversityDepartmentResponse> UniversityDepartments { get; set; }
+    }
+
+    public class UniversityDepartmentResponse
+    {
+        public DepartmentResponse? Department { get; set; }
     }
 }
