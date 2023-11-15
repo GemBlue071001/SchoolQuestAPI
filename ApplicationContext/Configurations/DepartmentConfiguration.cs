@@ -21,8 +21,8 @@ namespace ApplicationContext.Configurations
                 {
                     Id = Guid.Parse("de305d54-75b4-431b-adb2-eb6b9e546013"),
                     Code = "SE",
-                    Name = "Cong Nghe Thong Tin",
-                    Description = "lam ve may tinh",
+                    Name = "Công nghệ thông tin",
+                    Description = "các ngành về công nghệ thông tin",
                     RequiredScore = 22
                 },
                 new Department()
@@ -56,7 +56,7 @@ namespace ApplicationContext.Configurations
                     Name = "Thiết kế",
                     Description = "Các ngành thiết kế/nghệ thuật",
                     RequiredScore = 22
-                }
+                },
                 new Department()
                 {
                     Id = Guid.Parse("67d181a2-ac85-4aaa-bcad-863b8695071b"),
