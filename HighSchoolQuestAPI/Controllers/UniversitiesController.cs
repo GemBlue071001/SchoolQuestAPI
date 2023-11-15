@@ -27,9 +27,9 @@ namespace HighSchoolQuestAPI.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetUniversitiesByDepartment(Guid departmentId)
+        public async Task<IActionResult> GetUniversitiesByDepartment()
         {
-            var result = await _service.GetUniversitíeByDepartment(departmentId);
+            var result = await _service.GetUniversities();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

@@ -9,9 +9,10 @@ namespace DataAccessLayer.IRepository
 {
     public interface IUniversityRepository : IGenericRepository<University>
     {
-        Task<List<University>> GetUniversitíeByCriteria(
+        Task<List<University>> GetUniversities(
             //int pageIndex, 
             //int pageSize, 
-            string department, string name);
+            //string department, string name
+            );
     }
 }

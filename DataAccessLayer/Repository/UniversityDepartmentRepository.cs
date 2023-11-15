@@ -16,7 +16,7 @@ namespace DataAccessLayer.Repository
         {
         }
 
-        public async Task<List<UniversityDepartment>> GetUniversitíeByDepartment(Guid departmentId)
+        public async Task<List<UniversityDepartment>> GetUniversitiesByDepartment(Guid departmentId)
         {
             IQueryable<UniversityDepartment> query = _db;
 
