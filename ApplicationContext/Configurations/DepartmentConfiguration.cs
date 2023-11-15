@@ -21,8 +21,8 @@ namespace ApplicationContext.Configurations
                 {
                     Id = Guid.Parse("de305d54-75b4-431b-adb2-eb6b9e546013"),
                     Code = "SE",
-                    Name = "Cong Nghe Thong Tin",
-                    Description = "lam ve may tinh",
+                    Name = "Công nghệ thông tin",
+                    Description = "các ngành về máy tính",
                     RequiredScore = 22
                 },
                 new Department()
@@ -55,6 +55,30 @@ namespace ApplicationContext.Configurations
                     Code = "TK",
                     Name = "Thiết kế",
                     Description = "Các ngành thiết kế/nghệ thuật",
+                    RequiredScore = 22
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("67d181a2-ac85-4aaa-bcad-863b8695071b"),
+                    Code = "LAW",
+                    Name = "Luật",
+                    Description = "Các ngành về luật",
+                    RequiredScore = 23
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("f9cf3140-b872-4837-b965-d37f94e33c0b"),
+                    Code = "TT",
+                    Name = "Truyền Thông",
+                    Description = "Các ngành về báo chí/truyền thông",
+                    RequiredScore = 24
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("5fbe7741-917c-45f5-8f78-c06327ede146"),
+                    Code = "NN",
+                    Name = "Ngôn Ngữ",
+                    Description = "Các ngành về ngôn ngữ",
                     RequiredScore = 22
                 }
                 );
