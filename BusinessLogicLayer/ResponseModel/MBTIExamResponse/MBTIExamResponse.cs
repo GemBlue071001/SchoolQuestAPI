@@ -14,7 +14,7 @@ namespace BusinessLogicLayer.ResponseModel.MBTIExamResponse
         public string Note { get; set; }
         public int NumberOfQuestion { get; set; }
         public Guid? CreatedBy { get; set; }
-        public List<MBTI_ExamDetailResponse> MBTI_ExamDetails { get; set; }
+        public List<MBTI_ExamDetailResponse> MBTI_ExamQuestions { get; set; }
     }
 
     public class MBTI_ExamDetailResponse

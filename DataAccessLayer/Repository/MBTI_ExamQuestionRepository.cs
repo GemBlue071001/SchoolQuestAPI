@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Repository
 {
-    public class MBTI_ExamDetailRepository : GenericRepository<MBTI_ExamQuestion>, IMBTI_ExamDetailRepository
+    public class MBTI_ExamQuestionRepository : GenericRepository<MBTI_ExamQuestion>, IMBTI_ExamQuestionRepository
     {
-        public MBTI_ExamDetailRepository(HighSchoolQuestContext context) : base(context)
+        public MBTI_ExamQuestionRepository(HighSchoolQuestContext context) : base(context)
         {
         }
     }

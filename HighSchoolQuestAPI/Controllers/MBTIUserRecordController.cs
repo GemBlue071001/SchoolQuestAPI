@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.MBTIUserRecord;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ namespace HighSchoolQuestAPI.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNewUserRecord(MBTIUserRecordRequest request)
         {

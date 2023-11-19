@@ -72,8 +72,8 @@ namespace ApplicationContext.Migrations
                         {
                             Id = new Guid("9b8daa9f-7f8c-41d9-aa34-ba2b1010f4ed"),
                             AttempType = 0,
-                            CreatedDate = new DateTime(2023, 11, 19, 13, 19, 26, 948, DateTimeKind.Utc).AddTicks(8952),
-                            ExamDate = new DateTime(2023, 11, 20, 13, 19, 26, 948, DateTimeKind.Utc).AddTicks(8957),
+                            CreatedDate = new DateTime(2023, 11, 19, 14, 5, 5, 860, DateTimeKind.Utc).AddTicks(7511),
+                            ExamDate = new DateTime(2023, 11, 20, 14, 5, 5, 860, DateTimeKind.Utc).AddTicks(7516),
                             IsDeleted = false,
                             Name = "bai kiem tra kien thuc xa hoi",
                             Result = "Pass",
@@ -778,6 +778,14 @@ namespace ApplicationContext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MBTI_Exams");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Note = "MBTI Exam",
+                            NumberOfQuestion = 12
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_ExamQuestion", b =>
@@ -801,6 +809,80 @@ namespace ApplicationContext.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("MBTI_ExamQuestions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ExamId = 1,
+                            QuestionId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ExamId = 1,
+                            QuestionId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ExamId = 1,
+                            QuestionId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ExamId = 1,
+                            QuestionId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ExamId = 1,
+                            QuestionId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ExamId = 1,
+                            QuestionId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ExamId = 1,
+                            QuestionId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ExamId = 1,
+                            QuestionId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ExamId = 1,
+                            QuestionId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ExamId = 1,
+                            QuestionId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ExamId = 1,
+                            QuestionId = 11
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ExamId = 1,
+                            QuestionId = 12
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_Question", b =>
@@ -838,6 +920,844 @@ namespace ApplicationContext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MBTI_Questions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Xã hội, giao tiếp.",
+                            NameAns2 = "b. Thiết kế, nghiên cứu.",
+                            NameQuestion = "Bạn thích công việc kiểu : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Khách quan.",
+                            NameAns2 = "b. Chủ quan.",
+                            NameQuestion = "Bạn tiếp xúc với một người theo xu hướng : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Ý nghĩa, giá trị.",
+                            NameAns2 = "b. Tính logic.",
+                            NameQuestion = "Bạn đánh giá sự việc dựa trên : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Thong thả, thoải mái.",
+                            NameAns2 = "b. Nhanh nhẹn, đúng giờ.",
+                            NameQuestion = "Bạn là người có tác phong : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Bắt đầu cho cuộc nói chuyện.",
+                            NameAns2 = "b. Chỉ nói khi người khác bắt chuyện.",
+                            NameQuestion = "Trong các cuộc giao tiếp, bạn là người : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Là người có cái đầu lạnh.",
+                            NameAns2 = "b. Là người có trái tim ấm.",
+                            NameQuestion = "Bạn là người thế nào : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Dễ chịu, thoải mái.",
+                            NameAns2 = "b. Nghiêm chỉnh, quả quyết.",
+                            NameQuestion = "Tính cách của bạn : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Khá thú vị.",
+                            NameAns2 = "b. Khó hiểu.",
+                            NameQuestion = "Những người có tầm nhìn xa thường : ",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Dễ dàng bắt chuyện và trò chuyện nhiều điều cùng họ.",
+                            NameAns2 = "b. Cảm thấy khó khăn và không biết nên nói gì.",
+                            NameQuestion = "Đối với những người mới gặp, bạn thường : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Không có quy trình cụ thể.",
+                            NameAns2 = "b. Thiếu tính sáng tạo.",
+                            NameQuestion = "Một công việc gây nhàm chán khi : ",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Sự hòa hợp với mọi người.",
+                            NameAns2 = "b. Sự nhất quán trong suy nghĩ.",
+                            NameQuestion = "Bạn bị hấp dẫn bởi : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 2,
+                            NameAns1 = "a. Giàu trí tưởng tượng.",
+                            NameAns2 = "b. Nắm bắt tình huống tốt.",
+                            NameQuestion = "Bạn bị lôi cuốn bởi kiểu người : ",
+                            SecondAnswerType = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Dè dặt.",
+                            NameAns2 = "b. Thoải mái.",
+                            NameQuestion = "Trong các cuộc trò chuyện bạn thường : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Tuân theo chuẩn mực.",
+                            NameAns2 = "b. Đôi lúc không hiểu rõ nguyên nhân.",
+                            NameQuestion = "Lựa chọn của bạn có xu hướng : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Không công bằng.",
+                            NameAns2 = "b. Tàn nhẫn.",
+                            NameQuestion = "Trong hai điều sau, điều nào tồi tệ hơn : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Kiên quyết.",
+                            NameAns2 = "b. Nhẹ nhàng.",
+                            NameQuestion = "Tính cách nào giống bạn hơn : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Độc lập giải quyết.",
+                            NameAns2 = "b. Trao đổi với mọi người.",
+                            NameQuestion = "Đối với một vấn đề trong nhóm : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Những điều bất ngờ không tính trước.",
+                            NameAns2 = "b. Những điều có kế hoạch trước.",
+                            NameQuestion = "Trong cuộc sống, bạn cảm thấy hứng thú với : ",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Chắc chắn trong tư tưởng.",
+                            NameAns2 = "b. Cống hiến hết mình.",
+                            NameQuestion = "Bạn thấy tâm đắc với bản thân bởi sự : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Khả năng lý luận phân tích.",
+                            NameAns2 = "b. Sự liên tưởng.",
+                            NameQuestion = "Bạn nhìn nhận một vấn đề với : ",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Ở nhà cùng gia đình.",
+                            NameAns2 = "b. Đi du lịch cùng bạn bè.",
+                            NameQuestion = "Trong các kỳ nghỉ lễ bạn có xu hướng : ",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Các ngụ ý, hàm ý, ẩn ý.",
+                            NameAns2 = "b. Các nguyên tắc, nguyên lý.",
+                            NameQuestion = "Bạn bị lôi cuốn bởi : ",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Cảm nhận từ con tim.",
+                            NameAns2 = "b. Những quy tắc chung.",
+                            NameQuestion = "Khi quyết định việc gì bạn thường dựa vào : ",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Làm việc có phương pháp, tổ chức tốt.",
+                            NameAns2 = "b. Ứng biến xoay trở tốt trước khó khăn.",
+                            NameQuestion = "Bạn thích làm việc với người Sếp",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Sự chắc chắn.",
+                            NameAns2 = "b. Sự cởi mở.",
+                            NameQuestion = "Bạn nghiêng về :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Công tư phân minh.",
+                            NameAns2 = "b. Bị tình cảm chi phối.",
+                            NameQuestion = "Bạn là người có tư tưởng :",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 3,
+                            NameAns1 = "a. Nghệ thuật.",
+                            NameAns2 = "b. Khoa học.",
+                            NameQuestion = "Bạn thích học các môn :",
+                            SecondAnswerType = 2
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 1,
+                            NameAns1 = "a. Trầm lặng, ít nói.",
+                            NameAns2 = "b. Hoạt bát, vui vẻ.",
+                            NameQuestion = "Trong một nhóm bạn bè bạn thường :",
+                            SecondAnswerType = 0
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 2,
+                            NameAns1 = "a. Dựa vào vẻ ngoài của họ.",
+                            NameAns2 = "b. Dựa vào cảm nhận của bạn.",
+                            NameQuestion = "Khi đánh giá một người bạn thường :",
+                            SecondAnswerType = 3
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Quá nồng nhiệt, mong chờ.",
+                            NameAns2 = "b. Quá khách quan.",
+                            NameQuestion = "Sẽ thật tai hại khi bạn :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 2,
+                            NameAns1 = "a. Thích những thứ quen thuộc.",
+                            NameAns2 = "b. Thích những điều mới mẻ.",
+                            NameQuestion = "Phong cách của bạn :",
+                            SecondAnswerType = 3
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 7,
+                            NameAns1 = "a. Tìm kiếm một cách làm mới.",
+                            NameAns2 = "b. Làm theo cách mọi người hay làm.",
+                            NameQuestion = "Khi giải quyết một công việc thông thường, bạn sẽ :",
+                            SecondAnswerType = 6
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 1,
+                            NameAns1 = "a. Độc lập.",
+                            NameAns2 = "b. Theo nhóm.",
+                            NameQuestion = "Bạn thích làm việc :",
+                            SecondAnswerType = 0
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Hiếm khi.",
+                            NameAns2 = "b. Hay xảy ra.",
+                            NameQuestion = "Bạn có hành động theo bản năng :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Giàu lý trí.",
+                            NameAns2 = "b. Giàu cảm xúc.",
+                            NameQuestion = "Trong cuộc sống, một người sẽ tốt hơn nếu :",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Theo thứ tự.",
+                            NameAns2 = "b. Phát ngẫu nhiên.",
+                            NameQuestion = "Khi nghe một album nhạc mới, bạn thường nghe :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Khéo léo, lanh lợi.",
+                            NameAns2 = "b. Thẳng thắn, thực tế.",
+                            NameQuestion = "Bạn là người :",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Sử dụng người khác.",
+                            NameAns2 = "b. Hiểu và chia sẻ với người khác.",
+                            NameQuestion = "Sẽ khó khăn hơn khi bạn cố:",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 1,
+                            NameAns1 = "a. Diễn đạt trực tiếp nhất có thể.",
+                            NameAns2 = "b. Diễn đạt một cách gián tiếp.",
+                            NameQuestion = "Khi trình bày bạn thường :",
+                            SecondAnswerType = 0
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Tìm bạn bè tâm sự hoặc đi chơi.",
+                            NameAns2 = "b. Muốn ở một mình cho khuây khỏa.",
+                            NameQuestion = "Khi cảm thấy buồn bạn thường :",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Tham gia khi bị ép.",
+                            NameAns2 = "b. Năng nổ, tích cực.",
+                            NameQuestion = "Đối với các hoạt động của cơ quan, lớp học :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 3,
+                            NameAns1 = "a. Những thứ không xác định.",
+                            NameAns2 = "b. Những thứ có logic.",
+                            NameQuestion = "Bạn cảm thấy thoải mái với :",
+                            SecondAnswerType = 2
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Dễ dàng nắm bắt.",
+                            NameAns2 = "b. Giấu kín, khó nhận biết.",
+                            NameQuestion = "Cảm xúc của bạn thường được người khác :",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Hành xử thiếu cân nhắc.",
+                            NameAns2 = "b. Chỉ trích, phê phán người khác.",
+                            NameQuestion = "Thật tồi tệ khi :",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Chuẩn bị chu toàn trước.",
+                            NameAns2 = "b. Diễn ra tự nhiên.",
+                            NameQuestion = "Bạn muốn một sự kiện như thế nào :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Dễ gần, hòa đồng.",
+                            NameAns2 = "b. Thân thiện nhưng kín đáo.",
+                            NameQuestion = "Bạn là người có tình cách :",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 3,
+                            NameAns1 = "a. Trí tưởng tượng phong phú.",
+                            NameAns2 = "b. Sự quan sát thực tế.",
+                            NameQuestion = "Bạn có ưu điểm về :",
+                            SecondAnswerType = 2
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Linh cảm.",
+                            NameAns2 = "b. Sự việc thực tế.",
+                            NameQuestion = "Khi quyết định điều gì đó, bạn tin vào :",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Bạn là người có đầu óc suy luận.",
+                            NameAns2 = "b. Bạn là người giàu tình cảm và sự tinh tế.",
+                            NameQuestion = "Bạn muốn được người khác khen ngợi như thế nào :",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Có chọn lựa và suy tính.",
+                            NameAns2 = "b. Một cách tự nhiên.",
+                            NameQuestion = "Bạn thích các sự việc xảy ra :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 7,
+                            NameAns1 = "a. Bộc phát, linh hoạt.",
+                            NameAns2 = "b. Kỹ lưỡng, cẩn thận.",
+                            NameQuestion = "Bạn hay hành động một cách :",
+                            SecondAnswerType = 6
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Tình cảm dồi dào.",
+                            NameAns2 = "b. Lý trí mạnh mẽ.",
+                            NameQuestion = "Bạn muốn bổ sung thêm điều gì ở bản thân :",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 3,
+                            NameAns1 = "a. Mơ mộng và tưởng tượng.",
+                            NameAns2 = "b. Thực tế và thực dụng.",
+                            NameQuestion = "Bạn là người :",
+                            SecondAnswerType = 2
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Nhấc máy trước để nghe.",
+                            NameAns2 = "b. Để cho đồng nghiệp nhấc máy.",
+                            NameQuestion = "Khi điện thoại bàn trong văn phòng công ty đổ chuông :",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Cố làm quen với nhiều người.",
+                            NameAns2 = "b. Chỉ nói chuyện với vài người.",
+                            NameQuestion = "Bạn mới tham gia một lớp Ngoại ngữ :",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 2,
+                            NameAns1 = "a. Bản thân nó giải thích cho chính nó.",
+                            NameAns2 = "b. Là bằng chứng giải thích cho các quy tắc, quy luật.",
+                            NameQuestion = "Theo bạn, các sự việc, sự kiện :",
+                            SecondAnswerType = 3
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Đa sầu đa cảm.",
+                            NameAns2 = "b. Thực dụng, không bị chi phối bởi tình cảm.",
+                            NameQuestion = "Bạn là người :",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Những suy nghĩ của họ.",
+                            NameAns2 = "b. Những gì họ làm được.",
+                            NameQuestion = "Bạn thường quan tâm tới người khác thông qua :",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Thói quen.",
+                            NameAns2 = "b. Những điều mới mẻ.",
+                            NameQuestion = "Bạn nghiêng về điều nào sau đây :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Luôn được chuẩn bị kỹ lưỡng.",
+                            NameAns2 = "b. Tùy cơ ứng biến.",
+                            NameQuestion = "Mọi việc sẽ tốt hơn nếu :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 61,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 1,
+                            NameAns1 = "a. Ít bạn nhưng chơi rất thân.",
+                            NameAns2 = "b. Nhiều bạn nhưng không thân thiết lắm.",
+                            NameQuestion = "Bạn thích mối quan hệ :",
+                            SecondAnswerType = 0
+                        },
+                        new
+                        {
+                            Id = 62,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 3,
+                            NameAns1 = "a. Diễn đạt lời văn qua các phép so sánh, ẩn dụ.",
+                            NameAns2 = "b. Nghĩ sao viết vậy, diễn đạt rõ ràng.",
+                            NameQuestion = "Nếu bạn là nhà văn, bạn sẽ viết bài theo cách :",
+                            SecondAnswerType = 2
+                        },
+                        new
+                        {
+                            Id = 63,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 7,
+                            NameAns1 = "a. Phụ thuộc vào tâm trạng.",
+                            NameAns2 = "b. Suy tính cẩn trọng.",
+                            NameQuestion = "Khi quyết định một việc :",
+                            SecondAnswerType = 6
+                        },
+                        new
+                        {
+                            Id = 64,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Một cách chắn chắn.",
+                            NameAns2 = "b. Không chắc lắm, có thể thay đổi sau.",
+                            NameQuestion = "Bạn thường hay đưa ra quyết định :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 65,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Nguyên tắc, lý trí.",
+                            NameAns2 = "b. Cảm xúc, tình cảm.",
+                            NameQuestion = "Bạn là người sống thiên về :",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 66,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 2,
+                            NameAns1 = "a. Thực tế.",
+                            NameAns2 = "b. Bất ngờ, mới mẻ",
+                            NameQuestion = "Bạn thích thú với sự việc :",
+                            SecondAnswerType = 3
+                        },
+                        new
+                        {
+                            Id = 67,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 2,
+                            NameAns1 = "a. Không hứng thú.",
+                            NameAns2 = "b. Hào hứng.",
+                            NameQuestion = "Khi nói về một chủ đề mới lạ chưa gặp, bạn cảm thấy :",
+                            SecondAnswerType = 3
+                        },
+                        new
+                        {
+                            Id = 68,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Kiểm tra lại trước khi áp dụng.",
+                            NameAns2 = "b. Tin tưởng và áp dụng theo.",
+                            NameQuestion = "Đối với một suy luận được nhiều người tin dùng, bạn sẽ :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 69,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 4,
+                            NameAns1 = "a. Những thứ có tính logic cao.",
+                            NameAns2 = "b. Những thứ gây cảm động.",
+                            NameQuestion = "Điều gì làm cho bạn ấn tượng :",
+                            SecondAnswerType = 5
+                        },
+                        new
+                        {
+                            Id = 70,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 2,
+                            NameAns1 = "a. Những thứ thực tế và rõ ràng.",
+                            NameAns2 = "b. Những suy đoán.",
+                            NameQuestion = "Bạn là người có xu hướng thiên về :",
+                            SecondAnswerType = 3
+                        },
+                        new
+                        {
+                            Id = 71,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 1,
+                            NameAns1 = "a. Không thoải mái.",
+                            NameAns2 = "b. Thích thú.",
+                            NameQuestion = "Ở một nơi đông người làm bạn :",
+                            SecondAnswerType = 0
+                        },
+                        new
+                        {
+                            Id = 72,
+                            Category = 2,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 5,
+                            NameAns1 = "a. Hoàn cảnh nhất định.",
+                            NameAns2 = "b. Nguyên tắc chung.",
+                            NameQuestion = "Bạn đánh giá một người dựa trên :",
+                            SecondAnswerType = 4
+                        },
+                        new
+                        {
+                            Id = 73,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 1,
+                            NameAns1 = "a. Ra về sớm vì không hào hứng lắm.",
+                            NameAns2 = "b. Vui chơi hết mình cho đến khi tàn tiệc.",
+                            NameQuestion = "Bạn được mời tới bữa tiệc của công ty :",
+                            SecondAnswerType = 0
+                        },
+                        new
+                        {
+                            Id = 74,
+                            Category = 3,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 6,
+                            NameAns1 = "a. Tuân thủ thời gian.",
+                            NameAns2 = "b. Làm việc tùy hứng.",
+                            NameQuestion = "Khi làm việc bạn sẽ :",
+                            SecondAnswerType = 7
+                        },
+                        new
+                        {
+                            Id = 75,
+                            Category = 0,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 0,
+                            NameAns1 = "a. Trò chuyện cùng nhiều người, quen hoặc không quen.",
+                            NameAns2 = "b. Chỉ trò chuyện với một số người quen.",
+                            NameQuestion = "Khi đi tham dự một buổi liên hoan/tiệc tùng, bạn sẽ :",
+                            SecondAnswerType = 1
+                        },
+                        new
+                        {
+                            Id = 76,
+                            Category = 1,
+                            CreatedBy = new Guid("a6be20e2-5927-4cce-bed4-258f919f82e6"),
+                            FirstAnswerType = 3,
+                            NameAns1 = "a. Những thứ mơ hồ, không rõ ràng.",
+                            NameAns2 = "b. Những thứ nhàm chán, tẻ nhạt.",
+                            NameQuestion = "Điều gì làm bạn cảm thấy tồi tệ :",
+                            SecondAnswerType = 2
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_UserRecord", b =>
@@ -1354,8 +2274,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 10,
                             IsDeleted = false,
                             LastName = "Vu",
-                            PasswordHash = new byte[] { 55, 154, 113, 3, 84, 236, 108, 120, 54, 25, 136, 98, 200, 126, 5, 209, 28, 113, 69, 70, 174, 124, 3, 251, 90, 88, 194, 209, 91, 65, 244, 28, 221, 88, 154, 47, 158, 202, 244, 169, 23, 105, 182, 78, 234, 79, 95, 60, 52, 109, 106, 243, 105, 33, 107, 85, 4, 157, 88, 163, 215, 182, 9, 76 },
-                            PasswordSalt = new byte[] { 125, 19, 88, 21, 184, 211, 101, 212, 22, 132, 160, 174, 37, 191, 102, 128, 176, 152, 33, 111, 167, 21, 77, 181, 33, 145, 249, 147, 97, 5, 146, 145, 39, 99, 178, 34, 200, 5, 44, 16, 63, 246, 78, 162, 6, 32, 248, 238, 77, 141, 59, 194, 219, 15, 139, 131, 96, 154, 202, 86, 64, 53, 17, 67, 179, 232, 58, 183, 8, 40, 91, 83, 215, 186, 39, 106, 255, 105, 50, 85, 48, 226, 61, 18, 182, 119, 29, 229, 92, 13, 50, 27, 30, 110, 240, 75, 209, 193, 133, 211, 81, 121, 132, 239, 201, 247, 2, 51, 244, 96, 177, 202, 225, 67, 67, 63, 135, 57, 140, 171, 100, 73, 196, 228, 96, 54, 36, 176 },
+                            PasswordHash = new byte[] { 214, 116, 5, 244, 21, 107, 251, 202, 193, 117, 216, 16, 81, 156, 79, 221, 86, 63, 151, 217, 59, 185, 34, 210, 2, 165, 211, 56, 173, 96, 72, 14, 76, 249, 90, 199, 178, 117, 46, 85, 208, 209, 33, 153, 54, 99, 200, 78, 147, 52, 163, 81, 65, 201, 100, 240, 186, 242, 223, 61, 81, 160, 117, 93 },
+                            PasswordSalt = new byte[] { 91, 144, 229, 186, 23, 226, 136, 56, 69, 145, 131, 83, 81, 164, 75, 140, 246, 248, 87, 192, 83, 64, 99, 85, 48, 48, 149, 183, 72, 108, 220, 180, 195, 9, 115, 224, 49, 125, 133, 74, 102, 83, 177, 133, 165, 224, 36, 15, 190, 61, 41, 188, 155, 255, 202, 159, 31, 103, 35, 115, 46, 169, 130, 199, 217, 83, 8, 63, 9, 94, 134, 130, 28, 153, 82, 208, 118, 163, 65, 58, 40, 113, 148, 82, 13, 108, 144, 226, 180, 119, 208, 69, 222, 44, 187, 155, 208, 195, 176, 211, 134, 124, 176, 65, 193, 251, 123, 168, 207, 145, 108, 148, 51, 139, 12, 187, 248, 119, 170, 157, 78, 203, 20, 49, 97, 1, 126, 245 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student1"
@@ -1369,8 +2289,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 9,
                             IsDeleted = false,
                             LastName = "Vu",
-                            PasswordHash = new byte[] { 68, 230, 40, 253, 24, 138, 65, 208, 179, 93, 214, 178, 187, 147, 206, 22, 229, 39, 158, 226, 223, 5, 104, 113, 62, 106, 11, 8, 68, 2, 9, 196, 178, 94, 131, 56, 87, 16, 138, 230, 36, 168, 166, 17, 6, 170, 140, 176, 248, 211, 237, 223, 145, 147, 217, 122, 19, 18, 168, 14, 7, 80, 108, 227 },
-                            PasswordSalt = new byte[] { 139, 251, 209, 136, 55, 191, 173, 4, 110, 43, 175, 68, 156, 44, 161, 170, 233, 71, 13, 249, 199, 49, 110, 182, 236, 62, 2, 155, 10, 199, 227, 79, 172, 206, 239, 197, 181, 226, 129, 30, 75, 231, 134, 59, 54, 50, 30, 225, 140, 112, 110, 141, 237, 244, 237, 245, 214, 154, 50, 202, 12, 191, 14, 222, 75, 54, 2, 15, 226, 76, 156, 146, 178, 170, 172, 133, 239, 76, 191, 131, 165, 238, 141, 90, 245, 43, 213, 222, 216, 48, 121, 199, 236, 77, 49, 8, 246, 206, 198, 71, 149, 150, 127, 155, 154, 49, 136, 182, 228, 161, 91, 103, 247, 117, 31, 104, 16, 81, 89, 78, 55, 40, 36, 247, 154, 124, 240, 228 },
+                            PasswordHash = new byte[] { 160, 150, 2, 198, 129, 220, 163, 183, 219, 167, 237, 247, 105, 67, 5, 71, 68, 58, 113, 152, 171, 212, 215, 42, 46, 199, 6, 140, 209, 169, 123, 233, 171, 79, 18, 78, 51, 217, 131, 94, 196, 4, 132, 253, 193, 31, 44, 96, 32, 126, 221, 187, 135, 103, 72, 99, 136, 132, 5, 117, 23, 235, 156, 250 },
+                            PasswordSalt = new byte[] { 79, 207, 254, 130, 97, 24, 44, 68, 217, 89, 10, 234, 89, 52, 106, 223, 137, 68, 201, 140, 135, 42, 106, 137, 242, 160, 17, 197, 246, 165, 148, 106, 169, 198, 229, 80, 77, 55, 138, 243, 109, 131, 249, 120, 12, 0, 196, 46, 173, 41, 201, 95, 132, 44, 55, 103, 5, 53, 176, 232, 44, 72, 248, 92, 165, 150, 137, 117, 154, 207, 8, 101, 153, 6, 246, 150, 200, 235, 162, 194, 125, 171, 130, 102, 233, 207, 89, 166, 210, 158, 157, 135, 37, 71, 11, 239, 190, 86, 185, 115, 181, 22, 203, 217, 137, 246, 110, 86, 203, 15, 236, 127, 79, 44, 190, 15, 240, 193, 89, 159, 235, 179, 92, 83, 136, 164, 118, 14 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student2"
@@ -1384,8 +2304,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 6,
                             IsDeleted = false,
                             LastName = "Duc",
-                            PasswordHash = new byte[] { 243, 34, 190, 94, 240, 252, 136, 181, 31, 26, 252, 172, 61, 73, 253, 107, 34, 244, 214, 127, 28, 239, 193, 179, 83, 46, 167, 94, 145, 96, 236, 88, 154, 80, 124, 14, 148, 41, 85, 65, 131, 49, 224, 68, 2, 63, 97, 22, 218, 73, 87, 64, 132, 133, 114, 234, 24, 10, 246, 63, 156, 152, 100, 67 },
-                            PasswordSalt = new byte[] { 163, 8, 230, 90, 170, 251, 73, 102, 73, 190, 141, 82, 30, 226, 69, 17, 154, 111, 246, 98, 133, 71, 236, 61, 41, 124, 40, 211, 66, 162, 14, 24, 174, 85, 1, 102, 19, 92, 110, 125, 184, 182, 60, 14, 53, 36, 183, 153, 127, 118, 227, 10, 16, 84, 107, 214, 123, 183, 223, 247, 234, 204, 43, 96, 54, 135, 116, 56, 230, 209, 142, 37, 135, 203, 129, 6, 10, 58, 228, 73, 101, 208, 165, 239, 148, 221, 246, 131, 60, 126, 87, 33, 47, 53, 52, 28, 18, 94, 78, 86, 9, 74, 183, 177, 17, 68, 43, 70, 116, 3, 225, 83, 247, 60, 189, 148, 65, 132, 206, 50, 56, 193, 14, 70, 16, 96, 201, 145 },
+                            PasswordHash = new byte[] { 73, 112, 199, 181, 169, 246, 147, 219, 114, 246, 221, 177, 203, 79, 39, 192, 190, 199, 36, 245, 112, 76, 80, 58, 231, 43, 198, 147, 180, 166, 115, 172, 163, 84, 200, 154, 217, 90, 107, 74, 210, 73, 146, 207, 141, 146, 194, 37, 95, 245, 7, 203, 38, 242, 80, 186, 224, 131, 250, 171, 187, 149, 57, 109 },
+                            PasswordSalt = new byte[] { 226, 179, 224, 68, 153, 163, 165, 199, 41, 199, 223, 7, 54, 48, 94, 102, 171, 169, 182, 18, 83, 65, 140, 255, 3, 105, 83, 49, 2, 9, 248, 122, 103, 65, 239, 106, 76, 26, 8, 129, 102, 13, 5, 168, 95, 70, 29, 155, 169, 139, 142, 16, 156, 1, 235, 233, 30, 10, 178, 21, 171, 10, 4, 44, 6, 12, 177, 61, 218, 161, 36, 166, 158, 175, 170, 65, 121, 143, 76, 219, 21, 35, 138, 74, 85, 189, 223, 104, 161, 84, 93, 240, 85, 117, 138, 154, 80, 240, 175, 170, 88, 104, 73, 4, 230, 157, 150, 135, 151, 187, 83, 247, 169, 193, 142, 208, 11, 31, 148, 31, 211, 119, 19, 83, 20, 83, 184, 41 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student2"
@@ -1399,8 +2319,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 7,
                             IsDeleted = false,
                             LastName = "Quan",
-                            PasswordHash = new byte[] { 255, 198, 145, 158, 64, 32, 144, 171, 162, 31, 54, 181, 98, 149, 65, 165, 96, 164, 166, 156, 67, 156, 9, 98, 178, 65, 84, 104, 218, 3, 147, 25, 148, 250, 45, 176, 68, 210, 36, 239, 176, 131, 90, 2, 249, 144, 245, 77, 184, 15, 67, 153, 194, 137, 185, 54, 210, 110, 125, 188, 21, 91, 51, 126 },
-                            PasswordSalt = new byte[] { 198, 148, 26, 16, 218, 1, 202, 92, 44, 99, 235, 252, 63, 159, 92, 237, 239, 228, 94, 166, 171, 211, 35, 58, 136, 159, 205, 117, 35, 150, 228, 192, 118, 11, 85, 24, 230, 70, 254, 172, 206, 99, 148, 84, 77, 110, 106, 218, 233, 17, 96, 46, 167, 171, 210, 220, 6, 115, 160, 34, 196, 89, 219, 99, 59, 98, 62, 138, 92, 164, 240, 107, 99, 102, 17, 121, 221, 2, 85, 11, 188, 138, 183, 11, 135, 98, 168, 183, 0, 112, 213, 145, 69, 212, 180, 221, 152, 156, 247, 0, 111, 69, 57, 181, 152, 101, 74, 78, 91, 33, 210, 114, 213, 94, 157, 93, 255, 29, 240, 182, 191, 248, 33, 8, 249, 69, 115, 19 },
+                            PasswordHash = new byte[] { 59, 55, 10, 246, 141, 246, 135, 64, 224, 188, 142, 146, 250, 134, 240, 234, 194, 88, 136, 246, 29, 236, 57, 84, 164, 47, 152, 65, 159, 215, 8, 244, 69, 42, 79, 57, 90, 167, 181, 233, 162, 211, 162, 139, 220, 20, 2, 28, 121, 30, 201, 196, 229, 144, 118, 198, 245, 174, 13, 68, 220, 97, 112, 193 },
+                            PasswordSalt = new byte[] { 39, 190, 78, 244, 251, 13, 25, 151, 190, 31, 89, 130, 46, 135, 76, 240, 105, 37, 18, 117, 234, 42, 79, 178, 84, 248, 250, 195, 141, 29, 2, 209, 103, 96, 195, 235, 251, 6, 36, 51, 103, 183, 88, 35, 116, 218, 193, 219, 63, 133, 250, 64, 172, 185, 153, 70, 247, 42, 124, 128, 123, 231, 250, 81, 57, 140, 37, 17, 160, 237, 168, 164, 120, 158, 230, 126, 63, 241, 177, 216, 173, 186, 95, 30, 29, 221, 16, 47, 83, 206, 229, 235, 183, 175, 190, 254, 180, 112, 247, 23, 222, 8, 16, 178, 202, 38, 16, 249, 60, 191, 163, 211, 135, 92, 54, 167, 136, 2, 224, 186, 111, 169, 34, 186, 2, 228, 218, 21 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student3"
@@ -1414,8 +2334,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 6,
                             IsDeleted = false,
                             LastName = "Tam",
-                            PasswordHash = new byte[] { 252, 129, 59, 184, 113, 113, 48, 207, 200, 190, 201, 0, 232, 237, 97, 216, 200, 78, 181, 70, 201, 101, 132, 230, 40, 119, 180, 92, 25, 219, 245, 238, 151, 87, 157, 78, 67, 94, 123, 100, 47, 119, 179, 185, 197, 108, 98, 205, 72, 134, 65, 65, 24, 47, 212, 113, 167, 91, 30, 70, 205, 202, 38, 11 },
-                            PasswordSalt = new byte[] { 124, 95, 206, 79, 31, 149, 141, 87, 188, 180, 144, 113, 163, 156, 198, 122, 217, 218, 42, 174, 27, 196, 163, 223, 2, 5, 139, 144, 132, 164, 224, 191, 226, 19, 198, 111, 92, 92, 113, 112, 92, 57, 251, 105, 224, 23, 43, 60, 226, 104, 100, 63, 243, 83, 243, 69, 8, 76, 169, 46, 185, 42, 188, 177, 212, 111, 191, 16, 160, 233, 126, 252, 116, 86, 68, 200, 137, 126, 80, 75, 112, 166, 146, 210, 48, 173, 17, 26, 102, 61, 157, 21, 5, 137, 244, 119, 110, 202, 126, 109, 202, 170, 118, 62, 170, 45, 214, 254, 40, 40, 148, 191, 108, 130, 45, 139, 152, 64, 156, 231, 135, 54, 193, 110, 168, 132, 25, 185 },
+                            PasswordHash = new byte[] { 151, 93, 241, 106, 146, 87, 213, 176, 42, 88, 215, 216, 68, 208, 231, 178, 32, 15, 150, 119, 131, 146, 140, 31, 69, 118, 111, 85, 228, 120, 170, 131, 156, 125, 84, 248, 218, 184, 60, 4, 195, 114, 134, 221, 156, 234, 69, 82, 207, 210, 57, 56, 5, 18, 73, 38, 145, 197, 80, 33, 175, 215, 67, 49 },
+                            PasswordSalt = new byte[] { 49, 253, 177, 98, 25, 217, 199, 87, 181, 153, 27, 237, 59, 146, 117, 100, 23, 103, 76, 180, 114, 72, 234, 160, 174, 128, 223, 127, 164, 197, 143, 210, 51, 191, 236, 185, 64, 152, 12, 197, 80, 173, 249, 131, 68, 129, 224, 101, 253, 27, 48, 113, 20, 196, 124, 222, 14, 220, 111, 13, 138, 5, 175, 251, 212, 156, 113, 76, 26, 146, 129, 123, 201, 95, 253, 242, 138, 31, 52, 160, 68, 74, 211, 241, 65, 236, 241, 18, 253, 10, 168, 184, 50, 37, 73, 65, 225, 137, 225, 62, 187, 124, 140, 19, 193, 159, 7, 59, 21, 166, 25, 107, 147, 164, 223, 124, 47, 169, 242, 91, 79, 206, 206, 100, 26, 188, 160, 79 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student4"
@@ -1429,8 +2349,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 5,
                             IsDeleted = false,
                             LastName = "Tam",
-                            PasswordHash = new byte[] { 65, 24, 205, 49, 224, 25, 8, 80, 138, 72, 4, 25, 225, 13, 209, 70, 64, 190, 154, 68, 37, 84, 44, 0, 168, 140, 147, 218, 25, 33, 204, 161, 206, 184, 35, 119, 190, 93, 3, 111, 86, 124, 58, 99, 95, 144, 48, 232, 78, 141, 117, 150, 71, 70, 243, 241, 97, 87, 39, 155, 238, 247, 39, 210 },
-                            PasswordSalt = new byte[] { 142, 92, 29, 85, 76, 58, 119, 126, 255, 226, 126, 200, 105, 148, 77, 151, 5, 205, 162, 32, 243, 203, 137, 178, 111, 103, 52, 204, 226, 126, 45, 201, 60, 223, 171, 31, 167, 2, 228, 181, 124, 118, 204, 12, 60, 52, 141, 202, 144, 115, 199, 221, 209, 5, 244, 221, 246, 150, 242, 132, 59, 167, 12, 97, 93, 116, 94, 236, 187, 252, 37, 159, 43, 4, 205, 220, 107, 123, 223, 185, 192, 115, 215, 86, 103, 68, 148, 218, 193, 139, 130, 195, 185, 212, 228, 248, 0, 152, 117, 205, 109, 96, 229, 202, 42, 177, 61, 196, 24, 128, 150, 201, 200, 37, 103, 27, 96, 86, 165, 47, 19, 168, 247, 137, 216, 139, 198, 68 },
+                            PasswordHash = new byte[] { 234, 253, 81, 51, 41, 146, 8, 138, 194, 100, 42, 210, 189, 156, 176, 253, 203, 149, 203, 92, 164, 25, 73, 24, 3, 214, 181, 119, 114, 38, 89, 64, 49, 129, 132, 235, 16, 177, 18, 163, 29, 120, 235, 18, 32, 147, 28, 114, 189, 252, 6, 178, 33, 186, 161, 168, 254, 115, 157, 174, 103, 35, 136, 61 },
+                            PasswordSalt = new byte[] { 185, 81, 29, 249, 124, 50, 236, 143, 78, 146, 218, 81, 218, 32, 145, 190, 154, 179, 126, 255, 36, 207, 152, 5, 239, 255, 42, 27, 47, 42, 102, 167, 231, 222, 143, 58, 88, 199, 33, 252, 217, 137, 1, 160, 140, 149, 230, 121, 149, 67, 79, 180, 191, 31, 28, 139, 225, 86, 151, 23, 197, 204, 101, 34, 70, 112, 194, 1, 17, 169, 157, 116, 123, 42, 27, 151, 85, 242, 155, 176, 238, 146, 154, 25, 98, 132, 42, 247, 112, 107, 32, 54, 218, 138, 3, 205, 194, 118, 72, 129, 25, 6, 197, 234, 31, 176, 124, 169, 199, 195, 51, 211, 49, 86, 75, 27, 203, 39, 8, 176, 191, 107, 51, 111, 42, 10, 96, 12 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student5"
@@ -1444,8 +2364,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 4,
                             IsDeleted = false,
                             LastName = "Ba",
-                            PasswordHash = new byte[] { 93, 116, 250, 120, 92, 241, 100, 168, 176, 237, 111, 176, 228, 82, 24, 131, 84, 182, 15, 78, 18, 150, 76, 68, 151, 84, 209, 181, 14, 146, 222, 229, 213, 106, 32, 117, 27, 195, 90, 229, 43, 216, 8, 235, 190, 67, 89, 66, 90, 194, 170, 10, 199, 158, 56, 13, 147, 10, 199, 1, 72, 187, 242, 1 },
-                            PasswordSalt = new byte[] { 111, 43, 222, 121, 98, 240, 182, 165, 17, 42, 144, 36, 227, 74, 66, 182, 96, 97, 232, 92, 228, 249, 44, 145, 194, 244, 15, 210, 81, 110, 11, 212, 194, 25, 73, 102, 76, 6, 166, 99, 20, 162, 82, 90, 183, 138, 125, 255, 126, 177, 60, 150, 182, 228, 63, 62, 63, 178, 67, 31, 40, 139, 169, 251, 138, 146, 202, 115, 84, 54, 58, 204, 104, 83, 3, 191, 154, 184, 170, 189, 122, 96, 210, 102, 210, 54, 184, 218, 118, 98, 236, 69, 208, 97, 231, 105, 7, 112, 45, 96, 210, 12, 97, 188, 103, 140, 23, 204, 214, 255, 89, 123, 30, 10, 193, 17, 83, 238, 178, 108, 34, 118, 114, 175, 34, 221, 240, 33 },
+                            PasswordHash = new byte[] { 86, 228, 194, 223, 159, 93, 174, 166, 199, 210, 108, 171, 205, 177, 212, 206, 9, 124, 142, 36, 210, 168, 131, 22, 25, 25, 120, 87, 89, 124, 47, 72, 73, 186, 80, 169, 153, 176, 125, 111, 151, 61, 206, 185, 243, 18, 145, 90, 137, 178, 224, 142, 15, 201, 178, 127, 198, 131, 81, 196, 216, 107, 174, 79 },
+                            PasswordSalt = new byte[] { 241, 78, 2, 54, 61, 127, 223, 236, 190, 12, 65, 37, 104, 234, 222, 47, 8, 205, 181, 233, 93, 70, 62, 115, 123, 33, 82, 165, 239, 168, 35, 34, 24, 212, 126, 170, 220, 126, 106, 17, 172, 78, 59, 111, 218, 145, 87, 50, 80, 142, 226, 181, 119, 116, 46, 76, 2, 219, 84, 123, 211, 101, 121, 113, 81, 124, 35, 206, 107, 13, 220, 200, 164, 120, 76, 121, 136, 220, 21, 206, 254, 29, 93, 220, 250, 143, 60, 25, 149, 211, 207, 151, 120, 73, 215, 66, 80, 75, 235, 20, 48, 135, 228, 63, 103, 80, 200, 189, 234, 233, 133, 29, 69, 220, 99, 78, 7, 33, 4, 238, 192, 38, 227, 158, 176, 29, 25, 69 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student6"
@@ -1459,8 +2379,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 3,
                             IsDeleted = false,
                             LastName = "Hung",
-                            PasswordHash = new byte[] { 32, 110, 206, 228, 92, 208, 228, 106, 97, 154, 82, 29, 48, 113, 54, 153, 204, 232, 114, 35, 229, 209, 179, 82, 151, 218, 228, 210, 189, 153, 248, 15, 106, 92, 3, 166, 129, 123, 126, 145, 192, 220, 146, 0, 7, 111, 144, 197, 97, 2, 244, 178, 25, 159, 236, 2, 41, 73, 131, 72, 250, 255, 247, 109 },
-                            PasswordSalt = new byte[] { 122, 30, 200, 199, 94, 250, 148, 48, 110, 183, 56, 131, 233, 75, 57, 100, 41, 128, 132, 191, 174, 141, 15, 4, 52, 126, 205, 195, 55, 162, 165, 121, 200, 173, 244, 125, 56, 118, 171, 39, 108, 194, 200, 157, 235, 136, 111, 227, 234, 186, 158, 178, 135, 89, 22, 151, 27, 234, 148, 194, 209, 63, 211, 220, 122, 99, 68, 190, 82, 132, 158, 68, 55, 172, 216, 148, 109, 242, 157, 138, 49, 224, 168, 135, 157, 94, 69, 131, 17, 185, 60, 84, 100, 14, 212, 193, 16, 141, 147, 52, 125, 229, 127, 59, 54, 48, 85, 242, 225, 160, 35, 80, 183, 214, 8, 169, 33, 141, 99, 112, 26, 143, 123, 188, 158, 62, 129, 207 },
+                            PasswordHash = new byte[] { 179, 205, 62, 177, 100, 254, 164, 102, 181, 238, 144, 3, 175, 134, 236, 157, 167, 13, 50, 169, 129, 225, 96, 175, 13, 22, 226, 248, 124, 226, 52, 105, 0, 70, 224, 161, 143, 209, 97, 195, 4, 11, 235, 198, 102, 53, 142, 234, 125, 109, 186, 115, 35, 181, 161, 139, 225, 176, 181, 46, 84, 26, 20, 173 },
+                            PasswordSalt = new byte[] { 163, 250, 0, 225, 254, 112, 60, 159, 100, 232, 111, 39, 218, 240, 208, 26, 87, 192, 89, 25, 200, 175, 137, 4, 47, 33, 247, 121, 66, 204, 120, 174, 120, 18, 65, 66, 41, 48, 209, 246, 100, 244, 218, 114, 98, 91, 31, 62, 167, 192, 40, 151, 167, 38, 64, 34, 96, 141, 14, 228, 116, 171, 155, 235, 152, 227, 133, 204, 208, 107, 252, 243, 163, 199, 250, 46, 122, 206, 218, 47, 233, 143, 89, 139, 232, 116, 184, 33, 99, 233, 163, 80, 28, 107, 195, 186, 96, 230, 202, 238, 18, 220, 147, 188, 213, 149, 231, 192, 198, 191, 213, 41, 195, 210, 199, 253, 127, 144, 126, 130, 253, 80, 9, 31, 225, 13, 67, 214 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student7"
@@ -1474,8 +2394,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 2,
                             IsDeleted = false,
                             LastName = "Hung",
-                            PasswordHash = new byte[] { 204, 231, 209, 165, 255, 254, 209, 31, 244, 236, 34, 192, 21, 38, 130, 196, 202, 7, 174, 161, 50, 47, 1, 69, 137, 111, 9, 165, 82, 139, 81, 34, 54, 183, 108, 130, 170, 176, 104, 150, 86, 84, 1, 231, 23, 112, 106, 172, 123, 241, 144, 130, 41, 163, 138, 100, 178, 210, 192, 152, 18, 163, 78, 137 },
-                            PasswordSalt = new byte[] { 88, 33, 235, 160, 148, 114, 14, 20, 62, 18, 7, 146, 141, 122, 87, 31, 96, 108, 142, 184, 40, 198, 168, 124, 57, 195, 19, 154, 197, 49, 76, 14, 41, 52, 41, 208, 105, 197, 127, 145, 107, 236, 235, 145, 21, 7, 136, 230, 129, 177, 44, 77, 159, 125, 72, 252, 35, 226, 81, 68, 19, 84, 153, 232, 180, 235, 27, 134, 50, 179, 237, 16, 212, 73, 205, 212, 159, 166, 71, 235, 240, 2, 26, 115, 168, 252, 40, 174, 48, 126, 29, 46, 21, 11, 168, 80, 138, 219, 248, 221, 80, 233, 11, 122, 233, 147, 238, 234, 13, 232, 107, 248, 249, 62, 198, 86, 55, 113, 184, 241, 154, 163, 220, 176, 94, 180, 222, 198 },
+                            PasswordHash = new byte[] { 104, 129, 96, 130, 132, 50, 227, 87, 57, 121, 168, 107, 44, 180, 230, 49, 183, 215, 143, 104, 72, 75, 147, 109, 5, 113, 160, 217, 224, 0, 52, 134, 171, 202, 157, 60, 198, 231, 205, 105, 27, 170, 152, 74, 180, 29, 181, 26, 196, 245, 212, 179, 186, 54, 185, 151, 3, 2, 129, 52, 183, 73, 29, 42 },
+                            PasswordSalt = new byte[] { 202, 208, 38, 170, 92, 105, 188, 245, 109, 153, 224, 112, 50, 251, 217, 57, 225, 42, 69, 83, 127, 146, 53, 255, 217, 172, 186, 194, 26, 173, 142, 215, 238, 235, 187, 253, 149, 171, 56, 88, 85, 64, 76, 67, 251, 74, 12, 241, 120, 141, 221, 165, 183, 205, 156, 80, 221, 86, 253, 160, 200, 157, 30, 69, 155, 46, 145, 166, 90, 156, 36, 243, 23, 110, 254, 207, 142, 247, 249, 174, 197, 141, 62, 84, 177, 238, 118, 84, 84, 75, 133, 78, 161, 213, 36, 245, 131, 187, 33, 37, 137, 251, 253, 57, 86, 88, 163, 200, 143, 88, 20, 14, 218, 17, 136, 246, 217, 214, 156, 199, 110, 85, 158, 198, 182, 122, 225, 85 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student8"
@@ -1489,8 +2409,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Lac",
-                            PasswordHash = new byte[] { 168, 29, 241, 146, 217, 27, 217, 54, 26, 202, 68, 233, 36, 187, 93, 231, 248, 124, 251, 20, 60, 7, 105, 141, 60, 17, 63, 22, 192, 59, 37, 119, 164, 186, 3, 206, 157, 105, 166, 37, 97, 113, 216, 34, 227, 253, 48, 178, 147, 149, 209, 198, 67, 107, 163, 236, 69, 41, 6, 130, 41, 5, 209, 196 },
-                            PasswordSalt = new byte[] { 10, 141, 10, 115, 165, 131, 2, 98, 64, 8, 19, 167, 65, 76, 129, 98, 152, 221, 190, 124, 234, 27, 89, 115, 140, 44, 75, 139, 220, 159, 232, 23, 190, 93, 63, 82, 62, 20, 57, 27, 137, 17, 27, 133, 156, 175, 143, 137, 56, 123, 193, 101, 235, 116, 252, 202, 104, 84, 164, 166, 121, 183, 203, 162, 208, 44, 60, 250, 201, 140, 26, 65, 192, 146, 18, 226, 220, 112, 27, 105, 73, 148, 246, 143, 69, 13, 138, 197, 224, 205, 231, 136, 233, 160, 48, 198, 87, 164, 33, 5, 28, 180, 187, 232, 65, 250, 77, 182, 166, 213, 211, 10, 11, 80, 152, 187, 158, 99, 134, 4, 205, 209, 88, 112, 120, 204, 253, 172 },
+                            PasswordHash = new byte[] { 26, 11, 154, 202, 18, 171, 3, 37, 134, 9, 62, 194, 207, 168, 52, 108, 143, 241, 57, 78, 101, 118, 228, 98, 27, 107, 38, 252, 230, 168, 156, 149, 149, 28, 151, 222, 246, 183, 209, 255, 123, 62, 130, 84, 53, 145, 245, 217, 3, 67, 78, 175, 198, 44, 101, 164, 117, 208, 82, 135, 134, 23, 178, 15 },
+                            PasswordSalt = new byte[] { 17, 61, 173, 197, 41, 146, 8, 65, 2, 194, 119, 120, 116, 136, 81, 190, 34, 21, 27, 126, 29, 210, 131, 51, 165, 211, 187, 38, 67, 165, 43, 39, 194, 28, 107, 57, 101, 142, 225, 4, 97, 71, 28, 176, 60, 145, 173, 84, 129, 186, 44, 141, 38, 56, 43, 80, 188, 17, 19, 250, 12, 187, 159, 96, 222, 59, 40, 215, 40, 26, 230, 202, 64, 147, 48, 242, 82, 237, 176, 55, 34, 67, 227, 0, 176, 23, 89, 49, 24, 231, 249, 56, 93, 224, 203, 242, 197, 10, 228, 40, 90, 127, 83, 182, 149, 154, 210, 113, 84, 40, 171, 224, 227, 202, 252, 71, 171, 91, 63, 186, 219, 138, 162, 160, 60, 243, 159, 169 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student9"
@@ -1504,8 +2424,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 9,
                             IsDeleted = false,
                             LastName = "Hong",
-                            PasswordHash = new byte[] { 140, 240, 165, 77, 75, 216, 86, 13, 13, 221, 251, 45, 219, 98, 121, 210, 51, 106, 84, 107, 242, 19, 212, 186, 101, 2, 88, 72, 198, 197, 27, 39, 15, 63, 34, 180, 111, 198, 95, 150, 198, 203, 102, 17, 249, 138, 11, 10, 134, 227, 172, 178, 143, 239, 115, 53, 47, 132, 84, 76, 55, 207, 108, 86 },
-                            PasswordSalt = new byte[] { 40, 66, 121, 205, 84, 195, 176, 79, 251, 81, 173, 145, 63, 132, 188, 125, 40, 134, 233, 77, 169, 245, 57, 165, 193, 216, 213, 127, 171, 247, 43, 101, 137, 202, 182, 178, 198, 119, 130, 200, 247, 173, 43, 181, 123, 163, 109, 169, 157, 134, 209, 129, 122, 13, 175, 240, 137, 146, 85, 53, 92, 19, 128, 108, 214, 28, 222, 185, 220, 215, 15, 34, 232, 85, 9, 14, 105, 232, 76, 31, 184, 185, 75, 181, 48, 216, 160, 51, 115, 239, 84, 67, 183, 59, 86, 90, 153, 206, 110, 67, 52, 209, 107, 194, 84, 193, 131, 100, 68, 123, 244, 82, 195, 102, 93, 221, 219, 193, 22, 2, 117, 107, 217, 143, 75, 16, 65, 30 },
+                            PasswordHash = new byte[] { 213, 187, 239, 229, 86, 91, 237, 120, 122, 179, 157, 72, 206, 91, 140, 123, 128, 102, 117, 152, 144, 228, 244, 9, 212, 158, 231, 100, 7, 93, 18, 217, 135, 74, 251, 177, 209, 56, 249, 195, 158, 39, 11, 22, 252, 143, 43, 160, 84, 214, 154, 226, 203, 42, 45, 117, 194, 6, 195, 205, 8, 173, 109, 253 },
+                            PasswordSalt = new byte[] { 8, 152, 88, 154, 23, 79, 148, 202, 139, 114, 184, 168, 47, 242, 122, 128, 207, 111, 72, 196, 200, 129, 239, 104, 233, 147, 196, 199, 191, 173, 239, 18, 216, 100, 128, 61, 41, 34, 241, 34, 122, 118, 176, 183, 239, 40, 36, 222, 235, 121, 240, 48, 47, 189, 247, 186, 49, 66, 126, 91, 226, 30, 150, 206, 91, 243, 115, 101, 173, 144, 53, 19, 51, 90, 171, 252, 215, 134, 155, 170, 156, 140, 244, 121, 100, 181, 79, 144, 134, 226, 53, 91, 91, 246, 156, 172, 126, 172, 142, 234, 173, 238, 208, 77, 165, 222, 52, 29, 226, 158, 91, 210, 37, 50, 246, 242, 3, 77, 189, 173, 209, 176, 90, 120, 218, 100, 32, 97 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student10"
@@ -1519,8 +2439,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 10,
                             IsDeleted = false,
                             LastName = "Hong",
-                            PasswordHash = new byte[] { 72, 240, 230, 51, 36, 51, 38, 158, 243, 135, 127, 15, 136, 61, 55, 229, 209, 223, 31, 127, 29, 127, 204, 63, 100, 222, 182, 52, 152, 13, 211, 136, 80, 1, 151, 11, 76, 11, 18, 106, 194, 67, 169, 152, 221, 62, 66, 166, 165, 42, 147, 48, 5, 235, 53, 188, 75, 117, 244, 29, 227, 198, 196, 87 },
-                            PasswordSalt = new byte[] { 211, 151, 55, 207, 192, 198, 244, 102, 216, 123, 44, 208, 115, 150, 132, 208, 168, 159, 58, 126, 214, 159, 78, 121, 47, 37, 250, 174, 26, 112, 55, 183, 146, 70, 44, 182, 45, 94, 49, 140, 241, 85, 156, 110, 42, 191, 6, 39, 136, 61, 102, 119, 67, 215, 18, 40, 141, 252, 124, 86, 131, 28, 58, 212, 124, 67, 131, 23, 52, 186, 9, 231, 28, 126, 117, 151, 47, 217, 162, 200, 65, 24, 114, 96, 240, 76, 107, 107, 0, 137, 82, 96, 41, 128, 58, 17, 166, 94, 84, 134, 132, 32, 134, 197, 189, 181, 112, 198, 2, 25, 15, 84, 144, 72, 43, 199, 125, 27, 196, 249, 20, 118, 231, 206, 169, 95, 5, 60 },
+                            PasswordHash = new byte[] { 33, 191, 103, 224, 82, 9, 21, 187, 113, 114, 98, 139, 195, 255, 66, 226, 221, 149, 220, 0, 162, 210, 220, 140, 255, 66, 119, 198, 91, 220, 177, 72, 151, 1, 64, 138, 168, 114, 26, 168, 172, 107, 243, 97, 145, 158, 251, 125, 240, 137, 0, 17, 142, 178, 54, 248, 171, 181, 76, 125, 156, 149, 185, 141 },
+                            PasswordSalt = new byte[] { 181, 228, 155, 216, 2, 229, 28, 145, 233, 76, 200, 32, 7, 154, 229, 34, 35, 89, 170, 39, 81, 204, 44, 199, 31, 196, 183, 202, 233, 217, 187, 66, 62, 247, 80, 194, 165, 203, 127, 169, 13, 123, 91, 122, 96, 90, 83, 50, 168, 144, 149, 211, 115, 77, 252, 165, 195, 10, 119, 172, 129, 87, 0, 196, 31, 253, 179, 182, 158, 65, 196, 160, 146, 193, 227, 107, 18, 76, 243, 215, 111, 104, 152, 190, 203, 174, 79, 107, 38, 242, 238, 146, 139, 52, 185, 223, 65, 78, 215, 172, 104, 212, 109, 217, 199, 229, 13, 109, 17, 118, 159, 213, 176, 169, 205, 179, 226, 55, 41, 40, 190, 148, 135, 42, 135, 238, 83, 137 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student11"
@@ -1534,8 +2454,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 7,
                             IsDeleted = false,
                             LastName = "Chia",
-                            PasswordHash = new byte[] { 90, 213, 51, 61, 151, 94, 210, 136, 217, 192, 221, 254, 197, 22, 54, 236, 111, 205, 226, 68, 110, 227, 222, 2, 38, 45, 104, 87, 127, 228, 89, 147, 231, 1, 54, 192, 89, 168, 224, 106, 202, 123, 19, 1, 211, 183, 75, 196, 201, 253, 151, 182, 21, 207, 179, 19, 57, 169, 255, 41, 71, 83, 70, 154 },
-                            PasswordSalt = new byte[] { 63, 194, 181, 65, 229, 8, 10, 187, 50, 121, 89, 47, 225, 25, 60, 15, 156, 28, 180, 94, 156, 243, 76, 248, 79, 219, 43, 228, 16, 222, 122, 109, 157, 94, 240, 182, 192, 97, 64, 136, 186, 188, 198, 192, 26, 69, 191, 47, 77, 249, 151, 136, 172, 146, 36, 236, 78, 51, 206, 192, 168, 32, 104, 85, 139, 110, 247, 87, 141, 208, 127, 82, 171, 109, 218, 94, 181, 47, 156, 220, 36, 206, 81, 243, 217, 28, 223, 87, 72, 175, 228, 216, 205, 186, 47, 241, 226, 235, 171, 40, 206, 84, 235, 142, 250, 166, 96, 149, 179, 92, 189, 241, 89, 245, 164, 189, 4, 143, 26, 245, 167, 95, 136, 182, 115, 75, 59, 32 },
+                            PasswordHash = new byte[] { 133, 215, 240, 162, 6, 237, 162, 179, 119, 110, 150, 59, 210, 255, 33, 189, 79, 89, 185, 168, 72, 56, 191, 158, 121, 121, 177, 31, 59, 210, 5, 88, 112, 20, 118, 75, 117, 47, 203, 233, 51, 6, 12, 96, 97, 154, 55, 49, 14, 25, 161, 234, 147, 171, 62, 180, 92, 205, 24, 31, 32, 57, 248, 29 },
+                            PasswordSalt = new byte[] { 60, 71, 226, 185, 243, 210, 151, 212, 64, 216, 229, 33, 199, 11, 72, 210, 24, 74, 138, 10, 158, 184, 161, 57, 188, 231, 224, 49, 95, 225, 127, 183, 112, 90, 91, 46, 124, 97, 190, 76, 202, 244, 53, 136, 60, 146, 106, 59, 144, 26, 77, 164, 41, 157, 94, 9, 152, 139, 140, 40, 88, 38, 188, 12, 242, 108, 250, 194, 24, 137, 33, 168, 176, 218, 201, 168, 229, 146, 68, 254, 112, 154, 29, 192, 252, 42, 210, 2, 201, 184, 29, 200, 189, 56, 113, 135, 223, 13, 143, 23, 132, 222, 165, 240, 69, 227, 165, 134, 21, 181, 201, 23, 17, 151, 240, 100, 255, 108, 109, 129, 171, 224, 14, 179, 56, 18, 202, 45 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student12"
@@ -1549,8 +2469,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 8,
                             IsDeleted = false,
                             LastName = "Hoe",
-                            PasswordHash = new byte[] { 82, 121, 47, 137, 126, 213, 38, 76, 175, 26, 77, 177, 71, 186, 204, 99, 195, 81, 110, 176, 220, 93, 85, 193, 91, 109, 200, 134, 2, 209, 14, 146, 238, 176, 68, 72, 68, 67, 139, 125, 214, 220, 41, 146, 161, 111, 93, 111, 100, 16, 182, 42, 234, 13, 151, 232, 34, 102, 169, 215, 119, 51, 177, 25 },
-                            PasswordSalt = new byte[] { 44, 207, 149, 177, 88, 26, 108, 252, 233, 239, 104, 102, 32, 38, 208, 235, 181, 246, 173, 90, 113, 233, 173, 229, 210, 231, 209, 101, 171, 66, 233, 37, 203, 31, 127, 20, 173, 252, 172, 13, 249, 201, 204, 249, 165, 146, 86, 173, 49, 229, 96, 159, 243, 44, 79, 23, 104, 83, 135, 250, 38, 89, 90, 83, 21, 237, 235, 30, 184, 198, 49, 108, 70, 138, 213, 167, 62, 193, 34, 185, 115, 205, 60, 216, 147, 66, 162, 128, 5, 29, 242, 79, 231, 0, 118, 130, 14, 67, 170, 185, 15, 40, 17, 149, 3, 77, 139, 33, 181, 29, 213, 152, 93, 86, 53, 218, 180, 183, 188, 248, 140, 191, 230, 45, 187, 113, 174, 101 },
+                            PasswordHash = new byte[] { 0, 105, 89, 105, 112, 87, 11, 64, 233, 224, 23, 184, 52, 46, 93, 54, 69, 127, 239, 78, 116, 32, 231, 235, 85, 133, 142, 64, 103, 230, 234, 234, 97, 200, 89, 121, 149, 202, 234, 101, 252, 236, 184, 215, 17, 44, 101, 46, 47, 130, 77, 35, 65, 65, 75, 104, 49, 44, 213, 230, 4, 214, 219, 3 },
+                            PasswordSalt = new byte[] { 218, 165, 227, 108, 44, 149, 195, 98, 197, 201, 11, 230, 2, 206, 236, 106, 42, 90, 242, 114, 21, 35, 138, 148, 201, 1, 93, 126, 133, 159, 123, 202, 32, 49, 210, 18, 118, 242, 46, 5, 37, 140, 133, 199, 242, 76, 114, 7, 18, 126, 196, 98, 95, 123, 111, 63, 108, 226, 251, 185, 204, 141, 242, 203, 235, 182, 83, 108, 72, 120, 210, 139, 43, 196, 107, 50, 77, 159, 238, 109, 207, 158, 49, 162, 181, 156, 190, 27, 109, 245, 176, 66, 104, 235, 54, 73, 143, 89, 27, 216, 215, 134, 148, 146, 20, 184, 69, 115, 214, 142, 6, 74, 16, 62, 244, 20, 129, 218, 82, 249, 190, 32, 136, 127, 94, 82, 176, 215 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student13"
@@ -1564,8 +2484,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Lee",
-                            PasswordHash = new byte[] { 104, 181, 226, 152, 129, 170, 69, 190, 181, 249, 191, 132, 64, 240, 89, 4, 109, 238, 188, 212, 228, 20, 212, 144, 54, 81, 89, 210, 121, 233, 143, 250, 227, 216, 85, 108, 205, 170, 79, 148, 226, 127, 97, 97, 15, 158, 4, 144, 105, 27, 118, 194, 229, 141, 161, 1, 16, 235, 48, 64, 190, 193, 122, 165 },
-                            PasswordSalt = new byte[] { 131, 192, 118, 159, 19, 98, 229, 228, 176, 196, 233, 237, 34, 30, 164, 25, 122, 15, 12, 156, 83, 142, 114, 229, 144, 236, 56, 149, 23, 47, 129, 232, 22, 158, 172, 3, 42, 58, 70, 98, 142, 172, 244, 201, 183, 68, 199, 104, 168, 146, 75, 201, 234, 91, 126, 245, 21, 175, 240, 247, 151, 42, 34, 122, 55, 240, 228, 3, 231, 192, 2, 119, 227, 218, 205, 69, 123, 36, 165, 173, 140, 206, 80, 163, 11, 233, 141, 151, 175, 43, 38, 33, 7, 1, 4, 172, 251, 206, 141, 112, 61, 110, 162, 176, 176, 98, 231, 23, 138, 36, 181, 187, 61, 253, 71, 149, 155, 176, 174, 124, 41, 103, 181, 166, 145, 101, 42, 118 },
+                            PasswordHash = new byte[] { 237, 174, 93, 51, 54, 86, 216, 98, 232, 69, 198, 126, 192, 99, 151, 156, 149, 17, 184, 79, 76, 135, 36, 143, 211, 157, 21, 242, 229, 131, 67, 32, 101, 35, 68, 188, 40, 252, 232, 229, 188, 126, 137, 29, 26, 113, 98, 255, 113, 205, 221, 127, 136, 190, 216, 97, 212, 137, 11, 137, 27, 31, 236, 222 },
+                            PasswordSalt = new byte[] { 214, 24, 108, 226, 154, 104, 56, 62, 101, 221, 158, 124, 94, 238, 195, 73, 103, 132, 85, 51, 208, 87, 15, 195, 204, 68, 165, 30, 90, 146, 132, 179, 75, 16, 114, 250, 106, 134, 56, 56, 18, 154, 242, 105, 20, 13, 179, 78, 49, 168, 44, 158, 18, 95, 187, 204, 246, 229, 111, 108, 35, 151, 244, 208, 184, 146, 34, 74, 58, 241, 18, 171, 253, 162, 57, 96, 0, 52, 87, 214, 41, 5, 240, 173, 165, 98, 166, 35, 119, 231, 57, 118, 131, 72, 215, 75, 228, 138, 217, 198, 122, 49, 203, 196, 15, 139, 252, 176, 119, 249, 22, 47, 81, 41, 51, 230, 51, 207, 243, 85, 101, 234, 161, 48, 159, 180, 187, 211 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student14"
@@ -1579,8 +2499,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Quan",
-                            PasswordHash = new byte[] { 88, 99, 73, 115, 151, 252, 80, 34, 48, 174, 161, 47, 226, 36, 40, 52, 203, 160, 155, 191, 28, 243, 167, 41, 9, 49, 145, 32, 230, 36, 105, 75, 228, 158, 186, 162, 194, 13, 108, 179, 162, 119, 238, 224, 25, 96, 90, 200, 144, 252, 132, 179, 177, 23, 212, 159, 167, 243, 218, 105, 255, 206, 212, 68 },
-                            PasswordSalt = new byte[] { 72, 50, 226, 217, 12, 43, 109, 213, 131, 50, 163, 19, 73, 48, 149, 204, 119, 252, 12, 191, 242, 5, 196, 44, 113, 58, 212, 167, 46, 24, 125, 86, 71, 129, 253, 74, 141, 232, 61, 198, 240, 222, 15, 112, 30, 63, 168, 1, 84, 129, 214, 128, 177, 162, 177, 214, 231, 249, 0, 223, 98, 248, 87, 68, 58, 87, 109, 115, 239, 113, 233, 216, 51, 196, 68, 30, 168, 54, 124, 24, 64, 198, 242, 232, 215, 35, 234, 61, 57, 231, 34, 224, 206, 59, 204, 130, 189, 111, 17, 82, 230, 99, 179, 93, 147, 119, 99, 27, 213, 141, 177, 64, 70, 236, 253, 18, 247, 187, 135, 133, 172, 224, 214, 47, 57, 179, 35, 218 },
+                            PasswordHash = new byte[] { 8, 126, 72, 229, 91, 180, 62, 79, 245, 121, 145, 133, 219, 127, 144, 31, 58, 231, 152, 83, 188, 38, 205, 120, 140, 3, 116, 158, 211, 42, 25, 157, 243, 142, 181, 135, 189, 102, 27, 244, 31, 39, 214, 232, 40, 113, 224, 185, 144, 194, 129, 185, 119, 117, 100, 244, 47, 10, 168, 245, 1, 161, 193, 205 },
+                            PasswordSalt = new byte[] { 27, 90, 230, 17, 120, 20, 164, 0, 78, 240, 224, 176, 38, 3, 143, 73, 62, 212, 91, 42, 122, 196, 98, 31, 8, 245, 46, 206, 32, 177, 167, 89, 193, 239, 138, 245, 136, 151, 193, 125, 153, 107, 71, 34, 109, 21, 217, 109, 59, 59, 218, 150, 99, 204, 173, 187, 22, 138, 242, 116, 114, 213, 108, 37, 2, 167, 58, 78, 118, 157, 96, 176, 172, 76, 106, 3, 175, 17, 73, 176, 238, 38, 200, 151, 88, 80, 112, 1, 28, 136, 128, 187, 126, 190, 119, 165, 180, 188, 35, 63, 98, 237, 207, 57, 123, 171, 222, 67, 148, 205, 139, 233, 211, 44, 227, 138, 147, 46, 112, 191, 201, 3, 193, 31, 77, 106, 6, 64 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student15"
@@ -1594,8 +2514,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 5,
                             IsDeleted = false,
                             LastName = "Trong",
-                            PasswordHash = new byte[] { 254, 160, 161, 169, 118, 237, 129, 182, 51, 154, 143, 109, 108, 46, 147, 52, 94, 147, 59, 77, 249, 165, 122, 24, 234, 226, 186, 181, 162, 185, 196, 240, 126, 244, 154, 179, 156, 232, 89, 146, 164, 235, 145, 127, 93, 47, 87, 158, 53, 233, 90, 151, 220, 39, 70, 124, 223, 103, 242, 42, 197, 41, 187, 211 },
-                            PasswordSalt = new byte[] { 19, 228, 170, 150, 12, 87, 165, 37, 199, 65, 247, 17, 109, 219, 217, 196, 201, 135, 23, 70, 124, 104, 252, 181, 20, 84, 164, 83, 246, 55, 142, 180, 147, 113, 188, 24, 196, 61, 61, 94, 210, 109, 115, 153, 22, 29, 123, 20, 42, 195, 249, 194, 105, 80, 174, 158, 164, 90, 201, 76, 206, 11, 159, 25, 196, 72, 116, 0, 211, 154, 175, 243, 37, 128, 4, 186, 109, 146, 205, 91, 114, 240, 170, 54, 65, 139, 108, 228, 105, 147, 22, 217, 116, 246, 14, 117, 110, 217, 244, 245, 231, 8, 242, 4, 27, 19, 90, 154, 238, 127, 0, 131, 245, 202, 177, 99, 53, 26, 108, 53, 186, 1, 199, 229, 193, 70, 29, 148 },
+                            PasswordHash = new byte[] { 131, 194, 228, 205, 168, 184, 45, 234, 242, 194, 133, 111, 101, 192, 202, 74, 249, 251, 49, 65, 119, 246, 88, 26, 162, 63, 112, 35, 90, 161, 254, 49, 118, 115, 105, 19, 189, 156, 134, 194, 242, 207, 150, 14, 210, 181, 24, 189, 114, 79, 216, 198, 79, 154, 166, 138, 85, 222, 43, 4, 61, 245, 222, 77 },
+                            PasswordSalt = new byte[] { 118, 111, 105, 78, 18, 39, 111, 231, 82, 93, 174, 148, 98, 209, 143, 102, 21, 232, 132, 151, 172, 96, 239, 65, 245, 179, 221, 213, 127, 242, 189, 209, 160, 133, 34, 4, 126, 11, 89, 42, 13, 29, 150, 61, 177, 62, 104, 81, 250, 113, 42, 133, 80, 228, 70, 20, 115, 242, 139, 237, 99, 74, 17, 230, 189, 236, 60, 81, 60, 86, 37, 93, 185, 92, 69, 173, 66, 230, 102, 222, 211, 1, 254, 71, 190, 107, 167, 75, 39, 23, 236, 21, 184, 161, 207, 32, 73, 198, 183, 152, 139, 229, 120, 115, 151, 251, 146, 138, 63, 252, 102, 222, 231, 120, 255, 19, 239, 9, 60, 9, 155, 74, 115, 238, 12, 54, 50, 63 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student16"
@@ -1609,8 +2529,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Trong",
-                            PasswordHash = new byte[] { 134, 109, 20, 123, 225, 123, 198, 244, 32, 134, 22, 46, 36, 62, 16, 76, 254, 19, 75, 249, 119, 169, 187, 156, 97, 101, 210, 112, 140, 172, 94, 8, 31, 245, 23, 4, 157, 140, 165, 64, 147, 180, 80, 177, 165, 2, 18, 191, 36, 8, 11, 108, 33, 159, 180, 97, 120, 168, 7, 139, 54, 169, 2, 21 },
-                            PasswordSalt = new byte[] { 33, 217, 129, 1, 224, 21, 190, 18, 220, 101, 154, 101, 229, 135, 100, 174, 199, 28, 211, 245, 236, 65, 147, 122, 121, 100, 49, 5, 125, 8, 198, 41, 234, 87, 75, 106, 130, 107, 158, 203, 31, 237, 221, 63, 78, 147, 221, 53, 253, 84, 67, 210, 108, 126, 137, 62, 251, 13, 140, 71, 150, 73, 236, 205, 92, 186, 51, 153, 248, 30, 189, 137, 58, 192, 100, 55, 72, 75, 222, 119, 183, 92, 64, 9, 48, 122, 197, 242, 141, 75, 122, 146, 46, 160, 23, 144, 6, 125, 186, 198, 239, 145, 16, 197, 37, 33, 5, 13, 176, 216, 120, 223, 31, 228, 87, 36, 118, 77, 216, 176, 102, 116, 134, 176, 12, 112, 187, 66 },
+                            PasswordHash = new byte[] { 117, 151, 224, 132, 227, 60, 221, 45, 43, 154, 177, 89, 16, 52, 134, 238, 142, 212, 193, 218, 221, 9, 186, 100, 197, 59, 183, 217, 201, 186, 6, 170, 150, 133, 193, 161, 215, 105, 89, 176, 247, 76, 52, 89, 207, 62, 28, 161, 215, 165, 131, 230, 189, 159, 152, 180, 67, 165, 153, 96, 50, 139, 38, 214 },
+                            PasswordSalt = new byte[] { 11, 35, 240, 206, 144, 65, 101, 16, 94, 98, 150, 179, 85, 123, 60, 70, 123, 81, 147, 145, 91, 240, 243, 73, 114, 125, 122, 3, 244, 112, 116, 86, 76, 121, 215, 84, 33, 232, 237, 208, 206, 1, 58, 111, 208, 138, 29, 126, 253, 203, 23, 250, 110, 22, 250, 182, 60, 184, 207, 140, 56, 212, 4, 202, 31, 46, 30, 199, 57, 71, 168, 99, 77, 102, 115, 136, 106, 16, 48, 153, 80, 203, 54, 68, 2, 159, 71, 129, 44, 165, 143, 191, 233, 188, 186, 65, 165, 129, 62, 25, 31, 91, 211, 208, 27, 12, 24, 123, 126, 57, 129, 58, 50, 10, 226, 219, 191, 125, 159, 160, 14, 120, 119, 146, 240, 192, 87, 248 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student17"
@@ -1624,8 +2544,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 10,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 209, 45, 143, 202, 116, 130, 16, 171, 160, 66, 135, 0, 237, 167, 196, 152, 91, 170, 94, 213, 192, 38, 108, 161, 100, 85, 79, 227, 229, 154, 162, 212, 193, 51, 141, 138, 201, 197, 81, 56, 43, 169, 172, 91, 97, 78, 189, 86, 23, 32, 209, 65, 51, 171, 244, 193, 82, 22, 35, 15, 243, 78, 109, 90 },
-                            PasswordSalt = new byte[] { 83, 41, 177, 255, 91, 156, 57, 108, 158, 44, 186, 36, 195, 242, 109, 250, 148, 144, 44, 71, 149, 224, 132, 80, 172, 26, 241, 245, 111, 23, 168, 244, 92, 224, 123, 8, 254, 78, 103, 78, 22, 149, 171, 70, 59, 87, 37, 250, 151, 246, 203, 109, 71, 178, 195, 170, 188, 100, 126, 165, 169, 35, 130, 27, 137, 236, 199, 87, 205, 64, 13, 64, 47, 1, 81, 78, 135, 66, 9, 166, 138, 32, 89, 199, 33, 28, 111, 152, 15, 133, 32, 157, 229, 142, 124, 149, 207, 112, 211, 52, 213, 140, 44, 240, 73, 44, 200, 33, 255, 249, 88, 147, 112, 249, 112, 221, 131, 107, 195, 169, 46, 8, 5, 44, 199, 159, 83, 192 },
+                            PasswordHash = new byte[] { 200, 70, 8, 85, 139, 122, 90, 91, 231, 184, 131, 195, 64, 88, 183, 23, 135, 121, 181, 121, 114, 122, 160, 176, 97, 13, 248, 59, 11, 163, 73, 23, 134, 73, 191, 11, 185, 159, 175, 108, 180, 175, 169, 126, 132, 36, 189, 127, 153, 84, 44, 179, 185, 137, 112, 130, 6, 141, 178, 203, 136, 237, 169, 24 },
+                            PasswordSalt = new byte[] { 165, 63, 13, 9, 136, 56, 195, 164, 75, 154, 9, 71, 148, 250, 79, 193, 10, 107, 220, 97, 133, 122, 144, 73, 155, 182, 32, 126, 2, 118, 86, 20, 71, 59, 28, 35, 134, 169, 245, 102, 47, 41, 240, 53, 170, 225, 31, 227, 234, 37, 88, 179, 56, 195, 90, 180, 114, 88, 81, 62, 162, 0, 162, 106, 51, 57, 108, 59, 79, 82, 209, 104, 48, 36, 138, 170, 0, 65, 5, 104, 168, 175, 168, 112, 174, 165, 215, 16, 51, 154, 130, 232, 10, 52, 112, 64, 117, 8, 113, 190, 110, 233, 126, 214, 25, 234, 50, 36, 65, 110, 253, 17, 0, 17, 109, 138, 74, 63, 151, 207, 107, 54, 57, 161, 80, 33, 139, 235 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student18"
@@ -1639,8 +2559,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 2,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 253, 53, 176, 248, 131, 177, 152, 18, 80, 208, 124, 191, 183, 110, 41, 171, 140, 157, 48, 55, 238, 51, 40, 34, 17, 149, 230, 139, 196, 178, 183, 12, 84, 118, 6, 119, 159, 145, 220, 243, 32, 167, 56, 183, 105, 8, 174, 88, 166, 105, 227, 57, 203, 84, 216, 52, 153, 132, 224, 42, 71, 168, 132, 59 },
-                            PasswordSalt = new byte[] { 203, 213, 131, 118, 19, 236, 225, 211, 12, 54, 125, 174, 26, 34, 29, 238, 160, 185, 10, 116, 62, 120, 134, 134, 163, 147, 51, 247, 40, 136, 208, 77, 180, 102, 80, 112, 51, 184, 251, 184, 221, 227, 88, 239, 102, 7, 124, 112, 20, 238, 175, 168, 201, 14, 213, 218, 226, 151, 146, 255, 209, 239, 201, 201, 216, 109, 153, 123, 8, 120, 37, 6, 222, 76, 72, 143, 122, 84, 204, 80, 141, 80, 226, 125, 220, 213, 244, 254, 145, 205, 214, 80, 241, 195, 74, 143, 100, 55, 129, 198, 146, 251, 121, 40, 192, 59, 64, 147, 58, 100, 67, 62, 89, 65, 37, 154, 43, 195, 105, 163, 115, 142, 160, 154, 130, 29, 177, 212 },
+                            PasswordHash = new byte[] { 78, 13, 42, 194, 251, 113, 186, 200, 53, 22, 252, 253, 140, 251, 170, 121, 200, 38, 127, 66, 92, 197, 191, 14, 29, 86, 37, 14, 155, 32, 250, 248, 195, 8, 241, 93, 108, 175, 250, 184, 161, 139, 137, 13, 215, 7, 15, 240, 109, 197, 65, 121, 131, 195, 115, 170, 159, 0, 4, 53, 188, 1, 69, 188 },
+                            PasswordSalt = new byte[] { 66, 230, 95, 36, 81, 180, 49, 133, 133, 34, 111, 214, 11, 135, 182, 210, 144, 94, 20, 175, 238, 48, 193, 219, 15, 23, 83, 178, 220, 144, 32, 106, 173, 170, 93, 69, 81, 85, 164, 173, 169, 51, 65, 235, 25, 134, 25, 147, 31, 19, 12, 122, 38, 107, 177, 39, 3, 211, 234, 137, 22, 111, 66, 252, 21, 115, 100, 183, 188, 125, 243, 36, 141, 37, 37, 205, 32, 184, 85, 181, 79, 37, 47, 62, 57, 96, 135, 41, 97, 31, 158, 105, 148, 83, 117, 6, 28, 61, 251, 225, 55, 122, 236, 19, 179, 214, 33, 105, 141, 184, 91, 132, 189, 252, 197, 154, 179, 42, 202, 87, 183, 200, 239, 38, 4, 147, 17, 120 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student19"
@@ -1654,8 +2574,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 3,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 105, 63, 38, 16, 117, 219, 230, 240, 56, 31, 107, 149, 66, 4, 74, 32, 198, 167, 43, 228, 197, 70, 85, 38, 159, 35, 80, 139, 137, 83, 169, 118, 208, 194, 174, 44, 76, 165, 213, 136, 110, 74, 42, 216, 197, 50, 188, 231, 14, 67, 7, 189, 187, 159, 123, 3, 132, 81, 100, 228, 168, 183, 48, 163 },
-                            PasswordSalt = new byte[] { 39, 12, 55, 179, 161, 48, 187, 71, 2, 114, 82, 13, 192, 157, 233, 134, 3, 6, 93, 236, 200, 95, 237, 182, 119, 0, 117, 56, 228, 111, 232, 52, 231, 241, 19, 84, 109, 207, 114, 22, 38, 251, 119, 19, 247, 70, 71, 136, 236, 9, 88, 191, 35, 242, 226, 44, 14, 172, 5, 57, 56, 227, 120, 65, 150, 158, 174, 161, 150, 244, 204, 98, 153, 38, 90, 145, 204, 55, 56, 175, 159, 137, 101, 5, 81, 114, 167, 30, 25, 226, 63, 160, 10, 144, 251, 230, 128, 32, 238, 42, 57, 170, 213, 114, 5, 16, 136, 153, 84, 229, 136, 107, 83, 4, 96, 5, 196, 191, 18, 68, 84, 82, 23, 250, 172, 6, 58, 5 },
+                            PasswordHash = new byte[] { 35, 103, 206, 95, 16, 124, 5, 143, 210, 232, 253, 1, 120, 128, 110, 192, 7, 58, 150, 145, 213, 109, 177, 213, 7, 186, 76, 69, 26, 20, 104, 47, 226, 46, 227, 13, 1, 201, 183, 68, 220, 172, 193, 228, 252, 17, 150, 129, 244, 190, 252, 225, 182, 105, 168, 27, 98, 65, 16, 60, 31, 60, 147, 116 },
+                            PasswordSalt = new byte[] { 44, 9, 175, 169, 73, 254, 175, 80, 221, 249, 215, 143, 253, 29, 223, 254, 163, 79, 169, 178, 65, 125, 1, 5, 104, 209, 89, 128, 135, 119, 117, 246, 164, 97, 237, 53, 160, 105, 87, 163, 45, 136, 211, 174, 185, 193, 88, 129, 101, 99, 118, 249, 147, 42, 246, 53, 213, 6, 93, 113, 34, 137, 161, 218, 219, 98, 2, 53, 198, 114, 120, 80, 59, 141, 67, 38, 206, 118, 119, 117, 21, 221, 122, 126, 149, 29, 4, 239, 16, 7, 14, 7, 82, 181, 250, 141, 44, 103, 26, 109, 124, 24, 103, 82, 121, 63, 102, 223, 180, 228, 2, 93, 126, 181, 15, 232, 40, 119, 126, 159, 98, 240, 190, 218, 11, 11, 255, 191 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student20"
@@ -1669,8 +2589,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 4,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 32, 80, 200, 96, 7, 176, 57, 78, 116, 110, 26, 92, 97, 227, 247, 252, 117, 5, 182, 101, 230, 111, 107, 233, 214, 251, 251, 209, 133, 135, 200, 255, 171, 220, 238, 26, 239, 94, 150, 1, 162, 44, 0, 138, 30, 211, 63, 169, 75, 181, 242, 178, 211, 132, 54, 175, 56, 182, 91, 255, 133, 150, 225, 191 },
-                            PasswordSalt = new byte[] { 77, 214, 76, 41, 170, 163, 224, 255, 217, 30, 27, 164, 31, 78, 6, 210, 212, 128, 164, 46, 237, 34, 215, 224, 174, 115, 88, 35, 223, 255, 199, 188, 224, 151, 157, 100, 170, 4, 118, 22, 24, 11, 165, 179, 57, 209, 152, 150, 172, 251, 133, 195, 36, 173, 172, 35, 110, 154, 213, 107, 130, 67, 218, 103, 37, 140, 170, 32, 32, 218, 193, 62, 70, 89, 52, 206, 210, 237, 97, 98, 251, 64, 169, 103, 197, 255, 195, 230, 197, 129, 79, 193, 231, 96, 104, 129, 218, 143, 3, 166, 140, 79, 177, 249, 164, 82, 102, 190, 55, 64, 167, 144, 57, 208, 55, 116, 214, 3, 150, 150, 145, 65, 157, 184, 60, 144, 228, 142 },
+                            PasswordHash = new byte[] { 2, 99, 27, 31, 108, 8, 232, 15, 67, 69, 14, 9, 213, 204, 140, 24, 158, 187, 155, 224, 122, 226, 119, 162, 117, 210, 175, 6, 34, 68, 84, 0, 135, 221, 101, 21, 200, 154, 70, 135, 37, 176, 106, 195, 10, 34, 102, 0, 5, 179, 129, 55, 97, 211, 123, 15, 165, 255, 228, 251, 246, 46, 25, 60 },
+                            PasswordSalt = new byte[] { 244, 76, 130, 27, 43, 7, 104, 14, 109, 116, 142, 81, 189, 58, 111, 52, 20, 36, 49, 52, 23, 193, 99, 172, 29, 224, 149, 228, 170, 25, 42, 145, 203, 212, 152, 156, 220, 239, 245, 72, 130, 205, 187, 162, 70, 16, 236, 40, 128, 50, 207, 244, 143, 48, 18, 32, 22, 213, 168, 136, 109, 206, 201, 167, 228, 163, 49, 2, 225, 140, 89, 144, 9, 27, 187, 248, 58, 173, 227, 33, 71, 113, 109, 98, 53, 204, 235, 231, 129, 150, 170, 244, 230, 132, 74, 63, 1, 36, 11, 47, 86, 206, 125, 82, 177, 231, 174, 72, 20, 10, 56, 243, 213, 220, 239, 222, 162, 81, 98, 106, 134, 204, 238, 47, 61, 77, 124, 157 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student21"
@@ -1683,8 +2603,8 @@ namespace ApplicationContext.Migrations
                             FirstName = "admin",
                             IsDeleted = false,
                             LastName = "admin",
-                            PasswordHash = new byte[] { 179, 223, 46, 97, 143, 181, 53, 245, 130, 156, 103, 203, 218, 87, 53, 148, 225, 243, 142, 221, 37, 247, 185, 200, 70, 252, 54, 133, 175, 153, 244, 200, 44, 36, 89, 51, 71, 90, 68, 216, 163, 227, 88, 145, 241, 90, 233, 58, 69, 237, 11, 112, 138, 201, 245, 239, 110, 144, 251, 68, 223, 220, 244, 137 },
-                            PasswordSalt = new byte[] { 100, 30, 122, 187, 238, 178, 92, 77, 179, 200, 138, 112, 151, 50, 178, 243, 231, 106, 52, 14, 126, 16, 47, 166, 13, 233, 12, 68, 63, 109, 132, 106, 56, 76, 82, 34, 41, 251, 137, 136, 217, 218, 131, 236, 67, 48, 24, 98, 250, 144, 115, 68, 66, 158, 134, 70, 128, 117, 183, 117, 169, 49, 146, 29, 251, 6, 100, 30, 131, 132, 203, 88, 194, 38, 154, 23, 143, 99, 138, 245, 150, 45, 198, 166, 230, 44, 219, 236, 110, 224, 182, 11, 41, 158, 6, 192, 170, 96, 44, 212, 229, 65, 8, 220, 151, 182, 55, 37, 163, 18, 31, 95, 7, 19, 228, 25, 188, 107, 55, 167, 29, 173, 214, 216, 47, 255, 112, 87 },
+                            PasswordHash = new byte[] { 216, 196, 145, 239, 181, 47, 177, 255, 26, 103, 105, 78, 255, 37, 50, 35, 146, 15, 167, 169, 12, 202, 64, 201, 70, 115, 128, 164, 235, 84, 25, 136, 219, 17, 23, 193, 209, 1, 31, 85, 228, 161, 23, 147, 173, 230, 167, 106, 60, 105, 195, 179, 108, 231, 89, 150, 123, 222, 58, 165, 16, 42, 30, 80 },
+                            PasswordSalt = new byte[] { 149, 70, 137, 48, 59, 122, 92, 133, 96, 193, 98, 24, 42, 40, 128, 235, 151, 82, 171, 87, 210, 210, 108, 252, 164, 142, 217, 241, 168, 236, 173, 169, 56, 6, 111, 255, 234, 236, 189, 203, 14, 88, 11, 63, 252, 138, 86, 217, 107, 11, 170, 4, 109, 48, 156, 73, 12, 55, 11, 195, 127, 84, 197, 206, 213, 202, 151, 180, 129, 5, 179, 67, 208, 21, 3, 155, 84, 13, 52, 177, 53, 138, 19, 186, 85, 139, 47, 75, 133, 164, 156, 185, 177, 139, 45, 21, 207, 9, 214, 208, 186, 243, 64, 85, 83, 65, 72, 210, 110, 179, 168, 90, 202, 13, 143, 80, 80, 203, 200, 120, 52, 167, 83, 196, 195, 93, 49, 14 },
                             PhoneNumber = "1234567890",
                             Role = 0,
                             UserName = "admin"
@@ -1781,13 +2701,13 @@ namespace ApplicationContext.Migrations
             modelBuilder.Entity("Domain.Models.MBTI_ExamQuestion", b =>
                 {
                     b.HasOne("Domain.Models.MBTI_Exam", "MBTI_Exam")
-                        .WithMany("MBTI_ExamDetails")
+                        .WithMany("MBTI_ExamQuestions")
                         .HasForeignKey("ExamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Models.MBTI_Question", "MBTI_Question")
-                        .WithMany("MBTI_ExamDetails")
+                        .WithMany("MBTI_ExamQuestions")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1936,7 +2856,7 @@ namespace ApplicationContext.Migrations
 
             modelBuilder.Entity("Domain.Models.MBTI_Exam", b =>
                 {
-                    b.Navigation("MBTI_ExamDetails");
+                    b.Navigation("MBTI_ExamQuestions");
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_ExamQuestion", b =>
@@ -1946,7 +2866,7 @@ namespace ApplicationContext.Migrations
 
             modelBuilder.Entity("Domain.Models.MBTI_Question", b =>
                 {
-                    b.Navigation("MBTI_ExamDetails");
+                    b.Navigation("MBTI_ExamQuestions");
                 });
 
             modelBuilder.Entity("Domain.Models.MBTI_UserRecord", b =>

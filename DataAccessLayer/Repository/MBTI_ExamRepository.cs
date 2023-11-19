@@ -15,7 +15,7 @@ namespace DataAccessLayer.Repository
         {
             IQueryable<MBTI_Exam> query = _db;
             return await query
-                    .Include(x => x.MBTI_ExamDetails)
+                    .Include(x => x.MBTI_ExamQuestions)
                         .ThenInclude(x => x.MBTI_Question)
                     .ToListAsync();
         }

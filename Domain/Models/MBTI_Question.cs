@@ -19,6 +19,6 @@ namespace Domain.Models
         public Guid? CreatedBy { get; set; }
 
         //property navigation 
-        public List<MBTI_ExamQuestion> MBTI_ExamDetails { get; set; }
+        public List<MBTI_ExamQuestion> MBTI_ExamQuestions { get; set; }
     }
 }

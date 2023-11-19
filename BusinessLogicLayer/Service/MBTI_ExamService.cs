@@ -44,7 +44,7 @@ namespace BusinessLogicLayer.Service
                 Note = newExam.Note ?? "",
                 CreatedBy = _claimsService.GetUserIdInRequest(),
                 NumberOfQuestion = newExam.QuestionIds.Count(),
-                MBTI_ExamDetails = examDetails
+                MBTI_ExamQuestions = examDetails
             };
 
             await _uniOfWork.MBTI_Exams.AddAsync(exam);
