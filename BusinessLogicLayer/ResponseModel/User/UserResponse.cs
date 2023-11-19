@@ -1,4 +1,5 @@
-﻿using Domain.Enums;
+﻿using BusinessLogicLayer.ResponseModel.Attempt;
+using Domain.Enums;
 using System.Text.Json.Serialization;
 
 namespace BusinessLogicLayer.ResponseModel.User
@@ -12,5 +13,9 @@ namespace BusinessLogicLayer.ResponseModel.User
         public string? Email { get; set; }
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public UserRole Role { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public List<AttemptResponse> Attempts { get; set; }
+        public int? HighestScore { get; set; }
+        public string? Address { get; set; }
     }
 }

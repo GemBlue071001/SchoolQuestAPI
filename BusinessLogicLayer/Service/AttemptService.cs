@@ -67,18 +67,36 @@ namespace BusinessLogicLayer.Service
             await _unitOfWork.Attempts.AddAsync(attempt);
             await _unitOfWork.SaveChangeAsync();
 
+            var user = await _unitOfWork.Users.GetAsync(x => x.Id == tokenUserId);
+            var highestScore = await _unitOfWork.Attempts.GetHighestScore(tokenUserId);
+            user.HighestScore = highestScore;
+
             return response.SetOk();
         }
 
-        public async Task<ApiResponse> GetAttemptPagingAsync(int pageIndex, int pageSize, string search)
+        public async Task<ApiResponse> GetStudentAttemptPagingAsync(int pageIndex, int pageSize, string search)
         {
             var res = new ApiResponse();
 
             var tokenUserId = GetUserIdInRequest();
-            var attempts = await _unitOfWork.Attempts.GetAttemptsPagingAsync(pageIndex, pageSize, search, tokenUserId);
+            var attempts = await _unitOfWork.Attempts.GetStudentAttemptsPagingAsync(pageIndex, pageSize, search, tokenUserId);
 
             var listOfAttempts = _mapper.Map<List<AttemptResponse>>(attempts);
-            var totalOfAttempt = await _unitOfWork.Attempts.GetAttemptCountAsync(search, tokenUserId);
+            var totalOfAttempt = await _unitOfWork.Attempts.GetStudentAttemptCountAsync(search, tokenUserId);
+
+            var attemptsResponse = new Pagination<AttemptResponse>(listOfAttempts, totalOfAttempt, pageIndex, pageSize);
+
+            return res.SetOk(attemptsResponse);
+        }
+
+        public async Task<ApiResponse> GetAllAttemptPagingAsync(int pageIndex, int pageSize, string search)
+        {
+            var res = new ApiResponse();
+
+            var attempts = await _unitOfWork.Attempts.GetAllAttemptsPagingAsync(pageIndex, pageSize, search);
+
+            var listOfAttempts = _mapper.Map<List<AttemptResponse>>(attempts);
+            var totalOfAttempt = await _unitOfWork.Attempts.GetAllAttemptCountAsync(search);
 
             var attemptsResponse = new Pagination<AttemptResponse>(listOfAttempts, totalOfAttempt, pageIndex, pageSize);
 

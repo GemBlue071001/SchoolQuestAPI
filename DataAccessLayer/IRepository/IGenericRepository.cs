@@ -14,5 +14,6 @@ namespace DataAccessLayer.IRepository
         Task RemoveByIdAsync(object id);
         Task<int> CountAsync();
         Task AddRangeAsync(List<T> entities);
+        Task<List<T>> GetAllAsync();
     }
 }

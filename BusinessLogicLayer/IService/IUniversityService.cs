@@ -6,6 +6,6 @@ namespace BusinessLogicLayer.IService
     public interface IUniversityService
     {
         Task<ApiResponse> AddUniversity(NewUniversityRequest newUniversity);
-        Task<ApiResponse> GetUniversitíeByDepartment(Guid departmentId);
+        Task<ApiResponse> GetUniversities();
     }
 }

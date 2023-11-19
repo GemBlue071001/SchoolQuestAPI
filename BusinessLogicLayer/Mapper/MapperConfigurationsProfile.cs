@@ -3,19 +3,23 @@ using BusinessLogicLayer.RequestModel.Attemp;
 using BusinessLogicLayer.RequestModel.AttempDetail;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
+using BusinessLogicLayer.RequestModel.MBTI_Question;
+using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.RequestModel.Topic;
 using BusinessLogicLayer.RequestModel.University;
+using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.Attempt;
 using BusinessLogicLayer.ResponseModel.Department;
 using BusinessLogicLayer.ResponseModel.Examination;
 using BusinessLogicLayer.ResponseModel.MBTI;
 using BusinessLogicLayer.ResponseModel.MBTI_Department;
+using BusinessLogicLayer.ResponseModel.MBTI_Question;
+using BusinessLogicLayer.ResponseModel.MBTIExamResponse;
 using BusinessLogicLayer.ResponseModel.Question;
 using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.Topic;
 using BusinessLogicLayer.ResponseModel.University;
-using BusinessLogicLayer.ResponseModel.UniversityDepartment;
 using BusinessLogicLayer.ResponseModel.User;
 using Domain.Models;
 
@@ -47,6 +51,7 @@ namespace BusinessLogicLayer.Mapper
 
             #region User
             CreateMap<User, UserResponse>().ReverseMap();
+            CreateMap<User, UpdateProfileRequest>().ReverseMap();
             #endregion
 
             #region Question
@@ -67,7 +72,9 @@ namespace BusinessLogicLayer.Mapper
 
             #region Attemp
             CreateMap<Attempt, NewAttemptRequest>().ReverseMap();
-            CreateMap<Attempt, AttemptResponse>().ReverseMap();
+            CreateMap<Attempt, AttemptResponse>().ForMember(
+                            dest => dest.DoneBy,
+                            opt => opt.MapFrom(src => src.User.UserName + "/"+ src.User.FirstName+ " "+ src.User.LastName)).ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             #endregion
@@ -93,6 +100,22 @@ namespace BusinessLogicLayer.Mapper
             #region University
             CreateMap<University, UniversityResponse>().ReverseMap();
             CreateMap<UniversityDepartment, UniversityDepartmentResponse>().ReverseMap();
+            #endregion
+
+            #region MBTI_Question
+            CreateMap<MBTI_Question, MBTI_QuestionRequest>().ReverseMap();
+            CreateMap<MBTI_Question, MBTI_QuestionResponse>().ReverseMap();
+            CreateMap<MBTI_QuestionResponse, MBTI_Question>().ReverseMap();
+            #endregion
+
+            #region MBTI_Exam
+            CreateMap<MBTI_Exam, MBTIExamResponse>().ReverseMap();
+            CreateMap<MBTI_ExamQuestion, MBTI_ExamDetailResponse>().ReverseMap();
+            #endregion
+
+            #region MBTI_UserRecord
+            CreateMap<MBTI_UserRecord, MBTIUserRecordRequest>().ReverseMap();
+            CreateMap<RecordDetail, RecordDetailRequest>().ReverseMap();
             #endregion
         }
     }

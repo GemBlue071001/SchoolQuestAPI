@@ -29,9 +29,16 @@ namespace ApplicationContext
         public DbSet<AttemptDetail> AttemptDetails { get; set; }
         public DbSet<UniversityDepartment> UniversityDepartments { get; set; }
         public DbSet<GroupDepartment> GroupDepartments { get; set; }
+        public DbSet<MBTI_Question> MBTI_Questions { get; set; }
+        public DbSet<MBTI_Exam> MBTI_Exams { get; set; }
+        public DbSet<MBTI_ExamQuestion> MBTI_ExamQuestions { get; set; }
+        public DbSet<MBTI_UserRecord> MBTI_UserRecords { get; set; }
+        public DbSet<RecordDetail> RecordDetails { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             //modelBuilder.ApplyConfiguration(new BaseConfiguration());
             modelBuilder.ApplyConfiguration(new DepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
@@ -47,7 +54,13 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new QuestionConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ExamConfiguration());
-            
+            modelBuilder.ApplyConfiguration(new AttemptConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTI_ExamQuestionConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTI_UserRecordConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTI_QuestionConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTI_ExamConfiguration());
+            modelBuilder.ApplyConfiguration(new RecordDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new GroupConfiguration());
 
 
         }

@@ -26,6 +26,10 @@ namespace DataAccessLayer.UnitOfWork
         public IAttemptRepository Attempts { get; }
         public IMBTI_DepartmentRepository MBTI_Departments { get; }
         public IMBITRepository MBITs { get; }
+        public IMBTI_QuestionRepository MBTI_Questions { get; }
+        public IMBTI_ExamRepository MBTI_Exams { get; }
+        public IMBTI_ExamQuestionRepository MBTI_ExamQuestions { get; }
+        public IMBTI_UserRecordRepository IMBTI_UserRecords { get; }
         public Task SaveChangeAsync();
     }
 }

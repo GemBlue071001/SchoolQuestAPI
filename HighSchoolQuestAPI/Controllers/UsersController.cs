@@ -33,11 +33,14 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUserPagingAsync([FromQuery] int pageIndex = 1,
+        public async Task<IActionResult> GetUserPagingAsync([FromQuery] bool isStudent,
+                                                            [FromQuery] bool isSorted,
+                                                            [FromQuery] int pageIndex = 1,
                                                             [FromQuery] int pageSize = 5,
-                                                            [FromQuery] string search = null)
+                                                            [FromQuery] string search = null
+                                                            )
         {
-            var result = await _service.GetUserPagingAsync(pageIndex, pageSize, search);
+            var result = await _service.GetUserPagingAsync(pageIndex, pageSize, search, isStudent, isSorted);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
@@ -46,6 +49,14 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> GetTotalUserAsync()
         {
             var result = await _service.GetTotalOfUser();
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [Authorize]
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfileAsync(UpdateProfileRequest request)
+        {
+            var result = await _service.UpdateProfileAsync(request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }

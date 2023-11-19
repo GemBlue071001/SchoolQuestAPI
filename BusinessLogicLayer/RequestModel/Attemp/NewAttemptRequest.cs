@@ -10,6 +10,7 @@ namespace BusinessLogicLayer.RequestModel.Attemp
 {
     public class NewAttemptRequest
     {
+        public string Name { get; set; }
         public DateTime ExamDate { get; set; }
         public AttempType AttempType { get; set; }
         public List<AttemptDetailRequest> AttemptDetails { get; set; } 

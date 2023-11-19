@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using Azure;
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
-using BusinessLogicLayer.ResponseModel.Subject;
 using BusinessLogicLayer.ResponseModel.User;
 using DataAccessLayer.UnitOfWork;
 using Domain.Enums;
@@ -16,7 +14,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Text;
 
 
 namespace BusinessLogicLayer.Service
@@ -26,14 +23,16 @@ namespace BusinessLogicLayer.Service
         //private IConfiguration _configuration;
         private IUnitOfWork _unitOfWork;
         private AppSettings _appSettings;
+        private IClaimsService _claimService;
         private IMapper _mapper;
 
-        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings, IMapper mapper)
+        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings, IMapper mapper, IClaimsService claimService)
         {
             //_configuration = configuration;
             _unitOfWork = unitOfWork;
             _appSettings = appSettings;
             _mapper = mapper;
+            _claimService = claimService;
         }
 
         private PasswordDTO CreatePasswordHash(string password)
@@ -110,6 +109,7 @@ namespace BusinessLogicLayer.Service
             {
                 new Claim( "name" , user.UserName),
                 new Claim("Role", user.Role.ToString()),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
                 new Claim("UserId", user.Id.ToString()),
             };
 
@@ -128,12 +128,12 @@ namespace BusinessLogicLayer.Service
             return jwt;
         }
 
-        public async Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search)
+        public async Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search, bool isStudent, bool isSorted)
         {
             ApiResponse apiResponse = new ApiResponse();
-            var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search);
+            var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search , isStudent, isSorted);
             var listOfUserResponse = _mapper.Map<List<UserResponse>>(listOfUser);
-            var totalOfUser = await _unitOfWork.Users.CountPagingAsync(pageIndex, pageSize, search);
+            var totalOfUser = await _unitOfWork.Users.CountPagingAsync(pageIndex, pageSize, search, isStudent);
             Pagination<UserResponse> response = new Pagination<UserResponse>(listOfUserResponse, totalOfUser, pageIndex, pageSize);
 
             apiResponse.SetOk(response);
@@ -147,5 +147,19 @@ namespace BusinessLogicLayer.Service
 
             return response.SetOk(totalNumOfExam);
         }
+
+        public async Task<ApiResponse> UpdateProfileAsync(UpdateProfileRequest userProfile)
+        {
+            var apiResponse = new ApiResponse();
+            var userId = _claimService.GetUserIdInRequest();
+            var user = await _unitOfWork.Users.GetAsync(x => x.Id == userId);
+
+            _mapper.Map(userProfile, user);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+
     }
 }

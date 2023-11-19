@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.IRepository
 {
-    public interface IAttemptRepository :IGenericRepository<Attempt>
+    public interface IAttemptRepository : IGenericRepository<Attempt>
     {
-        Task<List<Attempt>> GetAttemptsPagingAsync(int pageIndex, int pageSize, string search, Guid userId);
-        Task<int> GetAttemptCountAsync(string search, Guid userId);
+        Task<List<Attempt>> GetStudentAttemptsPagingAsync(int pageIndex, int pageSize, string search, Guid userId);
+        Task<int> GetStudentAttemptCountAsync(string search, Guid userId);
+        Task<List<Attempt>> GetAllAttemptsPagingAsync(int pageIndex, int pageSize, string search);
+        Task<int> GetAllAttemptCountAsync(string search);
+        Task<int?> GetHighestScore(Guid userId);
     }
 }
