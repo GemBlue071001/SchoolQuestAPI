@@ -13,9 +13,7 @@ namespace ApplicationContext.Configurations
     {
         public void Configure(EntityTypeBuilder<RecordDetail> builder)
         {
-            builder.HasOne(x => x.MBTI_Question)
-                .WithMany(x => x.RecordDetails)
-                .HasForeignKey(x => x.QuestionId);
+            
         }
     }
 }

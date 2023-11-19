@@ -31,7 +31,7 @@ namespace ApplicationContext
         public DbSet<GroupDepartment> GroupDepartments { get; set; }
         public DbSet<MBTI_Question> MBTI_Questions { get; set; }
         public DbSet<MBTI_Exam> MBTI_Exams { get; set; }
-        public DbSet<MBTI_ExamDetail> MBTI_ExamDetails { get; set; }
+        public DbSet<MBTI_ExamQuestion> MBTI_ExamQuestions { get; set; }
         public DbSet<MBTI_UserRecord> MBTI_UserRecords { get; set; }
         public DbSet<RecordDetail> RecordDetails { get; set; }
 
@@ -55,7 +55,7 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new ExamConfiguration());
             modelBuilder.ApplyConfiguration(new AttemptConfiguration());
-            modelBuilder.ApplyConfiguration(new MBTI_ExamDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new MBTI_ExamQuestionConfiguration());
             modelBuilder.ApplyConfiguration(new MBTI_UserRecordConfiguration());
             modelBuilder.ApplyConfiguration(new RecordDetailConfiguration());
             modelBuilder.ApplyConfiguration(new GroupConfiguration());

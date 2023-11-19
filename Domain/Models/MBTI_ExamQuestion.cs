@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public  class MBTI_ExamDetail
+    public  class MBTI_ExamQuestion
     {
         public int Id { get; set; }
         public int QuestionId { get; set; }
@@ -15,5 +15,6 @@ namespace Domain.Models
         //property navigation 
         public MBTI_Exam MBTI_Exam { get; set; }
         public MBTI_Question MBTI_Question { get; set; }
+        public List<RecordDetail> RecordDetails { get; set; }
     }
 }

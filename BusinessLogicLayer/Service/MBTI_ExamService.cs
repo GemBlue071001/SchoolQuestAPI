@@ -32,11 +32,11 @@ namespace BusinessLogicLayer.Service
         {
             var response = new ApiResponse();
 
-            var examDetails = new List<MBTI_ExamDetail>();
+            var examDetails = new List<MBTI_ExamQuestion>();
 
             foreach (var questionId in newExam.QuestionIds)
             {
-                examDetails.Add(new MBTI_ExamDetail { QuestionId = questionId });
+                examDetails.Add(new MBTI_ExamQuestion { QuestionId = questionId });
             }
 
             var exam = new MBTI_Exam

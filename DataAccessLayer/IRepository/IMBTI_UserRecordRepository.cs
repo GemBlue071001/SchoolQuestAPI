@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.IRepository
 {
-    public interface IMBTI_ExamDetailRepository : IGenericRepository<MBTI_ExamQuestion>
+    public interface IMBTI_UserRecordRepository : IGenericRepository<MBTI_UserRecord>
     {
-
     }
 }

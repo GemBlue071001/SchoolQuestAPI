@@ -72,6 +72,7 @@ builder.Services.AddScoped<IMBTIService, MBTIService>();
 builder.Services.AddScoped<IClaimsService, ClaimsService>();
 builder.Services.AddScoped<IMBTI_QuestionService, MBTI_QuestionService>();
 builder.Services.AddScoped<IMBTI_ExamService, MBTI_ExamService>();
+builder.Services.AddScoped<IMBTI_UserRecordService, MBTI_UserRecordService>();
 builder.Services.AddHttpContextAccessor();
 
 

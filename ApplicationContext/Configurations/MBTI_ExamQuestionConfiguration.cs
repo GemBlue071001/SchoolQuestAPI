@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ApplicationContext.Configurations
 {
-    public class MBTI_ExamDetailConfiguration : IEntityTypeConfiguration<MBTI_ExamDetail>
+    public class MBTI_ExamQuestionConfiguration : IEntityTypeConfiguration<MBTI_ExamQuestion>
     {
-        public void Configure(EntityTypeBuilder<MBTI_ExamDetail> builder)
+        public void Configure(EntityTypeBuilder<MBTI_ExamQuestion> builder)
         {
             builder.HasOne(x => x.MBTI_Exam)
                 .WithMany(x => x.MBTI_ExamDetails)
@@ -20,6 +20,10 @@ namespace ApplicationContext.Configurations
             builder.HasOne(x => x.MBTI_Question)
                 .WithMany(x => x.MBTI_ExamDetails)
                 .HasForeignKey(x => x.QuestionId);
+
+            builder.HasMany(x => x.RecordDetails)
+                .WithOne(x => x.MBTI_ExamQuestion)
+                .HasForeignKey(x => x.MBTI_ExamQuestionId);
         }
     }
 }

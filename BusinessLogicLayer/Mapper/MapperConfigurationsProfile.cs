@@ -4,6 +4,7 @@ using BusinessLogicLayer.RequestModel.AttempDetail;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
 using BusinessLogicLayer.RequestModel.MBTI_Question;
+using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using BusinessLogicLayer.RequestModel.Subject;
 using BusinessLogicLayer.RequestModel.Topic;
 using BusinessLogicLayer.RequestModel.University;
@@ -109,7 +110,12 @@ namespace BusinessLogicLayer.Mapper
 
             #region MBTI_Exam
             CreateMap<MBTI_Exam, MBTIExamResponse>().ReverseMap();
-            CreateMap<MBTI_ExamDetail, MBTI_ExamDetailResponse>().ReverseMap();
+            CreateMap<MBTI_ExamQuestion, MBTI_ExamDetailResponse>().ReverseMap();
+            #endregion
+
+            #region MBTI_UserRecord
+            CreateMap<MBTI_UserRecord, MBTIUserRecordRequest>().ReverseMap();
+            CreateMap<RecordDetail, RecordDetailRequest>().ReverseMap();
             #endregion
         }
     }
