@@ -6,6 +6,7 @@ namespace BusinessLogicLayer.ResponseModel.MBTI_UserRecord
 {
     public class MBTI_UserRecordResponse
     {
+        public string Result { get; set; }
         public List<RecordDetailResponse> RecordDetails { get; set; }
     }
 

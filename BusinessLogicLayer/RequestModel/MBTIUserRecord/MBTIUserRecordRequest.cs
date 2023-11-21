@@ -2,6 +2,7 @@
 {
     public class MBTIUserRecordRequest
     {
+        public string Result { get; set; }
         public List<RecordDetailRequest> RecordDetails { get; set; }
     }
 
