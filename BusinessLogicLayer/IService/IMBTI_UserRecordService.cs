@@ -11,5 +11,6 @@ namespace BusinessLogicLayer.IService
     public interface IMBTI_UserRecordService
     {
         Task<ApiResponse> AddUserRecord(MBTIUserRecordRequest newRecord);
+        Task<ApiResponse> GetUserRecord();
     }
 }

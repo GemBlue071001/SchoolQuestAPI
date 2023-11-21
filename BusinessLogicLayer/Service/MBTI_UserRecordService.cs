@@ -3,6 +3,7 @@ using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
+using BusinessLogicLayer.ResponseModel.MBTI_UserRecord;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
 
@@ -28,10 +29,20 @@ namespace BusinessLogicLayer.Service
             var userId = _claimsService.GetUserIdInRequest();
             userRecord.UserId = userId;
 
-            await _unitOfWork.IMBTI_UserRecords.AddAsync(userRecord);
+            await _unitOfWork.MBTI_UserRecords.AddAsync(userRecord);
             await _unitOfWork.SaveChangeAsync();
 
             return response.SetOk(Resources.CreateSuccess);
+        }
+
+        public async Task<ApiResponse> GetUserRecord()
+        {
+            var userId = _claimsService.GetUserIdInRequest();
+            var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecords(userId);
+            var userRecordsResponse = _mapper.Map <List<MBTI_UserRecordResponse>>(userRecords);
+            var response = new ApiResponse();
+            
+            return response.SetOk(userRecordsResponse);
         }
     }
 }
