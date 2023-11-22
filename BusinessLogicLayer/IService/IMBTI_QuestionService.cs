@@ -12,5 +12,6 @@ namespace BusinessLogicLayer.IService
     {
         Task<ApiResponse> AddNewQuestion(MBTI_QuestionRequest newQuestion);
         Task<ApiResponse> GetQuestion();
+        Task<ApiResponse> AddNewListQuestion(List<MBTI_QuestionRequest> questions);
     }
 }

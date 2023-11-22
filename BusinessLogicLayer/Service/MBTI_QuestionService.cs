@@ -34,6 +34,16 @@ namespace BusinessLogicLayer.Service
             return response.SetOk();
         }
 
+        public async Task<ApiResponse> AddNewListQuestion(List<MBTI_QuestionRequest> questions)
+        {
+            var response = new ApiResponse();
+            var mbtiQuestions = _mapper.Map<List<MBTI_Question>>(questions);
+            await _unitOfWork.MBTI_Questions.AddRangeAsync(mbtiQuestions);
+            await _unitOfWork.SaveChangeAsync();
+
+            return response.SetOk();
+        }
+
         public async Task<ApiResponse> GetQuestion()
         {
             var response = new ApiResponse();
