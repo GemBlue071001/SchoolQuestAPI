@@ -9,5 +9,6 @@ namespace DataAccessLayer.IRepository
 {
     public interface IMBTI_QuestionRepository : IGenericRepository<MBTI_Question>
     {
+        Task<List<MBTI_Question>> PagingAsync(int pageIndex, int pageSize);
     }
 }

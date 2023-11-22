@@ -31,9 +31,10 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetQuestion()
+        public async Task<IActionResult> GetQuestion([FromQuery] int pageIndex = 1,
+                                                     [FromQuery] int pageSize = 5)
         {
-            var response = await _service.GetQuestion();
+            var response = await _service.GetQuestion(pageIndex, pageSize);
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
     }

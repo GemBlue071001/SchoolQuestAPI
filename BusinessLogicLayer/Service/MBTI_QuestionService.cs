@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.MBTI_Question;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.MBTI_Question;
+using BusinessLogicLayer.ResponseModel.Subject;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
 using System;
@@ -44,14 +46,14 @@ namespace BusinessLogicLayer.Service
             return response.SetOk();
         }
 
-        public async Task<ApiResponse> GetQuestion()
+        public async Task<ApiResponse> GetQuestion(int pageIndex, int pageSize)
         {
             var response = new ApiResponse();
-            var questions = await _unitOfWork.MBTI_Questions.GetAllAsync();
-
+            var questions = await _unitOfWork.MBTI_Questions.PagingAsync(pageIndex, pageSize);
+            var totalOfQuestion = await _unitOfWork.MBTI_Questions.CountAsync();
             var questionList = _mapper.Map<List<MBTI_QuestionResponse>>(questions);
 
-            return response.SetOk(questionList);
+            return response.SetOk(new Pagination<MBTI_QuestionResponse>(questionList, totalOfQuestion, pageIndex, pageSize));
         }
     }
 }
