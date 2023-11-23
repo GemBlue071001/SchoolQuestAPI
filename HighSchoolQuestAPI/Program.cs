@@ -67,6 +67,7 @@ builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddScoped<IExaminationService, ExaminationService>();
 builder.Services.AddScoped<IExaminationQuestionService, ExaminationQuestionService>();
 builder.Services.AddScoped<IAttemptService, AttemptService>();
+builder.Services.AddScoped<IMajorService, MajorService>();
 builder.Services.AddScoped<IAttemptDetailService, AttemptDetailService>();
 builder.Services.AddScoped<IMBTIService, MBTIService>();
 builder.Services.AddScoped<IClaimsService, ClaimsService>();

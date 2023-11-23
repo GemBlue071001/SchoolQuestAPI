@@ -68,7 +68,6 @@ namespace BusinessLogicLayer.Service
             var topic = await _unitOfWork.Topics.GetAsync(x => x.Id == topicId);
             if (topic == null)
             {
-                return apiResponse.SetNotFound(Resources.NullObject);
             }
 
             _mapper.Map(newTopic, topic);
