@@ -3,6 +3,7 @@ using BusinessLogicLayer.RequestModel.Attemp;
 using BusinessLogicLayer.RequestModel.AttempDetail;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
+using BusinessLogicLayer.RequestModel.Major;
 using BusinessLogicLayer.RequestModel.MBTI_Question;
 using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using BusinessLogicLayer.RequestModel.Subject;
@@ -12,6 +13,7 @@ using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.Attempt;
 using BusinessLogicLayer.ResponseModel.Department;
 using BusinessLogicLayer.ResponseModel.Examination;
+using BusinessLogicLayer.ResponseModel.Major;
 using BusinessLogicLayer.ResponseModel.MBTI;
 using BusinessLogicLayer.ResponseModel.MBTI_Department;
 using BusinessLogicLayer.ResponseModel.MBTI_Question;
@@ -119,6 +121,11 @@ namespace BusinessLogicLayer.Mapper
             CreateMap<MBTI_UserRecord, MBTI_UserRecordResponse>().ReverseMap();
             CreateMap<RecordDetail, RecordDetailRequest>().ReverseMap();
             CreateMap<RecordDetail, RecordDetailResponse>().ReverseMap();
+            #endregion
+
+            #region Major
+            CreateMap<Major, NewMajorRequest>().ReverseMap();
+            CreateMap<Major, MajorResponse>().ReverseMap();
             #endregion
         }
     }

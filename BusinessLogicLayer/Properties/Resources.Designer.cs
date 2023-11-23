@@ -141,6 +141,16 @@ namespace BusinessLogicLayer.Properties {
             }
         }
         
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Topic Not Found.
+        /// </summary>
+        internal static string DepartmentNotFound {
+            get {
+                return ResourceManager.GetString("DepartmentNotFound", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Update Success.
         /// </summary>

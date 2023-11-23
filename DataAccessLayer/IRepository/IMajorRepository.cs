@@ -9,6 +9,8 @@ namespace DataAccessLayer.IRepository
 {
     public interface IMajorRepository : IGenericRepository<Major>
     {
-
+        Task<int> CountPagingAsync(int pageIndex, int pageSize, string search);
+        Task<List<Major>> PagingAsync(int pageIndex, int pageSize, string search);
+        Task<Major?> GetMajorDetailAsync(Guid id);
     }
 }
