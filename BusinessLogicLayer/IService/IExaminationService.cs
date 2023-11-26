@@ -16,5 +16,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> GetExamPagingAsync(int pageIndex, int pageSize, string search);
         Task<ApiResponse> RandomExaminationAsync(RandomExamRequest request);
         Task<ApiResponse> GetNumberOfTotalExam();
+        Task<ApiResponse> RandomExaminationByTopicAsync(RandomExamByTopicRequest request);
     }
 }

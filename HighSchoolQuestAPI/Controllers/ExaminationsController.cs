@@ -34,6 +34,14 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        //[Authorize]
+        [HttpPost("random/topic")]
+        public async Task<IActionResult> RandomExaminationByTopicAsync(RandomExamByTopicRequest request)
+        {
+            var result = await _service.RandomExaminationByTopicAsync(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
         [Authorize]
         [HttpPost("Questions")]
         public async Task<IActionResult> AddExaminationAsync(ExaminationRequest request)

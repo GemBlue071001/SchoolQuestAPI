@@ -25,15 +25,15 @@ namespace BusinessLogicLayer.Service
             var response = new ApiResponse();
             var major = _mapper.Map<Major>(newMajor);
 
-            var groupDepartment = await _unitOfWork.GroupDepartments.GetAsync(x => x.DepartmentId == newMajor.DepartmentId);
+            //var groupDepartment = await _unitOfWork.GroupDepartments.GetAsync(x => x.DepartmentId == newMajor.DepartmentId);
             
-            if(groupDepartment is null){
-                response.SetBadRequest(message: Resources.DepartmentNotFound);
-                return response;
-            }
+            //if(groupDepartment is null){
+            //    response.SetBadRequest(message: Resources.DepartmentNotFound);
+            //    return response;
+            //}
 
-            major.Department = groupDepartment.Department;
-            major.Department.IsDeleted = false;
+            //major.Department = groupDepartment.Department;
+            //major.Department.IsDeleted = false;
 
             await _unitOfWork.Major.AddAsync(major);
             await _unitOfWork.SaveChangeAsync();
