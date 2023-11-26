@@ -6,5 +6,6 @@ namespace DataAccessLayer.IRepository
     {
         Task<int> CountPagingAsync(int pageIndex, int pageSize, string search);
         Task<List<Question>> PagingAsync(int pageIndex, int pageSize, string search);
+        Task<List<Guid>> GetQuestionsId();
     }
 }
