@@ -23,10 +23,18 @@ namespace HighSchoolQuestAPI.Controllers
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetQuestion()
+        [HttpPost("list")]
+        public async Task<IActionResult> AddNewMBTIQuestion(List<MBTI_QuestionRequest> request)
         {
-            var response = await _service.GetQuestion();
+            var response = await _service.AddNewListQuestion(request);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetQuestion([FromQuery] int pageIndex = 1,
+                                                     [FromQuery] int pageSize = 5)
+        {
+            var response = await _service.GetQuestion(pageIndex, pageSize);
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
     }

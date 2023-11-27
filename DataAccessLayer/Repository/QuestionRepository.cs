@@ -28,6 +28,17 @@ namespace DataAccessLayer.Repository
 
         }
 
+        public async Task<List<Guid>> GetQuestionsId()
+        {
+            IQueryable<Question> query = _db;
+
+
+            return await query
+                    .Where(b => !b.IsDeleted)
+                    .Select(x => x.Id).ToListAsync();
+
+        }
+
         public async Task<int> CountPagingAsync(int pageIndex, int pageSize, string search)
         {
             IQueryable<Question> query = _db;

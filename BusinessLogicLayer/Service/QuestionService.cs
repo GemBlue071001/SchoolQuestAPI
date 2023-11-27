@@ -132,5 +132,12 @@ namespace BusinessLogicLayer.Service
 
             return response.SetOk(totalNumOfExam);
         }
+
+        public async Task<ApiResponse> GetQuestionsId()
+        {
+            var response = new ApiResponse();
+            var ids = await _unitOfWork.Questions.GetQuestionsId();
+            return response.SetOk(ids);
+        }
     }
 }

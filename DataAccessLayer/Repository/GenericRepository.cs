@@ -21,7 +21,14 @@ namespace DataAccessLayer.Repository
             await _db.AddAsync(entity);
         }
         public async Task<int> CountAsync() => await _db.CountAsync();
-        public async Task<List<T>> GetAllAsync() => await _db.ToListAsync();
+        public async Task<List<T>> GetAllAsync(System.Linq.Expressions.Expression<Func<T, bool>>? filter)
+        {
+            if (filter != null)
+            {
+                return await _db.Where(filter).ToListAsync();
+            }
+            return await _db.ToListAsync();
+        }
 
         public async Task<T> GetAsync(System.Linq.Expressions.Expression<Func<T, bool>> filter)
         {

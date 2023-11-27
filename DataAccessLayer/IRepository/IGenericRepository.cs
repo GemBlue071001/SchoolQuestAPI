@@ -14,6 +14,6 @@ namespace DataAccessLayer.IRepository
         Task RemoveByIdAsync(object id);
         Task<int> CountAsync();
         Task AddRangeAsync(List<T> entities);
-        Task<List<T>> GetAllAsync();
+        Task<List<T>> GetAllAsync(System.Linq.Expressions.Expression<Func<T, bool>>? filter);
     }
 }

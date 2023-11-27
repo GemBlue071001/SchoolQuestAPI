@@ -11,6 +11,7 @@ namespace BusinessLogicLayer.IService
     public interface IMBTI_QuestionService
     {
         Task<ApiResponse> AddNewQuestion(MBTI_QuestionRequest newQuestion);
-        Task<ApiResponse> GetQuestion();
+        Task<ApiResponse> GetQuestion(int pageIndex, int pageSize);
+        Task<ApiResponse> AddNewListQuestion(List<MBTI_QuestionRequest> questions);
     }
 }

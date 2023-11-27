@@ -1,6 +1,7 @@
 ﻿using ApplicationContext;
 using DataAccessLayer.IRepository;
 using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,19 @@ namespace DataAccessLayer.Repository
     {
         public MBTI_UserRecordRepository(HighSchoolQuestContext context) : base(context)
         {
+        }
+
+        public async Task<List<MBTI_UserRecord>> GetUserRecords(Guid userId)
+        {
+            IQueryable<MBTI_UserRecord> query = _db;
+
+            query = query.Where(b => b.UserId == userId);
+
+            return await query
+                    .Include(x=>x.RecordDetails)
+                        .ThenInclude(x=>x.MBTI_ExamQuestion)
+                            .ThenInclude(x=>x.MBTI_Question)
+                    .ToListAsync();
         }
     }
 }

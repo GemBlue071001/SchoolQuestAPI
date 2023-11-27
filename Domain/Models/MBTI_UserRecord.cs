@@ -10,6 +10,7 @@ namespace Domain.Models
     {
         public int Id { get; set; }
         public Guid UserId { get; set; }
+        public string? Result { get; set; }
 
         //Navigation Property
         public User User { get; set; }

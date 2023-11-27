@@ -21,7 +21,7 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> AddTopicAsync(NewTopicRequest request)
         {
             var result = await _service.AddTopicAsync(request);
-            return result.IsSuccess? Ok(result) : BadRequest(result);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
         [HttpGet]

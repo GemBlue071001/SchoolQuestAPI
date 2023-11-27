@@ -78,8 +78,52 @@ namespace BusinessLogicLayer.Service
 
                 examination.ExaminationQuestions = listExamQuestion;
                 examination.TotalNumberOfQuestion = listOfQuestion.Count();
-                examination.Description= request.Description;
-                examination.Name= request.Name;
+                examination.Description = request.Description;
+                examination.Name = request.Name;
+
+                await _unitOfWork.Examinations.AddAsync(examination);
+                await _unitOfWork.SaveChangeAsync();
+                return response.SetOk();
+            }
+
+            return response.SetBadRequest("missing data");
+        }
+
+
+        public async Task<ApiResponse> RandomExaminationByTopicAsync(RandomExamByTopicRequest request)
+        {
+            var response = new ApiResponse();
+
+            var listOfTopic = await _unitOfWork.Topics.GetAllAsync(x => request.TopicIds.Contains(x.Id));
+
+            if (listOfTopic != null)
+            {
+                var listOfQuestion = new List<Question>();
+                foreach (var topic in listOfTopic)
+                {
+                    if (topic.Questions != null)
+                    {
+                        listOfQuestion.AddRange(topic.Questions);
+                    }
+                }
+
+                listOfQuestion = listOfQuestion.OrderBy(r => Guid.NewGuid()).Take(40).ToList();
+
+                var examination = new Examination();
+
+                var listExamQuestion = new List<ExaminationQuestion>();
+                foreach (var question in listOfQuestion)
+                {
+                    listExamQuestion.Add(new ExaminationQuestion()
+                    {
+                        QuestionId = question.Id,
+                    });
+                }
+
+                examination.ExaminationQuestions = listExamQuestion;
+                examination.TotalNumberOfQuestion = listOfQuestion.Count();
+                examination.Description = request.Description;
+                examination.Name = request.Name;
 
                 await _unitOfWork.Examinations.AddAsync(examination);
                 await _unitOfWork.SaveChangeAsync();
@@ -144,7 +188,7 @@ namespace BusinessLogicLayer.Service
             return response.SetOk(examResponse);
         }
 
-        public async Task <ApiResponse> GetNumberOfTotalExam()
+        public async Task<ApiResponse> GetNumberOfTotalExam()
         {
             var response = new ApiResponse();
             var totalNumOfExam = await _unitOfWork.Examinations.CountAsync();
