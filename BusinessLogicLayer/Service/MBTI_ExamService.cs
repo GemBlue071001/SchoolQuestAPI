@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
@@ -53,13 +54,17 @@ namespace BusinessLogicLayer.Service
             return response.SetOk(Resources.CreateSuccess);
         }
 
-        public async Task<List<MBTIExamResponse>> GetExam()
+        public async Task<ApiResponse> GetExam(int index, int pageSize)
         {
             var response = new ApiResponse();
-            var exams = await _uniOfWork.MBTI_Exams.GetExam();
+            var exams = await _uniOfWork.MBTI_Exams.GetExam(index,pageSize);
+            var numberOfExam = await _uniOfWork.MBTI_Exams.CountAsync();
             var examList = _mapper.Map<List<MBTIExamResponse>>(exams);
-             
-            return examList;
+
+            var examPagingList = new Pagination<MBTIExamResponse>(examList, numberOfExam, index, pageSize);
+
+
+            return response.SetOk(examPagingList);
         }
     }
 }
