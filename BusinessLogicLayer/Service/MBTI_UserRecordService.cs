@@ -25,23 +25,31 @@ namespace BusinessLogicLayer.Service
         public async Task<ApiResponse> AddUserRecord(MBTIUserRecordRequest newRecord)
         {
             var response = new ApiResponse();
-            var userRecord = _mapper.Map<MBTI_UserRecord>(newRecord);
+
+
+            var newUserRecord = _mapper.Map<MBTI_UserRecord>(newRecord);
             var userId = _claimsService.GetUserIdInRequest();
-            userRecord.UserId = userId;
 
-            await _unitOfWork.MBTI_UserRecords.AddAsync(userRecord);
-            await _unitOfWork.SaveChangeAsync();
+            var userRecord = _unitOfWork.MBTI_UserRecords.GetAsync(x => x.UserId == userId);
+            if (userRecord == null)
+            {
+                newUserRecord.UserId = userId;
+                await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
+                await _unitOfWork.SaveChangeAsync();
 
-            return response.SetOk(Resources.CreateSuccess);
+                return response.SetOk(Resources.CreateSuccess);
+            }
+            return response.SetBadRequest("You have already take this test ");
+
         }
 
         public async Task<ApiResponse> GetUserRecord()
         {
             var userId = _claimsService.GetUserIdInRequest();
             var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecords(userId);
-            var userRecordsResponse = _mapper.Map <List<MBTI_UserRecordResponse>>(userRecords);
+            var userRecordsResponse = _mapper.Map<List<MBTI_UserRecordResponse>>(userRecords);
             var response = new ApiResponse();
-            
+
             return response.SetOk(userRecordsResponse);
         }
     }
