@@ -30,5 +30,12 @@ namespace HighSchoolQuestAPI.Controllers
             var response = await _service.GetExam(index,pageSize);
             return Ok(response);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetExamDetail(int id)
+        {
+            var response = await _service.GetExamDetail(id);
+            return Ok(response);
+        }
     }
 }

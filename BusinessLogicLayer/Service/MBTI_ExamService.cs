@@ -2,17 +2,11 @@
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
-using BusinessLogicLayer.RequestModel.ExaminationQuestion;
 using BusinessLogicLayer.RequestModel.MBTI_Exam;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.MBTIExamResponse;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Service
 {
@@ -65,6 +59,15 @@ namespace BusinessLogicLayer.Service
 
 
             return response.SetOk(examPagingList);
+        }
+
+        public async Task<ApiResponse> GetExamDetail(int examId)
+        {
+            var response = new ApiResponse();
+            var exam = await _uniOfWork.MBTI_Exams.GetExamDetail(examId);
+            var examResponse = _mapper.Map<MBTIExamResponse>(exam);
+
+            return response.SetOk(examResponse);
         }
     }
 }
