@@ -58,7 +58,7 @@ namespace BusinessLogicLayer.Service
             var examPagingList = new Pagination<MBTIExamResponse>(examList, numberOfExam, index, pageSize);
 
 
-            return response.SetOk(examPagingList);
+            return response.SetOk(examList);
         }
 
         public async Task<ApiResponse> GetExamDetail(int examId)
