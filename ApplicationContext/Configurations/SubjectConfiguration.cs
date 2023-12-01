@@ -32,7 +32,7 @@ namespace ApplicationContext.Configurations
                 new Subject()
                 {
                     Id = Guid.Parse("d6d7fa5b-6578-46c3-bcd4-98c43d6d709c"),
-                    Name = "Anh Văn"
+                    Name = "Tiếng Anh"
                 },
                 new Subject()
                 {
@@ -63,11 +63,6 @@ namespace ApplicationContext.Configurations
                 {
                     Id = Guid.Parse("ab091cc2-6f9a-4023-8003-2ca82076f5a4"),
                     Name = "Vật Lý"
-                },
-                new Subject()
-                {
-                    Id = Guid.Parse("50051095-391a-4abf-94f2-ac3cf912f07b"),
-                    Name = "Mỹ Thuật"
                 }
                 );
         }
