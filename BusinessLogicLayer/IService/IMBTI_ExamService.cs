@@ -12,7 +12,6 @@ namespace BusinessLogicLayer.IService
     public interface IMBTI_ExamService
     {
         Task<ApiResponse> AddNewExam(NewMBTIExam newExam);
-        Task<ApiResponse> GetExam(int index, int pageSize);
-        Task<ApiResponse> GetExamDetail(int examId);
+        Task<List<MBTIExamResponse>> GetExam(int index, int pageSize);
     }
 }
