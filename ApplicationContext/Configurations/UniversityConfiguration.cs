@@ -223,6 +223,13 @@ namespace ApplicationContext.Configurations
                           Name = "Trường Đại học Sư phạm Thể dục Thể thao",
                           Code = "UPES",
                           Description = "Trường đại học đào tạo về giáo dục thể chất và đào tạo chuẩn hóa giáo viên thể dục theo định chuẩn của Bộ Giáo dục và Đào tạo Việt Nam."
+                      },
+                      new University()
+                      {
+                          Id = Guid.Parse("6d35b512-5dcc-49af-9f26-29eddd7f475c"),
+                          Name = "Trường Đại học Thủy Lợi TP.HCM",
+                          Code = "TLUS",
+                          Description = "Trường đại học số 1 trong việc đào tạo lĩnh vực thủy lợi, môi trường, phòng chống và giảm nhẹ thiên tai."
                       }
                 );
         }

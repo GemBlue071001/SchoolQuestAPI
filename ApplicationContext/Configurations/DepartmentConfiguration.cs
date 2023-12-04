@@ -80,6 +80,93 @@ namespace ApplicationContext.Configurations
                     Name = "Ngôn Ngữ",
                     Description = "Các ngành về ngôn ngữ",
                     RequiredScore = 22
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("d2322472-e7af-47e7-ab8f-eba6e8e7baad"),
+                    Code = "DM",
+                    Name = "Dệt May",
+                    Description = "Các ngành về dệt may",
+                    RequiredScore = 20
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("cbeac466-d627-466c-8300-6ee4d5505a20"),
+                    Code = "KT",
+                    Name = "Kỹ Thuật",
+                    Description = "Các ngành về kỹ thuật",
+                    RequiredScore = 26
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("3a8a3b94-db19-44cb-91ae-a895fe50c498"),
+                    Code = "NK",
+                    Name = "Năng Khiếu",
+                    Description = "Các ngành về năng khiếu",
+                    RequiredScore = 27
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("6c7f8637-25d3-4284-a4e5-3aa20ceda1f4"),
+                    Code = "CT",
+                    Name = "Chính trị",
+                    Description = "Các ngành về chính trị",
+                    RequiredScore = 30
+                }, new Department()
+                {
+                    Id = Guid.Parse("e63527a5-2326-4d15-afb5-8244fd0fa441"),
+                    Code = "QL",
+                    Name = "Quản lý-Lưu trữ thông tin",
+                    Description = "Các ngành về quản lý-lưu trữ thông tin",
+                    RequiredScore = 25
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("eb977e5d-b2a9-48c2-a540-cefe5a960c1d"),
+                    Code = "MT",
+                    Name = "Môi trường",
+                    Description = "Các ngành về môi trường",
+                    RequiredScore = 26
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("c63be8dc-3a1e-494a-9b2a-ba49b5eef457"),
+                    Code = "TH",
+                    Name = "Toán học",
+                    Description = "Các ngành về toán học",
+                    RequiredScore = 25
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("47243cb9-ad17-4590-bf72-bef8ca382fa9"),
+                    Code = "XD",
+                    Name = "Xây Dựng",
+                    Description = "Các ngành về xây dựng",
+                    RequiredScore = 20
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("37ac6580-0e40-465f-b9f6-aa7e803487b2"),
+                    Code = "TP",
+                    Name = "Thực phẩm",
+                    Description = "Các ngành về thực phẩm",
+                    RequiredScore = 20
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("d7ab840a-0e06-4785-aa71-f82bef075ff9"),
+                    Code = "DL",
+                    Name = "Du lịch",
+                    Description = "Các ngành về du lịch",
+                    RequiredScore = 25
+                },
+                new Department()
+                {
+                    Id = Guid.Parse("575e2a34-3e4e-40b3-be97-37310e59085a"),
+                    Code = "CA",
+                    Name = "Công an- quân đội",
+                    Description = "Các ngành về công an- quân đội",
+                    RequiredScore = 20
                 });
         }
 
