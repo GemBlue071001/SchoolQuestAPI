@@ -79,6 +79,15 @@ namespace BusinessLogicLayer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Success.
+        /// </summary>
+        internal static string DeleteSuccess {
+            get {
+                return ResourceManager.GetString("DeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exam Not Found.
         /// </summary>
         internal static string ExamNotFound {
@@ -97,7 +106,7 @@ namespace BusinessLogicLayer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The object you are looking for is not existing anymore !.
+        ///   Looks up a localized string similar to The object you are looking for is not exist  !.
         /// </summary>
         internal static string NullObject {
             get {
@@ -138,16 +147,6 @@ namespace BusinessLogicLayer.Properties {
         internal static string TopicNotFound {
             get {
                 return ResourceManager.GetString("TopicNotFound", resourceCulture);
-            }
-        }
-        
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Topic Not Found.
-        /// </summary>
-        internal static string DepartmentNotFound {
-            get {
-                return ResourceManager.GetString("DepartmentNotFound", resourceCulture);
             }
         }
         

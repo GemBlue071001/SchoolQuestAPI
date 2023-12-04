@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.MBTI_Question;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.MBTI_Question;
@@ -54,6 +55,34 @@ namespace BusinessLogicLayer.Service
             var questionList = _mapper.Map<List<MBTI_QuestionResponse>>(questions);
 
             return response.SetOk(new Pagination<MBTI_QuestionResponse>(questionList, totalOfQuestion, pageIndex, pageSize));
+        }
+
+        public async Task<ApiResponse> UpdateQuestion(int id, MBTI_QuestionRequest newQuestion)
+        {
+            var response = new ApiResponse();
+            var question = await _unitOfWork.MBTI_Questions.GetAsync(x => x.Id == id);
+            if (question != null)
+            {
+                _mapper.Map(newQuestion, question);
+                await _unitOfWork.SaveChangeAsync();
+
+                return response.SetOk(Resources.UpdateSuccess);
+            }
+            return response.SetBadRequest(Resources.NullObject);
+        }
+
+        public async Task<ApiResponse> DeleteQuestion(int id)
+        {
+            var response = new ApiResponse();
+            var question = await _unitOfWork.MBTI_Questions.GetAsync(x => x.Id == id);
+            if (question != null)
+            {
+                await _unitOfWork.MBTI_Questions.RemoveByIdAsync(question.Id);
+                await _unitOfWork.SaveChangeAsync();
+
+                return response.SetOk(Resources.DeleteSuccess);
+            }
+            return response.SetBadRequest(Resources.NullObject);
         }
     }
 }

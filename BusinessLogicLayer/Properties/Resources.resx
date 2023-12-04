@@ -123,6 +123,9 @@
   <data name="CreateSuccess" xml:space="preserve">
     <value>Create Success</value>
   </data>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>Delete Success</value>
+  </data>
   <data name="ExamNotFound" xml:space="preserve">
     <value>Exam Not Found</value>
   </data>
@@ -130,7 +133,7 @@
     <value>Login Fail</value>
   </data>
   <data name="NullObject" xml:space="preserve">
-    <value>The object you are looking for is not existing anymore !</value>
+    <value>The object you are looking for is not exist  !</value>
   </data>
   <data name="QuestionNotFound" xml:space="preserve">
     <value>Question Not Found</value>

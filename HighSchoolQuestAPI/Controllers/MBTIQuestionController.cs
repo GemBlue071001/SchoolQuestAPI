@@ -23,6 +23,20 @@ namespace HighSchoolQuestAPI.Controllers
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMBTIQuestion(int id, MBTI_QuestionRequest request)
+        {
+            var response = await _service.UpdateQuestion(id, request);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMBTIQuestion(int id)
+        {
+            var response = await _service.DeleteQuestion(id);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
+        }
+
         [HttpPost("list")]
         public async Task<IActionResult> AddNewMBTIQuestion(List<MBTI_QuestionRequest> request)
         {
