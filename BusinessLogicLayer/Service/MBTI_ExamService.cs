@@ -54,7 +54,7 @@ namespace BusinessLogicLayer.Service
             return response.SetOk(Resources.CreateSuccess);
         }
 
-        public async Task<ApiResponse> GetExam(int index, int pageSize)
+        public async Task<List<MBTIExamResponse>> GetExam(int index, int pageSize)
         {
             var response = new ApiResponse();
             var exams = await _uniOfWork.MBTI_Exams.GetExam(index,pageSize);
@@ -64,7 +64,7 @@ namespace BusinessLogicLayer.Service
             var examPagingList = new Pagination<MBTIExamResponse>(examList, numberOfExam, index, pageSize);
 
 
-            return response.SetOk(examPagingList);
+            return examList;
         }
     }
 }
