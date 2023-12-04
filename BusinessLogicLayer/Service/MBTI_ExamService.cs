@@ -66,5 +66,14 @@ namespace BusinessLogicLayer.Service
 
             return examList;
         }
+
+        public async Task<ApiResponse> GetExamDetail(int id)
+        {
+            var response = new ApiResponse();
+            var exams = await _uniOfWork.MBTI_Exams.GetExamDetail(id);
+            var examResponse = _mapper.Map<MBTIExamResponse>(exams);
+
+            return response.SetOk(examResponse);
+        }
     }
 }

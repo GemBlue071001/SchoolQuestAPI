@@ -21,5 +21,15 @@ namespace DataAccessLayer.Repository
                     .Take(pageSize)
                     .ToListAsync();
         }
+
+        public async Task<MBTI_Exam?> GetExamDetail(int id)
+        {
+            IQueryable<MBTI_Exam> query = _db;
+            return await query
+                    .Where(x=>x.Id==id)
+                    .Include(x => x.MBTI_ExamQuestions)
+                        .ThenInclude(x => x.MBTI_Question)
+                    .FirstOrDefaultAsync();
+        }
     }
 }
