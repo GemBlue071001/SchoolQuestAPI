@@ -22,12 +22,15 @@ namespace ApplicationContext.Configurations
                 .HasForeignKey(o => o.DepartmentId);
 
             builder.HasKey(sc => new { sc.UniversityId, sc.DepartmentId });
-            //builder.HasData(
-            //    new UniversityDepartment()
-            //    {
-                    
-            //    }
-            //    );
+            builder.HasData(
+             new UniversityDepartment()
+             {
+                 Id = Guid.Parse(""),
+                 DepartmentId = Guid.Parse(""),
+                 UniversityId = Guid.Parse(""),
+
+             }
+              );
         }
     }
 }
