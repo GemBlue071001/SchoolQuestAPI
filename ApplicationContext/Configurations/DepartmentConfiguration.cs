@@ -46,7 +46,7 @@ namespace ApplicationContext.Configurations
                     Id = Guid.Parse("e35d862c-1f43-456b-a60b-1b2c7e44ab78"),
                     Code = "SP",
                     Name = "Sư phạm",
-                    Description = "Các ngành sư phạm",
+                    Description = "Các ngành sư phạm-giáo dục",
                     RequiredScore = 25
                 },
                 new Department()
@@ -141,7 +141,7 @@ namespace ApplicationContext.Configurations
                     Id = Guid.Parse("47243cb9-ad17-4590-bf72-bef8ca382fa9"),
                     Code = "XD",
                     Name = "Xây Dựng",
-                    Description = "Các ngành về xây dựng",
+                    Description = "Các ngành về xây dựng-kiến trúc",
                     RequiredScore = 20
                 },
                 new Department()
@@ -167,7 +167,47 @@ namespace ApplicationContext.Configurations
                     Name = "Công an- quân đội",
                     Description = "Các ngành về công an- quân đội",
                     RequiredScore = 20
-                });
+                },
+                 new Department()
+                 {
+                     Id = Guid.Parse("38449231-c9b9-46b9-9ee1-83ebaea156f1"),
+                     Code = "CK",
+                     Name = "Cơ khí",
+                     Description = "Các ngành về cơ khí",
+                     RequiredScore = 23
+                 },
+                  new Department()
+                  {
+                      Id = Guid.Parse("03a02645-69be-46a7-ad93-cf48b8c2961d"),
+                      Code = "HD",
+                      Name = "Hải dương",
+                      Description = "Các ngành về hải dương học",
+                      RequiredScore = 21
+                  },
+                   new Department()
+                   {
+                       Id = Guid.Parse("934b3542-92d5-431c-9271-f39dedcac50f"),
+                       Code = "KD",
+                       Name = "Kinh doanh",
+                       Description = "Các ngành về kinh doanh-marketing",
+                       RequiredScore = 22
+                   },
+                    new Department()
+                    {
+                        Id = Guid.Parse("adb460f7-aa33-4efd-8346-9f3b76a0484b"),
+                        Code = "TC",
+                        Name = "Tài chính",
+                        Description = "Các ngành về tài chính-ngân hàng",
+                        RequiredScore = 26
+                    },
+                     new Department()
+                     {
+                         Id = Guid.Parse("bf4524c1-1150-48f6-8c57-d922d925426f"),
+                         Code = "LG",
+                         Name = "Logistics",
+                         Description = "Các ngành về logistics",
+                         RequiredScore = 27
+                     });
         }
 
     }
