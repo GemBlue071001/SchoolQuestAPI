@@ -95,7 +95,7 @@ namespace ApplicationContext.Configurations
                 {
                     Id = Guid.Parse("d1ee778a-2d89-402f-aa5e-c914315dbc3f"),
                     Name = "Trường Đại học Tôn Đức Thắng",
-                    Code = "DTT",
+                    Code = "TDTU",
                     Description = "Trường đại học công lập đầu tiên tại Việt Nam có cơ sở vật chất và điều kiện giảng dạy được xếp hạng quốc tế"
                 },
                 new University()
@@ -109,63 +109,63 @@ namespace ApplicationContext.Configurations
                 {
                     Id = Guid.Parse("059779f5-c84c-455a-85d0-798ca039ba72"),
                     Name = "Trường Đại học VinUni",
-                    Code = "VIN",
+                    Code = "VINUNI",
                     Description = "Trường đại học tư thục phi lợi nhuận được thành lập bởi Tập đoàn Vingroup – tập đoàn tư nhân lớn nhất Việt Nam"
                 },
                 new University()
                 {
                     Id = Guid.Parse("3f5ffdad-a0e1-478c-8ae1-7f0af8fd438c"),
-                    Name = "Trường Đại học Công nghiệp Thực phẩm",
-                    Code = "DCT",
-                    Description = "Trường đại học đạt chuẩn kiểm định chất lượng giáo dục với chương trình đào tạo đa hệ, đa ngành"
+                    Name = "Trường Đại học Công Thương",
+                    Code = "HUIT",
+                    Description = "Trường đại học đạt chuẩn kiểm định chất lượng giáo dục với chương trình đào tạo đa ngành,đa lĩnh vực, có thế mạnh trong lĩnh vực công nghiệp và thương mại."
                 },
                  new University()
                  {
                      Id = Guid.Parse("0de6a90f-780c-41a4-9920-3dc6a86e3f11"),
                      Name = "Trường Đại học Ngân hàng TP.HCM",
-                     Code = "NHS",
+                     Code = "HUB",
                      Description = "Trường đại học công lập trực thuộc Ngân hàng Nhà nước Việt Nam được thành lập từ ngày 16/12/1976."
                  },
                   new University()
                   {
                       Id = Guid.Parse("3fdd5b92-3e52-4434-8f21-176732be0cc1"),
                       Name = "Trường Đại học Cảnh sát Nhân dân",
-                      Code = "CSS",
+                      Code = "PPU",
                       Description = "trường đại học công lập trực thuộc Bộ Công an tại Việt Nam đào tạo trình độ và phẩm chất cán bộ Cảnh sát nhân dân ở bậc đại học và sau đại học"
                   },
                    new University()
                    {
                        Id = Guid.Parse("2721d2b3-c6e1-4253-8823-cf73744e0190"),
                        Name = "Trường Đại học Mở",
-                       Code = "MBS",
+                       Code = "HCMCOU",
                        Description = "có nhiệm vụ đào tạo đại học và sau đại học, với các hình thức đào tạo chính quy và giáo dục thường xuyên, đào tạo các điểm vệ tinh"
                    },
                     new University()
                     {
                         Id = Guid.Parse("8ae6dc6f-c859-4fb9-b038-366470876d80"),
                         Name = "Trường Đại học Mỹ thuật TP.HCM",
-                        Code = "MTS",
+                        Code = "HCMUFA",
                         Description = " Trường đại học chuyên ngành về đào tạo nhóm ngành mỹ thuật tại Việt Nam."
                     },
                      new University()
                      {
                          Id = Guid.Parse("1d5312be-a745-4a4a-b1df-41abd3dc01e8"),
                          Name = "Trường Đại học Thể dục Thể thao TP. HCM",
-                         Code = "TDS",
+                         Code = "HUS",
                          Description = "trường đại học với mô hình kết hợp giữa đào tạo và huấn luyện"
                      },
                       new University()
                       {
                           Id = Guid.Parse("b8620337-894a-4339-926e-dff2cd9f09ba"),
                           Name = "Trường Đại học Văn hóa TP.HCM",
-                          Code = "VHS",
+                          Code = "HCMUC",
                           Description = "Trường đại học đào tạo và nghiên cứu khoa học các lĩnh vực: văn hóa, nghệ thuật, thông tin và du lịch."
                       },
                       new University()
                       {
                           Id = Guid.Parse("cdbd71b3-7fe4-4917-9eed-616b4c2f2a97"),
                           Name = "Trường Đại học Sư phạm - Kỹ thuật TP.HCM",
-                          Code = "HCMUE",
+                          Code = "HCMUTE",
                           Description = "Trường đại học đa ngành tại Việt Nam, với thế mạnh về đào tạo kỹ thuật"
                       },
                       new University()
@@ -179,7 +179,7 @@ namespace ApplicationContext.Configurations
                       {
                           Id = Guid.Parse("ddb202ca-e224-48d6-a463-6b32ed962693"),
                           Name = "Trường Đại học Giao thông Vận tải TP.HCM",
-                          Code = "GSA",
+                          Code = "UTH",
                           Description = "Trường đại học đa ngành thuộc lĩnh vực giao thông vận tải lớn nhất phía Nam Việt Nam."
                       },
                       new University()
