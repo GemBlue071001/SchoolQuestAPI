@@ -13,6 +13,11 @@ namespace ApplicationContext.Configurations
     {
         public void Configure(EntityTypeBuilder<University> builder)
         {
+            builder
+            .Property(b => b.CreatedDate)
+            .HasDefaultValueSql("NOW()")
+            .ValueGeneratedOnAdd();
+
             builder.HasData(
                 new University()
                 {
