@@ -31,15 +31,14 @@ namespace BusinessLogicLayer.Service
             var userId = _claimsService.GetUserIdInRequest();
 
             var userRecord = _unitOfWork.MBTI_UserRecords.GetAsync(x => x.UserId == userId);
-            if (userRecord == null)
-            {
+            
                 newUserRecord.UserId = userId;
                 await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
                 await _unitOfWork.SaveChangeAsync();
 
                 return response.SetOk(Resources.CreateSuccess);
-            }
-            return response.SetBadRequest("You have already take this test ");
+            
+            
 
         }
 
