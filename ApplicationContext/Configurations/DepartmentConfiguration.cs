@@ -207,6 +207,22 @@ namespace ApplicationContext.Configurations
                          Name = "Logistics",
                          Description = "Các ngành về logistics",
                          RequiredScore = 27
+                     },
+                     new Department()
+                     {
+                         Id = Guid.Parse("9bf92746-e6c9-46ae-a8ba-9fa93671dcce"),
+                         Code = "VH",
+                         Name = "Văn hóa",
+                         Description = "Các ngành về văn hóa",
+                         RequiredScore = 23
+                     },
+                     new Department()
+                     {
+                         Id = Guid.Parse("07563189-01d5-4ec1-80a6-f9c7ced12408"),
+                         Code = "DA",
+                         Name = "Điện ảnh",
+                         Description = "Các ngành về điện ảnh-sân khấu",
+                         RequiredScore = 30
                      });
         }
 

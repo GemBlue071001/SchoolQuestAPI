@@ -156,7 +156,7 @@ namespace ApplicationContext.Configurations
                      {
                          Id = Guid.Parse("1d5312be-a745-4a4a-b1df-41abd3dc01e8"),
                          Name = "Trường Đại học Thể dục Thể thao TP. HCM",
-                         Code = "HUS",
+                         Code = "USH",
                          Description = "trường đại học với mô hình kết hợp giữa đào tạo và huấn luyện"
                      },
                       new University()
