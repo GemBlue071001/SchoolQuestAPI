@@ -23,6 +23,7 @@ namespace ApplicationContext.Configurations
 
             builder.HasKey(sc => new { sc.UniversityId, sc.DepartmentId });
             builder.HasData(
+
                 new UniversityDepartment()
                 {
                     Id = Guid.Parse("c35a6c55-f88b-400f-9b1b-812e78e7b871"),
@@ -264,6 +265,7 @@ namespace ApplicationContext.Configurations
                     UniversityId = Guid.Parse("")
                 } */
                 );
+
         }
     }
 }
