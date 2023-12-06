@@ -47,6 +47,15 @@ namespace BusinessLogicLayer.Service
             return response.SetOk(userRecordsResponse);
         }
 
+        public async Task<ApiResponse> GetUserRecordForAdmin(Guid userId)
+        {
+            var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecords(userId);
+            var userRecordsResponse = _mapper.Map<List<MBTI_UserRecordResponse>>(userRecords);
+            var response = new ApiResponse();
+
+            return response.SetOk(userRecordsResponse);
+        }
+
         public async Task<ApiResponse> GetUserRecordDetail(int id)
         {
             var response = new ApiResponse();
