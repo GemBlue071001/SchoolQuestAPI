@@ -13,5 +13,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> AddAttemptAsync(NewAttemptRequest newAttempt);
         Task<ApiResponse> GetStudentAttemptPagingAsync(int pageIndex, int pageSize, string search);
         Task<ApiResponse> GetAllAttemptPagingAsync(int pageIndex, int pageSize, string search);
+        Task<ApiResponse> GetAttemptDetail(Guid id);
     }
 }

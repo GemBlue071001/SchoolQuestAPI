@@ -46,5 +46,23 @@ namespace BusinessLogicLayer.Service
 
             return response.SetOk(userRecordsResponse);
         }
+
+        public async Task<ApiResponse> GetUserRecordDetail(int id)
+        {
+            var response = new ApiResponse();
+            var userId = _claimsService.GetUserIdInRequest();
+
+            var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecordDetail(id);
+
+            if (userRecords == null)
+                return response.SetBadRequest();
+
+            if (userRecords.UserId != userId) 
+                return response.SetBadRequest("Bạn không được xem bài kiểm tra này !");
+
+            var userRecordsResponse = _mapper.Map<MBTI_UserRecordResponse>(userRecords);
+
+            return response.SetOk(userRecordsResponse);
+        }
     }
 }

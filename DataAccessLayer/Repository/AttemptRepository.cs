@@ -28,7 +28,7 @@ namespace DataAccessLayer.Repository
                     .Include(x => x.AttemptDetails)
                         .ThenInclude(x => x.ExaminationQuestion)
                             .ThenInclude(x => x.Question)
-                     .Include(x=>x.User)   
+                     .Include(x => x.User)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }
@@ -46,7 +46,7 @@ namespace DataAccessLayer.Repository
                     .Include(x => x.AttemptDetails)
                         .ThenInclude(x => x.ExaminationQuestion)
                             .ThenInclude(x => x.Question)
-                    .Include(x=>x.User)
+                    .Include(x => x.User)
                     .Skip((pageIndex - 1) * pageSize)
                     .Take(pageSize).ToListAsync();
         }
@@ -86,6 +86,20 @@ namespace DataAccessLayer.Repository
                     .FirstOrDefaultAsync();
 
             return score;
+        }
+
+        public async Task<Attempt?> GetDetail(Guid id)
+        {
+            IQueryable<Attempt> query = _db;
+
+            var attempt = await query
+                    .Where(b => b.Id == id)
+                    .Include(x => x.AttemptDetails)
+                        .ThenInclude(x => x.ExaminationQuestion)
+                            .ThenInclude(x => x.Question)
+                    .FirstOrDefaultAsync();
+
+            return attempt;
         }
     }
 }

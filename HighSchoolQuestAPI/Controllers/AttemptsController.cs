@@ -43,5 +43,13 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetAllAttemptPagingAsync(pageIndex, pageSize, search);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAttemptDetail(Guid id)
+        {
+            var result = await _service.GetAttemptDetail(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

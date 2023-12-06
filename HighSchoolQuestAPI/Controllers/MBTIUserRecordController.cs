@@ -32,5 +32,13 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetUserRecord();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
+        [Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserRecordDetail(int id)
+        {
+            var result = await _service.GetUserRecordDetail(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

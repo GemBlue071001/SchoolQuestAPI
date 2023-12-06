@@ -14,5 +14,6 @@ namespace DataAccessLayer.IRepository
         Task<List<Attempt>> GetAllAttemptsPagingAsync(int pageIndex, int pageSize, string search);
         Task<int> GetAllAttemptCountAsync(string search);
         Task<int?> GetHighestScore(Guid userId);
+        Task<Attempt?> GetDetail(Guid id);
     }
 }
