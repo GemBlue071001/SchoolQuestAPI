@@ -9,6 +9,6 @@ namespace BusinessLogicLayer.IService
 {
     public interface IMBTIService
     {
-        Task<ApiResponse> GetDepartmentByMBTICriteria(string mbti);
+        Task<ApiResponse> GetMBTI(string mbti);
     }
 }
