@@ -17,5 +17,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> RandomExaminationAsync(RandomExamRequest request);
         Task<ApiResponse> GetNumberOfTotalExam();
         Task<ApiResponse> RandomExaminationByTopicAsync(RandomExamByTopicRequest request);
+        Task<ApiResponse> DeleteExamlAsync(Guid id);
     }
 }
