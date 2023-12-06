@@ -101,5 +101,20 @@ namespace DataAccessLayer.Repository
 
             return attempt;
         }
+
+        public async Task<List<Attempt>> GetStudentAttemptForAdmin(Guid userId)
+        {
+            IQueryable<Attempt> query = _db;
+
+            var attempt = await query
+                    .Where(b => b.UserId == userId)
+                    .Include(x => x.AttemptDetails)
+                        .ThenInclude(x => x.ExaminationQuestion)
+                            .ThenInclude(x => x.Question)
+                    .Include(x => x.User)
+                    .ToListAsync();
+
+            return attempt;
+        }
     }
 }

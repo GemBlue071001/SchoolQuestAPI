@@ -120,5 +120,16 @@ namespace BusinessLogicLayer.Service
             else
                 return res.SetBadRequest("Không tìm thấy bài kiểm tra ! ");
         }
+
+        public async Task<ApiResponse> GetAttemptForAdmin(Guid studentId)
+        {
+            var res = new ApiResponse();
+            var userId = GetUserIdInRequest();
+
+            var attempts = await _unitOfWork.Attempts.GetStudentAttemptForAdmin(studentId);
+
+            var attemptResponse = _mapper.Map<List<AttemptResponse>>(attempts);
+            return res.SetOk(attemptResponse);
+        }
     }
 }

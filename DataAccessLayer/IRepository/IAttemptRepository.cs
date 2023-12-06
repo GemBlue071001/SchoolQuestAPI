@@ -15,5 +15,6 @@ namespace DataAccessLayer.IRepository
         Task<int> GetAllAttemptCountAsync(string search);
         Task<int?> GetHighestScore(Guid userId);
         Task<Attempt?> GetDetail(Guid id);
+        Task<List<Attempt>> GetStudentAttemptForAdmin(Guid userId);
     }
 }
