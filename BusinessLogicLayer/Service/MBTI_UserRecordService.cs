@@ -30,15 +30,11 @@ namespace BusinessLogicLayer.Service
             var newUserRecord = _mapper.Map<MBTI_UserRecord>(newRecord);
             var userId = _claimsService.GetUserIdInRequest();
 
-            
-                newUserRecord.UserId = userId;
-                await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
-                await _unitOfWork.SaveChangeAsync();
+            newUserRecord.UserId = userId;
+            await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
+            await _unitOfWork.SaveChangeAsync();
 
-                return response.SetOk(Resources.CreateSuccess);
-            
-            
-
+            return response.SetOk(Resources.CreateSuccess);
         }
 
         public async Task<ApiResponse> GetUserRecord()

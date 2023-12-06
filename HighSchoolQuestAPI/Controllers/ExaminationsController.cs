@@ -58,6 +58,14 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        //[Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteExam(Guid id)
+        {
+            var result = await _service.DeleteExamlAsync(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetExaminationAsync([FromQuery] int pageIndex = 1,

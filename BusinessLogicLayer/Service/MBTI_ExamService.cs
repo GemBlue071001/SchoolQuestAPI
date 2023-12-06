@@ -57,7 +57,7 @@ namespace BusinessLogicLayer.Service
         public async Task<List<MBTIExamResponse>> GetExam(int index, int pageSize)
         {
             var response = new ApiResponse();
-            var exams = await _uniOfWork.MBTI_Exams.GetExam(index,pageSize);
+            var exams = await _uniOfWork.MBTI_Exams.GetExam(index, pageSize);
             var numberOfExam = await _uniOfWork.MBTI_Exams.CountAsync();
             var examList = _mapper.Map<List<MBTIExamResponse>>(exams);
 
@@ -71,9 +71,26 @@ namespace BusinessLogicLayer.Service
         {
             var response = new ApiResponse();
             var exams = await _uniOfWork.MBTI_Exams.GetExamDetail(id);
+
+            if (exams == null)
+                return response.SetBadRequest(Resources.NullObject);
+
             var examResponse = _mapper.Map<MBTIExamResponse>(exams);
 
             return response.SetOk(examResponse);
+        }
+
+        public async Task<ApiResponse> DeleteExam(int id)
+        {
+            var response = new ApiResponse();
+
+            var exams = await _uniOfWork.MBTI_Exams.GetAsync(x => x.Id == id);
+            if (exams == null) return response.SetBadRequest(Resources.NullObject);
+
+            await _uniOfWork.MBTI_Exams.RemoveByIdAsync(id);
+            await _uniOfWork.SaveChangeAsync();
+
+            return response.SetOk(Resources.DeleteSuccess);
         }
     }
 }

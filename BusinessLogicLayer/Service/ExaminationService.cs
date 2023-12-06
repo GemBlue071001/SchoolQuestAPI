@@ -188,6 +188,21 @@ namespace BusinessLogicLayer.Service
             return response.SetOk(examResponse);
         }
 
+        public async Task<ApiResponse> DeleteExamlAsync(Guid id)
+        {
+            ApiResponse response = new ApiResponse();
+            var exam = await _unitOfWork.Examinations.GetExamDetailAsync(id);
+            if (exam == null)
+            {
+                return response.SetBadRequest(message: Resources.ExamNotFound); ;
+            }
+
+            await _unitOfWork.Examinations.RemoveByIdAsync(exam.Id);
+            await _unitOfWork.SaveChangeAsync();
+
+            return response.SetOk(Resources.DeleteSuccess);
+        }
+
         public async Task<ApiResponse> GetNumberOfTotalExam()
         {
             var response = new ApiResponse();
