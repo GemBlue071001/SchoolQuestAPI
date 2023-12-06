@@ -21,9 +21,9 @@ namespace HighSchoolQuestAPI.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetMBTI_DepartmentAsync(string mbti)
+        public async Task<IActionResult> GetMBTI(string mbti)
         {
-            var result = await _service.GetDepartmentByMBTICriteria(mbti);
+            var result = await _service.GetMBTI(mbti);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
