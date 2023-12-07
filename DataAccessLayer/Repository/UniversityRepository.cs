@@ -19,7 +19,8 @@ namespace DataAccessLayer.Repository
         public async Task<List<University>> GetUniversities()
         {
             IQueryable<University> query = _db;
-            query = query.Include(x => x.UniversityDepartments).ThenInclude(x => x.Department);
+            query = query.Include(x => x.UniversityDepartments)
+                .ThenInclude(x => x.Department);
             return await query
                     .Where(b => !b.IsDeleted)
                     .ToListAsync();
