@@ -47,6 +47,7 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new ExaminationQuestionConfiguration());
             modelBuilder.ApplyConfiguration(new AttemptDetailConfiguration());
             modelBuilder.ApplyConfiguration(new GroupDepartmentConfiguration());
+            modelBuilder.ApplyConfiguration(new MajorConfiguration());
             modelBuilder.ApplyConfiguration(new MBTIConfiguration());
             modelBuilder.ApplyConfiguration(new MBTI_DepartmentConfiguration());
             modelBuilder.ApplyConfiguration(new UniversityConfiguration());

@@ -72,8 +72,8 @@ namespace ApplicationContext.Migrations
                         {
                             Id = new Guid("9b8daa9f-7f8c-41d9-aa34-ba2b1010f4ed"),
                             AttempType = 0,
-                            CreatedDate = new DateTime(2023, 12, 7, 12, 35, 38, 922, DateTimeKind.Utc).AddTicks(4072),
-                            ExamDate = new DateTime(2023, 12, 8, 12, 35, 38, 922, DateTimeKind.Utc).AddTicks(4077),
+                            CreatedDate = new DateTime(2023, 12, 8, 2, 8, 47, 575, DateTimeKind.Utc).AddTicks(822),
+                            ExamDate = new DateTime(2023, 12, 9, 2, 8, 47, 575, DateTimeKind.Utc).AddTicks(828),
                             IsDeleted = false,
                             Name = "bai kiem tra kien thuc xa hoi",
                             Result = "Pass",
@@ -183,7 +183,7 @@ namespace ApplicationContext.Migrations
                         {
                             Id = new Guid("b8034210-23fd-4af9-9d7f-f260a0cdef97"),
                             Code = "KT",
-                            Description = "các ngành về kinh tế",
+                            Description = "các ngành về kinh tế-quản lý",
                             IsDeleted = false,
                             Name = "Kinh tế"
                         },
@@ -359,7 +359,7 @@ namespace ApplicationContext.Migrations
                         {
                             Id = new Guid("bf4524c1-1150-48f6-8c57-d922d925426f"),
                             Code = "LG",
-                            Description = "Các ngành về logistics",
+                            Description = "Các ngành về logistics-vận tải",
                             IsDeleted = false,
                             Name = "Logistics"
                         },
@@ -1928,7 +1928,9 @@ namespace ApplicationContext.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("timestamp with time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uuid");
@@ -1955,6 +1957,953 @@ namespace ApplicationContext.Migrations
                     b.HasIndex("DepartmentId");
 
                     b.ToTable("Major");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c731c3f5-a1d2-4b8f-bd7f-2d57fa0acb0f"),
+                            Code = "KTPM",
+                            DepartmentId = new Guid("de305d54-75b4-431b-adb2-eb6b9e546013"),
+                            Description = "Học về thiết kế phần mềm",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật phần mềm"
+                        },
+                        new
+                        {
+                            Id = new Guid("63da08f2-e70f-488d-8d5a-eb24063697e5"),
+                            Code = "KHMT",
+                            DepartmentId = new Guid("de305d54-75b4-431b-adb2-eb6b9e546013"),
+                            Description = "Nghiên cứu lý thuyết và thuật toán máy tính",
+                            IsDeleted = false,
+                            MajorName = "Khoa học máy tính"
+                        },
+                        new
+                        {
+                            Id = new Guid("2b72f32c-5d96-4b5d-ae68-597bbeead505"),
+                            Code = "ATTT",
+                            DepartmentId = new Guid("de305d54-75b4-431b-adb2-eb6b9e546013"),
+                            Description = "Nghiên cứu và bảo mật hệ thống thông tin",
+                            IsDeleted = false,
+                            MajorName = "An toàn thông tin"
+                        },
+                        new
+                        {
+                            Id = new Guid("f5e68a91-1e8e-4ef7-9f0d-6da923dc5611"),
+                            Code = "TTNT",
+                            DepartmentId = new Guid("de305d54-75b4-431b-adb2-eb6b9e546013"),
+                            Description = "Nghiên cứu và ứng dụng trí tuệ nhân tạo",
+                            IsDeleted = false,
+                            MajorName = "Trí tuệ nhân tạo"
+                        },
+                        new
+                        {
+                            Id = new Guid("ce320b5a-4eac-4436-92ef-90b985aec10f"),
+                            Code = "MKT",
+                            DepartmentId = new Guid("b8034210-23fd-4af9-9d7f-f260a0cdef97"),
+                            Description = "Makerting",
+                            IsDeleted = false,
+                            MajorName = "Makerting"
+                        },
+                        new
+                        {
+                            Id = new Guid("1b320b9a-3eac-4336-92ef-90b985aec101"),
+                            Code = "QTKD",
+                            DepartmentId = new Guid("b8034210-23fd-4af9-9d7f-f260a0cdef97"),
+                            Description = "Ngành học về quản lý và điều hành các hoạt động trong doanh nghiệp",
+                            IsDeleted = false,
+                            MajorName = "Quản trị kinh doanh"
+                        },
+                        new
+                        {
+                            Id = new Guid("2c430b7a-5eac-4536-93ef-80b985aec202"),
+                            Code = "TMĐT",
+                            DepartmentId = new Guid("b8034210-23fd-4af9-9d7f-f260a0cdef97"),
+                            Description = "Ngành học về kinh doanh trực tuyến sử dụng nền tảng công nghệ thông tin với sự hỗ trợ của Internet để thực hiện các giao dịch mua bán, trao đổi, thanh toán trực tuyến.",
+                            IsDeleted = false,
+                            MajorName = "Thương mại điện tử"
+                        },
+                        new
+                        {
+                            Id = new Guid("3d550b8a-6eac-4636-92ef-70b985aec303"),
+                            Code = "KDQT",
+                            DepartmentId = new Guid("b8034210-23fd-4af9-9d7f-f260a0cdef97"),
+                            Description = "Ngành học về kinh doanh và thương mại giữa các quốc gia",
+                            IsDeleted = false,
+                            MajorName = "Kinh doanh quốc tế"
+                        },
+                        new
+                        {
+                            Id = new Guid("4e661b9a-7eac-4736-92ef-60b985aec404"),
+                            Code = "KT",
+                            DepartmentId = new Guid("b8034210-23fd-4af9-9d7f-f260a0cdef97"),
+                            Description = "Ngành học về công tác ghi chép, phân tích và kiểm tra các nghiệp vụ tài chính",
+                            IsDeleted = false,
+                            MajorName = "Kế toán"
+                        },
+                        new
+                        {
+                            Id = new Guid("1a111b2a-1eac-4132-92ef-90b985ae0101"),
+                            Code = "YK",
+                            DepartmentId = new Guid("4c7c3b5f-2a54-42ee-8a7f-0961273cd329"),
+                            Description = "Ngành học về chẩn đoán, điều trị bệnh và nâng cao sức khỏe",
+                            IsDeleted = false,
+                            MajorName = "Y khoa"
+                        },
+                        new
+                        {
+                            Id = new Guid("2b222b3a-2eac-4233-93ef-80b985ae0202"),
+                            Code = "DH",
+                            DepartmentId = new Guid("4c7c3b5f-2a54-42ee-8a7f-0961273cd329"),
+                            Description = "Ngành học về nghiên cứu, phát triển và sản xuất thuốc",
+                            IsDeleted = false,
+                            MajorName = "Dược học"
+                        },
+                        new
+                        {
+                            Id = new Guid("3c333b4a-3eac-4333-94ef-70b985ae0303"),
+                            Code = "DD",
+                            DepartmentId = new Guid("4c7c3b5f-2a54-42ee-8a7f-0961273cd329"),
+                            Description = "Ngành học về chăm sóc người bệnh tại các cơ sở y tế",
+                            IsDeleted = false,
+                            MajorName = "Điều dưỡng"
+                        },
+                        new
+                        {
+                            Id = new Guid("4d444b5a-4eac-4434-95ef-60b985ae0404"),
+                            Code = "RHM",
+                            DepartmentId = new Guid("4c7c3b5f-2a54-42ee-8a7f-0961273cd329"),
+                            Description = "Ngành học về phục hình, nha khoa và chỉnh nha",
+                            IsDeleted = false,
+                            MajorName = "Răng-Hàm-Mặt"
+                        },
+                        new
+                        {
+                            Id = new Guid("5e555b6a-5eac-4535-96ef-50b985ae0505"),
+                            Code = "YHCT",
+                            DepartmentId = new Guid("4c7c3b5f-2a54-42ee-8a7f-0961273cd329"),
+                            Description = "Ngành học về phương pháp chữa bệnh bằng y học cổ truyền",
+                            IsDeleted = false,
+                            MajorName = "Y học cổ truyền"
+                        },
+                        new
+                        {
+                            Id = new Guid("a52a3b15-3a21-44cd-8d74-b4c6751e2963"),
+                            Code = "SPTH",
+                            DepartmentId = new Guid("e35d862c-1f43-456b-a60b-1b2c7e44ab78"),
+                            Description = "Đào tạo giáo viên toán học",
+                            IsDeleted = false,
+                            MajorName = "Sư phạm toán học"
+                        },
+                        new
+                        {
+                            Id = new Guid("1dcd3794-f8d5-4d4e-9788-74a3b9426421"),
+                            Code = "SPNV",
+                            DepartmentId = new Guid("e35d862c-1f43-456b-a60b-1b2c7e44ab78"),
+                            Description = "Đào tạo giáo viên ngữ văn",
+                            IsDeleted = false,
+                            MajorName = "Sư phạm ngữ văn"
+                        },
+                        new
+                        {
+                            Id = new Guid("cf3913ca-fa92-4f90-a55b-93725cae4b32"),
+                            Code = "SPTA",
+                            DepartmentId = new Guid("e35d862c-1f43-456b-a60b-1b2c7e44ab78"),
+                            Description = "Đào tạo giáo viên tiếng Anh",
+                            IsDeleted = false,
+                            MajorName = "Sư phạm tiếng Anh"
+                        },
+                        new
+                        {
+                            Id = new Guid("7ea9448b-e686-49e2-a0df-c425bd44f3ea"),
+                            Code = "QLGD",
+                            DepartmentId = new Guid("e35d862c-1f43-456b-a60b-1b2c7e44ab78"),
+                            Description = "Đào tạo quản lý ngành giáo dục",
+                            IsDeleted = false,
+                            MajorName = "Quản lý giáo dục"
+                        },
+                        new
+                        {
+                            Id = new Guid("387c472b-1f7d-4655-838c-80982b8f9e24"),
+                            Code = "TKĐH",
+                            DepartmentId = new Guid("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f"),
+                            Description = "Thiết kế các sản phẩm truyền thông đồ họa",
+                            IsDeleted = false,
+                            MajorName = "Thiết kế đồ họa"
+                        },
+                        new
+                        {
+                            Id = new Guid("b629fa64-5dea-4129-9d59-f48c265bca62"),
+                            Code = "TKTT",
+                            DepartmentId = new Guid("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f"),
+                            Description = "Thiết kế các sản phẩm thời trang",
+                            IsDeleted = false,
+                            MajorName = "Thiết kế thời trang"
+                        },
+                        new
+                        {
+                            Id = new Guid("44929c3d-dd91-4405-9d4e-f4be315b7fbb"),
+                            Code = "TKNT",
+                            DepartmentId = new Guid("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f"),
+                            Description = "Thiết kế các sản phẩm nội thất",
+                            IsDeleted = false,
+                            MajorName = "Thiết kế nội thất"
+                        },
+                        new
+                        {
+                            Id = new Guid("17d5462c-3a8a-4e93-b5e6-69d36186577e"),
+                            Code = "DK",
+                            DepartmentId = new Guid("bb3a10db-c4d4-4b45-9d15-0c38f41e8f5f"),
+                            Description = "Đào tạo nghệ thuật điêu khắc",
+                            IsDeleted = false,
+                            MajorName = "Điêu khắc"
+                        },
+                        new
+                        {
+                            Id = new Guid("c74e4f33-a078-4219-8f69-7398435aff4d"),
+                            Code = "LKT",
+                            DepartmentId = new Guid("67d181a2-ac85-4aaa-bcad-863b8695071b"),
+                            Description = "Ngành học đào tạo kỹ năng về luật kinh tế",
+                            IsDeleted = false,
+                            MajorName = "Luật kinh tế"
+                        },
+                        new
+                        {
+                            Id = new Guid("31b92a5b-8354-450f-a023-6e7d74349ab4"),
+                            Code = "LHP",
+                            DepartmentId = new Guid("67d181a2-ac85-4aaa-bcad-863b8695071b"),
+                            Description = "Ngành học đào tạo kỹ năng về luật Hiến pháp và luật hành chính",
+                            IsDeleted = false,
+                            MajorName = "Luật Hiến pháp và luật hành chính"
+                        },
+                        new
+                        {
+                            Id = new Guid("3c25899c-f1a5-48d0-9276-03ef9fd60a24"),
+                            Code = "LDS",
+                            DepartmentId = new Guid("67d181a2-ac85-4aaa-bcad-863b8695071b"),
+                            Description = "Ngành học đào tạo kỹ năng về luật dân sự và tố tụng dân sự",
+                            IsDeleted = false,
+                            MajorName = "Luật dân sự và tố tụng dân sự"
+                        },
+                        new
+                        {
+                            Id = new Guid("71bbd6ba-141b-4990-b2fa-28d59e026c75"),
+                            Code = "LHS",
+                            DepartmentId = new Guid("67d181a2-ac85-4aaa-bcad-863b8695071b"),
+                            Description = "Ngành học đào tạo kỹ năng về luật dân sự và tố tụng dân sự",
+                            IsDeleted = false,
+                            MajorName = "Luật hình sự và tố tụng hình sự"
+                        },
+                        new
+                        {
+                            Id = new Guid("c0d46118-35a4-4a25-982b-584781b45ca8"),
+                            Code = "BC",
+                            DepartmentId = new Guid("f9cf3140-b872-4837-b965-d37f94e33c0b"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực báo chí",
+                            IsDeleted = false,
+                            MajorName = "Báo chí"
+                        },
+                        new
+                        {
+                            Id = new Guid("19d935fe-5772-48a6-98bd-782450be775a"),
+                            Code = "QHCC",
+                            DepartmentId = new Guid("f9cf3140-b872-4837-b965-d37f94e33c0b"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quan hệ công chúng",
+                            IsDeleted = false,
+                            MajorName = "Quan hệ công chúng"
+                        },
+                        new
+                        {
+                            Id = new Guid("dc05a4d6-7019-424c-bc3b-118c7aa1272b"),
+                            Code = "TTĐPT",
+                            DepartmentId = new Guid("f9cf3140-b872-4837-b965-d37f94e33c0b"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực truyền thông đa phương tiện",
+                            IsDeleted = false,
+                            MajorName = "Truyền thông đa phương tiện"
+                        },
+                        new
+                        {
+                            Id = new Guid("07951ef0-d8df-47a3-82c2-c16dd3a16a3f"),
+                            Code = "TTQT",
+                            DepartmentId = new Guid("f9cf3140-b872-4837-b965-d37f94e33c0b"),
+                            Description = "Ngành học đào tạo kỹ năng về truyền thông quốc tế",
+                            IsDeleted = false,
+                            MajorName = "Truyền thông quốc tế"
+                        },
+                        new
+                        {
+                            Id = new Guid("0035306f-de5e-4c60-9e55-4f2282e7dda9"),
+                            Code = "NNA",
+                            DepartmentId = new Guid("5fbe7741-917c-45f5-8f78-c06327ede146"),
+                            Description = "Ngành học đào tạo kỹ năng về ngôn ngữ Anh",
+                            IsDeleted = false,
+                            MajorName = "Ngôn ngữ Anh"
+                        },
+                        new
+                        {
+                            Id = new Guid("0ab02d77-61fb-46ea-8340-7236296c4022"),
+                            Code = "NNN",
+                            DepartmentId = new Guid("5fbe7741-917c-45f5-8f78-c06327ede146"),
+                            Description = "Ngành học đào tạo kỹ năng về ngôn ngữ Nhật",
+                            IsDeleted = false,
+                            MajorName = "Ngôn ngữ Nhật"
+                        },
+                        new
+                        {
+                            Id = new Guid("317f2de4-b76e-4d4b-8b0a-94166493623e"),
+                            Code = "VHVN",
+                            DepartmentId = new Guid("5fbe7741-917c-45f5-8f78-c06327ede146"),
+                            Description = "Ngành học đào tạo kỹ năng về tiếng Việt và văn hóa Việt Nam",
+                            IsDeleted = false,
+                            MajorName = "Tiếng Việt và văn hóa Việt Nam"
+                        },
+                        new
+                        {
+                            Id = new Guid("42308b7d-8d80-4077-a960-433b4eb6ec7a"),
+                            Code = "QLVH",
+                            DepartmentId = new Guid("5fbe7741-917c-45f5-8f78-c06327ede146"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản lý văn hóa",
+                            IsDeleted = false,
+                            MajorName = "Quản lý văn hóa"
+                        },
+                        new
+                        {
+                            Id = new Guid("0c7c4a30-d3d1-48ea-9526-1b31fe4c0103"),
+                            Code = "CNDM",
+                            DepartmentId = new Guid("d2322472-e7af-47e7-ab8f-eba6e8e7baad"),
+                            Description = "Ngành học đào tạo kỹ năng về công nghệ dệt,may",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ dệt,may"
+                        },
+                        new
+                        {
+                            Id = new Guid("92913faa-9607-43da-b4aa-b6269cad9d12"),
+                            Code = "CNDG",
+                            DepartmentId = new Guid("d2322472-e7af-47e7-ab8f-eba6e8e7baad"),
+                            Description = "Ngành học đào tạo kỹ năng về công nghệ da giày",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ da giày"
+                        },
+                        new
+                        {
+                            Id = new Guid("524954ba-d75f-4cd7-a2af-acf23d383a05"),
+                            Code = "CNVL",
+                            DepartmentId = new Guid("d2322472-e7af-47e7-ab8f-eba6e8e7baad"),
+                            Description = "Ngành học đào tạo kỹ năng về công nghệ vật liệu dệt, may",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ vật liệu dệt, may"
+                        },
+                        new
+                        {
+                            Id = new Guid("bc1e9f85-8404-46eb-a6e6-bab6f898566a"),
+                            Code = "KTĐ",
+                            DepartmentId = new Guid("cbeac466-d627-466c-8300-6ee4d5505a20"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thuật điện",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật điện"
+                        },
+                        new
+                        {
+                            Id = new Guid("667330de-e435-45d1-ab72-4d6504cbba14"),
+                            Code = "KTHN",
+                            DepartmentId = new Guid("cbeac466-d627-466c-8300-6ee4d5505a20"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thuật hạt nhân",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật hạt nhân"
+                        },
+                        new
+                        {
+                            Id = new Guid("ac30fa55-823c-4f49-aa01-98a15822af37"),
+                            Code = "KTCN",
+                            DepartmentId = new Guid("cbeac466-d627-466c-8300-6ee4d5505a20"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thuật công nghiệp",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật công nghiệp"
+                        },
+                        new
+                        {
+                            Id = new Guid("8136a6cf-c815-4d9e-9888-399d76d7c8e1"),
+                            Code = "KTHK",
+                            DepartmentId = new Guid("cbeac466-d627-466c-8300-6ee4d5505a20"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thuật hàng không",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật hàng không"
+                        },
+                        new
+                        {
+                            Id = new Guid("0af0e064-0927-45b7-b9cc-8e8a49996c1c"),
+                            Code = "HH",
+                            DepartmentId = new Guid("3a8a3b94-db19-44cb-91ae-a895fe50c498"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực hội họa",
+                            IsDeleted = false,
+                            MajorName = "Hội họa"
+                        },
+                        new
+                        {
+                            Id = new Guid("d6f2b6ab-0f91-4ffc-ade1-65b934718b68"),
+                            Code = "SPMT",
+                            DepartmentId = new Guid("3a8a3b94-db19-44cb-91ae-a895fe50c498"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực sư phạm mỹ thuật",
+                            IsDeleted = false,
+                            MajorName = "Sư phạm mỹ thuật"
+                        },
+                        new
+                        {
+                            Id = new Guid("335f8cf8-94b0-47bd-ba70-eb2aaf0c07b1"),
+                            Code = "TN",
+                            DepartmentId = new Guid("3a8a3b94-db19-44cb-91ae-a895fe50c498"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thanh nhạc",
+                            IsDeleted = false,
+                            MajorName = "Thanh nhạc"
+                        },
+                        new
+                        {
+                            Id = new Guid("8c2d3663-1012-4a24-809d-bb12e6ed5d23"),
+                            Code = "SPAN",
+                            DepartmentId = new Guid("3a8a3b94-db19-44cb-91ae-a895fe50c498"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực sư phạm âm nhạc",
+                            IsDeleted = false,
+                            MajorName = "Sư phạm âm nhạc"
+                        },
+                        new
+                        {
+                            Id = new Guid("4c97f72e-0560-449e-a32d-7fac374b5bbf"),
+                            Code = "QLNN",
+                            DepartmentId = new Guid("6c7f8637-25d3-4284-a4e5-3aa20ceda1f4"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản lý nhà nước",
+                            IsDeleted = false,
+                            MajorName = "Quản lý nhà nước"
+                        },
+                        new
+                        {
+                            Id = new Guid("7e623947-4413-48ab-a0e1-c797405f5f10"),
+                            Code = "CTXH",
+                            DepartmentId = new Guid("6c7f8637-25d3-4284-a4e5-3aa20ceda1f4"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực công tác xã hội",
+                            IsDeleted = false,
+                            MajorName = "Công tác xã hội"
+                        },
+                        new
+                        {
+                            Id = new Guid("b430ab31-8762-4f35-906f-989f981f61b7"),
+                            Code = "QTH",
+                            DepartmentId = new Guid("6c7f8637-25d3-4284-a4e5-3aa20ceda1f4"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quốc tế học",
+                            IsDeleted = false,
+                            MajorName = "Quốc tế học"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa88d41b-f627-4e5e-af66-19ead35fb082"),
+                            Code = "XDĐ",
+                            DepartmentId = new Guid("6c7f8637-25d3-4284-a4e5-3aa20ceda1f4"),
+                            Description = "Ngành học đào tạo kỹ năng về xây dựng Đảng và chính quyền nhà nước",
+                            IsDeleted = false,
+                            MajorName = "Xây dựng Đảng và chính quyền nhà nước"
+                        },
+                        new
+                        {
+                            Id = new Guid("e812ac28-8fa5-4c08-8d45-e40b6018056f"),
+                            Code = "TTTV",
+                            DepartmentId = new Guid("e63527a5-2326-4d15-afb5-8244fd0fa441"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực thông tin - thư viện",
+                            IsDeleted = false,
+                            MajorName = "Thông tin - thư viện"
+                        },
+                        new
+                        {
+                            Id = new Guid("9186a969-d349-4cc8-866b-352a5056418c"),
+                            Code = "BTH",
+                            DepartmentId = new Guid("e63527a5-2326-4d15-afb5-8244fd0fa441"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực bảo tàng học",
+                            IsDeleted = false,
+                            MajorName = "Bảo tàng học"
+                        },
+                        new
+                        {
+                            Id = new Guid("2332343e-e798-496b-9ea5-841bdc10552a"),
+                            Code = "KHTV",
+                            DepartmentId = new Guid("e63527a5-2326-4d15-afb5-8244fd0fa441"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực khoa học thư viện",
+                            IsDeleted = false,
+                            MajorName = "Khoa học thư viện"
+                        },
+                        new
+                        {
+                            Id = new Guid("ad437f7f-3242-4270-997f-a0a6f8a0c9b2"),
+                            Code = "QLTT",
+                            DepartmentId = new Guid("e63527a5-2326-4d15-afb5-8244fd0fa441"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản lý thông tin",
+                            IsDeleted = false,
+                            MajorName = "Quản lý thông tin"
+                        },
+                        new
+                        {
+                            Id = new Guid("74757d60-d6c9-4cf3-a657-8f01bf8c42c7"),
+                            Code = "QLTNMT",
+                            DepartmentId = new Guid("eb977e5d-b2a9-48c2-a540-cefe5a960c1d"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản lý tài nguyên và môi trường",
+                            IsDeleted = false,
+                            MajorName = "Quản lý tài nguyên và môi trường"
+                        },
+                        new
+                        {
+                            Id = new Guid("282b4ad3-d00d-4275-97ae-7480635636e8"),
+                            Code = "ĐLTN",
+                            DepartmentId = new Guid("eb977e5d-b2a9-48c2-a540-cefe5a960c1d"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực địa lý tự nhiên",
+                            IsDeleted = false,
+                            MajorName = "Địa lý tự nhiên"
+                        },
+                        new
+                        {
+                            Id = new Guid("6d3f0b5b-f3f1-444b-a642-e83b527d7c3a"),
+                            Code = "KHMT",
+                            DepartmentId = new Guid("eb977e5d-b2a9-48c2-a540-cefe5a960c1d"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực khoa học môi trường",
+                            IsDeleted = false,
+                            MajorName = "Khoa học môi trường"
+                        },
+                        new
+                        {
+                            Id = new Guid("5ee2fae8-eae3-495a-95b6-303307cb596c"),
+                            Code = "KTTNTN",
+                            DepartmentId = new Guid("eb977e5d-b2a9-48c2-a540-cefe5a960c1d"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kinh tế tài nguyên thiên nhiên",
+                            IsDeleted = false,
+                            MajorName = "Kinh tế tài nguyên thiên nhiên"
+                        },
+                        new
+                        {
+                            Id = new Guid("8ae7996c-505b-4343-9df7-caebf86c9e60"),
+                            Code = "TH",
+                            DepartmentId = new Guid("c63be8dc-3a1e-494a-9b2a-ba49b5eef457"),
+                            Description = "Ngành học đào tạo kỹ năng về toán học",
+                            IsDeleted = false,
+                            MajorName = "Toán học"
+                        },
+                        new
+                        {
+                            Id = new Guid("c2a1d4aa-eb5a-4850-84c2-2b4cd2db77e0"),
+                            Code = "TUD",
+                            DepartmentId = new Guid("c63be8dc-3a1e-494a-9b2a-ba49b5eef457"),
+                            Description = "Ngành học đào tạo kỹ năng về toán ứng dụng",
+                            IsDeleted = false,
+                            MajorName = "Toán ứng dụng"
+                        },
+                        new
+                        {
+                            Id = new Guid("9e39d8ed-8447-45e6-aa07-9aa76e5c6c49"),
+                            Code = "TT",
+                            DepartmentId = new Guid("c63be8dc-3a1e-494a-9b2a-ba49b5eef457"),
+                            Description = "Ngành học đào tạo kỹ năng về toán-tin",
+                            IsDeleted = false,
+                            MajorName = "Toán-tin"
+                        },
+                        new
+                        {
+                            Id = new Guid("825d82f4-470c-4eb5-bf4f-6106b682260e"),
+                            Code = "TK",
+                            DepartmentId = new Guid("c63be8dc-3a1e-494a-9b2a-ba49b5eef457"),
+                            Description = "Ngành học đào tạo kỹ năng về thống kê",
+                            IsDeleted = false,
+                            MajorName = "Thống kê"
+                        },
+                        new
+                        {
+                            Id = new Guid("0e9599e3-0279-4ac6-8af5-eb14b3f1e584"),
+                            Code = "KTXD",
+                            DepartmentId = new Guid("47243cb9-ad17-4590-bf72-bef8ca382fa9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thuật xây dựng",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật xây dựng"
+                        },
+                        new
+                        {
+                            Id = new Guid("56306665-f58b-4188-8613-578b0fe470ed"),
+                            Code = "KT",
+                            DepartmentId = new Guid("47243cb9-ad17-4590-bf72-bef8ca382fa9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kiến trúc",
+                            IsDeleted = false,
+                            MajorName = "Kiến trúc"
+                        },
+                        new
+                        {
+                            Id = new Guid("86ac7343-b4cd-4dbb-946f-81db8c117f87"),
+                            Code = "ĐTH",
+                            DepartmentId = new Guid("47243cb9-ad17-4590-bf72-bef8ca382fa9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực đô thị học",
+                            IsDeleted = false,
+                            MajorName = "Đô thị học"
+                        },
+                        new
+                        {
+                            Id = new Guid("dd5be2ec-dd31-41ad-8674-d870f7b13ee8"),
+                            Code = "KNTXD",
+                            DepartmentId = new Guid("47243cb9-ad17-4590-bf72-bef8ca382fa9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kinh tế xây dựng",
+                            IsDeleted = false,
+                            MajorName = "Kinh tế xây dựng"
+                        },
+                        new
+                        {
+                            Id = new Guid("bfe5f392-c582-4915-9360-3d90134295d5"),
+                            Code = "CNTP",
+                            DepartmentId = new Guid("37ac6580-0e40-465f-b9f6-aa7e803487b2"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực công nghệ thực phẩm",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ thực phẩm"
+                        },
+                        new
+                        {
+                            Id = new Guid("e026cfb6-343f-4af1-a15d-c840165a09b4"),
+                            Code = "KTTP",
+                            DepartmentId = new Guid("37ac6580-0e40-465f-b9f6-aa7e803487b2"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thuật thực phẩm",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật thực phẩm"
+                        },
+                        new
+                        {
+                            Id = new Guid("da699b0b-c55d-417f-93d8-e9571e712189"),
+                            Code = "CNCBTS",
+                            DepartmentId = new Guid("37ac6580-0e40-465f-b9f6-aa7e803487b2"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực công nghệ chế biến thủy sản",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ chế biến thủy sản"
+                        },
+                        new
+                        {
+                            Id = new Guid("8ff0d04b-da37-4345-853c-71b66a2d94eb"),
+                            Code = "CNSTH",
+                            DepartmentId = new Guid("37ac6580-0e40-465f-b9f6-aa7e803487b2"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực công nghệ sau thu hoạch",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ sau thu hoạch"
+                        },
+                        new
+                        {
+                            Id = new Guid("97c46aeb-da40-47de-9a6f-52254c3f5eb8"),
+                            Code = "QTKS",
+                            DepartmentId = new Guid("d7ab840a-0e06-4785-aa71-f82bef075ff9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản trị khách sạn",
+                            IsDeleted = false,
+                            MajorName = "Quản trị khách sạn"
+                        },
+                        new
+                        {
+                            Id = new Guid("995cb552-a1a7-40c9-9032-d374f11f3ed4"),
+                            Code = "QTDVDL",
+                            DepartmentId = new Guid("d7ab840a-0e06-4785-aa71-f82bef075ff9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản trị dịch vụ du lịch và lữ hành",
+                            IsDeleted = false,
+                            MajorName = "Quản trị dịch vụ du lịch và lữ hành"
+                        },
+                        new
+                        {
+                            Id = new Guid("2793f8f1-98fb-4b13-b5e1-04085ae78762"),
+                            Code = "DLĐC",
+                            DepartmentId = new Guid("d7ab840a-0e06-4785-aa71-f82bef075ff9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực du lịch địa chất",
+                            IsDeleted = false,
+                            MajorName = "Du lịch địa chất"
+                        },
+                        new
+                        {
+                            Id = new Guid("9f9cdb58-040c-472e-9f6a-576a9ee87fb4"),
+                            Code = "DLST",
+                            DepartmentId = new Guid("d7ab840a-0e06-4785-aa71-f82bef075ff9"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực du lịch sinh thái",
+                            IsDeleted = false,
+                            MajorName = "Du lịch sinh thái"
+                        },
+                        new
+                        {
+                            Id = new Guid("8a085ad7-3a1e-4cfd-8be9-c1bac0c36517"),
+                            Code = "ĐTTS",
+                            DepartmentId = new Guid("575e2a34-3e4e-40b3-be97-37310e59085a"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực điều tra trinh sát",
+                            IsDeleted = false,
+                            MajorName = "Điều tra trinh sát"
+                        },
+                        new
+                        {
+                            Id = new Guid("91f89343-44ab-47a9-964b-15437a9678a1"),
+                            Code = "ĐTHS",
+                            DepartmentId = new Guid("575e2a34-3e4e-40b3-be97-37310e59085a"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực điều tra hình sự",
+                            IsDeleted = false,
+                            MajorName = "Điều tra hình sự"
+                        },
+                        new
+                        {
+                            Id = new Guid("6090009b-8534-4200-a83b-f544d9be8732"),
+                            Code = "QSCS",
+                            DepartmentId = new Guid("575e2a34-3e4e-40b3-be97-37310e59085a"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quân sự cơ sở",
+                            IsDeleted = false,
+                            MajorName = "Quân sự cơ sở"
+                        },
+                        new
+                        {
+                            Id = new Guid("bc19438f-ee7e-4e59-ad83-e7879c0a54e5"),
+                            Code = "CHTMĐC",
+                            DepartmentId = new Guid("575e2a34-3e4e-40b3-be97-37310e59085a"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực chỉ huy tham mưu đặc công",
+                            IsDeleted = false,
+                            MajorName = "Chỉ huy tham mưu đặc công"
+                        },
+                        new
+                        {
+                            Id = new Guid("dc482730-bf16-4558-b1b6-8a7f1b8b855d"),
+                            Code = "KTCK",
+                            DepartmentId = new Guid("38449231-c9b9-46b9-9ee1-83ebaea156f1"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kỹ thuật cơ khí",
+                            IsDeleted = false,
+                            MajorName = "Kỹ thuật cơ khí"
+                        },
+                        new
+                        {
+                            Id = new Guid("0d036fb3-5ff7-4b63-86db-4342a62f886e"),
+                            Code = "CNCTM",
+                            DepartmentId = new Guid("38449231-c9b9-46b9-9ee1-83ebaea156f1"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực công nghệ chế tạo máy",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ chế tạo máy"
+                        },
+                        new
+                        {
+                            Id = new Guid("b0377a76-981e-4af2-a0d8-d7ae1f723e7b"),
+                            Code = "BDCN",
+                            DepartmentId = new Guid("38449231-c9b9-46b9-9ee1-83ebaea156f1"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực bảo dưỡng công nghiệp",
+                            IsDeleted = false,
+                            MajorName = "Bảo dưỡng công nghiệp"
+                        },
+                        new
+                        {
+                            Id = new Guid("d05498a2-0502-4a9d-a535-d548db92000a"),
+                            Code = "CNVL",
+                            DepartmentId = new Guid("38449231-c9b9-46b9-9ee1-83ebaea156f1"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực công nghệ vật liệu",
+                            IsDeleted = false,
+                            MajorName = "Công nghệ vật liệu"
+                        },
+                        new
+                        {
+                            Id = new Guid("748bbfcd-20b9-4be4-8ec5-522afcc5caf4"),
+                            Code = "QLB",
+                            DepartmentId = new Guid("03a02645-69be-46a7-ad93-cf48b8c2961d"),
+                            Description = "Ngành học đào tạo kỹ năng về quản lý biển",
+                            IsDeleted = false,
+                            MajorName = "Quản lý biển"
+                        },
+                        new
+                        {
+                            Id = new Guid("5f246722-c823-466e-a024-254ba25d1750"),
+                            Code = "HDH",
+                            DepartmentId = new Guid("03a02645-69be-46a7-ad93-cf48b8c2961d"),
+                            Description = "Ngành học đào tạo kỹ năng về hải dương học",
+                            IsDeleted = false,
+                            MajorName = "Hải dương học"
+                        },
+                        new
+                        {
+                            Id = new Guid("348cdef7-2ec8-4814-883b-c41218128a3c"),
+                            Code = "TVH",
+                            DepartmentId = new Guid("03a02645-69be-46a7-ad93-cf48b8c2961d"),
+                            Description = "Ngành học đào tạo kỹ năng về thủy văn học",
+                            IsDeleted = false,
+                            MajorName = "Thủy văn học"
+                        },
+                        new
+                        {
+                            Id = new Guid("9e518c87-c522-4fa7-abe1-a318ceec4e09"),
+                            Code = "KTH",
+                            DepartmentId = new Guid("03a02645-69be-46a7-ad93-cf48b8c2961d"),
+                            Description = "Ngành học đào tạo kỹ năng về khí tượng học",
+                            IsDeleted = false,
+                            MajorName = "Khí tượng học"
+                        },
+                        new
+                        {
+                            Id = new Guid("2b49fa02-7c48-45ab-9f81-4605ff991bd4"),
+                            Code = "QLCCU",
+                            DepartmentId = new Guid("934b3542-92d5-431c-9271-f39dedcac50f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản lý chuỗi cung ứng",
+                            IsDeleted = false,
+                            MajorName = "Quản lý chuỗi cung ứng"
+                        },
+                        new
+                        {
+                            Id = new Guid("ca49e2d3-f880-4a4f-9e60-04c57660d730"),
+                            Code = "QTCL",
+                            DepartmentId = new Guid("934b3542-92d5-431c-9271-f39dedcac50f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản trị chất lượng",
+                            IsDeleted = false,
+                            MajorName = "Quản trị chất lượng"
+                        },
+                        new
+                        {
+                            Id = new Guid("66e52181-c48e-4fcc-a68e-421a02a9443e"),
+                            Code = "TM",
+                            DepartmentId = new Guid("934b3542-92d5-431c-9271-f39dedcac50f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực thương mại",
+                            IsDeleted = false,
+                            MajorName = "Thương mại"
+                        },
+                        new
+                        {
+                            Id = new Guid("ad84e105-1ca7-401e-abd7-fdc5d2e40999"),
+                            Code = "QTDN",
+                            DepartmentId = new Guid("934b3542-92d5-431c-9271-f39dedcac50f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực quản trị doanh nghiệp",
+                            IsDeleted = false,
+                            MajorName = "Quản trị doanh nghiệp"
+                        },
+                        new
+                        {
+                            Id = new Guid("1569cd2c-deef-4d74-bdcd-f785f52b465d"),
+                            Code = "TCDN",
+                            DepartmentId = new Guid("adb460f7-aa33-4efd-8346-9f3b76a0484b"),
+                            Description = "Ngành học đào tạo kỹ năng về tài chính doanh nghiệp",
+                            IsDeleted = false,
+                            MajorName = "Tài chính doanh nghiệp"
+                        },
+                        new
+                        {
+                            Id = new Guid("bc73983d-1bb7-447b-be96-c4fc7b653e5c"),
+                            Code = "NH",
+                            DepartmentId = new Guid("adb460f7-aa33-4efd-8346-9f3b76a0484b"),
+                            Description = "Ngành học đào tạo kỹ năng về ngân hàng",
+                            IsDeleted = false,
+                            MajorName = "Ngân hàng"
+                        },
+                        new
+                        {
+                            Id = new Guid("99c6c608-54b0-44b5-b018-65b506bb5398"),
+                            Code = "TCC",
+                            DepartmentId = new Guid("adb460f7-aa33-4efd-8346-9f3b76a0484b"),
+                            Description = "Ngành học đào tạo kỹ năng về tài chính công",
+                            IsDeleted = false,
+                            MajorName = "Tài chính công"
+                        },
+                        new
+                        {
+                            Id = new Guid("820d7547-37d2-480a-84bf-a3cae888b55c"),
+                            Code = "THQ",
+                            DepartmentId = new Guid("adb460f7-aa33-4efd-8346-9f3b76a0484b"),
+                            Description = "Ngành học đào tạo kỹ năng về thuế - Hải quan",
+                            IsDeleted = false,
+                            MajorName = "Thuế - Hải quan"
+                        },
+                        new
+                        {
+                            Id = new Guid("4989ef16-62cd-4aa1-850f-ef6a8e2b3b2c"),
+                            Code = "KTVT",
+                            DepartmentId = new Guid("bf4524c1-1150-48f6-8c57-d922d925426f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực kinh tế vận tải",
+                            IsDeleted = false,
+                            MajorName = "Kinh tế vận tải"
+                        },
+                        new
+                        {
+                            Id = new Guid("6b9f2a3b-e60e-45ef-b5ec-056b362cf874"),
+                            Code = "KHHH",
+                            DepartmentId = new Guid("bf4524c1-1150-48f6-8c57-d922d925426f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực khoa học hàng hải",
+                            IsDeleted = false,
+                            MajorName = "Khoa học hàng hải"
+                        },
+                        new
+                        {
+                            Id = new Guid("a767ae08-1162-4d9d-a6f0-e74123c4e055"),
+                            Code = "KTVT",
+                            DepartmentId = new Guid("bf4524c1-1150-48f6-8c57-d922d925426f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực khai thác vận tải",
+                            IsDeleted = false,
+                            MajorName = "Khai thác vận tải"
+                        },
+                        new
+                        {
+                            Id = new Guid("2445d565-594a-419b-ab0a-bcd87c2b9a2a"),
+                            Code = "LGS",
+                            DepartmentId = new Guid("bf4524c1-1150-48f6-8c57-d922d925426f"),
+                            Description = "Ngành học đào tạo kỹ năng về lĩnh vực logistics",
+                            IsDeleted = false,
+                            MajorName = "Logistics"
+                        },
+                        new
+                        {
+                            Id = new Guid("9fff7eda-6093-4ce8-b467-f102b0f09430"),
+                            Code = "VHĐT",
+                            DepartmentId = new Guid("9bf92746-e6c9-46ae-a8ba-9fa93671dcce"),
+                            Description = "Ngành học đào tạo kỹ năng về văn hóa đô thị",
+                            IsDeleted = false,
+                            MajorName = "Văn hóa đô thị"
+                        },
+                        new
+                        {
+                            Id = new Guid("5c1310fb-b35b-4529-beb1-79664cc85fc6"),
+                            Code = "QLVH",
+                            DepartmentId = new Guid("9bf92746-e6c9-46ae-a8ba-9fa93671dcce"),
+                            Description = "Ngành học đào tạo kỹ năng về quản lý văn hóa",
+                            IsDeleted = false,
+                            MajorName = "Quản lý văn hóa"
+                        },
+                        new
+                        {
+                            Id = new Guid("d8393091-0dbd-4ab8-b18c-50ae38579ce8"),
+                            Code = "VHAT",
+                            DepartmentId = new Guid("9bf92746-e6c9-46ae-a8ba-9fa93671dcce"),
+                            Description = "Ngành học đào tạo kỹ năng về văn hóa ẩm thực",
+                            IsDeleted = false,
+                            MajorName = "Văn hóa ẩm thực"
+                        },
+                        new
+                        {
+                            Id = new Guid("fcab8031-99a2-40cb-921c-f76e7f250ab6"),
+                            Code = "VHNB",
+                            DepartmentId = new Guid("9bf92746-e6c9-46ae-a8ba-9fa93671dcce"),
+                            Description = "Ngành học đào tạo kỹ năng về văn hóa Nam bộ",
+                            IsDeleted = false,
+                            MajorName = "Văn hóa Nam bộ"
+                        },
+                        new
+                        {
+                            Id = new Guid("e10926c7-63e0-48e0-947c-060ba13d0a8e"),
+                            Code = "ĐDSK",
+                            DepartmentId = new Guid("07563189-01d5-4ec1-80a6-f9c7ced12408"),
+                            Description = "Ngành học đào tạo kỹ năng về đạo diễn sân khấu",
+                            IsDeleted = false,
+                            MajorName = "Đạo diễn sân khấu"
+                        },
+                        new
+                        {
+                            Id = new Guid("b49b3229-b46c-4821-a0f9-2ead482c2bf1"),
+                            Code = "ĐDĐATH",
+                            DepartmentId = new Guid("07563189-01d5-4ec1-80a6-f9c7ced12408"),
+                            Description = "Ngành học đào tạo kỹ năng về đạo diễn điện ảnh, truyền hình",
+                            IsDeleted = false,
+                            MajorName = "Đạo diễn điện ảnh, truyền hình"
+                        },
+                        new
+                        {
+                            Id = new Guid("0273f179-b2ae-434d-835f-6035e8b6ae52"),
+                            Code = "DVKDATH",
+                            DepartmentId = new Guid("07563189-01d5-4ec1-80a6-f9c7ced12408"),
+                            Description = "Ngành học đào tạo kỹ năng về diễn viên kịch, điện ảnh - truyền hình",
+                            IsDeleted = false,
+                            MajorName = "Diễn viên kịch, điện ảnh - truyền hình"
+                        },
+                        new
+                        {
+                            Id = new Guid("2fa7fc82-948a-45bb-a33e-b37a98579b05"),
+                            Code = "QP",
+                            DepartmentId = new Guid("07563189-01d5-4ec1-80a6-f9c7ced12408"),
+                            Description = "Ngành học đào tạo kỹ năng về quay phim",
+                            IsDeleted = false,
+                            MajorName = "Quay phim"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Models.Question", b =>
@@ -4237,8 +5186,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 10,
                             IsDeleted = false,
                             LastName = "Vu",
-                            PasswordHash = new byte[] { 193, 161, 67, 50, 196, 155, 183, 103, 101, 53, 179, 99, 120, 22, 252, 192, 78, 94, 110, 119, 22, 248, 82, 15, 118, 123, 152, 117, 147, 180, 158, 88, 43, 57, 125, 242, 159, 49, 58, 119, 44, 6, 186, 213, 78, 236, 246, 146, 43, 191, 45, 127, 253, 9, 141, 204, 6, 23, 9, 110, 23, 121, 79, 183 },
-                            PasswordSalt = new byte[] { 114, 45, 204, 95, 141, 238, 152, 152, 167, 228, 107, 95, 4, 144, 250, 241, 197, 8, 239, 146, 90, 223, 229, 197, 235, 26, 34, 143, 169, 89, 80, 58, 207, 162, 34, 121, 18, 135, 170, 174, 28, 207, 197, 181, 105, 122, 229, 105, 41, 216, 58, 149, 95, 55, 154, 80, 171, 254, 57, 171, 81, 200, 38, 144, 169, 251, 240, 86, 133, 42, 243, 210, 15, 171, 248, 132, 223, 105, 210, 216, 98, 171, 131, 122, 108, 212, 83, 215, 105, 254, 134, 233, 94, 230, 164, 35, 135, 51, 4, 173, 37, 219, 168, 96, 34, 16, 217, 89, 60, 10, 190, 176, 237, 86, 116, 227, 92, 156, 125, 228, 184, 32, 30, 221, 219, 129, 16, 42 },
+                            PasswordHash = new byte[] { 114, 140, 87, 202, 62, 182, 134, 198, 24, 17, 240, 250, 186, 75, 104, 55, 79, 228, 95, 144, 239, 238, 67, 121, 168, 48, 132, 61, 150, 125, 239, 117, 241, 242, 14, 188, 232, 240, 179, 89, 240, 52, 190, 17, 234, 102, 76, 55, 246, 157, 21, 108, 119, 20, 141, 87, 47, 96, 72, 78, 174, 92, 217, 68 },
+                            PasswordSalt = new byte[] { 177, 105, 208, 253, 81, 247, 39, 249, 120, 206, 143, 62, 86, 180, 48, 124, 59, 74, 244, 232, 211, 16, 121, 175, 30, 170, 189, 78, 58, 26, 202, 81, 255, 85, 90, 20, 26, 85, 239, 223, 114, 56, 225, 132, 231, 171, 39, 15, 77, 18, 72, 219, 110, 100, 18, 15, 207, 115, 137, 32, 29, 55, 208, 44, 169, 144, 139, 234, 142, 236, 163, 195, 231, 121, 63, 80, 138, 51, 45, 87, 162, 39, 81, 89, 201, 86, 58, 63, 244, 136, 107, 205, 119, 250, 82, 215, 90, 34, 80, 216, 19, 189, 88, 44, 182, 20, 46, 225, 9, 8, 237, 225, 180, 70, 248, 61, 14, 76, 175, 154, 196, 97, 6, 123, 9, 102, 248, 72 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student1"
@@ -4252,8 +5201,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 9,
                             IsDeleted = false,
                             LastName = "Vu",
-                            PasswordHash = new byte[] { 223, 84, 121, 7, 32, 176, 186, 146, 82, 44, 93, 139, 94, 21, 15, 220, 1, 43, 100, 74, 151, 196, 212, 229, 184, 232, 10, 151, 118, 66, 79, 223, 45, 66, 244, 93, 211, 114, 145, 235, 146, 7, 123, 9, 247, 134, 221, 71, 4, 91, 95, 111, 0, 6, 20, 139, 229, 55, 123, 172, 143, 161, 243, 144 },
-                            PasswordSalt = new byte[] { 128, 20, 34, 211, 125, 141, 80, 149, 172, 189, 106, 209, 123, 190, 29, 143, 86, 238, 166, 230, 158, 18, 161, 182, 4, 43, 207, 42, 239, 235, 86, 73, 68, 55, 25, 211, 178, 215, 168, 146, 0, 32, 100, 251, 81, 163, 173, 203, 191, 86, 156, 164, 184, 170, 235, 37, 245, 212, 162, 214, 159, 131, 253, 138, 8, 142, 217, 83, 148, 7, 155, 53, 174, 83, 21, 105, 71, 64, 175, 125, 14, 148, 124, 83, 34, 9, 248, 165, 28, 17, 100, 9, 194, 11, 83, 216, 10, 68, 29, 190, 242, 141, 115, 131, 172, 137, 157, 177, 131, 177, 110, 156, 76, 65, 31, 192, 50, 119, 36, 227, 146, 100, 56, 18, 217, 1, 227, 200 },
+                            PasswordHash = new byte[] { 239, 177, 182, 147, 27, 96, 163, 9, 8, 63, 161, 150, 79, 103, 166, 242, 147, 186, 125, 37, 216, 152, 223, 72, 38, 209, 93, 95, 238, 131, 107, 201, 180, 98, 27, 190, 189, 213, 8, 76, 30, 126, 17, 113, 225, 80, 79, 83, 20, 69, 121, 72, 14, 151, 85, 105, 158, 171, 122, 250, 52, 188, 40, 208 },
+                            PasswordSalt = new byte[] { 198, 214, 214, 222, 229, 84, 249, 97, 184, 194, 14, 51, 128, 201, 89, 58, 254, 124, 254, 253, 142, 235, 188, 9, 242, 56, 2, 252, 106, 77, 26, 104, 191, 5, 193, 5, 241, 225, 58, 31, 2, 75, 19, 222, 11, 246, 34, 22, 158, 47, 131, 84, 208, 22, 150, 184, 241, 75, 248, 120, 45, 246, 43, 143, 216, 238, 97, 157, 194, 29, 182, 65, 106, 206, 91, 118, 221, 221, 158, 178, 116, 96, 234, 205, 17, 146, 122, 190, 213, 202, 79, 12, 13, 124, 22, 234, 202, 174, 59, 246, 202, 161, 125, 206, 135, 168, 90, 71, 16, 79, 165, 223, 105, 176, 245, 143, 178, 167, 67, 92, 101, 39, 188, 139, 22, 123, 187, 246 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student2"
@@ -4267,8 +5216,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 6,
                             IsDeleted = false,
                             LastName = "Duc",
-                            PasswordHash = new byte[] { 28, 253, 182, 229, 176, 140, 92, 18, 102, 97, 32, 140, 2, 193, 106, 107, 210, 74, 69, 81, 56, 14, 147, 176, 217, 255, 200, 99, 76, 61, 153, 194, 95, 25, 122, 232, 83, 60, 40, 197, 196, 254, 120, 226, 181, 161, 250, 157, 73, 210, 149, 165, 9, 92, 85, 21, 226, 195, 195, 144, 42, 4, 87, 93 },
-                            PasswordSalt = new byte[] { 236, 172, 92, 169, 103, 138, 202, 44, 88, 24, 102, 99, 125, 188, 243, 182, 185, 201, 60, 150, 142, 171, 168, 192, 197, 172, 22, 187, 58, 177, 183, 177, 227, 60, 255, 196, 27, 212, 90, 240, 73, 115, 55, 156, 212, 154, 81, 183, 82, 85, 117, 97, 58, 95, 110, 170, 153, 199, 27, 54, 98, 40, 22, 136, 245, 61, 176, 125, 107, 55, 255, 33, 91, 52, 141, 201, 112, 58, 132, 101, 187, 24, 170, 75, 119, 197, 168, 78, 168, 175, 172, 225, 210, 44, 24, 103, 188, 62, 29, 169, 23, 0, 0, 67, 62, 52, 171, 249, 19, 138, 22, 251, 127, 244, 14, 81, 49, 80, 61, 224, 25, 176, 92, 155, 85, 113, 121, 69 },
+                            PasswordHash = new byte[] { 236, 111, 137, 8, 195, 240, 180, 159, 49, 108, 241, 235, 208, 117, 102, 200, 130, 241, 251, 174, 97, 157, 189, 205, 70, 227, 57, 124, 228, 77, 88, 34, 213, 175, 16, 56, 128, 230, 127, 42, 212, 175, 15, 142, 214, 190, 119, 163, 49, 48, 235, 204, 142, 233, 240, 73, 94, 201, 6, 249, 126, 162, 194, 9 },
+                            PasswordSalt = new byte[] { 47, 156, 27, 92, 190, 190, 198, 137, 90, 247, 165, 72, 229, 15, 118, 42, 48, 92, 71, 100, 186, 81, 251, 227, 212, 154, 187, 197, 34, 144, 120, 115, 145, 215, 77, 40, 88, 143, 146, 49, 123, 131, 91, 128, 177, 96, 219, 128, 230, 253, 94, 135, 253, 5, 149, 102, 250, 211, 180, 8, 166, 201, 218, 23, 191, 96, 61, 216, 160, 247, 145, 233, 21, 243, 94, 127, 146, 9, 83, 90, 125, 202, 64, 54, 136, 246, 240, 239, 143, 113, 16, 76, 49, 219, 155, 194, 109, 225, 5, 153, 25, 3, 72, 224, 38, 112, 3, 151, 121, 59, 8, 70, 214, 205, 7, 245, 67, 149, 39, 49, 146, 238, 26, 101, 160, 93, 181, 119 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student2"
@@ -4282,8 +5231,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 7,
                             IsDeleted = false,
                             LastName = "Quan",
-                            PasswordHash = new byte[] { 185, 100, 106, 229, 74, 84, 176, 65, 172, 232, 78, 80, 83, 241, 51, 95, 227, 201, 14, 132, 239, 68, 16, 129, 233, 173, 219, 124, 238, 239, 22, 144, 96, 189, 203, 180, 215, 73, 234, 127, 51, 84, 64, 129, 79, 14, 70, 102, 20, 37, 255, 62, 155, 36, 8, 249, 39, 245, 168, 168, 22, 18, 176, 250 },
-                            PasswordSalt = new byte[] { 2, 236, 1, 33, 210, 160, 174, 188, 140, 191, 108, 6, 1, 238, 130, 202, 53, 86, 66, 140, 113, 80, 249, 145, 72, 44, 92, 36, 229, 28, 165, 193, 246, 207, 42, 133, 162, 38, 195, 199, 247, 148, 150, 41, 26, 209, 194, 62, 161, 128, 216, 65, 152, 226, 231, 242, 36, 105, 227, 12, 200, 255, 243, 17, 178, 164, 241, 155, 183, 24, 55, 9, 114, 236, 19, 27, 108, 248, 169, 60, 235, 243, 46, 5, 76, 213, 86, 47, 9, 183, 201, 130, 247, 60, 174, 39, 26, 97, 154, 223, 126, 239, 49, 197, 90, 98, 112, 172, 108, 72, 226, 55, 32, 238, 33, 228, 197, 218, 212, 48, 99, 208, 232, 113, 40, 185, 223, 71 },
+                            PasswordHash = new byte[] { 97, 76, 138, 16, 230, 161, 115, 167, 254, 150, 253, 79, 106, 234, 251, 200, 235, 16, 161, 173, 223, 136, 68, 247, 56, 69, 162, 124, 239, 230, 117, 90, 131, 163, 108, 203, 131, 212, 94, 49, 97, 191, 40, 47, 234, 1, 184, 11, 43, 73, 199, 128, 128, 14, 4, 224, 161, 177, 73, 63, 168, 76, 181, 29 },
+                            PasswordSalt = new byte[] { 130, 28, 79, 115, 79, 19, 156, 150, 198, 159, 91, 220, 162, 133, 95, 241, 152, 152, 42, 28, 208, 35, 170, 228, 103, 194, 215, 215, 48, 12, 80, 45, 76, 200, 211, 27, 61, 42, 234, 62, 93, 109, 118, 200, 231, 173, 185, 160, 1, 207, 142, 35, 167, 26, 43, 248, 17, 35, 96, 51, 129, 155, 132, 182, 46, 101, 183, 222, 243, 221, 111, 71, 74, 20, 184, 116, 177, 200, 24, 241, 232, 102, 38, 22, 25, 92, 41, 21, 234, 37, 51, 25, 19, 39, 36, 140, 103, 237, 180, 178, 234, 190, 171, 203, 51, 4, 55, 214, 4, 14, 96, 42, 117, 250, 229, 139, 111, 175, 42, 61, 188, 121, 238, 195, 40, 40, 27, 54 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student3"
@@ -4297,8 +5246,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 6,
                             IsDeleted = false,
                             LastName = "Tam",
-                            PasswordHash = new byte[] { 80, 154, 52, 201, 166, 143, 15, 183, 222, 25, 115, 62, 17, 191, 92, 112, 184, 17, 240, 74, 108, 202, 34, 149, 138, 89, 119, 52, 192, 52, 13, 126, 147, 18, 19, 85, 79, 162, 236, 210, 32, 127, 114, 40, 232, 199, 196, 134, 57, 165, 218, 225, 207, 60, 181, 147, 207, 15, 145, 21, 106, 62, 64, 77 },
-                            PasswordSalt = new byte[] { 70, 32, 191, 133, 213, 121, 223, 30, 5, 230, 0, 159, 177, 223, 236, 167, 191, 204, 30, 75, 74, 126, 9, 39, 113, 62, 112, 162, 78, 254, 52, 252, 182, 169, 148, 63, 181, 179, 164, 147, 201, 102, 227, 171, 213, 124, 185, 208, 239, 246, 145, 166, 52, 37, 135, 68, 41, 124, 173, 145, 183, 230, 131, 169, 14, 151, 34, 59, 136, 111, 6, 107, 137, 66, 227, 10, 86, 77, 150, 104, 169, 63, 113, 21, 78, 236, 23, 61, 230, 142, 45, 17, 173, 142, 206, 107, 84, 85, 82, 176, 233, 82, 0, 64, 91, 208, 111, 34, 232, 101, 247, 57, 18, 127, 80, 103, 194, 107, 210, 231, 250, 173, 149, 42, 96, 250, 58, 84 },
+                            PasswordHash = new byte[] { 84, 167, 68, 246, 101, 184, 151, 140, 31, 154, 112, 115, 81, 216, 117, 228, 106, 29, 89, 76, 237, 218, 245, 33, 186, 153, 122, 51, 40, 71, 12, 230, 207, 173, 87, 89, 101, 85, 39, 181, 206, 110, 16, 118, 78, 253, 141, 165, 72, 85, 249, 57, 63, 201, 58, 246, 20, 43, 119, 29, 46, 146, 92, 18 },
+                            PasswordSalt = new byte[] { 108, 69, 117, 140, 176, 95, 5, 41, 179, 9, 18, 105, 242, 204, 57, 62, 157, 80, 99, 116, 53, 183, 61, 116, 233, 10, 223, 59, 178, 193, 63, 165, 143, 19, 224, 218, 182, 69, 246, 143, 174, 41, 39, 213, 138, 140, 76, 246, 134, 201, 92, 126, 171, 112, 172, 0, 27, 64, 61, 222, 226, 119, 174, 251, 227, 250, 247, 99, 92, 151, 252, 253, 169, 19, 157, 214, 180, 89, 171, 191, 140, 182, 100, 93, 100, 147, 10, 142, 160, 49, 208, 7, 207, 177, 93, 33, 51, 61, 75, 186, 112, 47, 109, 84, 104, 107, 192, 158, 146, 172, 227, 94, 18, 167, 175, 167, 69, 38, 165, 195, 77, 174, 145, 147, 54, 227, 88, 6 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student4"
@@ -4312,8 +5261,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 5,
                             IsDeleted = false,
                             LastName = "Tam",
-                            PasswordHash = new byte[] { 85, 156, 133, 182, 252, 118, 110, 235, 3, 81, 112, 36, 27, 48, 74, 49, 5, 65, 255, 66, 125, 205, 85, 171, 224, 96, 22, 234, 61, 111, 140, 223, 47, 225, 152, 84, 133, 165, 101, 69, 147, 102, 24, 166, 231, 92, 169, 121, 160, 163, 35, 147, 200, 114, 244, 95, 207, 91, 64, 174, 117, 176, 205, 1 },
-                            PasswordSalt = new byte[] { 224, 186, 248, 31, 171, 155, 222, 252, 55, 193, 8, 245, 187, 248, 146, 220, 64, 139, 137, 54, 185, 128, 207, 250, 188, 40, 18, 182, 134, 32, 203, 136, 193, 165, 98, 229, 156, 222, 189, 171, 32, 77, 199, 71, 131, 97, 248, 155, 58, 203, 46, 69, 188, 83, 214, 197, 65, 240, 102, 231, 17, 193, 14, 241, 133, 234, 229, 217, 32, 250, 62, 12, 250, 119, 99, 136, 213, 27, 186, 250, 58, 153, 52, 33, 165, 254, 198, 111, 200, 237, 233, 42, 130, 190, 208, 202, 40, 119, 244, 175, 100, 4, 178, 224, 4, 103, 46, 151, 227, 40, 83, 31, 67, 190, 203, 140, 119, 245, 254, 63, 201, 62, 203, 24, 204, 158, 11, 7 },
+                            PasswordHash = new byte[] { 222, 91, 169, 7, 232, 143, 239, 1, 229, 195, 158, 168, 74, 146, 83, 17, 162, 11, 57, 214, 189, 54, 106, 129, 229, 184, 37, 69, 16, 32, 215, 173, 69, 176, 51, 115, 50, 121, 198, 82, 204, 15, 27, 223, 175, 162, 126, 166, 10, 151, 92, 161, 98, 94, 18, 166, 17, 19, 12, 114, 69, 97, 191, 54 },
+                            PasswordSalt = new byte[] { 242, 237, 25, 250, 214, 172, 134, 62, 34, 115, 137, 52, 101, 1, 228, 107, 220, 11, 134, 162, 215, 46, 233, 138, 158, 13, 210, 2, 160, 86, 152, 252, 62, 46, 180, 67, 197, 246, 119, 125, 248, 57, 2, 253, 136, 165, 193, 34, 22, 98, 247, 220, 211, 15, 126, 192, 13, 75, 171, 88, 229, 225, 119, 20, 127, 122, 10, 35, 7, 34, 67, 89, 192, 232, 132, 158, 14, 110, 190, 158, 166, 241, 250, 235, 173, 97, 189, 254, 227, 234, 221, 66, 109, 147, 105, 76, 66, 218, 129, 14, 60, 21, 58, 240, 244, 68, 227, 54, 7, 230, 231, 222, 212, 105, 112, 201, 67, 3, 209, 249, 167, 96, 25, 101, 232, 88, 93, 124 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student5"
@@ -4327,8 +5276,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 4,
                             IsDeleted = false,
                             LastName = "Ba",
-                            PasswordHash = new byte[] { 139, 83, 100, 194, 175, 98, 124, 221, 21, 220, 250, 151, 204, 155, 180, 159, 141, 142, 45, 210, 132, 89, 254, 229, 145, 194, 101, 33, 58, 70, 106, 118, 128, 92, 47, 244, 208, 29, 138, 203, 182, 214, 27, 22, 233, 3, 141, 89, 248, 3, 163, 189, 82, 133, 163, 91, 51, 103, 19, 25, 172, 219, 1, 130 },
-                            PasswordSalt = new byte[] { 16, 242, 84, 87, 66, 156, 225, 120, 234, 100, 152, 149, 138, 158, 25, 223, 27, 165, 233, 94, 116, 0, 124, 254, 178, 75, 218, 2, 10, 168, 152, 115, 175, 149, 69, 178, 74, 214, 146, 99, 12, 51, 104, 75, 152, 78, 180, 139, 109, 108, 148, 70, 51, 103, 130, 57, 153, 95, 122, 122, 0, 25, 41, 16, 96, 63, 123, 63, 151, 56, 31, 206, 222, 4, 73, 82, 127, 184, 38, 174, 88, 4, 165, 127, 12, 255, 100, 48, 46, 190, 41, 126, 183, 159, 19, 59, 115, 246, 29, 100, 118, 68, 117, 171, 2, 214, 227, 35, 101, 35, 29, 146, 204, 204, 30, 229, 246, 194, 3, 251, 168, 84, 72, 183, 104, 99, 76, 201 },
+                            PasswordHash = new byte[] { 103, 92, 164, 24, 18, 144, 200, 144, 200, 141, 3, 171, 93, 149, 228, 59, 96, 100, 204, 3, 8, 13, 98, 185, 200, 243, 134, 17, 211, 224, 102, 196, 44, 27, 20, 46, 100, 216, 202, 174, 218, 80, 52, 64, 11, 152, 17, 18, 165, 103, 173, 42, 62, 46, 127, 250, 177, 202, 149, 233, 73, 104, 134, 235 },
+                            PasswordSalt = new byte[] { 54, 226, 144, 216, 44, 148, 210, 223, 154, 65, 208, 7, 81, 141, 108, 9, 207, 83, 57, 206, 8, 135, 86, 247, 44, 32, 105, 14, 98, 52, 231, 92, 92, 93, 26, 50, 106, 4, 16, 254, 117, 227, 37, 82, 92, 131, 209, 38, 11, 61, 14, 76, 180, 54, 48, 144, 89, 244, 26, 48, 151, 176, 51, 22, 90, 10, 182, 6, 148, 243, 11, 50, 159, 16, 226, 119, 23, 44, 63, 52, 222, 201, 200, 160, 235, 49, 234, 95, 247, 235, 58, 63, 0, 39, 19, 13, 220, 47, 28, 184, 19, 102, 225, 116, 15, 48, 50, 39, 11, 117, 129, 43, 183, 26, 242, 14, 180, 183, 196, 189, 54, 110, 110, 191, 1, 167, 72, 20 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student6"
@@ -4342,8 +5291,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 3,
                             IsDeleted = false,
                             LastName = "Hung",
-                            PasswordHash = new byte[] { 27, 6, 67, 89, 178, 196, 21, 7, 69, 194, 145, 143, 58, 148, 32, 211, 79, 169, 135, 239, 27, 231, 202, 64, 132, 140, 168, 12, 186, 111, 181, 78, 242, 237, 11, 174, 121, 214, 149, 26, 175, 3, 78, 211, 125, 114, 234, 224, 150, 237, 72, 12, 58, 193, 113, 20, 16, 130, 36, 19, 205, 54, 249, 17 },
-                            PasswordSalt = new byte[] { 117, 225, 225, 246, 80, 103, 226, 16, 80, 40, 170, 226, 177, 5, 190, 60, 194, 197, 166, 186, 255, 201, 198, 171, 163, 139, 100, 98, 66, 192, 210, 162, 11, 102, 215, 7, 134, 169, 57, 65, 193, 153, 38, 168, 140, 73, 225, 109, 55, 192, 222, 127, 63, 220, 114, 151, 49, 86, 156, 40, 232, 72, 19, 3, 24, 122, 232, 135, 21, 250, 153, 153, 72, 179, 40, 1, 77, 246, 235, 200, 45, 18, 22, 128, 124, 202, 107, 136, 100, 69, 210, 34, 203, 133, 148, 110, 109, 42, 99, 52, 138, 127, 233, 103, 229, 181, 50, 188, 107, 27, 247, 162, 242, 251, 219, 50, 92, 144, 219, 151, 93, 71, 168, 27, 77, 141, 39, 48 },
+                            PasswordHash = new byte[] { 128, 204, 222, 72, 149, 130, 29, 224, 243, 78, 142, 197, 11, 63, 13, 211, 147, 102, 61, 112, 247, 70, 238, 58, 12, 95, 84, 179, 214, 188, 43, 197, 23, 252, 114, 44, 249, 101, 223, 158, 12, 10, 250, 23, 245, 67, 126, 77, 67, 228, 87, 113, 60, 185, 83, 85, 224, 252, 156, 51, 195, 17, 39, 220 },
+                            PasswordSalt = new byte[] { 2, 169, 159, 156, 102, 185, 228, 249, 115, 70, 85, 41, 217, 11, 90, 99, 1, 183, 149, 94, 194, 232, 219, 200, 164, 6, 159, 169, 162, 215, 205, 49, 65, 118, 139, 255, 45, 247, 12, 27, 223, 237, 163, 117, 8, 164, 49, 163, 249, 240, 39, 208, 218, 45, 126, 142, 163, 153, 111, 109, 211, 23, 37, 26, 35, 71, 131, 115, 90, 222, 213, 162, 175, 123, 162, 234, 57, 250, 250, 136, 100, 75, 99, 184, 43, 31, 236, 232, 166, 71, 83, 61, 239, 243, 227, 140, 171, 58, 216, 45, 123, 69, 142, 55, 196, 193, 92, 63, 254, 56, 59, 117, 183, 128, 48, 119, 232, 237, 205, 36, 84, 71, 49, 229, 96, 124, 65, 165 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student7"
@@ -4357,8 +5306,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 2,
                             IsDeleted = false,
                             LastName = "Hung",
-                            PasswordHash = new byte[] { 0, 63, 83, 103, 239, 134, 67, 227, 209, 113, 199, 105, 15, 145, 21, 87, 156, 238, 2, 100, 69, 243, 196, 0, 49, 20, 177, 179, 149, 60, 216, 169, 74, 216, 229, 78, 56, 255, 215, 2, 79, 140, 247, 43, 56, 39, 247, 180, 18, 203, 66, 93, 87, 230, 11, 196, 181, 161, 150, 102, 34, 29, 148, 101 },
-                            PasswordSalt = new byte[] { 118, 161, 157, 95, 73, 15, 20, 134, 185, 234, 9, 109, 34, 128, 237, 248, 165, 245, 121, 54, 61, 229, 47, 23, 252, 239, 127, 55, 161, 224, 123, 250, 255, 125, 193, 10, 59, 185, 146, 31, 21, 189, 183, 251, 81, 134, 73, 184, 83, 150, 87, 218, 130, 193, 247, 159, 59, 245, 45, 202, 115, 85, 180, 165, 165, 225, 17, 124, 161, 193, 154, 154, 247, 108, 198, 183, 105, 31, 243, 169, 58, 82, 163, 144, 88, 231, 192, 125, 235, 227, 113, 226, 180, 252, 156, 96, 88, 87, 111, 251, 203, 79, 143, 138, 233, 45, 120, 10, 41, 200, 181, 90, 84, 159, 237, 40, 63, 57, 225, 135, 80, 235, 3, 25, 194, 190, 133, 132 },
+                            PasswordHash = new byte[] { 200, 128, 151, 251, 85, 71, 155, 32, 58, 219, 104, 104, 247, 249, 113, 23, 159, 171, 145, 224, 58, 42, 188, 37, 210, 19, 125, 202, 240, 176, 251, 166, 206, 141, 234, 131, 180, 41, 64, 3, 204, 40, 140, 56, 7, 252, 75, 243, 108, 11, 98, 115, 118, 221, 202, 62, 6, 184, 135, 35, 39, 221, 232, 203 },
+                            PasswordSalt = new byte[] { 211, 240, 0, 114, 88, 236, 58, 4, 169, 24, 176, 38, 121, 3, 173, 180, 94, 5, 50, 8, 242, 242, 47, 60, 239, 24, 156, 88, 61, 101, 214, 19, 153, 115, 245, 210, 118, 228, 14, 219, 50, 172, 197, 62, 61, 205, 170, 62, 113, 4, 69, 218, 40, 246, 191, 26, 12, 71, 193, 21, 74, 145, 0, 210, 129, 111, 252, 46, 65, 82, 7, 120, 179, 182, 188, 33, 41, 219, 163, 18, 111, 236, 253, 107, 93, 191, 17, 63, 57, 184, 174, 19, 31, 40, 252, 1, 88, 9, 100, 166, 109, 60, 81, 5, 80, 58, 1, 69, 23, 159, 169, 26, 190, 227, 209, 109, 20, 21, 0, 90, 50, 55, 46, 129, 201, 189, 63, 208 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student8"
@@ -4372,8 +5321,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Lac",
-                            PasswordHash = new byte[] { 143, 195, 31, 125, 38, 8, 123, 158, 26, 148, 68, 11, 23, 184, 25, 75, 234, 220, 18, 74, 130, 242, 122, 57, 152, 214, 171, 252, 163, 72, 184, 131, 5, 125, 56, 78, 135, 53, 19, 248, 153, 239, 29, 201, 192, 185, 30, 116, 1, 47, 167, 91, 173, 140, 44, 32, 36, 4, 83, 203, 10, 179, 180, 44 },
-                            PasswordSalt = new byte[] { 66, 110, 6, 181, 74, 197, 113, 228, 242, 217, 169, 127, 177, 154, 234, 113, 179, 50, 108, 150, 212, 213, 43, 214, 88, 10, 22, 175, 60, 30, 151, 210, 67, 234, 213, 153, 71, 197, 71, 97, 22, 65, 245, 160, 226, 91, 129, 36, 24, 157, 3, 196, 226, 210, 67, 82, 241, 45, 113, 121, 163, 63, 167, 132, 130, 142, 78, 146, 143, 46, 237, 58, 162, 205, 220, 131, 169, 75, 219, 92, 28, 84, 28, 216, 4, 118, 5, 192, 139, 219, 122, 17, 138, 134, 90, 56, 218, 142, 91, 125, 97, 151, 189, 5, 156, 106, 49, 2, 164, 112, 50, 251, 190, 214, 86, 69, 179, 94, 191, 73, 238, 156, 137, 9, 48, 56, 91, 97 },
+                            PasswordHash = new byte[] { 254, 107, 196, 183, 139, 169, 12, 2, 199, 148, 76, 187, 93, 123, 168, 159, 111, 196, 35, 59, 218, 43, 81, 33, 42, 232, 61, 242, 244, 116, 193, 31, 109, 103, 227, 49, 231, 123, 68, 36, 170, 28, 85, 164, 203, 252, 100, 239, 72, 12, 158, 118, 21, 223, 6, 106, 179, 194, 164, 235, 99, 4, 52, 181 },
+                            PasswordSalt = new byte[] { 35, 164, 146, 219, 217, 180, 183, 195, 181, 113, 195, 68, 19, 251, 10, 230, 15, 143, 226, 129, 142, 82, 130, 238, 105, 28, 242, 28, 116, 0, 52, 31, 208, 157, 238, 131, 10, 38, 181, 214, 102, 26, 82, 142, 132, 117, 171, 235, 2, 228, 107, 53, 202, 120, 84, 219, 20, 189, 237, 72, 249, 22, 47, 107, 155, 239, 101, 209, 68, 139, 50, 59, 167, 5, 23, 151, 217, 192, 27, 143, 149, 49, 69, 221, 0, 111, 110, 254, 70, 178, 197, 66, 196, 24, 193, 226, 110, 161, 118, 125, 20, 214, 69, 55, 222, 244, 228, 5, 194, 175, 156, 209, 210, 207, 224, 73, 74, 40, 94, 45, 181, 235, 161, 80, 175, 131, 241, 17 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student9"
@@ -4387,8 +5336,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 9,
                             IsDeleted = false,
                             LastName = "Hong",
-                            PasswordHash = new byte[] { 248, 122, 60, 5, 139, 47, 229, 52, 100, 111, 3, 129, 106, 206, 136, 68, 110, 21, 121, 18, 216, 150, 247, 193, 134, 106, 110, 158, 255, 88, 175, 29, 228, 22, 6, 83, 143, 133, 3, 6, 127, 14, 236, 144, 162, 58, 153, 135, 19, 31, 130, 61, 4, 202, 252, 179, 185, 213, 199, 220, 192, 189, 155, 21 },
-                            PasswordSalt = new byte[] { 78, 140, 93, 223, 66, 96, 28, 96, 89, 7, 126, 149, 66, 190, 179, 244, 4, 63, 241, 212, 22, 8, 70, 181, 104, 125, 194, 230, 230, 241, 54, 115, 52, 67, 114, 224, 74, 20, 51, 253, 147, 207, 94, 153, 226, 32, 16, 254, 20, 51, 118, 165, 115, 13, 190, 55, 29, 43, 254, 255, 93, 65, 27, 178, 18, 205, 230, 171, 255, 39, 145, 134, 8, 163, 202, 170, 39, 227, 220, 141, 97, 154, 88, 44, 83, 118, 39, 248, 232, 13, 247, 185, 76, 168, 253, 21, 91, 186, 82, 114, 71, 241, 247, 112, 69, 161, 7, 240, 37, 149, 20, 121, 122, 62, 133, 135, 44, 254, 188, 1, 50, 133, 16, 107, 232, 226, 73, 126 },
+                            PasswordHash = new byte[] { 229, 153, 145, 0, 12, 21, 172, 125, 209, 151, 89, 18, 94, 108, 231, 231, 203, 191, 36, 232, 69, 161, 67, 173, 186, 228, 219, 207, 52, 96, 176, 174, 61, 52, 27, 191, 145, 1, 222, 42, 67, 235, 232, 155, 32, 132, 140, 94, 78, 224, 80, 173, 124, 240, 197, 73, 88, 85, 212, 119, 252, 177, 201, 252 },
+                            PasswordSalt = new byte[] { 49, 48, 98, 198, 110, 206, 167, 238, 216, 64, 129, 243, 55, 31, 76, 193, 85, 213, 192, 146, 166, 216, 63, 13, 56, 61, 138, 217, 156, 117, 45, 20, 75, 69, 84, 181, 169, 26, 100, 220, 36, 137, 164, 162, 242, 231, 204, 176, 150, 148, 150, 93, 112, 132, 207, 190, 236, 52, 250, 234, 177, 54, 146, 171, 188, 36, 216, 14, 168, 226, 119, 103, 248, 20, 102, 89, 223, 95, 238, 36, 156, 180, 28, 57, 138, 248, 222, 34, 249, 63, 52, 251, 246, 49, 13, 79, 147, 143, 20, 190, 100, 63, 185, 102, 140, 95, 158, 252, 179, 7, 156, 221, 157, 56, 49, 200, 4, 78, 213, 192, 35, 43, 245, 151, 64, 169, 161, 186 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student10"
@@ -4402,8 +5351,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 10,
                             IsDeleted = false,
                             LastName = "Hong",
-                            PasswordHash = new byte[] { 53, 21, 241, 169, 244, 247, 250, 175, 120, 170, 26, 101, 187, 147, 53, 193, 113, 170, 27, 164, 221, 52, 80, 50, 26, 178, 202, 233, 235, 168, 217, 21, 124, 57, 238, 214, 104, 9, 159, 10, 141, 14, 225, 227, 128, 72, 45, 21, 24, 4, 91, 5, 27, 174, 120, 24, 55, 242, 114, 213, 65, 75, 126, 50 },
-                            PasswordSalt = new byte[] { 97, 126, 189, 34, 227, 239, 162, 89, 8, 135, 161, 217, 27, 208, 251, 190, 149, 230, 92, 51, 112, 151, 47, 21, 16, 145, 75, 240, 213, 236, 109, 144, 171, 4, 132, 173, 138, 73, 89, 197, 250, 140, 125, 49, 115, 47, 213, 75, 2, 91, 219, 134, 244, 252, 232, 94, 201, 114, 100, 90, 141, 105, 181, 177, 5, 90, 95, 83, 55, 83, 52, 242, 251, 199, 190, 124, 138, 231, 87, 95, 124, 13, 157, 141, 9, 207, 57, 54, 37, 132, 109, 123, 112, 55, 66, 231, 34, 1, 242, 29, 50, 204, 131, 5, 123, 124, 129, 203, 33, 233, 251, 110, 58, 146, 50, 217, 48, 252, 200, 33, 78, 88, 122, 229, 70, 215, 189, 220 },
+                            PasswordHash = new byte[] { 166, 88, 16, 102, 78, 231, 18, 141, 183, 155, 204, 109, 235, 29, 100, 180, 218, 131, 77, 246, 64, 154, 247, 193, 111, 70, 75, 138, 159, 228, 239, 7, 79, 62, 176, 78, 244, 159, 133, 110, 62, 213, 53, 87, 138, 94, 166, 232, 121, 165, 133, 54, 180, 170, 76, 156, 2, 139, 151, 230, 194, 92, 61, 123 },
+                            PasswordSalt = new byte[] { 149, 120, 192, 40, 161, 205, 232, 59, 21, 203, 10, 62, 201, 233, 178, 18, 38, 191, 149, 133, 122, 136, 242, 12, 34, 124, 20, 251, 198, 252, 96, 48, 196, 235, 248, 150, 74, 150, 25, 70, 34, 189, 96, 250, 116, 112, 206, 145, 176, 70, 89, 196, 100, 206, 69, 42, 246, 203, 168, 58, 52, 150, 103, 44, 213, 136, 113, 185, 18, 139, 18, 41, 27, 104, 207, 103, 17, 108, 90, 176, 108, 74, 156, 232, 82, 32, 21, 105, 23, 53, 101, 110, 117, 89, 133, 61, 179, 233, 202, 118, 196, 62, 227, 246, 68, 114, 242, 240, 249, 230, 80, 69, 202, 144, 133, 19, 177, 113, 144, 211, 119, 219, 221, 14, 228, 94, 22, 180 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student11"
@@ -4417,8 +5366,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 7,
                             IsDeleted = false,
                             LastName = "Chia",
-                            PasswordHash = new byte[] { 0, 229, 215, 59, 54, 98, 136, 234, 32, 160, 249, 126, 97, 179, 202, 129, 45, 170, 2, 117, 166, 107, 106, 72, 192, 231, 97, 144, 96, 146, 205, 127, 232, 20, 34, 41, 97, 134, 232, 232, 136, 161, 110, 185, 110, 130, 150, 88, 245, 237, 43, 100, 223, 74, 179, 137, 245, 170, 2, 31, 143, 96, 104, 157 },
-                            PasswordSalt = new byte[] { 8, 73, 158, 13, 193, 203, 162, 167, 133, 0, 52, 179, 99, 162, 236, 108, 175, 208, 211, 74, 8, 70, 46, 86, 26, 15, 112, 203, 127, 54, 87, 64, 229, 176, 118, 130, 168, 193, 200, 176, 32, 3, 98, 96, 196, 103, 226, 176, 227, 120, 96, 53, 82, 199, 207, 196, 44, 235, 7, 159, 67, 229, 35, 157, 187, 15, 116, 181, 41, 53, 201, 184, 116, 130, 125, 45, 79, 108, 226, 89, 187, 44, 185, 26, 127, 206, 95, 0, 102, 114, 38, 66, 134, 140, 151, 26, 237, 255, 132, 35, 35, 202, 165, 58, 35, 99, 211, 186, 208, 106, 23, 159, 188, 187, 248, 13, 193, 159, 31, 77, 230, 202, 184, 70, 94, 154, 112, 89 },
+                            PasswordHash = new byte[] { 206, 122, 75, 127, 131, 83, 23, 169, 165, 206, 61, 15, 213, 5, 154, 194, 143, 42, 24, 94, 130, 94, 46, 59, 173, 160, 86, 162, 18, 254, 73, 115, 112, 245, 33, 135, 187, 133, 228, 175, 227, 91, 98, 143, 187, 226, 155, 120, 238, 152, 250, 123, 188, 24, 252, 52, 115, 64, 115, 65, 55, 77, 118, 34 },
+                            PasswordSalt = new byte[] { 114, 63, 253, 247, 96, 193, 6, 69, 206, 197, 146, 44, 197, 210, 228, 171, 151, 201, 206, 50, 6, 48, 128, 98, 155, 135, 167, 97, 116, 75, 226, 178, 112, 79, 27, 22, 60, 229, 53, 197, 125, 211, 172, 237, 26, 240, 138, 12, 87, 105, 80, 101, 168, 71, 226, 209, 130, 81, 61, 89, 43, 250, 19, 234, 229, 196, 148, 118, 218, 105, 114, 202, 33, 241, 13, 80, 180, 249, 61, 241, 151, 101, 237, 32, 36, 238, 104, 102, 253, 153, 247, 5, 224, 200, 169, 40, 51, 33, 72, 188, 127, 112, 157, 11, 207, 110, 128, 1, 181, 250, 43, 143, 122, 145, 95, 181, 89, 10, 133, 6, 230, 79, 139, 90, 140, 212, 168, 50 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student12"
@@ -4432,8 +5381,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 8,
                             IsDeleted = false,
                             LastName = "Hoe",
-                            PasswordHash = new byte[] { 191, 139, 157, 153, 170, 2, 14, 25, 65, 168, 230, 252, 73, 230, 30, 160, 205, 36, 36, 179, 209, 52, 254, 60, 241, 222, 5, 51, 143, 255, 143, 40, 246, 144, 230, 137, 148, 21, 199, 190, 46, 91, 177, 4, 91, 90, 41, 113, 6, 73, 155, 102, 4, 185, 11, 247, 157, 109, 189, 80, 94, 214, 182, 234 },
-                            PasswordSalt = new byte[] { 182, 138, 10, 43, 57, 43, 110, 7, 13, 107, 78, 244, 235, 213, 123, 73, 6, 232, 91, 46, 250, 252, 176, 191, 88, 247, 120, 241, 24, 161, 41, 65, 2, 121, 93, 68, 183, 239, 245, 241, 30, 61, 221, 75, 144, 65, 252, 149, 86, 21, 75, 253, 129, 211, 143, 176, 251, 39, 34, 104, 241, 44, 145, 1, 226, 103, 203, 97, 215, 105, 50, 219, 102, 250, 232, 211, 99, 69, 112, 152, 94, 169, 70, 183, 29, 156, 3, 233, 234, 59, 130, 166, 106, 63, 118, 39, 154, 18, 127, 102, 211, 64, 4, 93, 200, 137, 224, 217, 239, 197, 75, 170, 73, 72, 33, 72, 136, 134, 89, 139, 228, 82, 143, 125, 190, 170, 207, 16 },
+                            PasswordHash = new byte[] { 203, 219, 22, 107, 159, 10, 152, 12, 110, 122, 185, 123, 160, 122, 18, 68, 95, 40, 161, 52, 232, 84, 162, 208, 192, 149, 98, 16, 128, 91, 79, 182, 194, 245, 172, 179, 221, 234, 130, 135, 78, 27, 142, 194, 229, 53, 34, 87, 89, 82, 92, 126, 221, 89, 13, 85, 86, 70, 33, 84, 23, 123, 100, 230 },
+                            PasswordSalt = new byte[] { 198, 101, 74, 252, 78, 60, 106, 71, 36, 72, 226, 198, 216, 62, 85, 162, 250, 160, 26, 205, 25, 161, 100, 46, 243, 239, 149, 11, 39, 108, 66, 225, 217, 89, 170, 138, 198, 135, 91, 209, 141, 139, 79, 119, 225, 195, 59, 92, 10, 149, 169, 184, 105, 23, 208, 251, 77, 228, 163, 62, 123, 24, 97, 192, 70, 148, 144, 134, 5, 245, 168, 188, 24, 1, 180, 63, 83, 148, 188, 251, 244, 34, 176, 134, 132, 89, 59, 63, 14, 87, 43, 68, 202, 242, 154, 254, 107, 127, 77, 102, 19, 228, 80, 244, 165, 166, 106, 153, 165, 86, 200, 181, 67, 251, 87, 23, 67, 85, 149, 137, 24, 217, 18, 190, 96, 155, 88, 134 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student13"
@@ -4447,8 +5396,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Lee",
-                            PasswordHash = new byte[] { 86, 15, 175, 115, 33, 21, 38, 101, 130, 23, 136, 31, 37, 146, 149, 100, 214, 120, 157, 148, 120, 11, 44, 180, 200, 142, 18, 176, 171, 79, 150, 137, 96, 2, 132, 109, 213, 109, 224, 55, 165, 188, 45, 122, 147, 55, 43, 40, 65, 111, 177, 136, 215, 147, 236, 203, 158, 230, 195, 32, 166, 71, 8, 9 },
-                            PasswordSalt = new byte[] { 143, 177, 13, 146, 162, 230, 156, 40, 165, 95, 133, 199, 52, 255, 126, 158, 128, 234, 176, 43, 5, 143, 144, 235, 79, 245, 106, 225, 87, 34, 1, 198, 113, 185, 197, 190, 42, 23, 119, 176, 235, 28, 75, 0, 182, 245, 118, 44, 31, 253, 236, 183, 160, 56, 193, 82, 113, 188, 22, 123, 179, 29, 44, 163, 214, 8, 112, 243, 162, 6, 204, 130, 70, 40, 214, 146, 133, 59, 128, 5, 199, 141, 24, 178, 99, 251, 221, 113, 203, 149, 125, 81, 119, 238, 238, 67, 130, 216, 156, 178, 73, 105, 62, 44, 67, 201, 87, 22, 83, 101, 116, 8, 225, 228, 78, 146, 197, 232, 198, 111, 100, 42, 26, 254, 133, 179, 46, 203 },
+                            PasswordHash = new byte[] { 248, 48, 186, 122, 21, 197, 121, 69, 0, 63, 57, 190, 222, 161, 64, 175, 173, 117, 60, 197, 199, 255, 129, 181, 49, 174, 23, 1, 28, 165, 228, 31, 196, 144, 207, 174, 81, 73, 146, 198, 168, 96, 227, 153, 158, 46, 225, 95, 228, 119, 189, 87, 121, 182, 27, 69, 175, 215, 109, 201, 71, 209, 111, 137 },
+                            PasswordSalt = new byte[] { 180, 171, 109, 187, 249, 39, 132, 174, 64, 20, 6, 35, 125, 226, 219, 247, 20, 36, 146, 169, 27, 237, 54, 88, 159, 151, 127, 176, 16, 136, 170, 227, 83, 16, 88, 90, 167, 172, 109, 253, 140, 105, 67, 3, 153, 142, 183, 153, 57, 103, 150, 220, 19, 195, 201, 122, 173, 9, 111, 8, 240, 12, 225, 9, 247, 72, 45, 199, 206, 143, 208, 216, 101, 156, 210, 11, 26, 67, 91, 242, 159, 204, 19, 159, 168, 39, 168, 192, 175, 108, 184, 75, 8, 213, 52, 117, 59, 63, 22, 243, 20, 192, 88, 205, 105, 153, 234, 209, 150, 171, 114, 62, 32, 4, 242, 242, 2, 161, 65, 23, 26, 66, 246, 200, 231, 129, 82, 28 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student14"
@@ -4462,8 +5411,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Quan",
-                            PasswordHash = new byte[] { 131, 61, 119, 43, 233, 98, 187, 182, 4, 182, 168, 163, 167, 122, 110, 7, 237, 165, 182, 48, 41, 176, 42, 250, 251, 139, 138, 119, 236, 252, 0, 127, 182, 134, 201, 196, 139, 236, 54, 136, 69, 174, 29, 94, 231, 194, 190, 196, 66, 210, 85, 128, 162, 128, 61, 226, 153, 57, 138, 37, 184, 5, 96, 252 },
-                            PasswordSalt = new byte[] { 87, 32, 239, 139, 185, 100, 184, 208, 180, 162, 15, 1, 130, 78, 20, 107, 204, 46, 122, 33, 168, 17, 163, 105, 211, 8, 79, 124, 125, 178, 217, 74, 234, 10, 123, 186, 133, 234, 34, 134, 227, 96, 65, 137, 15, 119, 98, 139, 134, 239, 239, 240, 153, 243, 124, 7, 253, 29, 100, 73, 142, 203, 132, 162, 191, 72, 19, 101, 4, 11, 235, 233, 240, 131, 67, 250, 187, 130, 193, 199, 222, 3, 0, 30, 233, 106, 44, 56, 74, 87, 85, 133, 77, 160, 104, 215, 141, 18, 71, 20, 216, 82, 111, 141, 81, 227, 181, 83, 235, 239, 174, 130, 193, 216, 153, 44, 98, 245, 69, 175, 227, 149, 1, 215, 86, 182, 71, 210 },
+                            PasswordHash = new byte[] { 219, 170, 164, 46, 147, 225, 16, 222, 219, 109, 217, 133, 195, 208, 24, 255, 223, 102, 190, 36, 51, 17, 193, 121, 66, 213, 138, 249, 34, 57, 247, 203, 215, 95, 30, 174, 39, 84, 110, 250, 79, 111, 184, 116, 20, 251, 134, 76, 182, 91, 30, 128, 31, 22, 65, 223, 252, 33, 210, 123, 131, 83, 157, 255 },
+                            PasswordSalt = new byte[] { 34, 93, 16, 138, 19, 209, 45, 34, 14, 134, 179, 206, 89, 122, 164, 224, 71, 140, 224, 97, 111, 226, 31, 190, 24, 74, 184, 220, 226, 107, 80, 54, 34, 158, 32, 67, 121, 206, 58, 139, 148, 215, 252, 231, 31, 32, 159, 219, 236, 42, 52, 218, 144, 117, 140, 29, 210, 68, 177, 138, 228, 254, 3, 117, 192, 98, 208, 50, 221, 75, 178, 100, 167, 13, 1, 194, 80, 82, 46, 228, 99, 250, 138, 179, 159, 50, 200, 144, 94, 118, 6, 186, 235, 196, 193, 176, 12, 103, 219, 172, 30, 113, 78, 185, 200, 52, 115, 135, 170, 196, 113, 59, 48, 23, 244, 243, 243, 161, 42, 92, 105, 93, 138, 163, 56, 57, 211, 103 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student15"
@@ -4477,8 +5426,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 5,
                             IsDeleted = false,
                             LastName = "Trong",
-                            PasswordHash = new byte[] { 88, 217, 64, 184, 88, 12, 168, 93, 35, 222, 221, 230, 173, 203, 176, 219, 165, 221, 253, 131, 64, 101, 246, 140, 136, 67, 32, 0, 140, 43, 203, 59, 42, 67, 160, 5, 231, 242, 93, 116, 1, 170, 171, 189, 219, 199, 16, 2, 141, 160, 165, 117, 239, 114, 152, 80, 39, 54, 143, 225, 207, 149, 52, 251 },
-                            PasswordSalt = new byte[] { 77, 137, 121, 6, 192, 15, 214, 250, 240, 58, 66, 163, 33, 195, 127, 85, 67, 229, 153, 7, 143, 205, 52, 197, 87, 52, 205, 126, 68, 240, 75, 185, 216, 133, 89, 41, 188, 93, 190, 247, 228, 175, 241, 0, 51, 45, 5, 196, 169, 113, 60, 109, 249, 85, 253, 4, 239, 219, 43, 229, 115, 81, 247, 202, 18, 174, 20, 13, 254, 107, 6, 210, 126, 248, 35, 239, 123, 18, 11, 117, 153, 108, 36, 14, 187, 215, 110, 201, 38, 29, 228, 110, 153, 190, 30, 58, 192, 174, 235, 46, 66, 179, 249, 255, 36, 47, 187, 234, 18, 210, 171, 254, 161, 92, 249, 5, 117, 66, 122, 198, 12, 49, 13, 221, 6, 99, 222, 72 },
+                            PasswordHash = new byte[] { 198, 26, 200, 38, 114, 137, 92, 2, 166, 245, 10, 15, 96, 189, 75, 4, 59, 205, 42, 145, 95, 156, 228, 37, 233, 213, 201, 68, 180, 92, 72, 163, 63, 55, 76, 199, 251, 121, 198, 204, 88, 122, 122, 173, 57, 233, 20, 139, 75, 11, 59, 30, 53, 200, 208, 181, 173, 104, 14, 191, 83, 134, 21, 123 },
+                            PasswordSalt = new byte[] { 223, 224, 168, 14, 179, 15, 118, 111, 178, 64, 54, 54, 107, 148, 30, 103, 194, 253, 136, 184, 93, 19, 60, 200, 19, 135, 234, 101, 232, 223, 178, 177, 208, 86, 42, 66, 253, 64, 37, 91, 128, 94, 144, 169, 192, 152, 179, 55, 62, 146, 223, 195, 51, 103, 72, 28, 11, 24, 42, 213, 74, 205, 99, 25, 89, 233, 153, 166, 124, 83, 147, 71, 164, 48, 214, 253, 117, 158, 217, 238, 109, 116, 171, 72, 220, 63, 129, 153, 141, 212, 127, 103, 77, 145, 53, 44, 213, 247, 203, 220, 10, 167, 82, 213, 209, 196, 150, 233, 64, 255, 0, 195, 9, 14, 124, 92, 31, 144, 99, 48, 167, 112, 76, 90, 15, 191, 102, 27 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student16"
@@ -4492,8 +5441,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 1,
                             IsDeleted = false,
                             LastName = "Trong",
-                            PasswordHash = new byte[] { 11, 33, 24, 161, 62, 156, 10, 48, 159, 229, 181, 103, 196, 238, 77, 251, 55, 181, 35, 53, 73, 19, 181, 12, 51, 46, 176, 8, 184, 24, 79, 63, 73, 124, 164, 36, 125, 128, 59, 143, 82, 229, 93, 158, 173, 156, 79, 85, 149, 117, 162, 13, 173, 226, 107, 100, 229, 163, 21, 249, 59, 210, 161, 79 },
-                            PasswordSalt = new byte[] { 13, 168, 191, 13, 232, 46, 240, 81, 67, 52, 83, 52, 9, 27, 131, 114, 137, 13, 238, 12, 204, 230, 229, 160, 8, 170, 251, 91, 218, 188, 231, 218, 14, 205, 185, 145, 242, 95, 14, 180, 34, 117, 151, 195, 174, 106, 36, 161, 91, 229, 221, 173, 124, 12, 165, 47, 205, 57, 140, 133, 121, 234, 126, 249, 59, 255, 227, 93, 82, 211, 230, 153, 118, 113, 101, 177, 69, 250, 33, 63, 95, 168, 118, 133, 35, 9, 242, 97, 137, 107, 98, 220, 232, 122, 205, 113, 153, 253, 18, 191, 164, 119, 189, 254, 93, 82, 0, 107, 30, 153, 236, 239, 134, 96, 183, 209, 13, 130, 238, 235, 118, 114, 14, 152, 198, 254, 238, 99 },
+                            PasswordHash = new byte[] { 170, 241, 111, 237, 160, 86, 207, 124, 86, 88, 213, 178, 55, 111, 84, 16, 99, 211, 112, 138, 82, 71, 110, 153, 51, 63, 60, 221, 152, 180, 138, 63, 114, 5, 170, 43, 19, 145, 85, 193, 17, 72, 249, 87, 15, 4, 102, 176, 196, 230, 12, 207, 42, 65, 222, 183, 231, 225, 183, 135, 170, 63, 174, 40 },
+                            PasswordSalt = new byte[] { 5, 162, 238, 251, 47, 252, 249, 172, 230, 125, 13, 93, 216, 104, 116, 211, 31, 194, 185, 193, 175, 199, 205, 245, 94, 144, 245, 78, 237, 183, 13, 71, 158, 123, 202, 22, 207, 76, 56, 36, 168, 78, 244, 198, 193, 124, 216, 113, 150, 148, 244, 104, 72, 239, 59, 167, 109, 96, 122, 235, 1, 164, 136, 209, 136, 84, 179, 61, 79, 11, 84, 205, 245, 34, 226, 65, 151, 207, 53, 45, 222, 36, 199, 11, 159, 206, 179, 123, 114, 129, 103, 176, 121, 28, 205, 203, 206, 14, 198, 244, 245, 236, 230, 98, 62, 252, 236, 204, 216, 88, 184, 2, 109, 103, 190, 227, 204, 175, 101, 163, 255, 202, 82, 196, 218, 28, 143, 45 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student17"
@@ -4507,8 +5456,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 10,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 167, 170, 101, 20, 118, 19, 254, 140, 172, 51, 0, 58, 48, 188, 183, 12, 161, 249, 217, 233, 162, 243, 215, 91, 86, 7, 68, 55, 233, 246, 175, 157, 93, 62, 159, 191, 38, 208, 2, 57, 32, 1, 248, 155, 104, 53, 51, 140, 126, 2, 33, 12, 140, 28, 32, 142, 80, 196, 103, 128, 228, 152, 15, 67 },
-                            PasswordSalt = new byte[] { 104, 236, 184, 165, 94, 171, 172, 146, 193, 42, 56, 0, 118, 255, 59, 236, 24, 42, 242, 119, 115, 9, 42, 113, 31, 145, 232, 129, 171, 183, 212, 183, 196, 88, 151, 104, 155, 238, 164, 236, 14, 112, 40, 166, 144, 21, 227, 40, 110, 15, 203, 95, 66, 201, 33, 22, 82, 236, 212, 23, 106, 35, 208, 0, 129, 131, 172, 198, 83, 38, 80, 201, 79, 66, 193, 181, 159, 25, 63, 202, 231, 26, 173, 140, 252, 191, 201, 160, 130, 120, 94, 127, 233, 70, 251, 206, 74, 47, 114, 167, 70, 233, 181, 228, 139, 62, 188, 238, 195, 228, 39, 194, 5, 54, 63, 84, 65, 220, 211, 197, 154, 171, 194, 59, 128, 188, 251, 80 },
+                            PasswordHash = new byte[] { 164, 83, 4, 142, 122, 218, 124, 165, 52, 77, 253, 156, 189, 108, 25, 29, 149, 172, 32, 223, 93, 107, 234, 224, 24, 160, 135, 116, 151, 3, 40, 112, 75, 41, 104, 0, 209, 208, 11, 57, 73, 140, 49, 211, 214, 117, 150, 53, 37, 1, 116, 168, 152, 139, 106, 253, 158, 8, 139, 42, 213, 5, 166, 243 },
+                            PasswordSalt = new byte[] { 7, 159, 40, 127, 45, 128, 147, 93, 110, 22, 178, 169, 37, 204, 208, 235, 125, 219, 146, 222, 16, 165, 195, 179, 123, 177, 169, 250, 113, 31, 201, 160, 186, 227, 47, 21, 22, 142, 112, 83, 6, 246, 66, 134, 180, 229, 12, 81, 231, 2, 224, 204, 63, 119, 197, 25, 48, 26, 90, 246, 38, 61, 112, 69, 48, 230, 118, 146, 149, 88, 232, 158, 80, 240, 87, 220, 137, 200, 21, 153, 168, 136, 204, 46, 35, 35, 84, 244, 44, 199, 162, 89, 58, 112, 43, 189, 29, 205, 193, 73, 97, 204, 192, 77, 132, 84, 99, 218, 129, 77, 42, 117, 232, 104, 76, 178, 226, 174, 132, 20, 83, 223, 143, 36, 141, 224, 180, 7 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student18"
@@ -4522,8 +5471,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 2,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 102, 138, 136, 22, 249, 126, 196, 172, 33, 163, 37, 235, 30, 56, 101, 120, 44, 141, 8, 71, 107, 214, 131, 242, 194, 64, 11, 95, 127, 175, 149, 252, 26, 117, 233, 78, 63, 52, 160, 101, 128, 70, 154, 186, 172, 104, 141, 68, 69, 122, 231, 9, 113, 157, 82, 151, 27, 88, 237, 102, 247, 109, 133, 165 },
-                            PasswordSalt = new byte[] { 184, 72, 74, 62, 179, 51, 125, 103, 64, 213, 159, 65, 249, 128, 142, 175, 96, 86, 27, 103, 67, 196, 22, 13, 224, 209, 82, 112, 118, 6, 171, 204, 12, 65, 180, 89, 15, 128, 4, 187, 186, 192, 148, 72, 166, 153, 200, 190, 50, 54, 97, 3, 27, 167, 101, 17, 121, 34, 169, 181, 142, 182, 36, 9, 127, 28, 107, 194, 171, 233, 114, 116, 242, 163, 191, 172, 65, 17, 22, 32, 228, 112, 25, 111, 122, 14, 149, 69, 59, 52, 90, 16, 15, 249, 96, 63, 13, 197, 159, 97, 245, 248, 134, 204, 89, 177, 254, 159, 66, 36, 167, 131, 162, 196, 204, 225, 245, 185, 53, 188, 214, 103, 93, 167, 43, 178, 53, 138 },
+                            PasswordHash = new byte[] { 143, 183, 26, 95, 198, 102, 195, 64, 231, 81, 206, 53, 209, 170, 198, 49, 250, 223, 94, 254, 9, 115, 46, 161, 154, 32, 149, 170, 196, 104, 3, 30, 97, 39, 164, 85, 168, 41, 201, 185, 107, 190, 28, 192, 59, 6, 55, 201, 36, 9, 48, 198, 117, 143, 68, 189, 55, 14, 192, 150, 121, 128, 186, 108 },
+                            PasswordSalt = new byte[] { 186, 106, 213, 64, 37, 101, 2, 45, 213, 118, 133, 139, 32, 248, 114, 20, 81, 114, 187, 108, 27, 72, 172, 240, 42, 243, 143, 32, 140, 72, 120, 104, 247, 184, 174, 82, 145, 129, 241, 49, 2, 227, 62, 27, 34, 75, 139, 252, 76, 133, 50, 81, 69, 147, 153, 84, 128, 144, 9, 1, 202, 252, 9, 1, 194, 211, 170, 220, 83, 96, 2, 77, 67, 255, 141, 40, 39, 28, 174, 1, 95, 222, 212, 148, 171, 252, 163, 164, 97, 23, 54, 58, 250, 249, 66, 232, 71, 251, 124, 219, 246, 66, 29, 169, 28, 197, 9, 42, 115, 240, 87, 95, 192, 23, 143, 147, 93, 54, 7, 157, 8, 222, 213, 140, 192, 119, 115, 160 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student19"
@@ -4537,8 +5486,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 3,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 241, 253, 200, 132, 251, 228, 171, 121, 139, 104, 137, 73, 185, 84, 220, 69, 93, 203, 205, 1, 158, 140, 153, 248, 176, 47, 2, 251, 200, 5, 182, 177, 148, 118, 254, 223, 106, 64, 20, 128, 120, 221, 44, 199, 249, 49, 195, 193, 111, 186, 46, 191, 106, 184, 249, 31, 141, 19, 14, 160, 231, 164, 27, 16 },
-                            PasswordSalt = new byte[] { 51, 122, 115, 210, 177, 143, 133, 168, 248, 244, 17, 132, 139, 19, 186, 68, 29, 83, 240, 209, 201, 65, 173, 36, 178, 204, 177, 7, 242, 106, 174, 209, 3, 51, 121, 85, 154, 125, 62, 189, 49, 155, 234, 194, 41, 194, 85, 176, 218, 8, 101, 76, 38, 71, 22, 177, 236, 198, 125, 157, 46, 77, 172, 83, 47, 176, 34, 223, 178, 229, 27, 108, 1, 238, 75, 225, 204, 189, 8, 218, 226, 206, 253, 83, 59, 44, 90, 224, 194, 133, 99, 249, 202, 130, 112, 59, 162, 163, 152, 184, 197, 215, 33, 189, 92, 32, 143, 122, 171, 126, 33, 141, 192, 78, 153, 190, 180, 194, 178, 79, 204, 167, 176, 188, 121, 18, 44, 43 },
+                            PasswordHash = new byte[] { 177, 236, 194, 250, 252, 186, 68, 174, 228, 205, 162, 12, 172, 115, 85, 125, 114, 117, 146, 82, 30, 50, 22, 114, 136, 204, 145, 116, 65, 177, 101, 158, 116, 196, 187, 119, 212, 23, 96, 19, 99, 30, 8, 23, 117, 82, 179, 160, 155, 131, 178, 97, 248, 173, 12, 124, 33, 202, 82, 139, 88, 171, 92, 180 },
+                            PasswordSalt = new byte[] { 46, 67, 174, 58, 104, 108, 3, 216, 136, 206, 137, 167, 41, 220, 76, 174, 206, 82, 60, 184, 56, 239, 132, 61, 94, 4, 133, 158, 118, 18, 83, 249, 209, 0, 223, 135, 29, 194, 90, 242, 133, 221, 63, 255, 13, 146, 100, 167, 222, 138, 91, 216, 60, 157, 22, 66, 45, 231, 41, 5, 227, 133, 227, 232, 190, 231, 190, 5, 231, 240, 142, 167, 231, 71, 29, 226, 117, 28, 142, 145, 210, 171, 123, 156, 86, 7, 98, 15, 51, 198, 255, 187, 227, 69, 21, 113, 231, 162, 187, 34, 2, 202, 29, 67, 163, 193, 144, 65, 40, 81, 23, 160, 247, 114, 254, 166, 112, 199, 223, 54, 190, 233, 119, 81, 134, 58, 16, 215 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student20"
@@ -4552,8 +5501,8 @@ namespace ApplicationContext.Migrations
                             HighestScore = 4,
                             IsDeleted = false,
                             LastName = "Ly",
-                            PasswordHash = new byte[] { 220, 224, 9, 188, 154, 173, 238, 212, 175, 67, 35, 220, 252, 76, 170, 126, 45, 155, 5, 144, 174, 241, 80, 218, 159, 219, 20, 194, 248, 238, 220, 21, 240, 144, 244, 13, 140, 80, 47, 213, 138, 129, 88, 224, 90, 72, 132, 2, 204, 31, 113, 152, 0, 88, 222, 201, 121, 47, 200, 38, 133, 128, 44, 76 },
-                            PasswordSalt = new byte[] { 40, 161, 254, 182, 48, 37, 152, 170, 17, 11, 218, 163, 101, 107, 112, 138, 130, 180, 146, 0, 236, 123, 184, 186, 122, 143, 224, 85, 127, 73, 254, 141, 107, 103, 201, 166, 42, 245, 76, 166, 241, 168, 231, 199, 68, 134, 39, 121, 92, 120, 118, 30, 8, 111, 43, 30, 59, 85, 214, 66, 12, 58, 241, 187, 227, 165, 64, 127, 183, 251, 20, 5, 16, 72, 52, 219, 66, 24, 167, 29, 159, 160, 97, 87, 11, 38, 208, 173, 18, 52, 27, 69, 123, 125, 229, 213, 110, 206, 97, 66, 6, 98, 216, 135, 87, 143, 161, 6, 204, 199, 59, 178, 167, 164, 4, 124, 170, 6, 122, 155, 241, 151, 223, 156, 8, 64, 65, 237 },
+                            PasswordHash = new byte[] { 251, 207, 109, 224, 21, 115, 221, 188, 186, 27, 76, 237, 176, 148, 124, 175, 248, 37, 41, 254, 206, 207, 24, 104, 34, 70, 47, 32, 158, 92, 179, 119, 134, 97, 218, 214, 161, 28, 119, 126, 173, 211, 189, 158, 149, 235, 136, 49, 25, 64, 90, 180, 109, 73, 6, 175, 196, 28, 27, 153, 232, 9, 205, 148 },
+                            PasswordSalt = new byte[] { 185, 20, 109, 120, 10, 144, 51, 100, 250, 131, 222, 255, 30, 60, 17, 143, 175, 133, 104, 167, 74, 195, 139, 254, 63, 128, 186, 61, 200, 228, 8, 254, 53, 248, 140, 194, 254, 161, 38, 109, 180, 20, 168, 203, 231, 236, 122, 38, 207, 72, 191, 250, 110, 31, 26, 134, 198, 233, 225, 141, 186, 25, 50, 199, 235, 126, 64, 227, 206, 65, 191, 116, 241, 190, 237, 49, 40, 208, 58, 120, 198, 249, 36, 8, 41, 179, 6, 254, 61, 18, 3, 214, 176, 32, 237, 165, 132, 137, 125, 156, 143, 215, 57, 149, 151, 109, 172, 159, 180, 99, 239, 138, 18, 249, 103, 207, 171, 92, 12, 95, 189, 166, 50, 213, 162, 196, 162, 62 },
                             PhoneNumber = "1234567890",
                             Role = 1,
                             UserName = "student21"
@@ -4566,8 +5515,8 @@ namespace ApplicationContext.Migrations
                             FirstName = "admin",
                             IsDeleted = false,
                             LastName = "admin",
-                            PasswordHash = new byte[] { 26, 158, 100, 113, 109, 77, 216, 89, 220, 248, 241, 58, 223, 234, 78, 186, 230, 66, 245, 147, 206, 222, 129, 161, 228, 112, 56, 54, 31, 64, 29, 215, 210, 125, 97, 119, 67, 160, 1, 167, 136, 147, 87, 27, 33, 197, 231, 198, 146, 170, 183, 178, 96, 21, 16, 59, 96, 110, 195, 138, 52, 143, 118, 205 },
-                            PasswordSalt = new byte[] { 56, 242, 189, 56, 0, 30, 116, 93, 43, 30, 210, 172, 136, 200, 162, 94, 121, 153, 154, 148, 70, 79, 124, 160, 209, 156, 252, 86, 41, 177, 202, 74, 28, 226, 41, 158, 27, 119, 124, 218, 245, 226, 247, 137, 139, 119, 82, 86, 70, 211, 112, 56, 81, 141, 78, 250, 119, 8, 251, 246, 88, 56, 46, 254, 123, 125, 55, 104, 115, 49, 227, 146, 48, 26, 72, 66, 16, 93, 164, 135, 82, 148, 145, 44, 183, 182, 204, 22, 126, 58, 7, 197, 94, 109, 3, 94, 20, 124, 246, 10, 58, 213, 148, 143, 216, 85, 183, 224, 42, 163, 209, 33, 252, 17, 107, 224, 236, 3, 155, 214, 60, 194, 0, 23, 165, 227, 53, 180 },
+                            PasswordHash = new byte[] { 53, 246, 162, 146, 10, 52, 102, 143, 106, 148, 53, 115, 232, 29, 13, 145, 221, 109, 251, 254, 8, 56, 156, 250, 22, 244, 65, 176, 62, 151, 133, 114, 70, 254, 144, 0, 149, 22, 86, 249, 53, 228, 63, 177, 133, 91, 182, 247, 120, 162, 248, 36, 5, 81, 102, 150, 73, 214, 190, 153, 242, 185, 206, 160 },
+                            PasswordSalt = new byte[] { 230, 236, 187, 164, 165, 196, 170, 73, 140, 27, 144, 132, 178, 218, 94, 220, 234, 72, 59, 21, 237, 161, 85, 78, 159, 104, 40, 195, 40, 172, 249, 101, 86, 192, 43, 253, 135, 100, 78, 21, 143, 120, 199, 255, 183, 193, 49, 181, 102, 0, 149, 103, 97, 3, 65, 206, 42, 108, 132, 69, 104, 177, 104, 163, 83, 68, 196, 167, 221, 140, 49, 144, 52, 149, 163, 185, 30, 180, 169, 39, 184, 135, 121, 181, 250, 238, 29, 133, 212, 200, 145, 77, 235, 109, 223, 238, 107, 232, 88, 49, 128, 16, 253, 47, 90, 133, 156, 207, 68, 110, 226, 70, 161, 36, 63, 19, 146, 146, 230, 5, 146, 159, 28, 232, 119, 131, 45, 180 },
                             PhoneNumber = "1234567890",
                             Role = 0,
                             UserName = "admin"

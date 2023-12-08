@@ -31,7 +31,7 @@ namespace ApplicationContext.Configurations
                     Code = "KT",
                     Name = "Kinh tế",
                     Description = "các ngành về kinh tế-quản lý",
-                    RequiredScore = 22
+                    //RequiredScore = 22
                 },
                 new Department()
                 {
@@ -206,7 +206,7 @@ namespace ApplicationContext.Configurations
                          Code = "LG",
                          Name = "Logistics",
                          Description = "Các ngành về logistics-vận tải",
-                         RequiredScore = 27
+                         //RequiredScore = 27
 
                      },
                      new Department()
