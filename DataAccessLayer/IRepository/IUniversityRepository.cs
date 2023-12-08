@@ -14,5 +14,8 @@ namespace DataAccessLayer.IRepository
             //int pageSize, 
             //string department, string name
             );
+        Task<List<University>> PagingAsync(int pageIndex, int pageSize, string search);
+        Task<int> CountPagingAsync(int pageIndex, int pageSize, string search);
+
     }
 }

@@ -7,5 +7,6 @@ namespace BusinessLogicLayer.IService
     {
         Task<ApiResponse> AddUniversity(NewUniversityRequest newUniversity);
         Task<ApiResponse> GetUniversities();
+        Task<ApiResponse> GetUniversityPagingAsync(int pageIndex, int pageSize, string search);
     }
 }

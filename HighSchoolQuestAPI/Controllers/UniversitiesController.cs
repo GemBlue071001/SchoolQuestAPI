@@ -32,5 +32,16 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetUniversities();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
+        [Authorize]
+        [HttpGet("paging")]
+        public async Task<IActionResult> GetUniversitiesByDepartmentPagination(
+                                                 [FromQuery] int pageIndex = 1,
+                                                 [FromQuery] int pageSize = 5,
+                                                 [FromQuery] string search = null)
+        {
+            var result = await _service.GetUniversityPagingAsync(pageIndex, pageSize, search);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

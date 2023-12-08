@@ -25,5 +25,30 @@ namespace DataAccessLayer.Repository
                     .Where(b => !b.IsDeleted)
                     .ToListAsync();
         }
+
+        public async Task<List<University>> PagingAsync(int pageIndex, int pageSize, string search)
+        {
+            IQueryable<University> query = _db;
+            if (!string.IsNullOrEmpty(search))
+                query = query.Where(b => b.Name.Contains(search));
+
+            return await query
+                    .Where(b => !b.IsDeleted)
+                    .Skip((pageIndex - 1) * pageSize)
+                    .Include(x => x.UniversityDepartments)
+                    .Take(pageSize).ToListAsync();
+
+        }
+
+        public async Task<int> CountPagingAsync(int pageIndex, int pageSize, string search)
+        {
+            IQueryable<University> query = _db;
+            if (!string.IsNullOrEmpty(search))
+                query = query.Where(b => b.Name.Contains(search));
+
+            return await query
+          .Where(b => !b.IsDeleted)
+          .CountAsync();
+        }
     }
 }

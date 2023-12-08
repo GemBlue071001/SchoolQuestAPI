@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.University;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
@@ -41,6 +42,15 @@ namespace BusinessLogicLayer.Service
             var universityList = _mapper.Map<List<UniversityResponse>>(universities);
             return response.SetOk(universityList);
         }
+        public async Task<ApiResponse> GetUniversityPagingAsync(int pageIndex, int pageSize, string search)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            var listOfUniversity = await _unitOfWork.Universities.PagingAsync(pageIndex, pageSize, search);
+            var listOfUniversityResponse = _mapper.Map<List<UniversityResponse>>(listOfUniversity);
+            var totalOfUniversity = await _unitOfWork.Universities.CountPagingAsync(pageIndex, pageSize, search);
+            Pagination<UniversityResponse> response = new Pagination<UniversityResponse>(listOfUniversityResponse, totalOfUniversity, pageIndex, pageSize);
 
+            return apiResponse.SetOk(response);
+        }
     }
 }
