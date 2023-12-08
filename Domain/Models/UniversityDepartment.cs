@@ -16,6 +16,7 @@ namespace Domain.Models
         //public List<Major> Majors { get; set; }
         public Department? Department { get; set; }
         public University University { get; set; }
+        public float RequiredScore { get; set; }
         public Guid UniversityId { get; set; }
         public Guid DepartmentId { get; set; }
     }

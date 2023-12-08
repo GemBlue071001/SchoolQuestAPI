@@ -10,7 +10,6 @@ namespace Domain.Models
     {
         public string? Name { get; set; }
         public string? Code { get; set; }
-        public float? RequiredScore { get; set; }
         public string? Description { get; set; }
 
 

@@ -14,14 +14,14 @@ namespace DataAccessLayer.Repository
 
         public async Task<List<MBTI_Department>> GetPosibilityDepartmentAsync(float score, int MBTI_Id)
         {
-            IQueryable<MBTI_Department> query = _db;
-            if (score != 0)
-                query = query.Where(b => b.Department.RequiredScore <= score);
+            //IQueryable<MBTI_Department> query = _db;
+            //if (score != 0)
+            //    query = query.Where(b => b.Department.RequiredScore <= score);
 
-            return await query
-                        .Where(b => b.MBTI_Id == MBTI_Id)
-                        .ToListAsync();
-
+            //return await query
+            //            .Where(b => b.MBTI_Id == MBTI_Id)
+            //            .ToListAsync();
+            return new List<MBTI_Department>();
 
         }
     }

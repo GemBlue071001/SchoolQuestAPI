@@ -32,6 +32,13 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMajorAsync(Guid id)
+        {
+            var result = await _service.DeleteMajorAsync(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddMajorAsync(NewMajorRequest request)
         {
@@ -40,7 +47,7 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateMajorAsync([FromQuery] Guid majorId, NewMajorRequest request)
+        public async Task<IActionResult> UpdateMajorAsync([FromQuery] Guid majorId, UpdateMajorRequest request)
         {
             var result = await _service.UpdateMajorAsync(majorId, request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);

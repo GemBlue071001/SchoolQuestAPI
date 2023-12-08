@@ -30,6 +30,7 @@ namespace DataAccessLayer.UnitOfWork
         public IMBTI_ExamRepository MBTI_Exams { get; }
         public IMBTI_ExamQuestionRepository MBTI_ExamQuestions { get; }
         public IMBTI_UserRecordRepository MBTI_UserRecords { get; }
+        public IDepartmentRepository Departments { get; }
         public Task SaveChangeAsync();
     }
 }
