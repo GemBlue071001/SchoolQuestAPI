@@ -30,8 +30,8 @@ namespace ApplicationContext.Configurations
                     Id = Guid.Parse("b8034210-23fd-4af9-9d7f-f260a0cdef97"),
                     Code = "KT",
                     Name = "Kinh tế",
-                    Description = "các ngành về kinh tế",
-                    //RequiredScore = 22
+                    Description = "các ngành về kinh tế-quản lý",
+                    RequiredScore = 22
                 },
                 new Department()
                 {
@@ -205,8 +205,9 @@ namespace ApplicationContext.Configurations
                          Id = Guid.Parse("bf4524c1-1150-48f6-8c57-d922d925426f"),
                          Code = "LG",
                          Name = "Logistics",
-                         Description = "Các ngành về logistics",
-                         //RequiredScore = 27
+                         Description = "Các ngành về logistics-vận tải",
+                         RequiredScore = 27
+
                      },
                      new Department()
                      {
