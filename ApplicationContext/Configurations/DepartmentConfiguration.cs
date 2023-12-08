@@ -23,7 +23,7 @@ namespace ApplicationContext.Configurations
                     Code = "SE",
                     Name = "Công nghệ thông tin",
                     Description = "các ngành về máy tính",
-                    RequiredScore = 22
+                    //RequiredScore = 22
                 },
                 new Department()
                 {
@@ -31,7 +31,7 @@ namespace ApplicationContext.Configurations
                     Code = "KT",
                     Name = "Kinh tế",
                     Description = "các ngành về kinh tế-quản lý",
-                    RequiredScore = 22
+                    //RequiredScore = 22
                 },
                 new Department()
                 {
@@ -39,7 +39,7 @@ namespace ApplicationContext.Configurations
                     Code = "YH",
                     Name = "Y học",
                     Description = "Các ngành y dược",
-                    RequiredScore = 27
+                    //RequiredScore = 27
                 },
                 new Department()
                 {
@@ -47,7 +47,7 @@ namespace ApplicationContext.Configurations
                     Code = "SP",
                     Name = "Sư phạm",
                     Description = "Các ngành sư phạm-giáo dục",
-                    RequiredScore = 25
+                    //RequiredScore = 25
                 },
                 new Department()
                 {
@@ -55,7 +55,7 @@ namespace ApplicationContext.Configurations
                     Code = "TK",
                     Name = "Thiết kế",
                     Description = "Các ngành thiết kế/nghệ thuật",
-                    RequiredScore = 22
+                    //RequiredScore = 22
                 },
                 new Department()
                 {
@@ -63,7 +63,7 @@ namespace ApplicationContext.Configurations
                     Code = "LAW",
                     Name = "Luật",
                     Description = "Các ngành về luật",
-                    RequiredScore = 23
+                    //RequiredScore = 23
                 },
                 new Department()
                 {
@@ -71,7 +71,7 @@ namespace ApplicationContext.Configurations
                     Code = "TT",
                     Name = "Truyền Thông",
                     Description = "Các ngành về báo chí/truyền thông",
-                    RequiredScore = 24
+                    //RequiredScore = 24
                 },
                 new Department()
                 {
@@ -79,7 +79,7 @@ namespace ApplicationContext.Configurations
                     Code = "NN",
                     Name = "Ngôn Ngữ",
                     Description = "Các ngành về ngôn ngữ",
-                    RequiredScore = 22
+                    //RequiredScore = 22
                 },
                 new Department()
                 {
@@ -87,7 +87,7 @@ namespace ApplicationContext.Configurations
                     Code = "DM",
                     Name = "Dệt May",
                     Description = "Các ngành về dệt may",
-                    RequiredScore = 20
+                    //RequiredScore = 20
                 },
                 new Department()
                 {
@@ -95,7 +95,7 @@ namespace ApplicationContext.Configurations
                     Code = "KT",
                     Name = "Kỹ Thuật",
                     Description = "Các ngành về kỹ thuật",
-                    RequiredScore = 26
+                    //RequiredScore = 26
                 },
                 new Department()
                 {
@@ -103,7 +103,7 @@ namespace ApplicationContext.Configurations
                     Code = "NK",
                     Name = "Năng Khiếu",
                     Description = "Các ngành về năng khiếu",
-                    RequiredScore = 27
+                    //RequiredScore = 27
                 },
                 new Department()
                 {
@@ -111,14 +111,14 @@ namespace ApplicationContext.Configurations
                     Code = "CT",
                     Name = "Chính trị",
                     Description = "Các ngành về chính trị",
-                    RequiredScore = 30
+                    //RequiredScore = 30
                 }, new Department()
                 {
                     Id = Guid.Parse("e63527a5-2326-4d15-afb5-8244fd0fa441"),
                     Code = "QL",
                     Name = "Quản lý-Lưu trữ thông tin",
                     Description = "Các ngành về quản lý-lưu trữ thông tin",
-                    RequiredScore = 25
+                    //RequiredScore = 25
                 },
                 new Department()
                 {
@@ -126,7 +126,7 @@ namespace ApplicationContext.Configurations
                     Code = "MT",
                     Name = "Môi trường",
                     Description = "Các ngành về môi trường",
-                    RequiredScore = 26
+                    //RequiredScore = 26
                 },
                 new Department()
                 {
@@ -134,7 +134,7 @@ namespace ApplicationContext.Configurations
                     Code = "TH",
                     Name = "Toán học",
                     Description = "Các ngành về toán học",
-                    RequiredScore = 25
+                    //RequiredScore = 25
                 },
                 new Department()
                 {
@@ -142,7 +142,7 @@ namespace ApplicationContext.Configurations
                     Code = "XD",
                     Name = "Xây Dựng",
                     Description = "Các ngành về xây dựng-kiến trúc",
-                    RequiredScore = 20
+                    //RequiredScore = 20
                 },
                 new Department()
                 {
@@ -150,7 +150,7 @@ namespace ApplicationContext.Configurations
                     Code = "TP",
                     Name = "Thực phẩm",
                     Description = "Các ngành về thực phẩm",
-                    RequiredScore = 20
+                    //RequiredScore = 20
                 },
                 new Department()
                 {
@@ -158,7 +158,7 @@ namespace ApplicationContext.Configurations
                     Code = "DL",
                     Name = "Du lịch",
                     Description = "Các ngành về du lịch",
-                    RequiredScore = 25
+                    //RequiredScore = 25
                 },
                 new Department()
                 {
@@ -166,7 +166,7 @@ namespace ApplicationContext.Configurations
                     Code = "CA",
                     Name = "Công an- quân đội",
                     Description = "Các ngành về công an- quân đội",
-                    RequiredScore = 20
+                    //RequiredScore = 20
                 },
                  new Department()
                  {
@@ -174,7 +174,7 @@ namespace ApplicationContext.Configurations
                      Code = "CK",
                      Name = "Cơ khí",
                      Description = "Các ngành về cơ khí",
-                     RequiredScore = 23
+                     //RequiredScore = 23
                  },
                   new Department()
                   {
@@ -182,7 +182,7 @@ namespace ApplicationContext.Configurations
                       Code = "HD",
                       Name = "Hải dương",
                       Description = "Các ngành về hải dương học",
-                      RequiredScore = 21
+                      //RequiredScore = 21
                   },
                    new Department()
                    {
@@ -190,7 +190,7 @@ namespace ApplicationContext.Configurations
                        Code = "KD",
                        Name = "Kinh doanh",
                        Description = "Các ngành về kinh doanh-marketing",
-                       RequiredScore = 22
+                       //RequiredScore = 22
                    },
                     new Department()
                     {
@@ -198,7 +198,7 @@ namespace ApplicationContext.Configurations
                         Code = "TC",
                         Name = "Tài chính",
                         Description = "Các ngành về tài chính-ngân hàng",
-                        RequiredScore = 26
+                        //RequiredScore = 26
                     },
                      new Department()
                      {
@@ -206,7 +206,8 @@ namespace ApplicationContext.Configurations
                          Code = "LG",
                          Name = "Logistics",
                          Description = "Các ngành về logistics-vận tải",
-                         RequiredScore = 27
+                         //RequiredScore = 27
+
                      },
                      new Department()
                      {
@@ -214,7 +215,7 @@ namespace ApplicationContext.Configurations
                          Code = "VH",
                          Name = "Văn hóa",
                          Description = "Các ngành về văn hóa",
-                         RequiredScore = 23
+                         //RequiredScore = 23
                      },
                      new Department()
                      {
@@ -222,7 +223,7 @@ namespace ApplicationContext.Configurations
                          Code = "DA",
                          Name = "Điện ảnh",
                          Description = "Các ngành về điện ảnh-sân khấu",
-                         RequiredScore = 30
+                         //RequiredScore = 30
                      });
         }
 

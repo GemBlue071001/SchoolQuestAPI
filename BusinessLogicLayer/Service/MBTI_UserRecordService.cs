@@ -30,17 +30,11 @@ namespace BusinessLogicLayer.Service
             var newUserRecord = _mapper.Map<MBTI_UserRecord>(newRecord);
             var userId = _claimsService.GetUserIdInRequest();
 
-            var userRecord = _unitOfWork.MBTI_UserRecords.GetAsync(x => x.UserId == userId);
-            if (userRecord == null)
-            {
-                newUserRecord.UserId = userId;
-                await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
-                await _unitOfWork.SaveChangeAsync();
+            newUserRecord.UserId = userId;
+            await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
+            await _unitOfWork.SaveChangeAsync();
 
-                return response.SetOk(Resources.CreateSuccess);
-            }
-            return response.SetBadRequest("You have already take this test ");
-
+            return response.SetOk(Resources.CreateSuccess);
         }
 
         public async Task<ApiResponse> GetUserRecord()
@@ -49,6 +43,33 @@ namespace BusinessLogicLayer.Service
             var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecords(userId);
             var userRecordsResponse = _mapper.Map<List<MBTI_UserRecordResponse>>(userRecords);
             var response = new ApiResponse();
+
+            return response.SetOk(userRecordsResponse);
+        }
+
+        public async Task<ApiResponse> GetUserRecordForAdmin(Guid userId)
+        {
+            var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecords(userId);
+            var userRecordsResponse = _mapper.Map<List<MBTI_UserRecordResponse>>(userRecords);
+            var response = new ApiResponse();
+
+            return response.SetOk(userRecordsResponse);
+        }
+
+        public async Task<ApiResponse> GetUserRecordDetail(int id)
+        {
+            var response = new ApiResponse();
+            var userId = _claimsService.GetUserIdInRequest();
+
+            var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecordDetail(id);
+
+            if (userRecords == null)
+                return response.SetBadRequest();
+
+            if (userRecords.UserId != userId) 
+                return response.SetBadRequest("Bạn không được xem bài kiểm tra này !");
+
+            var userRecordsResponse = _mapper.Map<MBTI_UserRecordResponse>(userRecords);
 
             return response.SetOk(userRecordsResponse);
         }

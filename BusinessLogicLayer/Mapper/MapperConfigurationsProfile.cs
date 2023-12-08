@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.RequestModel.Attemp;
 using BusinessLogicLayer.RequestModel.AttempDetail;
+using BusinessLogicLayer.RequestModel.Department;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
 using BusinessLogicLayer.RequestModel.Major;
@@ -77,7 +78,7 @@ namespace BusinessLogicLayer.Mapper
             CreateMap<Attempt, NewAttemptRequest>().ReverseMap();
             CreateMap<Attempt, AttemptResponse>().ForMember(
                             dest => dest.DoneBy,
-                            opt => opt.MapFrom(src => src.User.UserName + "/"+ src.User.FirstName+ " "+ src.User.LastName)).ReverseMap();
+                            opt => opt.MapFrom(src => src.User.UserName + "/" + src.User.FirstName + " " + src.User.LastName)).ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             CreateMap<AttemptDetail, AttemptDetailResponse>().ReverseMap();
             #endregion
@@ -94,10 +95,6 @@ namespace BusinessLogicLayer.Mapper
 
             #region MBTI_Department
             CreateMap<MBTI_Department, MBTI_DepartmentResponse>().ReverseMap();
-            #endregion
-
-            #region Department
-            CreateMap<Department, DepartmentResponse>().ReverseMap();
             #endregion
 
             #region University
@@ -126,6 +123,12 @@ namespace BusinessLogicLayer.Mapper
             #region Major
             CreateMap<Major, NewMajorRequest>().ReverseMap();
             CreateMap<Major, MajorResponse>().ReverseMap();
+            CreateMap<Major, UpdateMajorRequest>().ReverseMap();
+            #endregion
+
+            #region Department
+            CreateMap<Department, DepartmentResponse>().ReverseMap();
+            CreateMap<Department, NewDepartmentRequest>().ReverseMap();
             #endregion
         }
     }

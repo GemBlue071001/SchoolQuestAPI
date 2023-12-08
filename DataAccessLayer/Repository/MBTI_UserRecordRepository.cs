@@ -28,5 +28,17 @@ namespace DataAccessLayer.Repository
                             .ThenInclude(x=>x.MBTI_Question)
                     .ToListAsync();
         }
+        public async Task<MBTI_UserRecord?> GetUserRecordDetail(int id)
+        {
+            IQueryable<MBTI_UserRecord> query = _db;
+
+            query = query.Where(b => b.Id == id);
+
+            return await query
+                    .Include(x => x.RecordDetails)
+                        .ThenInclude(x => x.MBTI_ExamQuestion)
+                            .ThenInclude(x => x.MBTI_Question)
+                    .SingleOrDefaultAsync();
+        }
     }
 }

@@ -102,5 +102,34 @@ namespace BusinessLogicLayer.Service
 
             return res.SetOk(attemptsResponse);
         }
+
+        public async Task<ApiResponse> GetAttemptDetail(Guid id)
+        {
+            var res = new ApiResponse();
+            var userId = GetUserIdInRequest();
+
+            var attempts = await _unitOfWork.Attempts.GetDetail(id);
+            if (attempts != null)
+            {
+                if (attempts.UserId != userId)
+                    return res.SetBadRequest("Bạn không có quyền xem kết quả bài này");
+
+                var attemptResponse = _mapper.Map<AttemptResponse>(attempts);
+                return res.SetOk(attemptResponse);
+            }
+            else
+                return res.SetBadRequest("Không tìm thấy bài kiểm tra ! ");
+        }
+
+        public async Task<ApiResponse> GetAttemptForAdmin(Guid studentId)
+        {
+            var res = new ApiResponse();
+            var userId = GetUserIdInRequest();
+
+            var attempts = await _unitOfWork.Attempts.GetStudentAttemptForAdmin(studentId);
+
+            var attemptResponse = _mapper.Map<List<AttemptResponse>>(attempts);
+            return res.SetOk(attemptResponse);
+        }
     }
 }

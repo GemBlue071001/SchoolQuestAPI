@@ -8,8 +8,13 @@ namespace ApplicationContext.Configurations
     {
         public void Configure(EntityTypeBuilder<Major> builder)
         {
+            builder
+        .Property(b => b.CreatedDate)
+        .HasDefaultValueSql("NOW()")
+        .ValueGeneratedOnAdd();
             builder.HasData(
-                new Major()
+
+            new Major()
                 {
                     Id = Guid.Parse("c731c3f5-a1d2-4b8f-bd7f-2d57fa0acb0f"),
                     MajorName = "Kỹ thuật phần mềm",

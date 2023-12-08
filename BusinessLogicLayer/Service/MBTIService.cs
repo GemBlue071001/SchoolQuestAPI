@@ -22,12 +22,12 @@ namespace BusinessLogicLayer.Service
             _mapper = mapper;
         }
 
-        public async Task<ApiResponse> GetDepartmentByMBTICriteria(string mbti)
+        public async Task<ApiResponse> GetMBTI(string mbtiCode)
         {
             var response = new ApiResponse();
-            var departments = await _unitOfWork.MBITs.GetDepartmentByMBTI(mbti);
-            var listOfDepartment = _mapper.Map<List<MBTIResponse>>(departments);
-            return response.SetOk(listOfDepartment);
+            var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code.Equals(mbtiCode));
+
+            return response.SetOk(mbti);
         }
     }
 }

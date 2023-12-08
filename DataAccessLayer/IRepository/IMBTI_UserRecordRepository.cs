@@ -10,5 +10,6 @@ namespace DataAccessLayer.IRepository
     public interface IMBTI_UserRecordRepository : IGenericRepository<MBTI_UserRecord>
     {
         Task<List<MBTI_UserRecord>> GetUserRecords(Guid userId);
+        Task<MBTI_UserRecord?> GetUserRecordDetail(int id);
     }
 }

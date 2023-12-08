@@ -26,7 +26,7 @@ namespace BusinessLogicLayer.Service
             var major = _mapper.Map<Major>(newMajor);
 
             //var groupDepartment = await _unitOfWork.GroupDepartments.GetAsync(x => x.DepartmentId == newMajor.DepartmentId);
-            
+
             //if(groupDepartment is null){
             //    response.SetBadRequest(message: Resources.DepartmentNotFound);
             //    return response;
@@ -47,7 +47,8 @@ namespace BusinessLogicLayer.Service
             var response = new ApiResponse();
 
             var major = await _unitOfWork.Major.GetMajorDetailAsync(majorId);
-            if(major is null){
+            if (major is null)
+            {
                 return response.SetNotFound(Resources.NullObject);
             }
 
@@ -61,19 +62,20 @@ namespace BusinessLogicLayer.Service
             var response = new ApiResponse();
             var listOfMajor = await _unitOfWork.Major.PagingAsync(pageIndex, pageSize, search);
             var listOfMajorResponse = _mapper.Map<List<MajorResponse>>(listOfMajor);
-            var totalOfMajor = await _unitOfWork.Major.CountPagingAsync(pageIndex,pageSize, search);
-            Pagination<MajorResponse> pagination = new Pagination<MajorResponse>(listOfMajorResponse,totalOfMajor,pageIndex,pageSize);
+            var totalOfMajor = await _unitOfWork.Major.CountPagingAsync(pageIndex, pageSize, search);
+            Pagination<MajorResponse> pagination = new Pagination<MajorResponse>(listOfMajorResponse, totalOfMajor, pageIndex, pageSize);
 
             response.SetOk(pagination);
             return response;
         }
 
-        public async Task<ApiResponse> UpdateMajorAsync(Guid majorId, NewMajorRequest newMajor)
+        public async Task<ApiResponse> UpdateMajorAsync(Guid majorId, UpdateMajorRequest newMajor)
         {
             var response = new ApiResponse();
 
             var major = await _unitOfWork.Major.GetAsync(entry => entry.Id == majorId);
-            if(major is null){
+            if (major is null)
+            {
                 return response.SetNotFound(Resources.NullObject);
             }
 
@@ -81,6 +83,22 @@ namespace BusinessLogicLayer.Service
             await _unitOfWork.SaveChangeAsync();
 
             return response.SetOk(Resources.UpdateSuccess);
+        }
+
+        public async Task<ApiResponse> DeleteMajorAsync(Guid majorId)
+        {
+            var response = new ApiResponse();
+
+            var major = await _unitOfWork.Major.GetAsync(entry => entry.Id == majorId);
+            if (major is null)
+            {
+                return response.SetNotFound(Resources.NullObject);
+            }
+
+            await _unitOfWork.Major.RemoveByIdAsync(majorId);
+            await _unitOfWork.SaveChangeAsync();
+
+            return response.SetOk(Resources.DeleteSuccess);
         }
     }
 }

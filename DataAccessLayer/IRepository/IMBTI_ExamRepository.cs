@@ -10,5 +10,6 @@ namespace DataAccessLayer.IRepository
     public interface IMBTI_ExamRepository : IGenericRepository<MBTI_Exam>
     {
         Task<List<MBTI_Exam>> GetExam(int pageIndex, int pageSize);
+        Task<MBTI_Exam?> GetExamDetail(int id);
     }
 }

@@ -25,10 +25,24 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetExam(int index=1, int pageSize=5)
+        public async Task<IActionResult> GetExam(int index = 1, int pageSize = 5)
         {
-            var response = await _service.GetExam(index,pageSize);
+            var response = await _service.GetExam(index, pageSize);
             return Ok(response);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetExamDetail(int id)
+        {
+            var response = await _service.GetExamDetail(id);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteExam(int id)
+        {
+            var response = await _service.DeleteExam(id);
+            return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
     }
 }

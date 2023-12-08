@@ -13,5 +13,7 @@ namespace BusinessLogicLayer.IService
     {
         Task<ApiResponse> AddNewExam(NewMBTIExam newExam);
         Task<List<MBTIExamResponse>> GetExam(int index, int pageSize);
+        Task<ApiResponse> GetExamDetail(int id);
+        Task<ApiResponse> DeleteExam(int id);
     }
 }
