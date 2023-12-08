@@ -123,6 +123,7 @@ namespace BusinessLogicLayer.Mapper
             #region Major
             CreateMap<Major, NewMajorRequest>().ReverseMap();
             CreateMap<Major, MajorResponse>().ReverseMap();
+            CreateMap<Major, UpdateMajorRequest>().ReverseMap();
             #endregion
 
             #region Department

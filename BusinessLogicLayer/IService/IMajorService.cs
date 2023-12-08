@@ -12,7 +12,8 @@ namespace BusinessLogicLayer.IService
     {
         Task<ApiResponse> AddMajorAsync(NewMajorRequest newMajor);
         Task<ApiResponse> GetMajorPagingAsync(int pageIndex, int pageSize, string search);
-        Task<ApiResponse> UpdateMajorAsync(Guid majorId, NewMajorRequest newMajor);
+        Task<ApiResponse> UpdateMajorAsync(Guid majorId, UpdateMajorRequest newMajor);
         Task<ApiResponse> GetMajorDetailAsync(Guid majorId);
+        Task<ApiResponse> DeleteMajorAsync(Guid majorId);
     }
 }

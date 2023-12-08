@@ -9,7 +9,7 @@ namespace BusinessLogicLayer.ResponseModel.Major
         public string Code { get; set; }
         public string Description { get; set; }
 
-        public DepartmentResponse Department { get; set;}
+        //public DepartmentResponse Department { get; set;}
 
     }
     
