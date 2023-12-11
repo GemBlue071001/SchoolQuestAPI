@@ -727,6 +727,14 @@ namespace ApplicationContext.Configurations
                 Name = "The Association of Southeast Asian Nations - Hiệp hội các quốc gia Đông Nam Á",
                 SubjectId = Guid.Parse("d6d7fa5b-6578-46c3-bcd4-98c43d6d709c"),
                 Description = "",
+            },
+            new Topic()
+            {
+                Id = Guid.Parse("7c506348-0444-4c91-ad50-15b952135294"),
+                Index = 1,
+                Name = "Môn ngữ văn",
+                SubjectId = Guid.Parse("c0456f7f-1963-4598-8b7c-8f44bd7e2dbe"),
+                Description = "Môn ngữ văn",
             }
 
 
