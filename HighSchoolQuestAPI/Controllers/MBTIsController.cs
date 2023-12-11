@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.RequestModel.MBTI_Department;
 using BusinessLogicLayer.RequestModel.MBTI_Question;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using Microsoft.AspNetCore.Authorization;
@@ -19,7 +20,7 @@ namespace HighSchoolQuestAPI.Controllers
             _service = serivce;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> GetMBTI(string mbti)
         {
@@ -27,20 +28,34 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> AddMBTI_Exam([FromBody] string mbti)
+        //[Authorize]
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllMBTI()
         {
-            return Ok(mbti);
+            var result = await _service.GetAllMBTI();
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-        [Authorize]
-        [HttpPost("userAns")]
-        public async Task<IActionResult> AddMBTI_ExamAns([FromBody] List<MBTI_QuestionRequest> list)
+
+        //[Authorize]
+        [HttpPost("department")]
+        public async Task<IActionResult> AddMBTIDepartment(MBTIDepartmentRequest request)
         {
-            return Ok(list);
+            var result = await _service.AddMBTIDepartment(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [HttpGet("department/{mbtiId}")]
+        public async Task<IActionResult> GetMBTIDepartment(
+                                                           int mbtiId,
+                                                           [FromQuery] int pageIndex = 1,
+                                                           [FromQuery] int pageSize = 5
+                                                           )
+        {
+            var result = await _service.GetMBTIDepartment(pageIndex, pageSize, mbtiId);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
     }
 
-    
+
 
 }

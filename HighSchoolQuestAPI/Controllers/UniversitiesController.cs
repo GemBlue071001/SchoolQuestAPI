@@ -33,7 +33,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("paging")]
         public async Task<IActionResult> GetUniversitiesByDepartmentPagination(
                                                  [FromQuery] int pageIndex = 1,

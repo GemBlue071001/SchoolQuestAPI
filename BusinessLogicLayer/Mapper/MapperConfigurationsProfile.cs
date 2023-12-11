@@ -5,6 +5,7 @@ using BusinessLogicLayer.RequestModel.Department;
 using BusinessLogicLayer.RequestModel.Examination;
 using BusinessLogicLayer.RequestModel.ExaminationQuestion;
 using BusinessLogicLayer.RequestModel.Major;
+using BusinessLogicLayer.RequestModel.MBTI_Department;
 using BusinessLogicLayer.RequestModel.MBTI_Question;
 using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using BusinessLogicLayer.RequestModel.Subject;
@@ -93,10 +94,6 @@ namespace BusinessLogicLayer.Mapper
                             opt => opt.MapFrom(src => src.MBTI_Departments.Count())).ReverseMap();
             #endregion
 
-            #region MBTI_Department
-            CreateMap<MBTI_Department, MBTI_DepartmentResponse>().ReverseMap();
-            #endregion
-
             #region University
             CreateMap<University, UniversityResponse>().ReverseMap();
             CreateMap<UniversityDepartment, UniversityDepartmentResponse>().ReverseMap();
@@ -129,6 +126,11 @@ namespace BusinessLogicLayer.Mapper
             #region Department
             CreateMap<Department, DepartmentResponse>().ReverseMap();
             CreateMap<Department, NewDepartmentRequest>().ReverseMap();
+            #endregion
+
+            #region MBTI_Department
+            CreateMap<MBTI_Department, MBTIDepartmentRequest>().ReverseMap();
+            CreateMap<MBTI_Department, MBTI_DepartmentResponse>().ReverseMap();
             #endregion
         }
     }

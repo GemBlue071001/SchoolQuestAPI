@@ -36,6 +36,7 @@ namespace DataAccessLayer.Repository
                     .Where(b => !b.IsDeleted)
                     .Skip((pageIndex - 1) * pageSize)
                     .Include(x => x.UniversityDepartments)
+                        .ThenInclude(x => x.Department)
                     .Take(pageSize).ToListAsync();
 
         }
