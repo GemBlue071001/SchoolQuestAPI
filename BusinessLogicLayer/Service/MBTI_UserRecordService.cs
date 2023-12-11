@@ -3,6 +3,7 @@ using BusinessLogicLayer.IService;
 using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
+using BusinessLogicLayer.ResponseModel.MBTI;
 using BusinessLogicLayer.ResponseModel.MBTI_UserRecord;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
@@ -34,7 +35,9 @@ namespace BusinessLogicLayer.Service
             await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
             await _unitOfWork.SaveChangeAsync();
 
-            return response.SetOk(Resources.CreateSuccess);
+            var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == newRecord.Result);
+
+            return response.SetOk(mbti);
         }
 
         public async Task<ApiResponse> GetUserRecord()
@@ -66,7 +69,7 @@ namespace BusinessLogicLayer.Service
             if (userRecords == null)
                 return response.SetBadRequest();
 
-            if (userRecords.UserId != userId) 
+            if (userRecords.UserId != userId)
                 return response.SetBadRequest("Bạn không được xem bài kiểm tra này !");
 
             var userRecordsResponse = _mapper.Map<MBTI_UserRecordResponse>(userRecords);
