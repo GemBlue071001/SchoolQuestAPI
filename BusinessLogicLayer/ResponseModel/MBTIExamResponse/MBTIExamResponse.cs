@@ -19,6 +19,7 @@ namespace BusinessLogicLayer.ResponseModel.MBTIExamResponse
 
     public class MBTI_ExamQuestionResponse
     {
+        public int Id { get; set; }
         public MBTI_QuestionResponse MBTI_Question { get; set; }
     }
 }
