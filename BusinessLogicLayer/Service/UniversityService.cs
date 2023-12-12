@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.University;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.University;
@@ -51,6 +52,37 @@ namespace BusinessLogicLayer.Service
             Pagination<UniversityResponse> response = new Pagination<UniversityResponse>(listOfUniversityResponse, totalOfUniversity, pageIndex, pageSize);
 
             return apiResponse.SetOk(response);
+        }
+
+        public async Task<ApiResponse> UpdateUniversityAsync(Guid universityId, NewUniversityRequest updatedUniversity)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var university = await _unitOfWork.Universities.GetAsync(x => x.Id == universityId);
+            if (university == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            _mapper.Map(updatedUniversity, university);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+        public async Task<ApiResponse> DeleteUniversityAsync(Guid universityId)
+        {
+            ApiResponse apiResponse = new();
+
+            var university = await _unitOfWork.Universities.GetAsync(x => x.Id == universityId);
+            if (university == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            await _unitOfWork.Universities.RemoveByIdAsync(universityId);
+
+            return apiResponse.SetOk(Resources.DeleteSuccess);
         }
     }
 }
