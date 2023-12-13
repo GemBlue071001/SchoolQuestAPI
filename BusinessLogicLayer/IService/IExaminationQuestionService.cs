@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.IService
     public interface IExaminationQuestionService
     {
         Task<ApiResponse> AddExaminationQuestionAsync(NewExaminationQuestionRequest newExamQuestion);
-        
+        Task<ApiResponse> RemoveExaminationQuestionAsync(Guid id);
 
     }
 }

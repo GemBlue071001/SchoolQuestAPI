@@ -42,15 +42,38 @@ namespace BusinessLogicLayer.Service
                 return response.SetBadRequest(message: Resources.ExamNotFound); ;
             }
 
+
             await _unitOfWork.ExaminationQuestions.AddAsync(examQuestion);
+            exam.TotalNumberOfQuestion += 1;
             await _unitOfWork.SaveChangeAsync();
 
 
             return response.SetOk();
         }
 
+        public async Task<ApiResponse> RemoveExaminationQuestionAsync(Guid id)
+        {
+            var apiResponse = new ApiResponse();
+            try
+            {
+                var examQuestion = await _unitOfWork.ExaminationQuestions.GetAsync(x => x.Id == id);
 
-        
+                if (examQuestion == null)
+                    return apiResponse.SetBadRequest(Resources.NullObject);
+
+                var exam = await _unitOfWork.Examinations.GetAsync(x => x.Id == examQuestion.ExaminationId);
+                exam.TotalNumberOfQuestion -= 1;
+
+                await _unitOfWork.ExaminationQuestions.RemoveByIdAsync(id);
+                await _unitOfWork.SaveChangeAsync();
+                return apiResponse.SetOk(Resources.DeleteSuccess);
+
+            }
+            catch (Exception)
+            {
+                return apiResponse.SetBadRequest(Resources.NullObject);
+            }
+        }
 
     }
 }
