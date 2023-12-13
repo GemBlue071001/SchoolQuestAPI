@@ -56,6 +56,13 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [HttpDelete("{questionId}")]
+        public async Task<IActionResult> UpdateQuestionAsync(Guid questionId)
+        {
+            var result = await _service.DeleteQuestionAsync(questionId);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuestionDetailAsync(Guid id)
         {

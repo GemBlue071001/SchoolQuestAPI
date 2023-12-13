@@ -47,6 +47,7 @@ namespace DataAccessLayer.Repository
             {
                 _db.Remove(existing);
             }
+            else throw new Exception();
         }
 
         public async Task AddRangeAsync(List<T> entities)
