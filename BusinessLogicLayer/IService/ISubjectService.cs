@@ -15,5 +15,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> UpdateSubjectAsync(Guid subjectId, NewSubjectRequest newSubject);
         Task<ApiResponse> GetSubjectDetailAsync(Guid subjectId);
         Task<ApiResponse> GetTotalOfSubject();
+        Task<ApiResponse> DeleteSubject(Guid id);
     }
 }

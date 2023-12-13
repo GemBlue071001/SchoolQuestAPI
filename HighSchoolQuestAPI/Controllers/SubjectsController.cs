@@ -57,5 +57,13 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetTotalOfSubject();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
+        //[Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteSubjectAsync(Guid id)
+        {
+            var result = await _service.DeleteSubject(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

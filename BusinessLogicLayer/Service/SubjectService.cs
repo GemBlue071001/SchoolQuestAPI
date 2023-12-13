@@ -83,5 +83,22 @@ namespace BusinessLogicLayer.Service
 
             return apiResponse.SetOk(totalSubject);
         }
+
+        public async Task<ApiResponse> DeleteSubject(Guid id)
+        {
+            var apiResponse = new ApiResponse();
+            try
+            {
+                await _unitOfWork.Subjects.RemoveByIdAsync(id);
+                await _unitOfWork.SaveChangeAsync();
+                return apiResponse.SetOk(Resources.DeleteSuccess);
+
+            }
+            catch (Exception)
+            {
+                return apiResponse.SetBadRequest(Resources.NullObject);
+            }
+
+        }
     }
 }

@@ -20,11 +20,11 @@ namespace ApplicationContext.Configurations
 
             builder.HasOne(o => o.Subject)
                 .WithMany(o => o.Topics)
-                .HasForeignKey(o => o.SubjectId);
+                .HasForeignKey(o => o.SubjectId).OnDelete(DeleteBehavior.Cascade);
 
             builder.HasMany(o => o.Questions)
                 .WithOne(o => o.Topic)
-                .HasForeignKey(o => o.TopicId);
+                .HasForeignKey(o => o.TopicId).OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData(
                 //Toán
