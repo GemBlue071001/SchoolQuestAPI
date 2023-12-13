@@ -26,6 +26,16 @@ namespace DataAccessLayer.Repository
                     .ToListAsync();
         }
 
+        public async Task<University?> GetUniversityDetail(Guid id)
+        {
+            IQueryable<University> query = _db;
+            query = query.Include(x => x.UniversityDepartments)
+                .ThenInclude(x => x.Department);
+            return await query
+                    .Where(b => b.Id == id)
+                    .FirstOrDefaultAsync();
+        }
+
         public async Task<List<University>> PagingAsync(int pageIndex, int pageSize, string search)
         {
             IQueryable<University> query = _db;

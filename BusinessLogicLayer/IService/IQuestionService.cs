@@ -18,5 +18,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> GetQuestionDetailAsync(Guid questionId);
         Task<ApiResponse> GetTotalOfQuestion();
         Task<ApiResponse> GetQuestionsId();
+        Task<ApiResponse> DeleteQuestionAsync(Guid questionId);
     }
 }

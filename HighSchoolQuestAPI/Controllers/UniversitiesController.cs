@@ -34,6 +34,14 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUniversityDetail(Guid id)
+        {
+            var result = await _service.GetUniversityDetail(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        //[Authorize]
         [HttpGet("paging")]
         public async Task<IActionResult> GetUniversitiesByDepartmentPagination(
                                                  [FromQuery] int pageIndex = 1,
@@ -42,6 +50,24 @@ namespace HighSchoolQuestAPI.Controllers
         {
             var result = await _service.GetUniversityPagingAsync(pageIndex, pageSize, search);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        [Authorize]
+        [HttpPut("{universityId}")]
+        public async Task<IActionResult> UpdateUniversity(
+                                            [FromQuery] Guid universityId, 
+                                            [FromBody] NewUniversityRequest updatedUniversity)
+        {
+            var result = await _service.UpdateUniversityAsync(universityId, updatedUniversity);
+            return result.IsSuccess ? NoContent() : BadRequest(result);
+        }
+
+        [Authorize]
+        [HttpDelete("{universityId}")]
+        public async Task<IActionResult> DeleteUniversityAsync([FromQuery] Guid universityId)
+        {
+            var result = await _service.DeleteUniversityAsync(universityId);
+            return result.IsSuccess ? NoContent() : BadRequest(result);
         }
     }
 }

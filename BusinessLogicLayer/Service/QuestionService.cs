@@ -51,7 +51,7 @@ namespace BusinessLogicLayer.Service
                 listquestions.Add(new Question()
                 {
                     Id = Guid.NewGuid(),
-                    Content= JsonSerializer.Serialize(newQuestion),
+                    Content = JsonSerializer.Serialize(newQuestion),
                 });
             }
 
@@ -108,6 +108,22 @@ namespace BusinessLogicLayer.Service
             await _unitOfWork.SaveChangeAsync();
 
             return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+        public async Task<ApiResponse> DeleteQuestionAsync(Guid questionId)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            try
+            {
+                await _unitOfWork.Questions.RemoveByIdAsync(questionId);
+                await _unitOfWork.SaveChangeAsync();
+
+                return apiResponse.SetOk(Resources.UpdateSuccess);
+            }
+            catch (Exception)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
         }
 
         public async Task<ApiResponse> GetQuestionDetailAsync(Guid questionId)

@@ -40,6 +40,18 @@ namespace BusinessLogicLayer.Service
             return apiResponse;
         }
 
+        public async Task<ApiResponse> AddUniversityDepartment(UniDepartmentRequest newUniDepartment)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+            var uniDepartment = _mapper.Map<UniversityDepartment>(newUniDepartment);
+
+            await _unitOfWork.UniversityDepartments.AddAsync(uniDepartment);
+            await _unitOfWork.SaveChangeAsync();
+            apiResponse.SetOk();
+
+            return apiResponse;
+        }
+
         public async Task<ApiResponse> GetDepartmentPagingAsync(int pageIndex, int pageSize, string search)
         {
             ApiResponse apiResponse = new ApiResponse();

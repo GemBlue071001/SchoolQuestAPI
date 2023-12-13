@@ -126,6 +126,7 @@ namespace BusinessLogicLayer.Mapper
             #region Department
             CreateMap<Department, DepartmentResponse>().ReverseMap();
             CreateMap<Department, NewDepartmentRequest>().ReverseMap();
+            CreateMap<UniversityDepartment, UniDepartmentRequest>().ReverseMap();
             #endregion
 
             #region MBTI_Department

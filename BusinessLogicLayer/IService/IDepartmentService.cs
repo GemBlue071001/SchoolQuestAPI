@@ -15,5 +15,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> UpdateDepartmentAsync(Guid DepartmentId, NewDepartmentRequest newDepartment);
         Task<ApiResponse> DeleteDepartmentAsync(Guid DepartmentId);
         Task<ApiResponse> GetDepartmentDetailAsync(Guid DepartmentId);
+        Task<ApiResponse> AddUniversityDepartment(UniDepartmentRequest newUniDepartment);
     }
 }

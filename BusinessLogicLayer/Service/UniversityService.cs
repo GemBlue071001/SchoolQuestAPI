@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DTO;
 using BusinessLogicLayer.IService;
+using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.University;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.University;
@@ -42,6 +43,17 @@ namespace BusinessLogicLayer.Service
             var universityList = _mapper.Map<List<UniversityResponse>>(universities);
             return response.SetOk(universityList);
         }
+
+        public async Task<ApiResponse> GetUniversityDetail(Guid id)
+        {
+            var response = new ApiResponse();
+
+            var university = await _unitOfWork.Universities.GetUniversityDetail(id);
+
+            var universityResponse = _mapper.Map<UniversityResponse>(university);
+            return response.SetOk(universityResponse);
+        }
+
         public async Task<ApiResponse> GetUniversityPagingAsync(int pageIndex, int pageSize, string search)
         {
             ApiResponse apiResponse = new ApiResponse();
@@ -51,6 +63,37 @@ namespace BusinessLogicLayer.Service
             Pagination<UniversityResponse> response = new Pagination<UniversityResponse>(listOfUniversityResponse, totalOfUniversity, pageIndex, pageSize);
 
             return apiResponse.SetOk(response);
+        }
+
+        public async Task<ApiResponse> UpdateUniversityAsync(Guid universityId, NewUniversityRequest updatedUniversity)
+        {
+            ApiResponse apiResponse = new ApiResponse();
+
+            var university = await _unitOfWork.Universities.GetAsync(x => x.Id == universityId);
+            if (university == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            _mapper.Map(updatedUniversity, university);
+            await _unitOfWork.SaveChangeAsync();
+
+            return apiResponse.SetOk(Resources.UpdateSuccess);
+        }
+
+        public async Task<ApiResponse> DeleteUniversityAsync(Guid universityId)
+        {
+            ApiResponse apiResponse = new();
+
+            var university = await _unitOfWork.Universities.GetAsync(x => x.Id == universityId);
+            if (university == null)
+            {
+                return apiResponse.SetNotFound(Resources.NullObject);
+            }
+
+            await _unitOfWork.Universities.RemoveByIdAsync(universityId);
+
+            return apiResponse.SetOk(Resources.DeleteSuccess);
         }
     }
 }
