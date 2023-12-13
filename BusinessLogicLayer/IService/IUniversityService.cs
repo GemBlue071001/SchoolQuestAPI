@@ -10,5 +10,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> GetUniversityPagingAsync(int pageIndex, int pageSize, string search);
         Task<ApiResponse> UpdateUniversityAsync(Guid universityId, NewUniversityRequest updatedUniversity);
         Task<ApiResponse> DeleteUniversityAsync(Guid universityId);
+        Task<ApiResponse> GetUniversityDetail(Guid id);
     }
 }

@@ -34,6 +34,14 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUniversityDetail(Guid id)
+        {
+            var result = await _service.GetUniversityDetail(id);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        //[Authorize]
         [HttpGet("paging")]
         public async Task<IActionResult> GetUniversitiesByDepartmentPagination(
                                                  [FromQuery] int pageIndex = 1,

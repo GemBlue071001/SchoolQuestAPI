@@ -43,6 +43,17 @@ namespace BusinessLogicLayer.Service
             var universityList = _mapper.Map<List<UniversityResponse>>(universities);
             return response.SetOk(universityList);
         }
+
+        public async Task<ApiResponse> GetUniversityDetail(Guid id)
+        {
+            var response = new ApiResponse();
+
+            var university = await _unitOfWork.Universities.GetUniversityDetail(id);
+
+            var universityResponse = _mapper.Map<UniversityResponse>(university);
+            return response.SetOk(universityResponse);
+        }
+
         public async Task<ApiResponse> GetUniversityPagingAsync(int pageIndex, int pageSize, string search)
         {
             ApiResponse apiResponse = new ApiResponse();
