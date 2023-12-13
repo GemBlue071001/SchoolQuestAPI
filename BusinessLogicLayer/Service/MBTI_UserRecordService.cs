@@ -50,6 +50,7 @@ namespace BusinessLogicLayer.Service
             {
                 var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == record.Result);
                 record.mbtiId = mbti.Id;
+                record.mbti = _mapper.Map<MBTIResponse>(mbti);
             }
 
             var response = new ApiResponse();
@@ -61,6 +62,14 @@ namespace BusinessLogicLayer.Service
         {
             var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecords(userId);
             var userRecordsResponse = _mapper.Map<List<MBTI_UserRecordResponse>>(userRecords);
+
+            foreach (var record in userRecordsResponse)
+            {
+                var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == record.Result);
+                record.mbtiId = mbti.Id;
+                record.mbti = _mapper.Map<MBTIResponse>(mbti);
+            }
+
             var response = new ApiResponse();
 
             return response.SetOk(userRecordsResponse);
