@@ -26,7 +26,7 @@ namespace DataAccessLayer.Repository
             }
 
             return await query
-                            .Where(entry => entry.IsDeleted)
+                            //.Where(entry => entry.IsDeleted)
                             .CountAsync();
         }
         public async Task<List<Major>> PagingAsync(int pageIndex, int pageSize, string search)
