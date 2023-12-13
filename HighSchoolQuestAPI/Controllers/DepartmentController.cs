@@ -27,6 +27,14 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
+        [HttpPost("University")]
+        public async Task<IActionResult> AddUniDepartmentAsync(UniDepartmentRequest request)
+        {
+            var result = await _service.AddUniversityDepartment(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> GetDepartmentAsync([FromQuery] int pageIndex = 1,
                                                          [FromQuery] int pageSize = 5,
