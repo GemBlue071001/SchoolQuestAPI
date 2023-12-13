@@ -20,6 +20,10 @@ namespace ApplicationContext.Configurations
         .HasDefaultValueSql("NOW()")
         .ValueGeneratedOnAdd();
 
+            builder
+            .HasIndex(q => q.UserName)
+            .IsUnique();
+
             var studentPass = CreatePasswordHash("student");
             var studentPass1 = CreatePasswordHash("student1");
             var studentPass2 = CreatePasswordHash("student2");
@@ -82,7 +86,7 @@ namespace ApplicationContext.Configurations
                 FirstName = "Minh",
                 LastName = "Duc",
                 Role = Domain.Enums.UserRole.Student,
-                UserName = "student2",
+                UserName = "student44334254",
                 PhoneNumber = "1234567890",
                 HighestScore = 6,
                 Address = "Tran quoc toan"
