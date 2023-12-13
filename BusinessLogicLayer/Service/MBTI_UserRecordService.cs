@@ -45,6 +45,13 @@ namespace BusinessLogicLayer.Service
             var userId = _claimsService.GetUserIdInRequest();
             var userRecords = await _unitOfWork.MBTI_UserRecords.GetUserRecords(userId);
             var userRecordsResponse = _mapper.Map<List<MBTI_UserRecordResponse>>(userRecords);
+
+            foreach (var record in userRecordsResponse)
+            {
+                var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == record.Result);
+                record.mbtiId = mbti.Id;
+            }
+
             var response = new ApiResponse();
 
             return response.SetOk(userRecordsResponse);
