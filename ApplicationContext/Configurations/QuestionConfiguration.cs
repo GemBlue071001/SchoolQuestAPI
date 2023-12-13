@@ -19,6 +19,10 @@ namespace ApplicationContext.Configurations
         .HasDefaultValueSql("NOW()")
         .ValueGeneratedOnAdd();
 
+            builder
+            .HasIndex(q => q.Content)
+            .IsUnique();
+
             builder.HasData(
      new Question
      {
@@ -1207,21 +1211,21 @@ namespace ApplicationContext.Configurations
          TopicId = Guid.Parse("7c506348-0444-4c91-ad50-15b952135294"),
      },
       new Question
-    {
-        Id = Guid.Parse("acd7e283-1edb-40f9-bd36-2228d69a1819"),
-        Content = JsonSerializer.Serialize(new Content
-        {
-            Question = "Truyện thơ nào sau đây không phải của Nguyễn Đình Chiểu?",
-            ListAnswer = new List<ListAnswer>
+      {
+          Id = Guid.Parse("acd7e283-1edb-40f9-bd36-2228d69a1819"),
+          Content = JsonSerializer.Serialize(new Content
+          {
+              Question = "Truyện thơ nào sau đây không phải của Nguyễn Đình Chiểu?",
+              ListAnswer = new List<ListAnswer>
         {
            new ListAnswer { Value = "Dương Từ - Hà Mậu", IsAnswer = false },
            new ListAnswer { Value = "Sơ kính tân trang", IsAnswer = true },
            new ListAnswer { Value = "Ngư Tiều Y thuật vấn đáp", IsAnswer = false }
         },
 
-        }),
-        TopicId = Guid.Parse("7c506348-0444-4c91-ad50-15b952135294"),
-    },
+          }),
+          TopicId = Guid.Parse("7c506348-0444-4c91-ad50-15b952135294"),
+      },
      new Question
      {
          Id = Guid.Parse("a1c0ea7c-58b7-4083-b9cc-e67423275a58"),
@@ -1451,51 +1455,51 @@ namespace ApplicationContext.Configurations
 
 
 
-     //new Question
-     //{
-     //    Id = Guid.Parse("85e5d51b-16c7-4d0d-8f40-766a6a902698"),
-     //    Content = JsonSerializer.Serialize(new Content
-     //    {
-     //        Question = "How many continents are there?",
-     //        ListAnswer = new List<ListAnswer>
-     //        {
-     //           new ListAnswer { Value = "7", IsAnswer = true },
-     //           new ListAnswer { Value = "5", IsAnswer = false },
-     //           new ListAnswer { Value = "6", IsAnswer = false }
-     //        }
-     //    }),
-     //    TopicId = Guid.Parse("f722c143-412c-4721-bf5c-5b32a01d90da"),
-     //},
-     //new Question
-     //{
-     //    Id = Guid.Parse("3e28911a-1220-4c7f-a1c6-bcce0b74ccfe"),
-     //    Content = JsonSerializer.Serialize(new Content
-     //    {
-     //        Question = "When was the Declaration of Independence signed?",
-     //        ListAnswer = new List<ListAnswer>
-     //        {
-     //           new ListAnswer { Value = "1776-07-04", IsAnswer = true },
-     //           new ListAnswer { Value = "1789-09-25", IsAnswer = false },
-     //           new ListAnswer { Value = "1800-03-12", IsAnswer = false }
-     //        }
-     //    }),
-     //    TopicId = Guid.Parse("f722c143-412c-4721-bf5c-5b32a01d90da"),
-     //},
-     //new Question
-     //{
-     //    Id = Guid.Parse("21eb2451-53ac-44f6-9a6c-751d394a8936"),
-     //    Content = JsonSerializer.Serialize(new Content
-     //    {
-     //        Question = "Which cities are in the United Kingdom?",
-     //        ListAnswer = new List<ListAnswer>
-     //        {
-     //           new ListAnswer { Value = "London", IsAnswer = true },
-     //           new ListAnswer { Value = "Manchester", IsAnswer = false },
-     //           new ListAnswer { Value = "Edinburgh", IsAnswer = true }
-     //        }
-     //    }),
-     //    TopicId = Guid.Parse("f722c143-412c-4721-bf5c-5b32a01d90da"),
-     //}
+ //new Question
+ //{
+ //    Id = Guid.Parse("85e5d51b-16c7-4d0d-8f40-766a6a902698"),
+ //    Content = JsonSerializer.Serialize(new Content
+ //    {
+ //        Question = "How many continents are there?",
+ //        ListAnswer = new List<ListAnswer>
+ //        {
+ //           new ListAnswer { Value = "7", IsAnswer = true },
+ //           new ListAnswer { Value = "5", IsAnswer = false },
+ //           new ListAnswer { Value = "6", IsAnswer = false }
+ //        }
+ //    }),
+ //    TopicId = Guid.Parse("f722c143-412c-4721-bf5c-5b32a01d90da"),
+ //},
+ //new Question
+ //{
+ //    Id = Guid.Parse("3e28911a-1220-4c7f-a1c6-bcce0b74ccfe"),
+ //    Content = JsonSerializer.Serialize(new Content
+ //    {
+ //        Question = "When was the Declaration of Independence signed?",
+ //        ListAnswer = new List<ListAnswer>
+ //        {
+ //           new ListAnswer { Value = "1776-07-04", IsAnswer = true },
+ //           new ListAnswer { Value = "1789-09-25", IsAnswer = false },
+ //           new ListAnswer { Value = "1800-03-12", IsAnswer = false }
+ //        }
+ //    }),
+ //    TopicId = Guid.Parse("f722c143-412c-4721-bf5c-5b32a01d90da"),
+ //},
+ //new Question
+ //{
+ //    Id = Guid.Parse("21eb2451-53ac-44f6-9a6c-751d394a8936"),
+ //    Content = JsonSerializer.Serialize(new Content
+ //    {
+ //        Question = "Which cities are in the United Kingdom?",
+ //        ListAnswer = new List<ListAnswer>
+ //        {
+ //           new ListAnswer { Value = "London", IsAnswer = true },
+ //           new ListAnswer { Value = "Manchester", IsAnswer = false },
+ //           new ListAnswer { Value = "Edinburgh", IsAnswer = true }
+ //        }
+ //    }),
+ //    TopicId = Guid.Parse("f722c143-412c-4721-bf5c-5b32a01d90da"),
+ //}
  );
 
         }

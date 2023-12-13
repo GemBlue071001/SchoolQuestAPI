@@ -13,6 +13,11 @@ namespace ApplicationContext.Configurations
     {
         public void Configure(EntityTypeBuilder<MBTI_Question> builder)
         {
+
+            builder
+            .HasIndex(q => q.NameAns1)
+            .IsUnique();
+
             builder.HasData(new MBTI_Question
             {
                 Id = 1,
@@ -585,17 +590,17 @@ namespace ApplicationContext.Configurations
                     SecondAnswerType = Domain.Enums.MBTI_Letter.T,
                     CreatedBy = Guid.Parse("a6be20e2-5927-4cce-bed4-258f919f82e6")
                 },
-                new MBTI_Question
-                {
-                    Id = 53,
-                    NameQuestion = "Bạn là người :",
-                    NameAns1 = "a. Mơ mộng và tưởng tượng.",
-                    NameAns2 = "b. Thực tế và thực dụng.",
-                    Category = Domain.Enums.MBTI_Category.Sensing_Intution,
-                    FirstAnswerType = Domain.Enums.MBTI_Letter.N,
-                    SecondAnswerType = Domain.Enums.MBTI_Letter.S,
-                    CreatedBy = Guid.Parse("a6be20e2-5927-4cce-bed4-258f919f82e6")
-                },
+                //new MBTI_Question
+                //{
+                //    Id = 53,
+                //    NameQuestion = "Bạn là người :",
+                //    NameAns1 = "a. Mơ mộng và tưởng tượng.",
+                //    NameAns2 = "b. Thực tế và thực dụng.",
+                //    Category = Domain.Enums.MBTI_Category.Sensing_Intution,
+                //    FirstAnswerType = Domain.Enums.MBTI_Letter.N,
+                //    SecondAnswerType = Domain.Enums.MBTI_Letter.S,
+                //    CreatedBy = Guid.Parse("a6be20e2-5927-4cce-bed4-258f919f82e6")
+                //},
                 new MBTI_Question
                 {
                     Id = 54,

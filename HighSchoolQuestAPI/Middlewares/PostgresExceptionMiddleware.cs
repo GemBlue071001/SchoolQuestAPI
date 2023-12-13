@@ -34,13 +34,28 @@ public class PostgresExceptionMiddleware
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
                 context.Response.ContentType = "application/json";
                 ApiResponse apiResponse = new ApiResponse().SetApiResponse(
-                    statusCode: HttpStatusCode.InternalServerError,
+                    statusCode: HttpStatusCode.BadRequest,
                     isSuccess: false,
                     message: "Foreign key constraint violation: " + ex.Message + "\n The entity id you inserted with may be not in db "
                     );
 
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(apiResponse));
                 _logger.LogError("Foreign key constraint violation: " + ex.Message);
+            }
+            if (ex.InnerException.Message.Contains("23505") &&
+                ex.InnerException.Message.Contains("already exists"))
+            {
+                // Handle the foreign key violation error
+                context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                context.Response.ContentType = "application/json";
+                ApiResponse apiResponse = new ApiResponse().SetApiResponse(
+                    statusCode: HttpStatusCode.BadRequest,
+                    isSuccess: false,
+                    message: "Foreign key constraint violation: " + ex.Message + "\n The entity id you inserted with already exists in database "
+                    );
+
+                await context.Response.WriteAsync(JsonConvert.SerializeObject(apiResponse));
+                _logger.LogError("duplicate key value violates unique constraint: " + ex.Message + ex.InnerException.Message);
             }
             else
             {
