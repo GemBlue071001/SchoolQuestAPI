@@ -50,6 +50,8 @@ namespace BusinessLogicLayer.Service
 
             var university = await _unitOfWork.Universities.GetUniversityDetail(id);
 
+            if(university == null) return response.SetNotFound();
+
             var universityResponse = _mapper.Map<UniversityResponse>(university);
             return response.SetOk(universityResponse);
         }
