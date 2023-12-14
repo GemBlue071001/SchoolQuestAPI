@@ -92,6 +92,7 @@ namespace BusinessLogicLayer.Service
             }
 
             await _unitOfWork.Universities.RemoveByIdAsync(universityId);
+            await _unitOfWork.SaveChangeAsync();
 
             return apiResponse.SetOk(Resources.DeleteSuccess);
         }

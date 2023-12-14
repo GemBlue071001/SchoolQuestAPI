@@ -62,11 +62,11 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? NoContent() : BadRequest(result);
         }
 
-        [Authorize]
-        [HttpDelete("{universityId}")]
-        public async Task<IActionResult> DeleteUniversityAsync([FromQuery] Guid universityId)
+        //[Authorize]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUniversityAsync(Guid id)
         {
-            var result = await _service.DeleteUniversityAsync(universityId);
+            var result = await _service.DeleteUniversityAsync(id);
             return result.IsSuccess ? NoContent() : BadRequest(result);
         }
     }
