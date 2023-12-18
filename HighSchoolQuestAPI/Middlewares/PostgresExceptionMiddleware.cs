@@ -42,7 +42,7 @@ public class PostgresExceptionMiddleware
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(apiResponse));
                 _logger.LogError("Foreign key constraint violation: " + ex.Message);
             }
-            if (ex.InnerException.Message.Contains("23505") &&
+            else if (ex.InnerException.Message.Contains("23505") &&
                 ex.InnerException.Message.Contains("already exists"))
             {
                 // Handle the foreign key violation error
