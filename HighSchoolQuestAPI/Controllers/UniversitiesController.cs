@@ -55,7 +55,7 @@ namespace HighSchoolQuestAPI.Controllers
         [Authorize]
         [HttpPut("{universityId}")]
         public async Task<IActionResult> UpdateUniversity(
-                                            [FromQuery] Guid universityId, 
+                                            Guid universityId, 
                                             [FromBody] NewUniversityRequest updatedUniversity)
         {
             var result = await _service.UpdateUniversityAsync(universityId, updatedUniversity);
