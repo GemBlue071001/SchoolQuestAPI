@@ -37,6 +37,11 @@ namespace BusinessLogicLayer.Service
 
             var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == newRecord.Result);
 
+            if (mbti==null )
+            {
+                return response.SetBadRequest("The result is wrong ! ");
+            }
+
             return response.SetOk(mbti);
         }
 
