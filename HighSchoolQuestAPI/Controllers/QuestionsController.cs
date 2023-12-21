@@ -16,7 +16,7 @@ namespace HighSchoolQuestAPI.Controllers
         {
             _service = service;
         }
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetQuestionPagingAsync([FromQuery] int pageIndex = 1,
                                                           [FromQuery] int pageSize = 5,
@@ -25,7 +25,7 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.GetQuestionPagingAsync(pageIndex, pageSize, search);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddQuestionAsync(NewQuestionRequest request)
         {
@@ -33,14 +33,14 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-
+        [Authorize]
         [HttpPost("Topic")]
         public async Task<IActionResult> AddQuestionTopicAsync(QuestionTopicRequest request)
         {
             var result = await _service.AddListOfQuestionsWithTopicAsync(request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-
+        [Authorize]
         [HttpPost("list")]
         public async Task<IActionResult> AddListQuestionAsync(List<NewQuestionContentRequest> request)
         {
@@ -48,21 +48,21 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-
+        [Authorize]
         [HttpPut("{questionId}")]
         public async Task<IActionResult> UpdateQuestionAsync(Guid questionId , NewQuestionContentRequest request)
         {
             var result = await _service.UpdateQuestionAsync(questionId, request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-
+        [Authorize]
         [HttpDelete("{questionId}")]
         public async Task<IActionResult> UpdateQuestionAsync(Guid questionId)
         {
             var result = await _service.DeleteQuestionAsync(questionId);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuestionDetailAsync(Guid id)
         {
@@ -79,6 +79,7 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
+        [Authorize]
         [HttpGet("ids")]
         public async Task<IActionResult> GetQuestionIdsAsync()
         {

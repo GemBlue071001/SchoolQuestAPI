@@ -1,6 +1,7 @@
 using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.Major;
 using Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HighSchoolQuestAPI.Controllers
@@ -16,6 +17,7 @@ namespace HighSchoolQuestAPI.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetMajorPaging([FromQuery] int pageSize = MagicNumber.PageSize,
                                                     [FromQuery] int pageIndex = MagicNumber.PageIndex,
@@ -25,6 +27,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMajorDetailAsync(Guid id)
         {
@@ -32,20 +35,22 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMajorAsync(Guid id)
         {
             var result = await _service.DeleteMajorAsync(id);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddMajorAsync(NewMajorRequest request)
         {
             var result = await _service.AddMajorAsync(request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
-
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> UpdateMajorAsync([FromQuery] Guid majorId, UpdateMajorRequest request)
         {

@@ -34,6 +34,7 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUniversityDetail(Guid id)
         {
@@ -42,6 +43,7 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
+        [Authorize]
         [HttpGet("paging")]
         public async Task<IActionResult> GetUniversitiesByDepartmentPagination(
                                                  [FromQuery] int pageIndex = 1,
@@ -63,6 +65,7 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUniversityAsync(Guid id)
         {

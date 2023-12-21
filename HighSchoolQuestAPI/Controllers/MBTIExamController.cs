@@ -23,21 +23,21 @@ namespace HighSchoolQuestAPI.Controllers
             var response = await _service.AddNewExam(request);
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
-
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetExam(int index = 1, int pageSize = 5)
         {
             var response = await _service.GetExam(index, pageSize);
             return Ok(response);
         }
-
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetExamDetail(int id)
         {
             var response = await _service.GetExamDetail(id);
             return response.IsSuccess ? Ok(response) : BadRequest(response);
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteExam(int id)
         {
