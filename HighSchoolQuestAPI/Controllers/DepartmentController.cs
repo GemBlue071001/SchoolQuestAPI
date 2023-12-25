@@ -18,7 +18,7 @@ namespace HighSchoolQuestAPI.Controllers
             _service = service;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNewSubjectAsync(NewDepartmentRequest request)
         {
@@ -26,7 +26,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost("University")]
         public async Task<IActionResult> AddUniDepartmentAsync(UniDepartmentRequest request)
         {
@@ -34,7 +34,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetDepartmentAsync([FromQuery] int pageIndex = 1,
                                                          [FromQuery] int pageSize = 5,
@@ -44,6 +44,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDeparmentDetailAsync(Guid id)
         {
@@ -51,6 +52,7 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDeparmentAsync(Guid id)
         {
@@ -58,6 +60,8 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDeparmentAsync(Guid id, NewDepartmentRequest request)
         {
