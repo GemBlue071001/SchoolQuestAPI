@@ -1,10 +1,10 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.User;
-using BusinessLogicLayer.Service;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using MailKit.Net.Smtp;
+
 
 namespace HighSchoolQuestAPI.Controllers
 {
@@ -30,6 +30,32 @@ namespace HighSchoolQuestAPI.Controllers
         {
             var result = await _service.LoginAsync(user);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
+
+        [HttpPost("mail")]
+        public async Task<IActionResult> Mail(string user)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("healthsystemcare", "healthsystemcare0@gmail.com"));
+            message.To.Add(new MailboxAddress("", "trinhtam2001@gmail.com"));
+            message.Subject = "hello !!";
+            var bodyBuilder = new BodyBuilder();
+
+
+            bodyBuilder.HtmlBody = $"<h1>mail ne {user}</h1>";
+
+
+            message.Body = bodyBuilder.ToMessageBody();
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync("smtp.gmail.com", 465, true);
+                await client.AuthenticateAsync("trinhtam2001@gmail.com", "srtb iprw hiwv htpj");
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
+            }
+
+            return Ok();
         }
 
         [HttpGet]
@@ -59,5 +85,6 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.UpdateProfileAsync(request);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
+
     }
 }
