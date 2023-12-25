@@ -31,16 +31,27 @@ namespace BusinessLogicLayer.Service
             var newUserRecord = _mapper.Map<MBTI_UserRecord>(newRecord);
             var userId = _claimsService.GetUserIdInRequest();
 
-            newUserRecord.UserId = userId;
-            await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
-            await _unitOfWork.SaveChangeAsync();
-
+            var userRecord = await _unitOfWork.MBTI_UserRecords.GetAsync(x => x.UserId == userId);
             var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == newRecord.Result);
 
             if (mbti == null)
             {
                 return response.SetBadRequest("The result is wrong ! ");
             }
+
+            if (userRecord != null)
+            {
+                _mapper.Map(newRecord, userRecord);
+                await _unitOfWork.SaveChangeAsync();
+                //var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == newRecord.Result);
+                return response.SetOk(mbti);
+            }
+
+            newUserRecord.UserId = userId;
+            await _unitOfWork.MBTI_UserRecords.AddAsync(newUserRecord);
+            await _unitOfWork.SaveChangeAsync();
+
+
 
             return response.SetOk(mbti);
         }
