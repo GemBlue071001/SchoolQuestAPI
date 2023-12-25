@@ -49,6 +49,12 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-
+        //[Authorize]
+        [HttpGet("report")]
+        public async Task<IActionResult> GetMbtiReport()
+        {
+            var result = await _service.GenerateMbtiReport();
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> GetUserRecord();
         Task<ApiResponse> GetUserRecordDetail(int id);
         Task<ApiResponse> GetUserRecordForAdmin(Guid userId);
+        Task<ApiResponse> GenerateMbtiReport();
     }
 }

@@ -11,5 +11,6 @@ namespace DataAccessLayer.IRepository
     {
         Task<List<MBTI_UserRecord>> GetUserRecords(Guid userId);
         Task<MBTI_UserRecord?> GetUserRecordDetail(int id);
+        Task<Dictionary<string, int>> GenerateMbtiReport();
     }
 }

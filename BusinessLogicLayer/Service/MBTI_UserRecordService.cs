@@ -37,7 +37,7 @@ namespace BusinessLogicLayer.Service
 
             var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == newRecord.Result);
 
-            if (mbti==null )
+            if (mbti == null)
             {
                 return response.SetBadRequest("The result is wrong ! ");
             }
@@ -97,5 +97,14 @@ namespace BusinessLogicLayer.Service
 
             return response.SetOk(userRecordsResponse);
         }
+
+
+        public async Task<ApiResponse> GenerateMbtiReport()
+        {
+            var response = new ApiResponse();
+            var mbtiReport = await _unitOfWork.MBTI_UserRecords.GenerateMbtiReport();
+            return response.SetOk(mbtiReport);
+        }
+
     }
 }
