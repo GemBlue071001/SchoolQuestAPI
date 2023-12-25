@@ -112,7 +112,9 @@ namespace BusinessLogicLayer.Mapper
 
             #region MBTI_UserRecord
             CreateMap<MBTI_UserRecord, MBTIUserRecordRequest>().ReverseMap();
-            CreateMap<MBTI_UserRecord, MBTI_UserRecordResponse>().ReverseMap();
+            CreateMap<MBTI_UserRecord, MBTI_UserRecordResponse>().ForMember(
+                            dest => dest.DoneBy,
+                            opt => opt.MapFrom(src => src.User.UserName + "/" + src.User.FirstName + " " + src.User.LastName)).ReverseMap();
             CreateMap<RecordDetail, RecordDetailRequest>().ReverseMap();
             CreateMap<RecordDetail, RecordDetailResponse>().ReverseMap();
             #endregion

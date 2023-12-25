@@ -7,7 +7,10 @@ namespace BusinessLogicLayer.ResponseModel.MBTI_UserRecord
     {
         public int Id { get; set; }
         public string Result { get; set; }
-        public int mbtiId { get; set; } 
+        public int mbtiId { get; set; }
+        public string DoneBy { get; set; }
+        public DateTime? CreatedDate { get; set; }
+
         public MBTIResponse mbti { get; set; }
         public List<RecordDetailResponse> RecordDetails { get; set; }
     }

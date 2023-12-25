@@ -13,9 +13,14 @@ namespace ApplicationContext.Configurations
     {
         public void Configure(EntityTypeBuilder<MBTI_UserRecord> builder)
         {
-            builder.HasOne(x=>x.User)
-                .WithMany(x=>x.MBTI_UserRecords)
-                .HasForeignKey(x=>x.UserId);
+            builder
+                   .Property(b => b.CreatedDate)
+                   .HasDefaultValueSql("NOW()")
+                   .ValueGeneratedOnAdd();
+
+            builder.HasOne(x => x.User)
+                .WithMany(x => x.MBTI_UserRecords)
+                .HasForeignKey(x => x.UserId);
 
             builder.HasMany(x => x.RecordDetails)
                    .WithOne(x => x.MBTI_UserRecord)

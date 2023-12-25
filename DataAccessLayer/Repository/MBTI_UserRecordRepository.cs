@@ -26,6 +26,7 @@ namespace DataAccessLayer.Repository
                     .Include(x => x.RecordDetails)
                         .ThenInclude(x => x.MBTI_ExamQuestion)
                             .ThenInclude(x => x.MBTI_Question)
+                    .Include(x => x.User)
                     .ToListAsync();
         }
         public async Task<MBTI_UserRecord?> GetUserRecordDetail(int id)
