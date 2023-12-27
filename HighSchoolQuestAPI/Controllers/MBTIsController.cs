@@ -21,10 +21,10 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         //[Authorize]
-        [HttpGet]
-        public async Task<IActionResult> GetMBTI(string mbti)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMBTI(int id)
         {
-            var result = await _service.GetMBTI(mbti);
+            var result = await _service.GetMBTIDetail(id);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 

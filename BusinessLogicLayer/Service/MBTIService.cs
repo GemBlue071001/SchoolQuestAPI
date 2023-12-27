@@ -28,12 +28,13 @@ namespace BusinessLogicLayer.Service
             _mapper = mapper;
         }
 
-        public async Task<ApiResponse> GetMBTI(string mbtiCode)
+        public async Task<ApiResponse> GetMBTIDetail(int id)
         {
             var response = new ApiResponse();
-            var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code.Equals(mbtiCode));
+            var mbti = await _unitOfWork.MBITs.GetMBTIDetail(id);
+            var mbtiResponse = _mapper.Map<MBTIResponse>(mbti);
 
-            return response.SetOk(mbti);
+            return response.SetOk(mbtiResponse);
         }
 
         public async Task<ApiResponse> GetAllMBTI()

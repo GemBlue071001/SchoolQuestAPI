@@ -16,13 +16,13 @@ namespace DataAccessLayer.Repository
         {
         }
 
-        public async Task<List<MBTI>> GetDepartmentByMBTI(string mbti)
+        public async Task<MBTI?> GetMBTIDetail(int id)
         {
             IQueryable<MBTI> query = _db;
             return await query
-                   .Where(x => x.Name.Equals(mbti) || x.Code.Equals(mbti))
+                   .Where(x => x.Id == id)
                    .Include(x => x.MBTI_Departments).ThenInclude(x => x.Department)
-                   .ToListAsync();
+                   .FirstOrDefaultAsync();
         }
     }
 }

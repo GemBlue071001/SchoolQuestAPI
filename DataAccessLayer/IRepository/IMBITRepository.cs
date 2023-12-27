@@ -9,6 +9,6 @@ namespace DataAccessLayer.IRepository
 {
     public interface IMBITRepository : IGenericRepository<MBTI>
     {
-        Task<List<MBTI>> GetDepartmentByMBTI(string mbti);
+        Task<MBTI?> GetMBTIDetail(int id);
     }
 }
