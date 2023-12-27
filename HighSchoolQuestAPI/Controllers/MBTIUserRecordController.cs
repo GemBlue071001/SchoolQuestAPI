@@ -1,7 +1,8 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using MimeKit;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HighSchoolQuestAPI.Controllers
@@ -22,7 +23,39 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> AddNewUserRecord(MBTIUserRecordRequest request)
         {
             var result = await _service.AddUserRecord(request);
-            return result.IsSuccess ? Ok(result) : BadRequest(result);
+            if (result.IsSuccess)
+            {
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("healthsystemcare", "healthsystemcare0@gmail.com"));
+                message.To.Add(new MailboxAddress("", "trinhtam2001@gmail.com"));
+                message.Subject = "hello !!";
+                var bodyBuilder = new BodyBuilder();
+
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", "index.html");
+                if (!System.IO.File.Exists(filePath))
+                {
+                    return BadRequest("file not found");
+                }
+                string content = System.IO.File.ReadAllText(filePath);
+
+                var name = "tam";
+
+                // Replace ${name} with the actual value
+                content = content.Replace("${name}", name);
+
+                bodyBuilder.HtmlBody = content;
+
+                message.Body = bodyBuilder.ToMessageBody();
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync("smtp.gmail.com", 465, true);
+                    await client.AuthenticateAsync("trinhtam2001@gmail.com", "srtb iprw hiwv htpj");
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                }
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [Authorize]

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 using MailKit.Net.Smtp;
+using Azure;
 
 
 namespace HighSchoolQuestAPI.Controllers
@@ -42,9 +43,19 @@ namespace HighSchoolQuestAPI.Controllers
             message.Subject = "hello !!";
             var bodyBuilder = new BodyBuilder();
 
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", "index.html");
+            if (!System.IO.File.Exists(filePath))
+            {
+                return BadRequest("file not found");
+            }
+            string content = System.IO.File.ReadAllText(filePath);
 
-            bodyBuilder.HtmlBody = $"<h1>mail ne {user}</h1>";
+            var name = "tam";
 
+            // Replace ${name} with the actual value
+            content = content.Replace("${name}", name);
+
+            bodyBuilder.HtmlBody = content;
 
             message.Body = bodyBuilder.ToMessageBody();
             using (var client = new SmtpClient())
@@ -57,6 +68,7 @@ namespace HighSchoolQuestAPI.Controllers
 
             return Ok();
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetUserPagingAsync([FromQuery] bool isStudent,
