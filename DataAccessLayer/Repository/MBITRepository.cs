@@ -24,5 +24,14 @@ namespace DataAccessLayer.Repository
                    .Include(x => x.MBTI_Departments).ThenInclude(x => x.Department)
                    .FirstOrDefaultAsync();
         }
+
+        public async Task<MBTI?> GetMBTIDetailByCode(string code)
+        {
+            IQueryable<MBTI> query = _db;
+            return await query
+                   .Where(x => x.Code.Equals(code) || x.Name.Equals(code))
+                   .Include(x => x.MBTI_Departments).ThenInclude(x => x.Department)
+                   .FirstOrDefaultAsync();
+        }
     }
 }

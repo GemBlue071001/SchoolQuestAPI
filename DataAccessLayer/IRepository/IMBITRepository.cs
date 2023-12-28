@@ -10,5 +10,6 @@ namespace DataAccessLayer.IRepository
     public interface IMBITRepository : IGenericRepository<MBTI>
     {
         Task<MBTI?> GetMBTIDetail(int id);
+        Task<MBTI?> GetMBTIDetailByCode(string code);
     }
 }
