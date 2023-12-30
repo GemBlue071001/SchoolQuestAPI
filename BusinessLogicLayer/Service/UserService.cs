@@ -131,7 +131,7 @@ namespace BusinessLogicLayer.Service
         public async Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search, bool isStudent, bool isSorted)
         {
             ApiResponse apiResponse = new ApiResponse();
-            var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search , isStudent, isSorted);
+            var listOfUser = await _unitOfWork.Users.PagingAsync(pageIndex, pageSize, search, isStudent, isSorted);
             var listOfUserResponse = _mapper.Map<List<UserResponse>>(listOfUser);
             var totalOfUser = await _unitOfWork.Users.CountPagingAsync(pageIndex, pageSize, search, isStudent);
             Pagination<UserResponse> response = new Pagination<UserResponse>(listOfUserResponse, totalOfUser, pageIndex, pageSize);
@@ -160,6 +160,14 @@ namespace BusinessLogicLayer.Service
             return apiResponse.SetOk(Resources.UpdateSuccess);
         }
 
+        public async Task<UserResponse> GetUserProfile(Guid id)
+        {
+            var apiResponse = new ApiResponse();
+            var user = await _unitOfWork.Users.GetAsync(x => x.Id == id);
+            var userResponse = _mapper.Map<UserResponse>(user);
+
+            return userResponse;
+        }
 
     }
 }

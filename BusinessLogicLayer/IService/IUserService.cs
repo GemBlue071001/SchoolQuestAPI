@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
+using BusinessLogicLayer.ResponseModel.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> GetUserPagingAsync(int pageIndex, int pageSize, string search, bool isStudent, bool isSorted);
         Task<ApiResponse> GetTotalOfUser();
         Task<ApiResponse> UpdateProfileAsync(UpdateProfileRequest userProfile);
+        Task<UserResponse> GetUserProfile(Guid id);
     }
 }

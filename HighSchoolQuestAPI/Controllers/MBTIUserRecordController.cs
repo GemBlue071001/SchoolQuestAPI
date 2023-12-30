@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using MimeKit;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Models;
+using BusinessLogicLayer.Util;
 
 namespace HighSchoolQuestAPI.Controllers
 {
@@ -12,10 +14,14 @@ namespace HighSchoolQuestAPI.Controllers
     public class MBTIUserRecordController : ControllerBase
     {
         private IMBTI_UserRecordService _service;
+        public IClaimsService _claimsService;
+        public IUserService _userService;
 
-        public MBTIUserRecordController(IMBTI_UserRecordService service)
+        public MBTIUserRecordController(IMBTI_UserRecordService service, IClaimsService claimsService, IUserService userService)
         {
             _service = service;
+            _claimsService = claimsService;
+            _userService = userService;
         }
 
         [Authorize]
@@ -25,20 +31,38 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _service.AddUserRecord(request);
             if (result.IsSuccess)
             {
+                #region get user info
+                var userId = _claimsService.GetUserIdInRequest();
+                var user = await _userService.GetUserProfile(userId);
+                var name = user.FirstName + user.LastName;
+                var userEmail = user.Email;
+                #endregion
+
+
+
+
+
+                #region setup content mail
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("healthsystemcare", "healthsystemcare0@gmail.com"));
-                message.To.Add(new MailboxAddress("", "trinhtam2001@gmail.com"));
+                message.To.Add(new MailboxAddress("", userEmail));
                 message.Subject = "hello !!";
                 var bodyBuilder = new BodyBuilder();
 
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", "index.html");
+                var filename = $"{((result.Result) as MBTI)!.Code}.html";
+
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", filename);
                 if (!System.IO.File.Exists(filePath))
                 {
                     return BadRequest("file not found");
                 }
                 string content = System.IO.File.ReadAllText(filePath);
+                #endregion
 
-                var name = "tam";
+
+
+
+
 
                 // Replace ${name} with the actual value
                 content = content.Replace("${name}", name);
