@@ -20,6 +20,10 @@ namespace ApplicationContext.Configurations
         .HasDefaultValueSql("NOW()")
         .ValueGeneratedOnAdd();
 
+            builder.HasMany(x => x.Transactions)
+                   .WithOne(x => x.User)
+                   .HasForeignKey(x => x.UserId);
+
             builder
             .HasIndex(q => q.UserName)
             .IsUnique();
@@ -76,7 +80,7 @@ namespace ApplicationContext.Configurations
                 PhoneNumber = "1234567890",
                 HighestScore = 9,
                 Address = "Tran quoc toan"
-            }, 
+            },
             new User
             {
                 Id = Guid.Parse("5ddbd197-9ac9-42fb-bdfe-dee7dbe35efd"),

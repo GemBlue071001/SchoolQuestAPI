@@ -9,5 +9,7 @@ namespace BusinessLogicLayer.RequestModel.Momo
     public class OrderRequestModel
     {
         public double TotalPay { get; set; }
+        public Guid? UserId { get; set; }
+
     }
 }

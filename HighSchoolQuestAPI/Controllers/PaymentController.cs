@@ -23,5 +23,12 @@ namespace HighSchoolQuestAPI.Controllers
             var result = await _momoService.CreatePayment("abc", order);
             return Ok(result);
         }
+
+        [HttpPost("ReceiveResponse")]
+        public async Task<IActionResult> ReceiveResponse(MomoResponseModel moMoResponseModel)
+        {
+            var result = await _momoService.ReceiveResponse(moMoResponseModel);
+            return Ok(result);
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace ApplicationContext
         public DbSet<MBTI_ExamQuestion> MBTI_ExamQuestions { get; set; }
         public DbSet<MBTI_UserRecord> MBTI_UserRecords { get; set; }
         public DbSet<RecordDetail> RecordDetails { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

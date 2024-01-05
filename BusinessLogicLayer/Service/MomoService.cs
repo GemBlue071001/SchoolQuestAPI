@@ -1,5 +1,7 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.Momo;
+using DataAccessLayer.UnitOfWork;
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,6 +16,7 @@ namespace BusinessLogicLayer.Service
 {
     public class MomoService : IMomoService
     {
+        public IUnitOfWork _unitOfWork { get; set; }
         public MomoService() { }
         public async Task<string> CreatePayment(string token, OrderRequestModel orderModel)
         {
@@ -34,7 +37,7 @@ namespace BusinessLogicLayer.Service
             string serectkey = "jrQjul5BxdOMI7kHvIYAWCka1XIXXF7M";
             string orderInfo = "test";
             string redirectUrl = "https://www.youtube.com/watch?v=SXDJ1bGTJ_U"; //Sau khi thanh toan xong, trang QR  code cua momo se redirect ve trang ma minh config
-            string ipnUrl = "http://localhost:3000/api/v1/payment/response-payment"; // Sau khi quet QR thanh toan, momo se goi den api cua server minh, ipnUrl do minh config
+            string ipnUrl = "https://highschoolquestapi.onrender.com/api/v1/Payment/ReceiveResponse"; // Sau khi quet QR thanh toan, momo se goi den api cua server minh, ipnUrl do minh config
             string requestType = "captureWallet";
             string orderId = Guid.NewGuid().ToString();
             string requestId = Guid.NewGuid().ToString();
@@ -107,7 +110,18 @@ namespace BusinessLogicLayer.Service
                 var base64OrderBytes = Convert.FromBase64String(moMoResponseModel.extraData ?? "");
                 var orderJson = System.Text.Encoding.UTF8.GetString(base64OrderBytes);
                 var orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(orderJson);
-                bool isBuyViaLink = false;
+                await _unitOfWork.Transactions.AddAsync(new Transaction
+                {
+                    Status = "Success",
+                    TotalPay = (int)orderModel!.TotalPay,
+                    TransactionDate = DateTime.UtcNow,
+                    UserId = (Guid)orderModel.UserId!,
+                });
+                var user = await _unitOfWork.Users.GetAsync(x => x.Id == (Guid)orderModel.UserId!);
+                user.GameToken += (((int)orderModel!.TotalPay) / 1000);
+
+                await _unitOfWork.SaveChangeAsync();
+
 
                 return (orderModel);
             }
