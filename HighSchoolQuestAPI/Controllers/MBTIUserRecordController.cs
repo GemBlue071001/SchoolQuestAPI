@@ -5,7 +5,6 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Models;
-using BusinessLogicLayer.Util;
 
 namespace HighSchoolQuestAPI.Controllers
 {

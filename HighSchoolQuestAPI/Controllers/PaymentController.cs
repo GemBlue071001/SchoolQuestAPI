@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.Momo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,10 +26,11 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
         [HttpPost("ReceiveResponse")]
+        [AllowAnonymous]
         public async Task<IActionResult> ReceiveResponse(MomoResponseModel moMoResponseModel)
         {
             var result = await _momoService.ReceiveResponse(moMoResponseModel);
-            return Ok(result);
+            return NoContent();
         }
     }
 }
