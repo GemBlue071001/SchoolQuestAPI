@@ -105,12 +105,12 @@ namespace BusinessLogicLayer.Service
             {
                 var base64OrderBytes = Convert.FromBase64String(moMoResponseModel.extraData ?? "");
                 var orderJson = System.Text.Encoding.UTF8.GetString(base64OrderBytes);
-                //var orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(orderJson);
-                var orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(new OrderRequestModel
-                {
-                    TotalPay=1000,
-                    UserId= Guid.NewGuid()
-                }.ToString()!);
+                var orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(orderJson);
+                //var orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(new OrderRequestModel
+                //{
+                //    TotalPay=1000,
+                //    UserId= Guid.NewGuid()
+                //}.ToString()!);
                 await _unitOfWork.Transactions.AddAsync(new Transaction
                 {
                     Status = "Success",
