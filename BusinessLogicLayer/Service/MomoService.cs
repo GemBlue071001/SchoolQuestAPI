@@ -2,15 +2,11 @@
 using BusinessLogicLayer.RequestModel.Momo;
 using DataAccessLayer.UnitOfWork;
 using Domain.Models;
-using Microsoft.EntityFrameworkCore;
+using MailKit.Net.Smtp;
+using MimeKit;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+
 
 namespace BusinessLogicLayer.Service
 {
@@ -37,7 +33,7 @@ namespace BusinessLogicLayer.Service
             string serectkey = "jrQjul5BxdOMI7kHvIYAWCka1XIXXF7M";
             string orderInfo = "test";
             string redirectUrl = "https://www.youtube.com/watch?v=SXDJ1bGTJ_U"; //Sau khi thanh toan xong, trang QR  code cua momo se redirect ve trang ma minh config
-            string ipnUrl = "https://highschoolquestapi.onrender.com/api/v1/Payment/ReceiveResponse"; // Sau khi quet QR thanh toan, momo se goi den api cua server minh, ipnUrl do minh config
+            string ipnUrl = "https://highschoolquestapi.onrender.com/api/Payment/ReceiveResponse"; // Sau khi quet QR thanh toan, momo se goi den api cua server minh, ipnUrl do minh config
             string requestType = "captureWallet";
             string orderId = Guid.NewGuid().ToString();
             string requestId = Guid.NewGuid().ToString();
@@ -123,11 +119,44 @@ namespace BusinessLogicLayer.Service
                 await _unitOfWork.SaveChangeAsync();
 
 
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("healthsystemcare", "healthsystemcare0@gmail.com"));
+                message.To.Add(new MailboxAddress("", "trinhtam2001@gmail.com"));
+                message.Subject = "thành công !!";
+                var bodyBuilder = new BodyBuilder();
+
+                bodyBuilder.HtmlBody = "thanh toán thành công";
+
+                message.Body = bodyBuilder.ToMessageBody();
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync("smtp.gmail.com", 465, true);
+                    await client.AuthenticateAsync("trinhtam2001@gmail.com", "srtb iprw hiwv htpj");
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                }
+
                 return (orderModel);
             }
             catch (Exception e)
             {
-                Console.Write(e.ToString());
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("healthsystemcare", "healthsystemcare0@gmail.com"));
+                message.To.Add(new MailboxAddress("", "trinhtam2001@gmail.com"));
+                message.Subject = "hello !!";
+                var bodyBuilder = new BodyBuilder();
+
+                bodyBuilder.HtmlBody = e.Message;
+
+                message.Body = bodyBuilder.ToMessageBody();
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync("smtp.gmail.com", 465, true);
+                    await client.AuthenticateAsync("trinhtam2001@gmail.com", "srtb iprw hiwv htpj");
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                }
+
                 throw new ArgumentException(e.Message);
             }
         }
