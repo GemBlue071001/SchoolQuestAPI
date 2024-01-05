@@ -106,17 +106,17 @@ namespace BusinessLogicLayer.Service
                 var base64OrderBytes = Convert.FromBase64String(moMoResponseModel.extraData ?? "");
                 var orderJson = System.Text.Encoding.UTF8.GetString(base64OrderBytes);
                 var orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(orderJson);
-                await _unitOfWork.Transactions.AddAsync(new Transaction
-                {
-                    Status = "Success",
-                    TotalPay = (int)orderModel!.TotalPay,
-                    TransactionDate = DateTime.UtcNow,
-                    UserId = (Guid)orderModel.UserId!,
-                });
-                var user = await _unitOfWork.Users.GetAsync(x => x.Id == (Guid)orderModel.UserId!);
-                user.GameToken += (((int)orderModel!.TotalPay) / 1000);
+                //await _unitOfWork.Transactions.AddAsync(new Transaction
+                //{
+                //    Status = "Success",
+                //    TotalPay = (int)orderModel!.TotalPay,
+                //    TransactionDate = DateTime.UtcNow,
+                //    UserId = (Guid)orderModel.UserId!,
+                //});
+                //var user = await _unitOfWork.Users.GetAsync(x => x.Id == (Guid)orderModel.UserId!);
+                //user.GameToken += (((int)orderModel!.TotalPay) / 1000);
 
-                await _unitOfWork.SaveChangeAsync();
+                //await _unitOfWork.SaveChangeAsync();
 
 
                 var message = new MimeMessage();
@@ -125,7 +125,7 @@ namespace BusinessLogicLayer.Service
                 message.Subject = "thành công !!";
                 var bodyBuilder = new BodyBuilder();
 
-                bodyBuilder.HtmlBody = "thanh toán thành công";
+                bodyBuilder.HtmlBody = orderModel.ToString();
 
                 message.Body = bodyBuilder.ToMessageBody();
                 using (var client = new SmtpClient())
