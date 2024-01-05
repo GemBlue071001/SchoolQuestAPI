@@ -75,6 +75,7 @@ builder.Services.AddScoped<IMBTI_QuestionService, MBTI_QuestionService>();
 builder.Services.AddScoped<IMBTI_ExamService, MBTI_ExamService>();
 builder.Services.AddScoped<IMBTI_UserRecordService, MBTI_UserRecordService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IMomoService, MomoService>();
 builder.Services.AddHttpContextAccessor();
 
 
@@ -100,7 +101,7 @@ app.MapControllers();
 
 using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
 {
-    serviceScope.ServiceProvider.GetService<HighSchoolQuestContext>().Database.Migrate();
+    //serviceScope.ServiceProvider.GetService<HighSchoolQuestContext>().Database.Migrate();
 }
 
 app.Run();

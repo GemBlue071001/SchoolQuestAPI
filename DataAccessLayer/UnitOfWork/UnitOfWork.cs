@@ -36,6 +36,7 @@ namespace DataAccessLayer.UnitOfWork
         public IMBTI_ExamQuestionRepository MBTI_ExamQuestions { get; }
         public IMBTI_UserRecordRepository MBTI_UserRecords { get; }
         public IDepartmentRepository Departments { get; }
+        public ITransactionRepository Transactions { get; }
 
         public UnitOfWork(HighSchoolQuestContext context)
         {
@@ -61,6 +62,7 @@ namespace DataAccessLayer.UnitOfWork
             MBTI_ExamQuestions = new MBTI_ExamQuestionRepository(context);
             MBTI_UserRecords = new MBTI_UserRecordRepository(context);
             Departments = new DepartmentRepository(context);
+            Transactions = new TransactionRepository(context);
         }
         public async Task SaveChangeAsync()
         {

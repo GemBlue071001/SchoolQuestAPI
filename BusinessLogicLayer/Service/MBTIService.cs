@@ -37,6 +37,15 @@ namespace BusinessLogicLayer.Service
             return response.SetOk(mbtiResponse);
         }
 
+        public async Task<ApiResponse> GetMBTIDetailByCode(string code)
+        {
+            var response = new ApiResponse();
+            var mbti = await _unitOfWork.MBITs.GetMBTIDetailByCode(code);
+            var mbtiResponse = _mapper.Map<MBTIResponse>(mbti);
+
+            return response.SetOk(mbtiResponse);
+        }
+
         public async Task<ApiResponse> GetAllMBTI()
         {
             var response = new ApiResponse();

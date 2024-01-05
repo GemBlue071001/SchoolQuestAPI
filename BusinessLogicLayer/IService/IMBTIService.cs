@@ -14,5 +14,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> GetAllMBTI();
         Task<ApiResponse> AddMBTIDepartment(MBTIDepartmentRequest mbtiDep);
         Task<ApiResponse> GetMBTIDepartment(int index, int pageSize, int mbtiId);
+        Task<ApiResponse> GetMBTIDetailByCode(string code);
     }
 }

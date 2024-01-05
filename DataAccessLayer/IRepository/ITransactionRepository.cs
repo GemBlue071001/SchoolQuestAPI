@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.IRepository
 {
-    public interface IMBITRepository : IGenericRepository<MBTI>
+    public interface ITransactionRepository : IGenericRepository<Transaction>
     {
-        Task<MBTI?> GetMBTIDetail(int id);
-        Task<MBTI?> GetMBTIDetailByCode(string code);
     }
 }

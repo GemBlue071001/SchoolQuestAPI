@@ -1,8 +1,11 @@
 ﻿using BusinessLogicLayer.IService;
 using BusinessLogicLayer.RequestModel.MBTIUserRecord;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using MimeKit;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Models;
+using BusinessLogicLayer.Util;
 
 namespace HighSchoolQuestAPI.Controllers
 {
@@ -11,10 +14,14 @@ namespace HighSchoolQuestAPI.Controllers
     public class MBTIUserRecordController : ControllerBase
     {
         private IMBTI_UserRecordService _service;
+        public IClaimsService _claimsService;
+        public IUserService _userService;
 
-        public MBTIUserRecordController(IMBTI_UserRecordService service)
+        public MBTIUserRecordController(IMBTI_UserRecordService service, IClaimsService claimsService, IUserService userService)
         {
             _service = service;
+            _claimsService = claimsService;
+            _userService = userService;
         }
 
         [Authorize]
@@ -22,7 +29,57 @@ namespace HighSchoolQuestAPI.Controllers
         public async Task<IActionResult> AddNewUserRecord(MBTIUserRecordRequest request)
         {
             var result = await _service.AddUserRecord(request);
-            return result.IsSuccess ? Ok(result) : BadRequest(result);
+            if (result.IsSuccess)
+            {
+                #region get user info
+                var userId = _claimsService.GetUserIdInRequest();
+                var user = await _userService.GetUserProfile(userId);
+                var name = user.FirstName + user.LastName;
+                var userEmail = user.Email;
+                #endregion
+
+
+
+
+
+                #region setup content mail
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("healthsystemcare", "healthsystemcare0@gmail.com"));
+                message.To.Add(new MailboxAddress("", userEmail));
+                message.Subject = "hello !!";
+                var bodyBuilder = new BodyBuilder();
+
+                var filename = $"{((result.Result) as MBTI)!.Code}.html";
+
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", filename);
+                if (!System.IO.File.Exists(filePath))
+                {
+                    return BadRequest("file not found");
+                }
+                string content = System.IO.File.ReadAllText(filePath);
+                #endregion
+
+
+
+
+
+
+                // Replace ${name} with the actual value
+                content = content.Replace("${name}", name);
+
+                bodyBuilder.HtmlBody = content;
+
+                message.Body = bodyBuilder.ToMessageBody();
+                using (var client = new SmtpClient())
+                {
+                    await client.ConnectAsync("smtp.gmail.com", 465, true);
+                    await client.AuthenticateAsync("trinhtam2001@gmail.com", "srtb iprw hiwv htpj");
+                    await client.SendAsync(message);
+                    await client.DisconnectAsync(true);
+                }
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [Authorize]

@@ -28,6 +28,13 @@ namespace HighSchoolQuestAPI.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetMBTIDetailByCode(string code)
+        {
+            var result = await _service.GetMBTIDetailByCode(code);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+
         //[Authorize]
         [HttpGet("all")]
         public async Task<IActionResult> GetAllMBTI()
