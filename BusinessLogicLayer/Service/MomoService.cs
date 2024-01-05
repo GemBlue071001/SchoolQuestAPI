@@ -13,7 +13,10 @@ namespace BusinessLogicLayer.Service
     public class MomoService : IMomoService
     {
         public IUnitOfWork _unitOfWork { get; set; }
-        public MomoService() { }
+        public MomoService(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         public async Task<string> CreatePayment(string token, OrderRequestModel orderModel)
         {
             JsonSerializerSettings jsonSerializerSettings = new()
@@ -107,11 +110,6 @@ namespace BusinessLogicLayer.Service
                 var orderJson = System.Text.Encoding.UTF8.GetString(base64OrderBytes);
                 var orderModel = new OrderRequestModel();
                 orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(orderJson);
-                //var orderModel = JsonConvert.DeserializeObject<OrderRequestModel>(new OrderRequestModel
-                //{
-                //    TotalPay=1000,
-                //    UserId= Guid.NewGuid()
-                //}.ToString()!);
                 await _unitOfWork.Transactions.AddAsync(new Transaction
                 {
                     Status = "Success",
@@ -152,7 +150,7 @@ namespace BusinessLogicLayer.Service
                 message.Subject = "hello !!";
                 var bodyBuilder = new BodyBuilder();
 
-                bodyBuilder.HtmlBody = e.Message;
+                bodyBuilder.HtmlBody = e.Message + e.InnerException.Message + e.ToString();
 
                 message.Body = bodyBuilder.ToMessageBody();
                 using (var client = new SmtpClient())
