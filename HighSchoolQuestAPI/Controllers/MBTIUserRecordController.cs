@@ -50,11 +50,11 @@ namespace HighSchoolQuestAPI.Controllers
 
                 var filename = $"{((result.Result) as MBTI)!.Code}.html";
 
-                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", filename);
-                if (!System.IO.File.Exists(filePath))
-                {
-                    return BadRequest("file not found");
-                }
+                //string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", filename);
+                //if (!System.IO.File.Exists(filePath))
+                //{
+                //    return BadRequest("file not found");
+                //}
                 //string content = System.IO.File.ReadAllText(filePath);
                 string content = EmailConstant.INTJ;
 
