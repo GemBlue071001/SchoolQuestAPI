@@ -14,5 +14,7 @@ namespace Domain.Models
 
         //Navigation Property
         public List<ExaminationQuestion> ExaminationQuestions { get; set; }
+        public List<StudentPurchased> StudentPurchaseds { get; set; }
+
     }
 }

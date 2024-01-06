@@ -14,11 +14,13 @@ namespace Domain.Models
         public string? Address { get; set; }
         public UserRole Role { get; set; }
         public int GameToken {  get; set; }
+        public bool AllowMbti {  get; set; } 
 
         //Property Navigation
         public List<Attempt> Attempts { get; set; }
         public List<MBTI_UserRecord> MBTI_UserRecords { get; set; }
         public List<Transaction> Transactions { get; set; }
+        public List<StudentPurchased> StudentPurchaseds { get; set; }
 
     }
 }

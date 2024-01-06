@@ -35,6 +35,7 @@ namespace ApplicationContext
         public DbSet<MBTI_UserRecord> MBTI_UserRecords { get; set; }
         public DbSet<RecordDetail> RecordDetails { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<StudentPurchased> StudentPurchased { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -63,6 +64,7 @@ namespace ApplicationContext
             modelBuilder.ApplyConfiguration(new MBTI_ExamConfiguration());
             modelBuilder.ApplyConfiguration(new RecordDetailConfiguration());
             modelBuilder.ApplyConfiguration(new GroupConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentPurchasedConfiguration());
 
 
         }
