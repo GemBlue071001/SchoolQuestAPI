@@ -17,5 +17,8 @@ namespace BusinessLogicLayer.ResponseModel.User
         public List<AttemptResponse> Attempts { get; set; }
         public int? HighestScore { get; set; }
         public string? Address { get; set; }
+
+        public int GameToken { get; set; }
+        public bool AllowMbti { get; set; }
     }
 }

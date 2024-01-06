@@ -48,6 +48,8 @@ namespace BusinessLogicLayer.Service
             attempt.Score = 0;
             attempt.Result = "";
 
+            //var exam = 
+
             attempt.UserId = tokenUserId;
 
             foreach (var userChoice in newAttempt.AttemptDetails)

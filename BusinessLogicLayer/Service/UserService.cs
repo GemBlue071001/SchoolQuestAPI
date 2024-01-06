@@ -5,6 +5,7 @@ using BusinessLogicLayer.Properties;
 using BusinessLogicLayer.RequestModel.User;
 using BusinessLogicLayer.ResponseModel.ApiResponse;
 using BusinessLogicLayer.ResponseModel.User;
+using BusinessLogicLayer.Util;
 using DataAccessLayer.UnitOfWork;
 using Domain.Enums;
 using Domain.Global;
@@ -25,14 +26,16 @@ namespace BusinessLogicLayer.Service
         private AppSettings _appSettings;
         private IClaimsService _claimService;
         private IMapper _mapper;
+        private IClaimsService _claimsService;
 
-        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings, IMapper mapper, IClaimsService claimService)
+        public UserService(IConfiguration configuration, IUnitOfWork unitOfWork, AppSettings appSettings, IMapper mapper, IClaimsService claimService, IClaimsService claimsService)
         {
             //_configuration = configuration;
             _unitOfWork = unitOfWork;
             _appSettings = appSettings;
             _mapper = mapper;
             _claimService = claimService;
+            _claimsService = claimsService;
         }
 
         private PasswordDTO CreatePasswordHash(string password)
@@ -164,6 +167,17 @@ namespace BusinessLogicLayer.Service
         {
             var apiResponse = new ApiResponse();
             var user = await _unitOfWork.Users.GetAsync(x => x.Id == id);
+            var userResponse = _mapper.Map<UserResponse>(user);
+
+            return userResponse;
+        }
+
+        public async Task<UserResponse> GetUserDetail()
+        {
+            var apiResponse = new ApiResponse();
+
+            var userId = _claimsService.GetUserIdInRequest();
+            var user = await _unitOfWork.Users.GetAsync(x => x.Id == userId);
             var userResponse = _mapper.Map<UserResponse>(user);
 
             return userResponse;

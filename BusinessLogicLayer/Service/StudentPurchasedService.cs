@@ -64,5 +64,30 @@ namespace BusinessLogicLayer.Service
             return response.SetOk(exams);
         }
 
+        public async Task<ApiResponse> PurchasesMBTI()
+        {
+            var response = new ApiResponse();
+
+            var userId = _claimsService.GetUserIdInRequest();
+            var user = await _unitOfWork.Users.GetAsync(x => x.Id == userId);
+
+            if (user.AllowMbti == true)
+            {
+                return response.SetOk("Bài kiểm tra này bạn đã mua rồi ^^");
+            }
+
+            user.GameToken -= 10;
+            if (user.GameToken < 0)
+            {
+                return response.SetOk("Bạn không đủ tiền");
+            }
+
+            user.AllowMbti = true;
+
+            await _unitOfWork.SaveChangeAsync();
+
+            return response.SetOk("giao dịch thành công ^^ ");
+        }
+
     }
 }

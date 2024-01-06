@@ -12,5 +12,6 @@ namespace BusinessLogicLayer.IService
     {
         Task<ApiResponse> Purchases(StudentPurchasedRequest request);
         Task<ApiResponse> GetStudentPurches();
+        Task<ApiResponse> PurchasesMBTI();
     }
 }

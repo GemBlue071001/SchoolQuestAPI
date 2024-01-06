@@ -17,5 +17,6 @@ namespace BusinessLogicLayer.IService
         Task<ApiResponse> GetTotalOfUser();
         Task<ApiResponse> UpdateProfileAsync(UpdateProfileRequest userProfile);
         Task<UserResponse> GetUserProfile(Guid id);
+        Task<UserResponse> GetUserDetail();
     }
 }

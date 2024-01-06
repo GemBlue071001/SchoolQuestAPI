@@ -27,6 +27,15 @@ namespace BusinessLogicLayer.Service
         {
             var response = new ApiResponse();
 
+            var userId = _claimsService.GetUserIdInRequest();
+            var record = await _unitOfWork.MBTI_UserRecords.GetAsync(x => x.UserId == userId);
+            var user = await _unitOfWork.Users.GetAsync(x => x.Id == userId);
+
+            if (!user.AllowMbti)
+            {
+                return response.SetBadRequest("bạn cần mua bài ktra này !!! ");
+            }
+
             var mbti = await _unitOfWork.MBITs.GetAsync(x => x.Code == newRecord.Result);
 
             if (mbti == null)
@@ -34,8 +43,6 @@ namespace BusinessLogicLayer.Service
                 return response.SetBadRequest("The result is wrong ! ");
             }
 
-            var userId = _claimsService.GetUserIdInRequest();
-            var record = await _unitOfWork.MBTI_UserRecords.GetAsync(x => x.UserId == userId);
 
             if (record != null)
             {

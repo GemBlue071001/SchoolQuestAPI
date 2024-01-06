@@ -34,6 +34,15 @@ namespace HighSchoolQuestAPI.Controllers
         }
 
 
+        [Authorize]
+        [HttpGet("profile")]
+        public async Task<IActionResult> GetUserDetail()
+        {
+            var result = await _service.GetUserDetail();
+            return Ok(result);
+        }
+
+
         [HttpPost("mail")]
         public async Task<IActionResult> Mail(string user)
         {
