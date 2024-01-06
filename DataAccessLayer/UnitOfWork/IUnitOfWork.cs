@@ -32,6 +32,7 @@ namespace DataAccessLayer.UnitOfWork
         public IMBTI_UserRecordRepository MBTI_UserRecords { get; }
         public IDepartmentRepository Departments { get; }
         public ITransactionRepository Transactions { get; }
+        public IStudentPurchasedRepository StudentPurchased { get; }
         public Task SaveChangeAsync();
     }
 }
