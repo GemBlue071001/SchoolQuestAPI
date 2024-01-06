@@ -32,7 +32,7 @@ namespace BusinessLogicLayer.Service
             var userId = _claimsService.GetUserIdInRequest();
             var response = new ApiResponse();
 
-            var exam = await _unitOfWork.StudentPurchased.GetAsync(x => x.ExaminationId == request.ExamId);
+            var exam = await _unitOfWork.StudentPurchased.GetAsync(x => x.ExaminationId == request.ExamId && x.UserId == userId);
             if (exam != null)
             {
                 return response.SetOk("Bài kiểm tra này bạn đã mua rồi ^^ ");
