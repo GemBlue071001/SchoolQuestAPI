@@ -55,7 +55,9 @@ namespace HighSchoolQuestAPI.Controllers
                 {
                     return BadRequest("file not found");
                 }
-                string content = System.IO.File.ReadAllText(filePath);
+                //string content = System.IO.File.ReadAllText(filePath);
+                string content = EmailConstant.INTJ;
+
                 #endregion
 
 
