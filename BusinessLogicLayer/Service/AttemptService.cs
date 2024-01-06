@@ -48,7 +48,13 @@ namespace BusinessLogicLayer.Service
             attempt.Score = 0;
             attempt.Result = "";
 
-            //var exam = 
+            var studentPurchedExams = await _unitOfWork.StudentPurchased.GetStudentPurches(tokenUserId);
+            var exam = await _unitOfWork.Examinations.GetAsync(x => x.Id == newAttempt.AttemptDetails[0].ExaminationQuestionId);
+
+            if (!studentPurchedExams.Contains(exam))
+            {
+                return response.SetBadRequest("bạn cần mua bài ktra này !!! ");
+            }
 
             attempt.UserId = tokenUserId;
 
