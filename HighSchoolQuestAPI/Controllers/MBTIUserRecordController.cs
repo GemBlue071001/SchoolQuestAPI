@@ -48,22 +48,25 @@ namespace HighSchoolQuestAPI.Controllers
                 message.Subject = "hello !!";
                 var bodyBuilder = new BodyBuilder();
 
-                var filename = $"{((result.Result) as MBTI)!.Code}.html";
+                var type = $"{((result.Result) as MBTI)!.Code}";
 
-                //string filePath = Path.Combine(Directory.GetCurrentDirectory(), "EmailTemplate", filename);
-                //if (!System.IO.File.Exists(filePath))
-                //{
-                //    return BadRequest("file not found");
-                //}
-                //string content = System.IO.File.ReadAllText(filePath);
+
                 string content = EmailConstant.INTJ;
 
+                
+
+                switch (type)
+                {
+                    case "INTJ":
+                        content = EmailConstant.INTJ;
+                        break;
+
+                    default:
+                        content = "bla bla";
+                        break;
+                }
+
                 #endregion
-
-
-
-
-
 
                 // Replace ${name} with the actual value
                 content = content.Replace("${name}", name);
