@@ -51,10 +51,7 @@ namespace HighSchoolQuestAPI.Controllers
                 var type = $"{((result.Result) as MBTI)!.Code}";
 
 
-                string content = EmailConstant.INTJ;
-
-                
-
+                string content;
                 switch (type)
                 {
                     case "INTJ":
