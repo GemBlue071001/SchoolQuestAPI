@@ -49,7 +49,9 @@ namespace BusinessLogicLayer.Service
             attempt.Result = "";
 
             var studentPurchedExams = await _unitOfWork.StudentPurchased.GetStudentPurches(tokenUserId);
-            var exam = await _unitOfWork.Examinations.GetAsync(x => x.Id == newAttempt.AttemptDetails[0].ExaminationQuestionId);
+
+            var examQuestion = await _unitOfWork.ExaminationQuestions.GetAsync(x => x.Id == newAttempt.AttemptDetails[0].ExaminationQuestionId);
+            var exam = await _unitOfWork.Examinations.GetAsync(x => x.Id == examQuestion.ExaminationId);
 
             if (!studentPurchedExams.Contains(exam))
             {
