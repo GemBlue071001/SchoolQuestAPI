@@ -49,17 +49,59 @@ namespace HighSchoolQuestAPI.Controllers
                 var bodyBuilder = new BodyBuilder();
 
                 var type = $"{((result.Result) as MBTI)!.Code}";
-
-
                 string content;
                 switch (type)
                 {
+                    case "ENFJ":
+                        content = EmailConstant.ENFJ;
+                        break;
+                    case "ENFP":
+                        content = EmailConstant.ENFP;
+                        break;
+                    case "ENTJ":
+                        content = EmailConstant.ENTJ;
+                        break;
+                    case "ENTP":
+                        content = EmailConstant.ENTP;
+                        break;
+                    case "ESFJ":
+                        content = EmailConstant.ESFJ;
+                        break;
+                    case "ESFP":
+                        content = EmailConstant.ESFP;
+                        break;
+                    case "ESTJ":
+                        content = EmailConstant.ESTJ;
+                        break;
+                    case "ESTP":
+                        content = EmailConstant.ESTP;
+                        break;
+                    case "INFJ":
+                        content = EmailConstant.INFJ;
+                        break;
+                    case "INFP":
+                        content = EmailConstant.INFP;
+                        break;
                     case "INTJ":
                         content = EmailConstant.INTJ;
                         break;
-
+                    case "INTP":
+                        content = EmailConstant.INTP;
+                        break;
+                    case "ISFJ":
+                        content = EmailConstant.ISFJ;
+                        break;
+                    case "ISFP":
+                        content = EmailConstant.ISFP;
+                        break;
+                    case "ISTJ":
+                        content = EmailConstant.ISTJ;
+                        break;
+                    case "ISTP":
+                        content = EmailConstant.ISTP;
+                        break;
                     default:
-                        content = "bla bla";
+                        content = "";
                         break;
                 }
 
